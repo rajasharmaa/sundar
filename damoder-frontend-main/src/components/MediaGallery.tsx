@@ -92,14 +92,14 @@ const MediaGallery = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-4 sm:py-1.5 bg-blue-50 text-blue-600 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-4">
               <Zap size={14} className="fill-current" aria-hidden="true" />
               <span>Trending Now</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black text-gray-900 tracking-tight leading-none">
-              POPULAR <span className="text-blue-600">COLLECTIONS</span>
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-gray-900 tracking-tight leading-none">
+              POPULAR <span className="text-blue-600 block sm:inline">COLLECTIONS</span>
             </h2>
-            <p className="mt-6 text-lg text-gray-500 max-w-xl font-medium">
+            <p className="mt-4 sm:mt-6 text-base sm:text-lg text-gray-500 max-w-xl font-medium">
               Explore our most sought-after industrial solutions, precision-engineered for maximum performance and durability.
             </p>
           </motion.div>
@@ -109,14 +109,15 @@ const MediaGallery = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="mt-4 lg:mt-0"
           >
             <Link 
               to="/categories" 
-              className="group flex items-center gap-3 px-8 py-4 bg-gray-900 text-white rounded-full font-bold hover:bg-blue-600 transition-all duration-500 shadow-xl hover:shadow-blue-200"
+              className="group flex items-center gap-2 sm:gap-3 px-6 py-3 sm:px-8 sm:py-4 bg-gray-900 text-white rounded-full font-bold hover:bg-blue-600 transition-all duration-500 shadow-xl hover:shadow-blue-200 text-sm sm:text-base w-full sm:w-auto justify-center"
             >
               <span>EXPLORE ALL</span>
-              <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center group-hover:translate-x-1 transition-transform">
-                <ArrowRight size={18} aria-hidden="true" />
+              <div className="w-6 h-6 sm:w-8 sm:h-8 bg-white/10 rounded-full flex items-center justify-center group-hover:translate-x-1 transition-transform">
+                <ArrowRight size={16} aria-hidden="true" />
               </div>
             </Link>
           </motion.div>
@@ -141,23 +142,23 @@ const MediaGallery = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8"
             >
               {popularProducts.map((product) => (
                 <motion.div
                   key={product._id || product.id}
                   variants={itemVariants}
-                  className="group relative h-full hover:-translate-y-3 transition-transform duration-500 ease-out"
+                  className="group relative h-full hover:-translate-y-2 sm:hover:-translate-y-3 transition-transform duration-500 ease-out"
                 >
                   <Link to={`/products/${product._id || product.id}`} className="block h-full flex flex-col">
-                    <div className="h-full bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.02)] hover:shadow-[0_30px_70px_rgba(0,0,0,0.12)] transition-all duration-700 flex flex-col relative">
+                    <div className="h-full bg-white rounded-3xl sm:rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.02)] hover:shadow-[0_30px_70px_rgba(0,0,0,0.12)] transition-all duration-700 flex flex-col relative">
                       
                       {/* Image Container with Magnetic Effect */}
-                      <div className="relative aspect-[4/5] overflow-hidden bg-gray-50">
+                      <div className="relative aspect-square sm:aspect-[4/5] overflow-hidden bg-gray-50 flex items-center justify-center p-4">
                         <img
                           src={isSafeImage(product.image) ? product.image : '/placeholder.svg'}
                           alt={product.name || 'Industrial Product'}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
                           loading="lazy"
                           decoding="async"
                           sizes="(max-width:768px) 100vw, 25vw"
@@ -195,23 +196,23 @@ const MediaGallery = () => {
                       </div>
 
                       {/* Content Section */}
-                      <div className="p-8 flex-1 flex flex-col">
-                        <h3 className="text-xl font-black text-gray-900 mb-2 line-clamp-1 group-hover:text-blue-600 transition-colors">
+                      <div className="p-5 sm:p-8 flex-1 flex flex-col">
+                        <h3 className="text-lg sm:text-xl font-black text-gray-900 mb-2 line-clamp-1 sm:line-clamp-2 group-hover:text-blue-600 transition-colors leading-tight">
                           {product.name}
                         </h3>
-                        <p className="text-sm text-gray-500 font-medium line-clamp-2 mb-6">
+                        <p className="text-xs sm:text-sm text-gray-500 font-medium line-clamp-2 mb-4 sm:mb-6">
                           {product.shortDescription || product.description || `High-performance ${(typeof product.category === 'string' ? product.category : (product.category as any)?.name)?.toLowerCase() || 'industrial'} solution engineered for excellence.`}
                         </p>
                         
-                        <div className="mt-auto pt-6 border-t border-gray-50 flex items-center justify-between">
+                        <div className="mt-auto pt-4 sm:pt-6 border-t border-gray-50 flex items-center justify-between">
                            <div className="flex flex-col">
-                             <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Availability</span>
-                             <span className="text-xs font-black text-green-600 flex items-center gap-1.5">
-                               <div className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)] animate-pulse" />
+                             <span className="text-[9px] sm:text-[10px] font-bold text-gray-400 uppercase tracking-widest">Availability</span>
+                             <span className="text-[10px] sm:text-xs font-black text-green-600 flex items-center gap-1.5 mt-0.5">
+                               <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)] animate-pulse" />
                                IN STOCK
                              </span>
                            </div>
-                           <div className="text-blue-600 font-black text-xs uppercase tracking-widest group-hover:translate-x-1 transition-transform flex items-center gap-1">
+                           <div className="text-blue-600 font-black text-[10px] sm:text-xs uppercase tracking-widest group-hover:translate-x-1 transition-transform flex items-center gap-1">
                              Details <ChevronRight size={14} aria-hidden="true" />
                            </div>
                         </div>
