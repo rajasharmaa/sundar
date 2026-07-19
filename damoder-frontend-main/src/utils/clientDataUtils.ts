@@ -61,7 +61,7 @@ export const getClientIP = async (): Promise<string> => {
 };
 
 /**
- * Get location from IP using ip-api.com (free, 45 req/min)
+ * Get location from IP using ipapi.co (free, supports HTTPS)
  */
 export const getLocationFromIP = async (ip?: string): Promise<{
   city: string;
@@ -72,19 +72,19 @@ export const getLocationFromIP = async (ip?: string): Promise<{
 }> => {
   try {
     const url = ip 
-      ? `http://ip-api.com/json/${ip}?fields=city,region,country,countryCode,isp,status,message`
-      : `http://ip-api.com/json/?fields=city,region,country,countryCode,isp,status,message`;
+      ? `https://ipapi.co/${ip}/json/`
+      : `https://ipapi.co/json/`;
     
     const response = await fetch(url);
     const data = await response.json();
     
-    if (data.status === 'success') {
+    if (!data.error) {
       return {
         city: data.city || 'Unknown',
         state: data.region || 'Unknown',
-        country: data.country || 'Unknown',
-        countryCode: data.countryCode || 'XX',
-        isp: data.isp || 'Unknown ISP'
+        country: data.country_name || 'Unknown',
+        countryCode: data.country_code || 'XX',
+        isp: data.org || 'Unknown ISP'
       };
     }
     
