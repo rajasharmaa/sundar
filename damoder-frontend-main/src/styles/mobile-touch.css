@@ -1,0 +1,187 @@
+/**
+ * Mobile Touch UX Enhancements
+ * Optimized for touch interactions and mobile devices
+ */
+
+/* Larger touch targets for better accessibility */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Improved button tap feedback */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove hover effects on touch devices */
+  button:hover,
+  a:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Add active state for better feedback */
+  button:active,
+  a:active {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+}
+
+/* Swipeable cards */
+.swipeable-card {
+  touch-action: pan-y;
+}
+
+/* Smooth scrolling for mobile */
+.smooth-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent text selection on touch */
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Better form inputs on mobile */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+textarea {
+  font-size: 16px; /* Prevents zoom on iOS */
+}
+
+/* Pull-to-refresh indicator support */
+.pull-to-refresh {
+  overscroll-behavior-y: contain;
+}
+
+/* Bottom sheet modal for mobile filters */
+.bottom-sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 20px 20px 0 0;
+  padding: 20px;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 50;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-out;
+}
+
+.bottom-sheet.open {
+  transform: translateY(0);
+}
+
+.bottom-sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 49;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
+}
+
+.bottom-sheet-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Safe area insets for notched devices */
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Horizontal scroll snap for product carousels */
+.scroll-snap-x {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-snap-x > * {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+/* Hide scrollbar but keep functionality */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Image zoom on pinch */
+.pinch-zoom-container {
+  touch-action: pinch-zoom;
+  overflow: hidden;
+}
+
+/* Loading skeleton shimmer effect */
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 0%,
+    #e0e0e0 20%,
+    #f0f0f0 40%,
+    #f0f0f0 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Mobile card optimizations */
+.mobile-card {
+  touch-action: manipulation;
+}
+
+@media (max-width: 768px) {
+  .mobile-card {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+}
+
+/* Quick action buttons for mobile */
+.quick-action {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (min-width: 768px) {
+  .quick-action {
+    display: none;
+  }
+}

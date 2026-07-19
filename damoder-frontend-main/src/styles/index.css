@@ -1,0 +1,261 @@
+@import './base.css';
+@import './components.css';
+@import './animations.css';
+@import './slider.css';
+@import './utilities.css';
+@import './motion.css';
+@import './responsive.css';
+@import './navbar.css';
+
+/* Main CSS Entry Point - Damodar Traders */
+
+/* ===== RESPONSIVE STYLES ===== */
+@layer utilities {
+  /* Mobile First Approach - Smallest Screens */
+
+  /* Small Mobile Devices (320px - 480px) */
+  @media (max-width: 480px) {
+    .nav-container {
+      @apply h-[60px] px-2.5;
+    }
+
+    .nav-logo {
+      @apply w-[100px] h-10;
+    }
+
+    .media-grid {
+      grid-template-columns: 1fr;
+      @apply gap-3 px-3;
+    }
+
+    .media-card-image-wrapper {
+      height: 160px;
+      padding: 0.75rem;
+    }
+
+    .shop-slider {
+      height: 200px;
+    }
+
+    .footer-grid {
+      @apply grid-cols-1 text-center gap-6;
+    }
+
+    .footer-col h4::after {
+      @apply left-1/2 -translate-x-1/2;
+    }
+
+    .gallery-title {
+      font-size: 1.5rem;
+    }
+
+    .hero-section {
+      @apply py-6 px-3;
+    }
+
+    .section-card {
+      @apply p-4;
+    }
+  }
+
+  /* Medium Mobile Devices (481px - 640px) */
+  @media (min-width: 481px) and (max-width: 640px) {
+    .shop-slider-container {
+      height: 300px;
+    }
+
+    .shop-slider-section {
+      @apply px-3;
+    }
+
+    .slide-content {
+      @apply p-4;
+    }
+
+    .slider-dot {
+      @apply w-2 h-2;
+    }
+
+    .slider-dot.active {
+      @apply w-6;
+    }
+
+    .autoplay-control {
+      @apply px-3 py-1.5 text-sm;
+    }
+
+    .media-grid {
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      @apply gap-4;
+    }
+  }
+
+  /* Tablets (641px - 768px) */
+  @media (min-width: 641px) and (max-width: 768px) {
+    .hero-section {
+      @apply py-10 px-6;
+    }
+
+    .hero-description {
+      @apply text-left text-base;
+    }
+
+    .media-grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      @apply gap-5 px-6;
+    }
+
+    .media-card-image-wrapper {
+      height: 180px;
+      padding: 1rem;
+    }
+
+    .shop-slider-container {
+      height: 400px;
+    }
+
+    .slide-content h3 {
+      @apply text-xl mb-2;
+    }
+
+    .slide-content p {
+      @apply text-sm;
+    }
+
+    .slider-btn {
+      @apply w-12 h-12 text-xl;
+    }
+
+    .shop-slider-title {
+      @apply text-2xl mb-8;
+    }
+
+    .footer-grid {
+      grid-template-columns: repeat(2, 1fr);
+      @apply gap-6;
+    }
+
+    .section-card {
+      @apply p-6;
+    }
+
+    .nav-logo {
+      height: 4rem;
+    }
+
+    .gallery-header {
+      @apply flex-col gap-2;
+    }
+  }
+
+  /* Desktops (769px and above) */
+  @media (min-width: 769px) {
+    .hero-section {
+      @apply py-16 px-8;
+    }
+
+    .hero-description {
+      @apply text-center text-lg;
+    }
+
+    .media-grid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      @apply gap-6 px-8;
+    }
+
+    .media-card-image-wrapper {
+      height: 220px;
+      padding: 1.5rem;
+    }
+
+    .shop-slider-container {
+      height: 500px;
+    }
+
+    .slide-content h3 {
+      @apply text-2xl mb-3;
+    }
+
+    .slide-content p {
+      @apply text-base;
+    }
+
+    .slider-btn {
+      @apply w-14 h-14 text-2xl;
+    }
+
+    .shop-slider-title {
+      @apply text-3xl mb-10;
+    }
+
+    .footer-grid {
+      grid-template-columns: repeat(3, 1fr);
+      @apply gap-8;
+    }
+
+    .section-card {
+      @apply p-8;
+    }
+
+    .nav-logo {
+      height: 5rem;
+    }
+
+    .gallery-header {
+      @apply flex-row gap-4;
+    }
+  }
+
+  /* Large Desktops (1400px and above) */
+  @media (min-width: 1400px) {
+    .hero-section {
+      @apply py-20 px-12;
+    }
+
+    .media-grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      @apply gap-8 px-12;
+    }
+
+    .shop-slider-container {
+      height: 600px;
+    }
+  }
+
+  /* ===== CUSTOM SCROLLBAR ===== */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-200 rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-300;
+  }
+
+  /* ===== REDUCED MOTION ===== */
+  @media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+
+    .animate-fade-in,
+    .animate-fade-in-up,
+    .animate-float,
+    .animate-gradient,
+    .slide-content {
+      animation: none !important;
+    }
+  }
+}

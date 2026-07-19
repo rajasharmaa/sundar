@@ -1,0 +1,466 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+  Damodar Traders Admin Panel Design System
+  Industrial-Professional theme with slate blue primary
+*/
+
+@layer base {
+  :root {
+    /* Core Colors - Light Mode */
+    --background: 210 20% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Primary - Slate Blue */
+    --primary: 207 50% 35%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary - Light Gray */
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    /* Muted */
+    --muted: 210 20% 94%;
+    --muted-foreground: 215 16% 47%;
+
+    /* Accent */
+    --accent: 210 20% 93%;
+    --accent-foreground: 222 47% 11%;
+
+    /* Status Colors */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 36 100% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --info: 207 90% 54%;
+    --info-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Stat Card Accents */
+    --stat-products: 122 39% 49%;
+    --stat-inquiries: 207 90% 54%;
+    --stat-users: 36 100% 50%;
+    --stat-alerts: 4 90% 58%;
+
+    /* Borders & Inputs */
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 207 50% 35%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5% 26%;
+    --sidebar-primary: 207 50% 35%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 210 20% 95%;
+    --sidebar-accent-foreground: 240 6% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 207 90% 54%;
+
+    /* Custom Design Tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(207 50% 35%), hsl(207 60% 45%));
+    --gradient-header: linear-gradient(135deg, hsl(207 50% 30%), hsl(207 50% 40%));
+    --gradient-success: linear-gradient(135deg, hsl(122 39% 45%), hsl(122 50% 55%));
+    --gradient-warning: linear-gradient(135deg, hsl(36 100% 45%), hsl(36 100% 55%));
+    --gradient-danger: linear-gradient(135deg, hsl(4 90% 55%), hsl(4 90% 65%));
+
+    --shadow-sm: 0 1px 2px 0 hsl(207 50% 35% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(207 50% 35% / 0.1), 0 2px 4px -2px hsl(207 50% 35% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(207 50% 35% / 0.1), 0 4px 6px -4px hsl(207 50% 35% / 0.1);
+    --shadow-glow: 0 0 20px hsl(207 90% 54% / 0.3);
+
+    /* Typography */
+    --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  .dark {
+    --background: 222 47% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 207 60% 50%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 207 60% 50%;
+
+    --sidebar-background: 222 47% 8%;
+    --sidebar-foreground: 240 5% 96%;
+    --sidebar-primary: 207 60% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 33% 15%;
+    --sidebar-accent-foreground: 240 5% 96%;
+    --sidebar-border: 217 33% 17%;
+    --sidebar-ring: 207 90% 54%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: var(--font-sans);
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+
+  /* Admin Header */
+  .admin-header {
+    background: var(--gradient-header);
+    @apply text-primary-foreground;
+  }
+
+  /* Stat Cards */
+  .stat-card {
+    @apply relative overflow-hidden rounded-lg border bg-card p-6 transition-all duration-300;
+  }
+
+  .stat-card::before {
+    content: '';
+    @apply absolute top-0 left-0 h-1 w-full;
+  }
+
+  .stat-card:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .stat-card-products::before {
+    background: hsl(var(--stat-products));
+  }
+
+  .stat-card-inquiries::before {
+    background: hsl(var(--stat-inquiries));
+  }
+
+  .stat-card-users::before {
+    background: hsl(var(--stat-users));
+  }
+
+  .stat-card-alerts::before {
+    background: hsl(var(--stat-alerts));
+  }
+
+  /* Tab Button */
+  .tab-button {
+    @apply px-6 py-3 text-muted-foreground border-b-[3px] border-transparent font-medium transition-all duration-200;
+  }
+
+  .tab-button:hover {
+    @apply text-primary bg-accent/50;
+  }
+
+  .tab-button.active {
+    @apply text-primary border-primary;
+  }
+
+  /* Filter Button */
+  .filter-button {
+    @apply px-4 py-2 rounded-md border border-border bg-card text-foreground text-sm font-medium transition-all duration-200;
+  }
+
+  .filter-button:hover {
+    @apply bg-accent;
+  }
+
+  .filter-button.active {
+    @apply bg-primary text-primary-foreground border-primary;
+  }
+
+  /* Inquiry Card - Fixed positioning and overflow */
+  .inquiry-card {
+    @apply relative bg-card border rounded-lg p-5 transition-all duration-300 overflow-hidden;
+    z-index: 1;
+  }
+
+  .inquiry-card:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-lg);
+    z-index: 10;
+  }
+
+  .inquiry-card.unread {
+    @apply border-l-4 bg-destructive/5;
+    border-left-color: hsl(var(--stat-alerts));
+  }
+
+  .inquiry-card.pending {
+    @apply border-l-4;
+    border-left-color: hsl(var(--stat-users));
+  }
+
+  .inquiry-card.completed {
+    @apply border-l-4;
+    border-left-color: hsl(var(--stat-products));
+  }
+
+  /* Product Card */
+  .product-card {
+    @apply bg-card border rounded-lg overflow-hidden transition-all duration-300;
+  }
+
+  .product-card:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Loading Spinner */
+  .loading-spinner {
+    @apply inline-block w-5 h-5 border-2 rounded-full animate-spin;
+    border-color: hsl(var(--primary) / 0.3);
+    border-top-color: hsl(var(--primary));
+  }
+
+  /* Quick Action Button */
+  .quick-action {
+    @apply px-5 py-2.5 rounded-md font-medium transition-all duration-200;
+  }
+
+  .quick-action-primary {
+    background: var(--gradient-primary);
+    @apply text-primary-foreground hover:opacity-90;
+  }
+
+  .quick-action-success {
+    background: var(--gradient-success);
+    @apply text-white hover:opacity-90;
+  }
+
+  .quick-action-warning {
+    background: var(--gradient-warning);
+    @apply text-white hover:opacity-90;
+  }
+
+  .quick-action-danger {
+    background: var(--gradient-danger);
+    @apply text-white hover:opacity-90;
+  }
+
+  /* Analytics Stat Box */
+  .analytics-stat {
+    @apply p-4 rounded-lg text-center;
+  }
+
+  .analytics-stat-blue {
+    @apply bg-info/10;
+  }
+
+  .analytics-stat-purple {
+    background: hsl(270 60% 95%);
+  }
+
+  .analytics-stat-green {
+    @apply bg-success/10;
+  }
+
+  .analytics-stat-orange {
+    background: hsl(36 100% 95%);
+  }
+
+  /* Size Table */
+  .size-table {
+    @apply w-full border-collapse bg-card rounded-lg overflow-hidden;
+    box-shadow: var(--shadow-md);
+  }
+
+  .size-table th {
+    @apply bg-primary text-primary-foreground px-4 py-3 text-left font-semibold;
+  }
+
+  .size-table td {
+    @apply px-4 py-3 border-b border-border;
+  }
+
+  .size-table tr:hover td {
+    @apply bg-accent/50;
+  }
+
+  /* Percentage Bar */
+  .percentage-bar {
+    @apply h-2 bg-muted rounded-full overflow-hidden;
+  }
+
+  .percentage-fill {
+    @apply h-full rounded-full transition-all duration-500;
+    background: linear-gradient(90deg, hsl(var(--stat-products)), hsl(142 60% 55%));
+  }
+
+  /* Form Styles */
+  .form-input {
+    @apply w-full px-3 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-all duration-200;
+  }
+
+  .form-label {
+    @apply block mb-1.5 font-medium text-foreground;
+  }
+
+  /* Size Price Container */
+  .size-price-container {
+    @apply border border-border rounded-md p-3;
+  }
+
+  .size-price-header {
+    @apply grid grid-cols-[1fr_1fr_30px] font-semibold pb-2 border-b border-border mb-3;
+  }
+
+  .size-price-item {
+    @apply grid grid-cols-[1fr_1fr_30px] gap-3 mb-2 items-center;
+  }
+
+  /* Login Container */
+  .login-container {
+    @apply bg-card p-10 rounded-lg w-full max-w-md;
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Badge */
+  .admin-badge {
+    @apply inline-block bg-destructive text-destructive-foreground text-xs px-2 py-0.5 rounded-full ml-2 align-middle;
+  }
+
+  /* Export Button */
+  .export-btn {
+    background: var(--gradient-success);
+    @apply text-white px-4 py-2 rounded-md font-medium flex items-center gap-2 transition-opacity hover:opacity-90;
+  }
+}
+
+@layer utilities {
+
+  /* Animation Utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Mono font utility */
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  /* Layout & Overflow Utilities */
+  .contain-layout {
+    contain: layout style paint;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .min-w-0 {
+    min-width: 0;
+  }
+
+  .max-w-full {
+    max-width: 100%;
+  }
+
+  .shrink-0 {
+    flex-shrink: 0;
+  }
+
+  .break-word {
+    word-break: break-word;
+  }
+
+  /* Z-index hierarchy */
+  .z-context-base {
+    z-index: 0;
+  }
+
+  .z-context-elevated {
+    z-index: 10;
+  }
+
+  .z-context-overlay {
+    z-index: 40;
+  }
+
+  .z-context-modal {
+    z-index: 50;
+  }
+}

@@ -1,0 +1,145 @@
+/* Navbar Styles - Enhanced & Modern */
+
+/* ===== STICKY NAVBAR FIX - COMPREHENSIVE SOLUTION ===== */
+
+/* Define navbar height as CSS variable for consistent spacing */
+:root {
+  /* Desktop navbar height: h-16 sm:h-20 = 64px-80px + padding */
+  --navbar-height: 80px;
+  --navbar-offset: 100px; /* Navbar height + 20px buffer for safety */
+}
+
+/* CRITICAL: Force smooth scrolling on HTML element */
+html {
+  scroll-behavior: smooth !important;
+  scroll-padding-top: var(--navbar-offset) !important;
+}
+
+body {
+  scroll-behavior: smooth !important;
+}
+
+/* AGGRESSIVE: Apply scroll-margin to ALL elements with IDs */
+[id] {
+  scroll-margin-top: var(--navbar-offset) !important;
+}
+
+/* Specific targeting for sections */
+section {
+  scroll-margin-top: var(--navbar-offset) !important;
+}
+
+/* Target common section patterns */
+main [id],
+article [id],
+div[id] {
+  scroll-margin-top: var(--navbar-offset) !important;
+}
+
+/* Ensure content doesn't hide behind sticky navbar */
+main {
+  position: relative;
+  z-index: 1;
+  padding-top: calc(var(--navbar-height) + 20px);
+}
+
+/* Mobile responsive adjustments - smaller navbar on mobile */
+@media (max-width: 768px) {
+  :root {
+    --navbar-height: 64px; /* h-16 on mobile */
+    --navbar-offset: 80px; /* Reduced offset for mobile */
+  }
+  
+  main {
+    padding-top: calc(var(--navbar-height) + 10px);
+  }
+}
+
+/* Extra small mobile */
+@media (max-width: 480px) {
+  :root {
+    --navbar-height: 60px;
+    --navbar-offset: 70px;
+  }
+}
+
+/* ===== TOP BAR ===== */
+.navbar-top-bar {
+  transition: all 0.3s ease;
+}
+
+/* ===== MAIN NAVBAR ===== */
+nav[aria-label="Main Navigation"] {
+  will-change: background, box-shadow;
+}
+
+/* Scroll state styles */
+nav[aria-label="Main Navigation"].scrolled {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== SMOOTH TRANSITIONS ===== */
+.nav-logo-desktop,
+.nav-item-desktop,
+.nav-action-desktop {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* ===== DROPDOWN ANIMATIONS ===== */
+.products-dropdown-menu,
+.user-dropdown-menu {
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== HOVER EFFECTS ===== */
+.nav-link:hover {
+  transform: translateY(-1px);
+}
+
+.nav-action:hover {
+  transform: scale(1.05);
+}
+
+/* ===== GET QUOTE BUTTON ===== */
+button:has(.get-quote),
+a:has(.get-quote) {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:has(.get-quote):hover,
+a:has(.get-quote):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+}
+
+/* ===== MOBILE OPTIMIZATIONS ===== */
+@media (max-width: 1023px) {
+  nav[aria-label="Main Navigation"] {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobile-nav-container {
+    display: none;
+  }
+}
+
+/* ===== ACCESSIBILITY ===== */
+.navbar-top-bar a:focus-visible,
+nav button:focus-visible,
+nav a:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}

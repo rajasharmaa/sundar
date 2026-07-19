@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Uploads and temporary files
+uploads/*
+!uploads/.gitkeep
+tmp/
+dist/
+build/
+.DS_Store

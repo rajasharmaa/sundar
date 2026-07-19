@@ -1,0 +1,120 @@
+﻿
+> damodar-traders@2.0.0 lint
+> eslint src/**/*.js
+
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\api\middleware\auth.js
+  89:18  warning  'idError' is defined but never used  no-unused-vars
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\api\v1\auth\controller.js
+     9:3   warning  'generateRefreshToken' is assigned a value but never used  no-unused-vars
+    11:3   warning  'verifyRefreshToken' is assigned a value but never used    no-unused-vars
+    12:3   warning  'revokeToken' is assigned a value but never used           no-unused-vars
+    30:7   warning  'isIpLockedOut' is assigned a value but never used         no-unused-vars
+    43:7   warning  'recordAuthAttempt' is assigned a value but never used     no-unused-vars
+    69:12  warning  'err' is defined but never used                            no-unused-vars
+    75:7   warning  'isProd' is assigned a value but never used                no-unused-vars
+   890:13  warning  'tokenId' is assigned a value but never used               no-unused-vars
+  1048:7   warning  'dbLatency' is assigned a value but never used             no-unused-vars
+  1064:9   warning  'redisLatency' is assigned a value but never used          no-unused-vars
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\api\v1\auth\schema.js
+  5:9  warning  'validatePassword' is assigned a value but never used  no-unused-vars
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\api\v1\inquiries\routes.js
+  5:9  warning  'validate' is assigned a value but never used  no-unused-vars
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\api\v1\products\controller.js
+  312:11  error  'products' is not defined  no-undef
+  315:11  error  'products' is not defined  no-undef
+  315:22  error  'products' is not defined  no-undef
+  320:18  error  'products' is not defined  no-undef
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\api\v1\products\routes.js
+  5:9  warning  'validate' is assigned a value but never used         no-unused-vars
+  6:9  warning  'requireUserAuth' is assigned a value but never used  no-unused-vars
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\api\v1\products\service.js
+  10:22  warning  'sendErrorResponse' is assigned a value but never used  no-unused-vars
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\api\v1\products\service.related.js
+  7:9  warning  'cacheService' is assigned a value but never used  no-unused-vars
+  8:9  warning  'logger' is assigned a value but never used        no-unused-vars
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\api\v1\users\controller.js
+  123:40  warning  'next' is defined but never used  no-unused-vars
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\api\v1\users\routes.js
+  5:9  warning  'validate' is assigned a value but never used  no-unused-vars
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\api\v1\users\service.js
+  6:9  warning  'validateEmail' is assigned a value but never used  no-unused-vars
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\api\v1\wishlist\controller.js
+    7:9   warning  'createError' is assigned a value but never used        no-unused-vars
+    7:22  warning  'sendErrorResponse' is assigned a value but never used  no-unused-vars
+   24:14  warning  'err' is defined but never used                         no-unused-vars
+  162:14  warning  'err' is defined but never used                         no-unused-vars
+  296:14  warning  'err' is defined but never used                         no-unused-vars
+  376:14  warning  'err' is defined but never used                         no-unused-vars
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\app.js
+   24:9   warning  'validate' is assigned a value but never used             no-unused-vars
+  279:14  warning  'err' is defined but never used                           no-unused-vars
+  503:7   warning  'analyticsController' is assigned a value but never used  no-unused-vars
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\config\database.js
+  60:7  warning  'WARMUP_DELAY' is assigned a value but never used  no-unused-vars
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\config\socket.js
+  80:13  error  'next' is not defined  no-undef
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\controllers\auth.controller.coldstart.js
+   21:30  warning  'generateRefreshToken' is assigned a value but never used  no-unused-vars
+   21:52  warning  'verifyRefreshToken' is assigned a value but never used    no-unused-vars
+   74:7   warning  'compareToken' is assigned a value but never used          no-unused-vars
+  226:9   error    Duplicate key 'id'                                         no-dupe-keys
+  227:9   error    Duplicate key 'email'                                      no-dupe-keys
+  228:9   error    Duplicate key 'name'                                       no-dupe-keys
+  456:7   error    Duplicate key 'success'                                    no-dupe-keys
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\controllers\bulkUpload.controller.js
+  24:11  warning  'userId' is assigned a value but never used  no-unused-vars
+  84:11  warning  'userId' is assigned a value but never used  no-unused-vars
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\controllers\inquiries.controller.js
+  149:17  warning  'productSummary' is assigned a value but never used  no-unused-vars
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\controllers\products.controller.js
+  8:9  warning  'generateProductSlug' is assigned a value but never used  no-unused-vars
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\jobs\queue.manager.js
+    2:22  warning  'redisConfig' is assigned a value but never used  no-unused-vars
+  178:18  warning  'err' is defined but never used                   no-unused-vars
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\middleware\error.handler.js
+  135:38  warning  'next' is defined but never used  no-unused-vars
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\routes\auth.routes.coldstart.js
+  9:23  warning  'optionalAuth' is assigned a value but never used  no-unused-vars
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\services\analytics.service.js
+  269:9   warning  'inquiriesCollection' is assigned a value but never used  no-unused-vars
+  298:44  warning  'userId' is assigned a value but never used               no-unused-vars
+  332:11  warning  'limit' is assigned a value but never used                no-unused-vars
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\services\auth.service.js
+  2:7  warning  'crypto' is assigned a value but never used  no-unused-vars
+  3:7  warning  'config' is assigned a value but never used  no-unused-vars
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\utils\jwt.js
+  31:5  warning  'lastCleanupTime' is assigned a value but never used  no-unused-vars
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\utils\rate-limiter.js
+  37:42  warning  'keyPrefix' is assigned a value but never used  no-unused-vars
+
+C:\Users\rajat\OneDrive\Desktop\New-folder--5--main\damoder-backend-main\src\utils\security-validator.js
+  209:9  warning  'refreshToken' is assigned a value but never used  no-unused-vars
+
+Γ£û 59 problems (9 errors, 50 warnings)
+

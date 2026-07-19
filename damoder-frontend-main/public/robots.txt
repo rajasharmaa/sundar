@@ -1,0 +1,101 @@
+# 🤖 ROBOTS.TXT - Web Crawler Instructions
+# For more information, see https://www.robotstxt.org/
+
+User-agent: *
+Allow: /
+
+# Allow main pages
+Allow: /
+Allow: /products
+Allow: /categories
+Allow: /about
+Allow: /contact
+
+# Block admin panel and authentication
+Disallow: /admin
+Disallow: /admin-login
+Disallow: /auth
+Disallow: /profile
+Disallow: /dashboard
+
+# Block API routes (prevent crawling of dynamic endpoints)
+Disallow: /api
+Disallow: /api/v1
+
+# Block user-specific pages
+Disallow: /wishlist
+Disallow: /cart
+Disallow: /checkout
+Disallow: /account
+
+# Block utility pages
+Disallow: /search
+Disallow: /404
+Disallow: /500
+
+# Block query parameters that create duplicate content
+Disallow: /*?sort=
+Disallow: /*?filter=
+Disallow: /*?page=
+Disallow: /*?*
+
+# Allow sitemap location
+Sitemap: https://damodartraders.com/sitemap.xml
+
+# Crawl delay for large site (optional - adjust based on server capacity)
+Crawl-delay: 1
+
+# Googlebot specific rules
+User-agent: Googlebot
+Allow: /
+Disallow: /admin
+Disallow: /api
+Disallow: /auth
+Disallow: /profile
+
+# Googlebot-Image (for product images)
+User-agent: Googlebot-Image
+Allow: /images
+Allow: /uploads
+Disallow: /admin
+
+# Bing crawler
+User-agent: Bingbot
+Allow: /
+Disallow: /admin
+Disallow: /api
+
+# Baidu crawler
+User-agent: Baiduspider
+Allow: /
+Disallow: /admin
+Disallow: /api
+
+# Yandex crawler
+User-agent: Yandex
+Allow: /
+Disallow: /admin
+Disallow: /api
+
+# Block AhrefsBot (SEO tool - optional)
+User-agent: AhrefsBot
+Disallow: /
+
+# Block SemrushBot (SEO tool - optional)
+User-agent: SemrushBot
+Disallow: /
+
+# Block MJ12bot (link checker - optional)
+User-agent: MJ12bot
+Disallow: /
+
+# Block dotbot (Microsoft link checker)
+User-agent: dotbot
+Disallow: /
+
+# Block generic bots
+User-agent: *
+Disallow: /cgi-bin/
+Disallow: /wp-admin/
+Disallow: /private/
+Disallow: /tmp/
