@@ -84,7 +84,6 @@ const Footer = () => {
           </form>
         </div>
 
-        <div className="container-mobile">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-10 lg:gap-12 mb-16 text-left">
 
           {/* Corporate Profile / Brand */}
