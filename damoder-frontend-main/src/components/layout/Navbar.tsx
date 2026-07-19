@@ -113,10 +113,10 @@ const MIN_TOUCH_TARGET_SIZE = 44; // Minimum recommended touch target size in pi
 // Mobile-first responsive classes - FIXED for better touch targets
 const mobileClasses = {
   navHeight: 'h-16 sm:h-20',
-  logoSize: 'h-10 sm:h-12 w-auto',
+  logoSize: 'h-8 sm:h-10 w-auto',
   buttonPadding: 'p-3 sm:p-2.5',
   textSizes: {
-    logo: 'text-lg sm:text-xl',
+    logo: 'text-base sm:text-lg',
     navItem: 'text-sm sm:text-base',
     userMenu: 'text-xs sm:text-sm'
   }
@@ -463,9 +463,9 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
       </motion.nav>
       {/* Mobile Top Bar (sm/md only) */}
       <nav className={`fixed top-0 left-0 right-0 lg:hidden ${zIndexClass} ${bgClass} transition-all duration-300`}>
-        <div className="px-6 flex items-center justify-between h-16">
+        <div className="px-4 sm:px-6 flex items-center justify-between h-16">
           <Logo isDark={!isCurrentlyTransparent} />
-          <div className="flex items-center gap-4 flex-shrink-0">
+          <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
             {/* Accessibility for Mobile */}
             <div className="relative" ref={mobileAccessibilityRef}>
               <button
@@ -506,37 +506,7 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
                 </span>
               )}
             </Link>
-            {/* RFQ button replacing the hamburger button */}
-            <Link
-              to="/rfq"
-              className={`p-2.5 rounded-xl transition-all duration-300 flex items-center justify-center relative ${isCurrentlyTransparent
-                ? 'text-white hover:bg-white/10'
-                : 'text-gray-600 hover:bg-gray-100'
-                }`}
-              aria-label="RFQ Inquiry List"
-            >
-              <ClipboardList
-                size={24}
-                className={`transition-all duration-300 ${rfqCount > 0 ? 'text-blue-500 fill-blue-500 filter drop-shadow-[0_0_8px_rgba(59,130,246,0.4)]' : 'text-current'
-                  }`}
-              />
-              {rfqCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 bg-blue-600 text-white text-[10px] font-bold h-5 w-5 flex items-center justify-center rounded-full shadow-lg border-2 border-white animate-bounce-subtle">
-                  {rfqCount}
-                </span>
-              )}
-            </Link>
-            {/* Hamburger Menu Toggle */}
-            <button
-              onClick={toggleMobileMenu}
-              className={`p-2.5 rounded-xl transition-all duration-300 flex items-center justify-center relative ${isCurrentlyTransparent
-                ? 'text-white hover:bg-white/10'
-                : 'text-gray-600 hover:bg-gray-100'
-                }`}
-              aria-label="Toggle mobile menu"
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            {/* Removed redundant RFQ button - now in MobileBottomNavbar */}
           </div>
         </div>
       </nav>
@@ -570,14 +540,14 @@ const Logo = ({ isDark = true }: { isDark?: boolean }) => {
   return (
     <Link
       to="/"
-      className="relative flex items-center gap-2.5 group"
+      className="relative flex items-center gap-1.5 sm:gap-2.5 group"
       aria-label="Damodar Traders Home"
       {...events}
     >
       <div className={`relative transition-transform duration-500 ${!reducedMotion && isHovered ? 'scale-105' : 'scale-100'}`}>
         <div className={`absolute inset-0 bg-blue-500/20 blur-xl rounded-full transition-transform duration-500 ${!reducedMotion && isHovered ? 'scale-125 opacity-100' : 'scale-0 opacity-0'}`} />
 
-        <div className={`relative backdrop-blur-sm rounded-xl p-1.5 border shadow-sm transition-all duration-300 ${isDark
+        <div className={`relative backdrop-blur-sm rounded-xl p-1 sm:p-1.5 border shadow-sm transition-all duration-300 ${isDark
           ? 'bg-white/80 border-blue-50 group-hover:border-blue-100'
           : 'bg-white/10 border-white/20 hover:bg-white/20'
           } ${!reducedMotion && isHovered ? 'shadow-lg scale-105' : 'shadow-sm scale-100'}`}>
@@ -589,23 +559,23 @@ const Logo = ({ isDark = true }: { isDark?: boolean }) => {
             onError={(e) => {
               e.currentTarget.style.display = 'none';
               e.currentTarget.parentElement?.classList.add('bg-blue-50');
-              e.currentTarget.parentElement?.classList.remove('p-1.5');
+              e.currentTarget.parentElement?.classList.remove('p-1', 'sm:p-1.5');
               e.currentTarget.parentElement?.classList.add('p-2');
               e.currentTarget.parentElement?.setAttribute('data-error', 'true');
             }}
           />
-          <div className="hidden data-[error=true]:flex items-center justify-center w-12 h-12 bg-blue-100 rounded-lg text-blue-600 font-bold">
+          <div className="hidden data-[error=true]:flex items-center justify-center w-8 h-8 sm:w-12 sm:h-12 bg-blue-100 rounded-lg text-blue-600 font-bold text-xs sm:text-base">
             DT
           </div>
         </div>
       </div>
 
       <div className="flex flex-col">
-        <span className={`font-bold text-lg sm:text-xl tracking-tight leading-none transition-colors ${isDark ? 'text-gray-900 group-hover:text-blue-700' : 'text-white group-hover:text-blue-200'
+        <span className={`font-bold ${mobileClasses.textSizes.logo} tracking-tight leading-none whitespace-nowrap transition-colors ${isDark ? 'text-gray-900 group-hover:text-blue-700' : 'text-white group-hover:text-blue-200'
           }`}>
           Damodar Traders
         </span>
-        <span className={`text-[9px] sm:text-[10px] font-medium tracking-widest uppercase ${isDark ? 'text-gray-500' : 'text-blue-100'
+        <span className={`text-[8px] sm:text-[10px] font-medium tracking-widest uppercase ${isDark ? 'text-gray-500' : 'text-blue-100'
           }`}>
           Quality & Trust
         </span>
