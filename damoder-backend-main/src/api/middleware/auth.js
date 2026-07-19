@@ -219,6 +219,103 @@ const requireUserAuth = async (req, res, next) => {
     }
 };
 
+// 🔓 OPTIONAL AUTH MIDDLEWARE
+// Tries to authenticate the user but proceeds anyway if token is invalid or missing.
+const optionalUserAuth = async (req, res, next) => {
+    const requestId = req.requestId;
+    const ip = req.ip || req.connection?.remoteAddress;
+
+    try {
+        let token = req.cookies?.accessToken;
+
+        if (!token && req.headers.authorization) {
+            const authHeader = req.headers.authorization.trim();
+            if (authHeader.startsWith('Bearer ') || authHeader.startsWith('bearer ')) {
+                token = authHeader.substring(7).trim();
+            } else if (authHeader.length > 10) {
+                token = authHeader.trim();
+            }
+        }
+
+        if (!token) {
+            return next();
+        }
+
+        let decoded;
+        try {
+            decoded = await verifyAccessToken(token);
+        } catch (verificationError) {
+            return next();
+        }
+
+        if (!decoded || !decoded.sub) {
+            return next();
+        }
+
+        let userId;
+        try {
+            userId = new ObjectId(decoded.sub);
+        } catch (idError) {
+            return next();
+        }
+
+        let db;
+        const maxRetries = 2;
+        const baseDelay = 1000;
+
+        for (let attempt = 1; attempt <= maxRetries; attempt++) {
+            try {
+                db = await connectToDB();
+                break;
+            } catch (dbError) {
+                if (attempt === maxRetries) {
+                    return next();
+                }
+                await new Promise(resolve => setTimeout(resolve, baseDelay * attempt));
+            }
+        }
+
+        if (!db) return next();
+
+        const user = await db.collection('users').findOne({
+            _id: userId,
+            active: { $ne: false }
+        });
+
+        if (!user) {
+            return next();
+        }
+
+        const userPv = user.passwordVersion || 1;
+        const tokenPv = decoded.passwordVersion || 1;
+
+        if (userPv !== tokenPv) {
+            return next();
+        }
+
+        req.user = {
+            id: user._id.toString(),
+            _id: user._id,
+            email: user.email,
+            name: user.name,
+            role: user.role || 'user',
+            passwordVersion: user.passwordVersion || 1,
+            tokenJti: decoded.jti,
+            sessionId: decoded.sessionId
+        };
+
+        next();
+    } catch (err) {
+        logger.error('Optional auth middleware crashed:', {
+            requestId,
+            error: err.message,
+            stack: err.stack,
+            ip
+        });
+        next();
+    }
+};
+
 // Simple role-based authorization
 const requireRole = (...roles) => {
     return (req, res, next) => {
@@ -277,6 +374,7 @@ const requireAdminAuth = async (req, res, next) => {
 
 module.exports = {
     requireUserAuth,
+    optionalUserAuth,
     requireRole,
     requireAdminAuth
 };

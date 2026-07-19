@@ -3,7 +3,7 @@
 
 const express = require('express');
 const { validate } = require('../../middleware/validate');
-const { requireUserAuth, requireAdminAuth } = require('../../middleware/auth');
+const { requireUserAuth, requireAdminAuth, optionalUserAuth } = require('../../middleware/auth');
 const { verifyRecaptcha } = require('../../middleware/recaptcha');
 const uploadMiddleware = require('../../middleware/upload.middleware');
 
@@ -23,7 +23,7 @@ router.use((req, res, next) => {
 });
 
 // Public routes - allow both authenticated and anonymous submissions
-router.post('/', uploadMiddleware, verifyRecaptcha('contact'), inquiriesController.createInquiry);
+router.post('/', optionalUserAuth, uploadMiddleware, verifyRecaptcha('contact'), inquiriesController.createInquiry);
 
 // Protected routes - require authentication (for getting user's own inquiries)
 router.get('/user', requireUserAuth, inquiriesController.getUserInquiries);
