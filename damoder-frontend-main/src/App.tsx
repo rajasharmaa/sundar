@@ -229,7 +229,7 @@ const App = () => {
                           {/* Global scroll offset provider for fixed navbar */}
                           <ScrollOffsetProvider offset={100}>
                             <Suspense fallback={<RouteLoader />}>
-                              <div className="pb-20 md:pb-0">
+                              <div className="pb-20 md:pb-0 min-h-screen flex flex-col w-full overflow-x-hidden">
                                 <AppRoutes />
                               </div>
                             </Suspense>

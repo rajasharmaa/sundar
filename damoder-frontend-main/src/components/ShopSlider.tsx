@@ -61,7 +61,7 @@ const ShopSlider = () => {
                 <Camera className="w-4 h-4 text-blue-600" />
                 <span className="text-xs font-black uppercase tracking-widest text-gray-500">Facility Tour</span>
               </div>
-              <h2 className="text-5xl md:text-7xl font-black text-gray-900 leading-none tracking-tighter">
+              <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-gray-900 leading-none tracking-tighter">
                 OUR <span className="text-blue-600">HUB</span> OF <br /> EXCELLENCE
               </h2>
               <p className="text-xl text-gray-600 font-medium max-w-lg">
