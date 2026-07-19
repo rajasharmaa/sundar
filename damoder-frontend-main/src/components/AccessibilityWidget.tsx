@@ -258,9 +258,13 @@ const AccessibilityWidget: React.FC<AccessibilityWidgetProps> = ({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
             transition={{ duration: 0.2 }}
-            className={`absolute top-full mt-3 w-80 bg-white/95 backdrop-blur-xl border border-blue-100 rounded-3xl p-6 shadow-2xl transition-all duration-300 z-[150] ${
-              align === 'left' ? 'left-0' : 'right-0'
-            } ${highContrast ? 'border-2 border-black bg-white text-black' : ''}`}
+            className={`
+              fixed top-20 left-4 right-4 w-auto
+              sm:absolute sm:top-full sm:mt-3 sm:left-auto sm:right-auto sm:w-80
+              ${align === 'left' ? 'sm:left-0' : 'sm:right-0'}
+              bg-white/95 backdrop-blur-xl border border-blue-100 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-2xl transition-all duration-300 z-[150]
+              ${highContrast ? 'border-2 border-black bg-white text-black' : ''}
+            `}
           >
             <AccessibilityPanel {...panelProps} />
           </motion.div>
@@ -277,8 +281,8 @@ const AccessibilityWidget: React.FC<AccessibilityWidgetProps> = ({
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className={`mb-4 w-80 bg-white/95 backdrop-blur-xl border border-blue-100 rounded-3xl p-6 shadow-2xl transition-all duration-300 ${
+            transition={{ duration: 0.3 }}
+            className={`mb-4 w-[280px] sm:w-80 bg-white/95 backdrop-blur-xl border border-blue-100 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-2xl origin-bottom-left ${
               highContrast ? 'border-2 border-black bg-white text-black' : ''
             }`}
           >
