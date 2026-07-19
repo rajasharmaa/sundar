@@ -240,30 +240,29 @@ export const ProductCardEnhanced = ({ product }: ProductCardProps) => {
             productName={product.name}
           />
 
-          {/* Category Badge */}
-          <div className="absolute top-2 xs:top-3 left-2 xs:left-3 z-10">
-            <span className={`inline-flex items-center px-2 py-0.5 xs:px-2.5 xs:py-1 rounded-full text-[10px] xs:text-xs font-semibold ${badgeColor}`}>
-              {categoryName}
+          {/* Top Left Badges */}
+          <div className="absolute top-2 xs:top-3 left-2 xs:left-3 z-10 flex flex-col items-start gap-1.5 max-w-[calc(100%-3.5rem)] pointer-events-none">
+            {/* Category Badge */}
+            <span className={`inline-flex items-center px-2 py-0.5 xs:px-2.5 xs:py-1 rounded-full text-[9px] xs:text-[10px] sm:text-xs font-semibold pointer-events-auto shadow-sm ${badgeColor}`}>
+              <span className="truncate max-w-[60px] xs:max-w-[80px] sm:max-w-[100px]">{categoryName}</span>
             </span>
+
+            {/* Size Count Badge */}
+            {hasMultipleSizes && (
+              <span className="inline-flex items-center px-2 py-0.5 xs:px-2.5 xs:py-1 rounded-full text-[9px] xs:text-[10px] sm:text-xs font-semibold bg-purple-100 text-purple-700 border border-purple-200 pointer-events-auto shadow-sm">
+                <Tag className="w-2.5 h-2.5 sm:w-3 sm:h-3 mr-1 shrink-0" />
+                <span className="whitespace-nowrap">{sizeCount} sizes</span>
+              </span>
+            )}
           </div>
 
-          {/* Size Count Badge */}
-          {hasMultipleSizes && (
-            <div className="absolute top-2 xs:top-3 right-2 xs:right-12 z-10">
-              <span className="inline-flex items-center px-2 py-0.5 xs:px-2.5 xs:py-1 rounded-full text-[10px] xs:text-xs font-semibold bg-purple-100 text-purple-700 border border-purple-200">
-                <Tag className="w-3 h-3 mr-1" />
-                {sizeCount} sizes
-              </span>
-            </div>
-          )}
-
           {/* Action Buttons */}
-          <div className="absolute top-2 xs:top-3 right-2 xs:right-3 z-10 flex flex-col gap-1.5 xs:gap-2">
+          <div className="absolute top-2 xs:top-3 right-2 xs:right-3 z-10 flex flex-col items-end gap-1.5 xs:gap-2 pointer-events-none">
             {/* Compare Button */}
             <button
               onClick={handleCompareToggle}
-              className={`p-2 xs:p-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-200 hover:scale-110 touch-target ${inCompare
-                ? 'bg-blue-50 text-blue-600 border-2 border-blue-200'
+              className={`p-1.5 sm:p-2 xs:p-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-200 hover:scale-110 touch-target pointer-events-auto ${inCompare
+                ? 'bg-blue-50 text-blue-600 border border-blue-200'
                 : 'bg-white text-gray-400 hover:text-blue-600'
                 }`}
               aria-label={inCompare ? "Remove from compare" : "Add to compare"}
@@ -271,7 +270,7 @@ export const ProductCardEnhanced = ({ product }: ProductCardProps) => {
               title={inCompare ? "Remove from Compare" : "Add to Compare"}
             >
               <GitCompare
-                className={`w-4 h-4 xs:w-5 xs:h-5 transition-colors duration-200 ${inCompare ? 'fill-current' : ''
+                className={`w-3.5 h-3.5 sm:w-4 sm:h-4 xs:w-5 xs:h-5 transition-colors duration-200 ${inCompare ? 'fill-current' : ''
                   }`}
               />
             </button>
@@ -279,12 +278,12 @@ export const ProductCardEnhanced = ({ product }: ProductCardProps) => {
             {/* Wishlist Heart */}
             <button
               onClick={handleWishlistToggle}
-              className="p-2 xs:p-2.5 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 hover:scale-110 touch-target"
+              className="p-1.5 sm:p-2 xs:p-2.5 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 hover:scale-110 touch-target pointer-events-auto"
               aria-label={inWishlist ? "Remove from wishlist" : "Add to wishlist"}
               type="button"
             >
               <Heart
-                className={`w-4 h-4 xs:w-5 xs:h-5 transition-colors duration-200 ${inWishlist
+                className={`w-3.5 h-3.5 sm:w-4 sm:h-4 xs:w-5 xs:h-5 transition-colors duration-200 ${inWishlist
                   ? 'text-pink-500 fill-pink-500'
                   : 'text-gray-400 hover:text-pink-500'
                   }`}
