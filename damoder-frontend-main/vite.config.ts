@@ -107,51 +107,11 @@ export default defineConfig(({ mode }) => ({
     chunkSizeWarningLimit: 500, // Stricter limit for better optimization
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
-          // Dynamic chunking strategy for better optimization
-          if (id.includes('node_modules')) {
-            // Core framework
-            if (id.includes('react') && !id.includes('react-router')) {
-              return 'vendor-react';
-            }
-            
-            // Router
-            if (id.includes('react-router')) {
-              return 'vendor-router';
-            }
-            
-            // UI Components
-            if (id.includes('@radix-ui')) {
-              return 'vendor-radix';
-            }
-            
-            // Icons
-            if (id.includes('lucide-react')) {
-              return 'vendor-icons';
-            }
-            
-            // Heavy libraries
-            if (id.includes('three') || id.includes('@react-three')) {
-              return 'vendor-3d';
-            }
-            
-            if (id.includes('framer-motion') || id.includes('gsap')) {
-              return 'vendor-animation';
-            }
-            
-            // Data and utilities
-            if (id.includes('@tanstack') || id.includes('axios')) {
-              return 'vendor-data';
-            }
-            
-            // External services
-            if (id.includes('socket.io')) {
-              return 'vendor-network';
-            }
-            
-            // Everything else in vendor chunk
-            return 'vendor-other';
-          }
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom'],
+          'vendor-router': ['react-router', 'react-router-dom'],
+          'vendor-3d': ['three', '@react-three/fiber', '@react-three/drei'],
+          'vendor-animation': ['framer-motion', 'gsap'],
         },
         
         // Optimize chunk naming
