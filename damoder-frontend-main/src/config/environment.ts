@@ -36,7 +36,7 @@ const checkUrl = async (url: string): Promise<string> => {
 const detectBackendAvailability = async (): Promise<string> => {
   // Try common local development ports
   const localPorts = [5000, 3000, 8000, 4000, 8080];
-  
+
   for (const port of localPorts) {
     try {
       const localUrl = `http://localhost:${port}/api/v1`;
