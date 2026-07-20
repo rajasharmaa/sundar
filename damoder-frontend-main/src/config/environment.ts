@@ -9,7 +9,7 @@ const isStaging = import.meta.env.VITE_APP_ENV === 'staging';
 
 // Base URLs with fallback chain
 const DEV_API_URL = 'http://localhost:3000/api/v1';
-const PROD_API_URL = 'https://damoder-backend.onrender.com/api/v1';
+const PROD_API_URL = 'https://damodar-v1-0.onrender.com/api/v1';
 
 const checkUrl = async (url: string): Promise<string> => {
   const controller = new AbortController();
@@ -49,7 +49,7 @@ const detectBackendAvailability = async (): Promise<string> => {
 
   logger.debug('Local backend checks failed, checking production fallback...');
   try {
-    const prodUrl = 'https://damoder-backend.onrender.com/api/v1';
+    const prodUrl = 'https://damodar-v1-0.onrender.com/api/v1';
     await checkUrl(prodUrl);
     return prodUrl;
   } catch (prodError) {
