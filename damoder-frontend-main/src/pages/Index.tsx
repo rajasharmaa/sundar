@@ -301,6 +301,12 @@ const Index = () => {
 
         gsap.set(cards, { clearProps: "all" });
 
+        if (window.innerWidth < 1024) {
+          // On mobile/tablet, reset opacity and position to default CSS flow
+          gsap.set(cards, { opacity: 1, position: 'relative' });
+          return;
+        }
+
         gsap.set(cards, {
           opacity: (i) => i === 0 ? 1 : 0,
           scale: 1,
@@ -651,7 +657,7 @@ const Index = () => {
               </div>
 
               {/* Right Side: 3D Card Stack Swap */}
-              <div className="lg:w-1/2 relative h-[550px] w-full flex items-center justify-center">
+              <div className="lg:w-1/2 relative min-h-[550px] w-full flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-0 mt-12 lg:mt-0">
                 {isLoading ? (
                   <div className="w-full max-w-[420px] bg-white/5 p-10 rounded-[3rem] border border-white/10 animate-pulse">
                     <div className="w-full h-64 bg-white/10 rounded-[3.5rem] mb-8" />
@@ -672,11 +678,11 @@ const Index = () => {
                     <div
                       key={category._id || category.id || category.name || i}
                       ref={(el) => (categoryCardsRef.current[i] = el)}
-                      className="absolute w-full max-w-[420px] will-change-transform"
+                      className="lg:absolute relative w-full max-w-[420px] will-change-transform"
                     >
                       <Link to={`/products?category=${category._id || category.id || category.slug || category.name?.toLowerCase().replace(/\s+/g, '-')}`} className="block">
-                        <div className="bg-white rounded-[3rem] overflow-hidden shadow-2xl group border border-white/50">
-                          <div className="relative h-64 overflow-hidden">
+                        <div className="bg-white rounded-[2rem] sm:rounded-[3rem] overflow-hidden shadow-2xl group border border-white/50">
+                          <div className="relative h-56 sm:h-64 overflow-hidden">
                           <img
                             src={isSafeImage(category.image) ? category.image : '/placeholder.svg'}
                             alt={category.name}
