@@ -59,21 +59,20 @@ export function AuthLoadingOverlay({ show, message, progress }: AuthLoadingOverl
             <div className="relative mb-6 md:mb-8">
               {/* Circular Progress SVG */}
               <div className="relative w-24 h-24 md:w-32 md:h-32 mx-auto">
-                <svg className="w-full h-full transform -rotate-90">
+                <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
                   {/* Background Circle */}
                   <circle
-                    cx="50%"
-                    cy="50%"
+                    cx="50"
+                    cy="50"
                     r={radius}
                     fill="transparent"
                     stroke="rgba(255,255,255,0.05)"
                     strokeWidth="4"
-                    className="origin-center translate-x-[4px] translate-y-[4px] md:translate-x-[19px] md:translate-y-[19px] scale-[0.75] md:scale-100"
                   />
                   {/* Animated Progress Circle */}
                   <motion.circle
-                    cx="50%"
-                    cy="50%"
+                    cx="50"
+                    cy="50"
                     r={radius}
                     fill="transparent"
                     stroke="url(#gradient)"
@@ -82,7 +81,6 @@ export function AuthLoadingOverlay({ show, message, progress }: AuthLoadingOverl
                     animate={{ strokeDashoffset }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
                     strokeLinecap="round"
-                    className="origin-center translate-x-[4px] translate-y-[4px] md:translate-x-[19px] md:translate-y-[19px] scale-[0.75] md:scale-100"
                   />
                   <defs>
                     <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
