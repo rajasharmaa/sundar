@@ -35,21 +35,27 @@ const checkUrl = async (url: string): Promise<string> => {
 
 // 🔥 AUTO-DETECT BACKEND AVAILABILITY
 const detectBackendAvailability = async (): Promise<string> => {
-  try {
-    // Try local development backend first
-    const localUrl = 'http://localhost:3000/api/v1';
-    await checkUrl(localUrl);
-    return localUrl;
-  } catch (error) {
-    logger.debug('Local backend check failed, checking production fallback...');
+  // Try common local development ports
+  const localPorts = [5000, 3000, 8000, 4000, 8080];
+  
+  for (const port of localPorts) {
     try {
-      const prodUrl = 'https://damoder-backend.onrender.com/api/v1';
-      await checkUrl(prodUrl);
-      return prodUrl;
-    } catch (prodError) {
-      logger.warn('⚠️ No backend detected, using default configuration');
-      return DEV_API_URL;
+      const localUrl = `http://localhost:${port}/api/v1`;
+      await checkUrl(localUrl);
+      return localUrl;
+    } catch (error) {
+      // Continue to next port
     }
+  }
+
+  logger.debug('Local backend checks failed, checking production fallback...');
+  try {
+    const prodUrl = 'https://damoder-backend.onrender.com/api/v1';
+    await checkUrl(prodUrl);
+    return prodUrl;
+  } catch (prodError) {
+    logger.warn('⚠️ No backend detected, using default configuration');
+    return DEV_API_URL;
   }
 };
 
