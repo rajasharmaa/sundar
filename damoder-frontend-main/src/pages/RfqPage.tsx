@@ -301,7 +301,7 @@ export default function RfqPage() {
                             <button
                               type="button"
                               onClick={() => handleQtyChange(productId, item.quantity - 1, item.selectedSize)}
-                              className="w-7 h-7 flex items-center justify-center bg-slate-50 hover:bg-slate-100 border rounded font-black text-slate-700 text-sm transition-colors active:scale-95"
+                              className="w-10 h-10 sm:w-8 sm:h-8 flex items-center justify-center bg-slate-50 hover:bg-slate-100 border rounded font-black text-slate-700 text-base sm:text-sm transition-colors active:scale-95"
                             >
                               -
                             </button>
@@ -311,7 +311,7 @@ export default function RfqPage() {
                             <button
                               type="button"
                               onClick={() => handleQtyChange(productId, item.quantity + 1, item.selectedSize)}
-                              className="w-7 h-7 flex items-center justify-center bg-slate-50 hover:bg-slate-100 border rounded font-black text-slate-700 text-sm transition-colors active:scale-95"
+                              className="w-10 h-10 sm:w-8 sm:h-8 flex items-center justify-center bg-slate-50 hover:bg-slate-100 border rounded font-black text-slate-700 text-base sm:text-sm transition-colors active:scale-95"
                             >
                               +
                             </button>
@@ -329,7 +329,7 @@ export default function RfqPage() {
                           <button
                             type="button"
                             onClick={() => removeFromRfq(productId, item.selectedSize)}
-                            className="p-2 text-slate-400 hover:text-red-600 rounded-lg hover:bg-slate-50 transition-colors shrink-0"
+                            className="min-w-[44px] min-h-[44px] flex items-center justify-center text-slate-400 hover:text-red-600 rounded-lg hover:bg-slate-50 transition-colors shrink-0"
                             title="Remove item"
                           >
                             <Trash2 className="w-4 h-4" />
@@ -376,7 +376,7 @@ export default function RfqPage() {
                         onChange={handleInputChange}
                         required
                         placeholder="John Doe"
-                        className="w-full pl-9 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full pl-9 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
                     </div>
                   </div>
@@ -394,7 +394,7 @@ export default function RfqPage() {
                         onChange={handleInputChange}
                         required
                         placeholder="john@company.com"
-                        className="w-full pl-9 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full pl-9 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
                     </div>
                   </div>
@@ -412,7 +412,7 @@ export default function RfqPage() {
                         onChange={handleInputChange}
                         required
                         placeholder="98765 43210"
-                        className="w-full pl-9 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full pl-9 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
                     </div>
                   </div>
@@ -429,7 +429,7 @@ export default function RfqPage() {
                         value={formData.companyName}
                         onChange={handleInputChange}
                         placeholder="Damodar Traders Ltd"
-                        className="w-full pl-9 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full pl-9 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
                     </div>
                   </div>
@@ -443,7 +443,7 @@ export default function RfqPage() {
                         name="businessType"
                         value={formData.businessType}
                         onChange={handleInputChange}
-                        className="w-full px-3 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2.5 bg-white border border-slate-200 rounded-xl text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                       >
                         <option value="wholesale">Wholesaler</option>
                         <option value="contractor">Contractor</option>
@@ -465,7 +465,7 @@ export default function RfqPage() {
                           onChange={handleInputChange}
                           maxLength={15}
                           placeholder="27AAAAA1111A1Z1"
-                          className={`w-full px-3 py-2.5 bg-white border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono uppercase ${gstValidated === true
+                          className={`w-full px-3 py-2.5 bg-white border rounded-xl text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono uppercase ${gstValidated === true
                             ? 'border-green-300 bg-green-50/20'
                             : gstValidated === false
                               ? 'border-red-300 bg-red-50/20'
@@ -494,7 +494,7 @@ export default function RfqPage() {
                         value={formData.location}
                         onChange={handleInputChange}
                         placeholder="Mumbai, Maharashtra"
-                        className="w-full pl-9 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full pl-9 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
                     </div>
                   </div>
@@ -511,7 +511,7 @@ export default function RfqPage() {
                         onChange={handleInputChange}
                         rows={3}
                         placeholder="State any specific requests, customized sizes or delivery schedules here..."
-                        className="w-full pl-9 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                        className="w-full pl-9 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
                       />
                     </div>
                   </div>

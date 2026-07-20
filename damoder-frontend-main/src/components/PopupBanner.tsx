@@ -61,10 +61,9 @@ export default function PopupBanner() {
             {/* Elegant Glow Effect Behind Modal */}
             <div className="absolute -inset-[100%] bg-gradient-to-r from-blue-600/30 via-purple-600/30 to-blue-600/30 blur-3xl opacity-50 pointer-events-none" />
 
-            {/* Close Button */}
             <button
               onClick={handleClose}
-              className="absolute top-5 right-5 z-20 w-10 h-10 bg-black/20 hover:bg-black/40 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-xl border border-white/10 hover:scale-110 shadow-xl"
+              className="absolute top-4 right-4 z-20 min-w-[44px] min-h-[44px] bg-black/20 hover:bg-black/40 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-xl border border-white/10 hover:scale-110 shadow-xl"
             >
               <X className="w-5 h-5 text-white/80 hover:text-white" />
             </button>
@@ -144,10 +143,10 @@ export default function PopupBanner() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8 }}
                 onClick={handleClose}
-                className="mt-6 text-[10px] font-bold text-slate-500 hover:text-white transition-colors uppercase tracking-widest text-center md:text-left relative inline-flex w-fit mx-auto md:mx-0 group"
+                className="mt-6 py-2 px-4 min-h-[44px] items-center justify-center text-[10px] font-bold text-slate-500 hover:text-white transition-colors uppercase tracking-widest text-center md:text-left relative inline-flex w-fit mx-auto md:mx-0 group"
               >
                 No Thanks, Continue Exploring
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-slate-500 group-hover:w-full transition-all duration-300" />
+                <span className="absolute bottom-2 left-4 right-4 h-px bg-slate-500 group-hover:bg-white transition-all duration-300" />
               </motion.button>
             </div>
           </motion.div>

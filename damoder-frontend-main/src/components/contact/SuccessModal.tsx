@@ -24,7 +24,7 @@ export function SuccessModal({ show, ticketNumber, onClose, onWhatsAppRedirect }
             initial={{ opacity: 0, scale: 0.9, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 30 }}
-            className="relative bg-white rounded-2xl p-8 md:p-10 max-w-lg w-full text-center shadow-2xl border border-slate-100"
+            className="relative bg-white rounded-2xl p-6 md:p-10 max-w-lg w-full max-h-[90vh] overflow-y-auto custom-scrollbar text-center shadow-2xl border border-slate-100"
           >
             <div className="w-20 h-20 bg-green-50 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner animate-bounce">
               <CheckCircle2 size={40} />

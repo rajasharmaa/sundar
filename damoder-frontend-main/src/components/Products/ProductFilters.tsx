@@ -107,7 +107,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
               placeholder="Search products..."
               value={searchQuery}
               onChange={handleSearchChange}
-              className="w-full pl-9 xs:pl-10 pr-9 xs:pr-10 py-2.5 xs:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-sm xs:text-base min-h-[44px] touch-target"
+              className="w-full pl-9 xs:pl-10 pr-9 xs:pr-10 py-2.5 xs:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-base sm:text-sm min-h-[44px] touch-target"
               disabled={isLoading}
             />
             {searchQuery && (
@@ -159,7 +159,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
                 placeholder="Filter by brand..."
                 value={selectedBrand}
                 onChange={(e) => onBrandChange?.(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base sm:text-sm min-h-[44px]"
                 disabled={isLoading}
               />
             </div>
@@ -174,7 +174,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
                 placeholder="Filter by size (e.g., 1/2 inch)..."
                 value={selectedSize}
                 onChange={(e) => onSizeChange?.(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base sm:text-sm min-h-[44px]"
                 disabled={isLoading}
               />
             </div>
@@ -195,7 +195,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
                     setFilters(newFilters);
                     onFilterChange(newFilters);
                   }}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base sm:text-sm min-h-[44px]"
                 />
                 <span className="text-gray-500">-</span>
                 <input
@@ -208,7 +208,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
                     setFilters(newFilters);
                     onFilterChange(newFilters);
                   }}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base sm:text-sm min-h-[44px]"
                 />
               </div>
             </div>

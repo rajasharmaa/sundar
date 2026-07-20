@@ -261,7 +261,7 @@ export const ProductCardEnhanced = ({ product }: ProductCardProps) => {
             {/* Compare Button */}
             <button
               onClick={handleCompareToggle}
-              className={`p-1.5 sm:p-2 xs:p-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-200 hover:scale-110 touch-target pointer-events-auto ${inCompare
+              className={`min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full shadow-md hover:shadow-lg transition-all duration-200 hover:scale-110 touch-target pointer-events-auto ${inCompare
                 ? 'bg-blue-50 text-blue-600 border border-blue-200'
                 : 'bg-white text-gray-400 hover:text-blue-600'
                 }`}
@@ -278,7 +278,7 @@ export const ProductCardEnhanced = ({ product }: ProductCardProps) => {
             {/* Wishlist Heart */}
             <button
               onClick={handleWishlistToggle}
-              className="p-1.5 sm:p-2 xs:p-2.5 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 hover:scale-110 touch-target pointer-events-auto"
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 hover:scale-110 touch-target pointer-events-auto"
               aria-label={inWishlist ? "Remove from wishlist" : "Add to wishlist"}
               type="button"
             >

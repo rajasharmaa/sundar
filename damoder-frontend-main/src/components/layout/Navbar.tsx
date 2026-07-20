@@ -470,7 +470,7 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
             <div className="relative" ref={mobileAccessibilityRef}>
               <button
                 onClick={() => setShowMobileAccessibility(!showMobileAccessibility)}
-                className={`p-2.5 rounded-xl transition-all duration-300 flex items-center justify-center ${isCurrentlyTransparent
+                className={`p-2.5 min-h-[44px] min-w-[44px] rounded-xl transition-all duration-300 flex items-center justify-center ${isCurrentlyTransparent
                   ? 'text-white hover:bg-white/10'
                   : 'text-gray-600 hover:bg-gray-100'
                   } ${showMobileAccessibility ? 'bg-blue-50/50 text-blue-600' : ''}`}
@@ -489,7 +489,7 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
             </div>
             <Link
               to="/account"
-              className={`p-2.5 rounded-xl transition-all duration-300 flex items-center justify-center relative ${isCurrentlyTransparent
+              className={`p-2.5 min-h-[44px] min-w-[44px] rounded-xl transition-all duration-300 flex items-center justify-center relative ${isCurrentlyTransparent
                 ? 'text-white hover:bg-white/10'
                 : 'text-gray-600 hover:bg-gray-100'
                 }`}

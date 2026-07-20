@@ -201,7 +201,7 @@ const QuickInquiryModal = ({ isOpen, onClose, productId, productName }: QuickInq
                   </div>
                   <button
                     onClick={onClose}
-                    className="p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors text-white backdrop-blur-sm"
+                    className="min-w-[44px] min-h-[44px] flex items-center justify-center bg-white/10 hover:bg-white/20 rounded-full transition-colors text-white backdrop-blur-sm"
                     aria-label="Close modal"
                   >
                     <X className="w-5 h-5" />
@@ -254,7 +254,7 @@ const QuickInquiryModal = ({ isOpen, onClose, productId, productName }: QuickInq
                           value={formData.name}
                           onChange={handleInputChange}
                           required
-                          className="w-full pl-11 pr-4 py-3 bg-slate-50 hover:bg-slate-100/50 border border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl outline-none transition-all duration-200 font-medium text-slate-900 placeholder:text-slate-400"
+                          className="w-full pl-11 pr-4 py-3 bg-slate-50 hover:bg-slate-100/50 border border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl outline-none transition-all duration-200 font-medium text-slate-900 text-base sm:text-sm placeholder:text-slate-400"
                           placeholder="John Doe"
                           autoComplete="name"
                         />
@@ -275,7 +275,7 @@ const QuickInquiryModal = ({ isOpen, onClose, productId, productName }: QuickInq
                             value={formData.email}
                             onChange={handleInputChange}
                             required
-                            className="w-full px-4 py-3 bg-slate-50 hover:bg-slate-100/50 border border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl outline-none transition-all duration-200 font-medium text-slate-900 placeholder:text-slate-400"
+                            className="w-full px-4 py-3 bg-slate-50 hover:bg-slate-100/50 border border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl outline-none transition-all duration-200 font-medium text-slate-900 text-base sm:text-sm placeholder:text-slate-400"
                             placeholder="john@company.com"
                             autoComplete="email"
                           />
@@ -299,7 +299,7 @@ const QuickInquiryModal = ({ isOpen, onClose, productId, productName }: QuickInq
                             onChange={handleInputChange}
                             required
                             inputMode="tel"
-                            className="w-full pl-11 pr-4 py-3 bg-slate-50 hover:bg-slate-100/50 border border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl outline-none transition-all duration-200 font-medium text-slate-900 placeholder:text-slate-400"
+                            className="w-full pl-11 pr-4 py-3 bg-slate-50 hover:bg-slate-100/50 border border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl outline-none transition-all duration-200 font-medium text-slate-900 text-base sm:text-sm placeholder:text-slate-400"
                             placeholder="+91 9876543210"
                             autoComplete="tel"
                           />
@@ -322,7 +322,7 @@ const QuickInquiryModal = ({ isOpen, onClose, productId, productName }: QuickInq
                           name="companyName"
                           value={formData.companyName}
                           onChange={handleInputChange}
-                          className="w-full pl-11 pr-4 py-3 bg-slate-50 hover:bg-slate-100/50 border border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl outline-none transition-all duration-200 font-medium text-slate-900 placeholder:text-slate-400"
+                          className="w-full pl-11 pr-4 py-3 bg-slate-50 hover:bg-slate-100/50 border border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl outline-none transition-all duration-200 font-medium text-slate-900 text-base sm:text-sm placeholder:text-slate-400"
                           placeholder="Your Business Pvt. Ltd."
                           autoComplete="organization"
                         />
@@ -341,7 +341,7 @@ const QuickInquiryModal = ({ isOpen, onClose, productId, productName }: QuickInq
                           value={formData.message}
                           onChange={handleInputChange}
                           rows={3}
-                          className="w-full px-4 py-3 bg-slate-50 hover:bg-slate-100/50 border border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl outline-none transition-all duration-200 resize-none font-medium text-slate-900 placeholder:text-slate-400"
+                          className="w-full px-4 py-3 bg-slate-50 hover:bg-slate-100/50 border border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl outline-none transition-all duration-200 resize-none font-medium text-slate-900 text-base sm:text-sm placeholder:text-slate-400"
                           placeholder="Tell us about your specific requirements, bulk quantity needs, or request a quote..."
                         />
                       </div>

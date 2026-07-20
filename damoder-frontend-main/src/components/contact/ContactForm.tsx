@@ -343,7 +343,7 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="e.g. John Doe"
-                  className={`w-full px-4 py-3 bg-slate-50 border rounded-xl focus:border-blue-600 focus:bg-white outline-none transition-all font-semibold text-slate-800 text-sm shadow-inner ${
+                  className={`w-full px-4 py-3 bg-slate-50 border rounded-xl focus:border-blue-600 focus:bg-white outline-none transition-all font-semibold text-slate-800 text-base sm:text-sm shadow-inner ${
                     formErrors.name ? 'border-rose-500' : 'border-slate-100'
                   }`}
                 />
@@ -362,7 +362,7 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="john@company.com"
-                  className={`w-full px-4 py-3 bg-slate-50 border rounded-xl focus:border-blue-600 focus:bg-white outline-none transition-all font-semibold text-slate-800 text-sm shadow-inner ${
+                  className={`w-full px-4 py-3 bg-slate-50 border rounded-xl focus:border-blue-600 focus:bg-white outline-none transition-all font-semibold text-slate-800 text-base sm:text-sm shadow-inner ${
                     formErrors.email ? 'border-rose-500' : 'border-slate-100'
                   }`}
                 />
@@ -381,7 +381,7 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="+91 99933 04543"
-                  className={`w-full px-4 py-3 bg-slate-50 border rounded-xl focus:border-blue-600 focus:bg-white outline-none transition-all font-semibold text-slate-800 text-sm shadow-inner ${
+                  className={`w-full px-4 py-3 bg-slate-50 border rounded-xl focus:border-blue-600 focus:bg-white outline-none transition-all font-semibold text-slate-800 text-base sm:text-sm shadow-inner ${
                     formErrors.phone ? 'border-rose-500' : 'border-slate-100'
                   }`}
                 />
@@ -398,7 +398,7 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl focus:border-blue-600 focus:bg-white outline-none transition-all font-semibold text-slate-850 text-sm shadow-inner"
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl focus:border-blue-600 focus:bg-white outline-none transition-all font-semibold text-slate-850 text-base sm:text-sm shadow-inner"
                 >
                   <option value="Bulk Order">Bulk Order</option>
                   <option value="Product Quotation">Product Quotation</option>
@@ -432,7 +432,7 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
                   value={formData.companyName}
                   onChange={handleChange}
                   placeholder="e.g. Acme Industrial Ltd"
-                  className={`w-full px-4 py-3 bg-slate-50 border rounded-xl focus:border-blue-600 focus:bg-white outline-none transition-all font-semibold text-slate-800 text-sm shadow-inner ${
+                  className={`w-full px-4 py-3 bg-slate-50 border rounded-xl focus:border-blue-600 focus:bg-white outline-none transition-all font-semibold text-slate-800 text-base sm:text-sm shadow-inner ${
                     formErrors.companyName ? 'border-rose-500' : 'border-slate-100'
                   }`}
                 />
@@ -449,7 +449,7 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
                   name="businessType"
                   value={formData.businessType}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl focus:border-blue-600 focus:bg-white outline-none transition-all font-semibold text-slate-850 text-sm shadow-inner"
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl focus:border-blue-600 focus:bg-white outline-none transition-all font-semibold text-slate-850 text-base sm:text-sm shadow-inner"
                 >
                   <option value="retail">Retail</option>
                   <option value="wholesaler">Wholesale Distributor</option>
@@ -575,7 +575,7 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
                 onChange={handleChange}
                 maxLength={1000}
                 placeholder="Provide product codes, custom sizing bounds, materials (GI/CI), and estimated volume..."
-                className={`w-full px-4 py-3 bg-slate-50 border rounded-xl focus:border-blue-600 focus:bg-white outline-none transition-all font-semibold text-slate-800 text-sm resize-none shadow-inner h-36 ${
+                className={`w-full px-4 py-3 bg-slate-50 border rounded-xl focus:border-blue-600 focus:bg-white outline-none transition-all font-semibold text-slate-800 text-base sm:text-sm resize-none shadow-inner h-36 ${
                   formErrors.message ? 'border-rose-500' : 'border-slate-100'
                 }`}
               ></textarea>

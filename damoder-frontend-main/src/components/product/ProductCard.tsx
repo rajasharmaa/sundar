@@ -115,14 +115,14 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         <div className="flex flex-col gap-2">
           <button
             onClick={handleWishlistToggle}
-            className={`p-2 rounded-full shadow-sm transition-all duration-200 ${inWishlist ? 'bg-pink-50 text-pink-500' : 'bg-white/90 text-gray-400 hover:text-pink-500 hover:bg-white'
+            className={`p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full shadow-sm transition-all duration-200 ${inWishlist ? 'bg-pink-50 text-pink-500' : 'bg-white/90 text-gray-400 hover:text-pink-500 hover:bg-white'
               }`}
           >
             <Heart size={18} fill={inWishlist ? "currentColor" : "none"} />
           </button>
           <button
             onClick={handleCompareToggle}
-            className={`p-2 rounded-full shadow-sm transition-all duration-200 ${inCompare ? 'bg-blue-50 text-blue-600' : 'bg-white/90 text-gray-400 hover:text-blue-600 hover:bg-white'
+            className={`p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full shadow-sm transition-all duration-200 ${inCompare ? 'bg-blue-50 text-blue-600' : 'bg-white/90 text-gray-400 hover:text-blue-600 hover:bg-white'
               }`}
           >
             <GitCompare size={18} />
