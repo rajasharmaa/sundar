@@ -1,3 +1,5 @@
+import { ENV_CONFIG } from '../config/environment';
+
 /**
  * Helper to download the currently active industrial catalog.
  * Supports dynamically uploaded PDFs and external document URLs from the database.
@@ -57,7 +59,7 @@ export const downloadCatalog = async () => {
   }
 
   // 2. Fetch the active catalog URL from the backend, then download
-  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000/api/v1';
+  const apiUrl = ENV_CONFIG.API_URL;
   try {
     const res = await fetch(`${apiUrl}/catalog`);
     if (!res.ok) throw new Error('Response status error');
