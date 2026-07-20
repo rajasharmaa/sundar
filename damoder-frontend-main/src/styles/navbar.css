@@ -43,8 +43,8 @@ main {
   padding-top: calc(var(--navbar-height) + 20px);
 }
 
-/* Mobile responsive adjustments - smaller navbar on mobile */
-@media (max-width: 768px) {
+/* Mobile responsive adjustments - smaller navbar on mobile (< md) */
+@media (max-width: 767px) {
   :root {
     --navbar-height: 64px; /* h-16 on mobile */
     --navbar-offset: 80px; /* Reduced offset for mobile */
@@ -55,8 +55,8 @@ main {
   }
 }
 
-/* Extra small mobile */
-@media (max-width: 480px) {
+/* Extra small mobile (< sm) */
+@media (max-width: 639px) {
   :root {
     --navbar-height: 60px;
     --navbar-offset: 70px;

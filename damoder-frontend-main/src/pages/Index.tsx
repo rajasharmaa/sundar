@@ -600,8 +600,8 @@ const Index = () => {
         {/* Categories Section - 3D SWAP EFFECT */}
         <section ref={categoriesRef} className="py-32 bg-gray-900 relative overflow-hidden">
           {/* Background Accents */}
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[80px]" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[80px]" />
+          <div className="absolute top-0 right-0 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-blue-600/10 rounded-full blur-[80px]" />
+          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-cyan-600/10 rounded-full blur-[80px]" />
 
           <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="flex flex-col lg:flex-row gap-20 items-center">

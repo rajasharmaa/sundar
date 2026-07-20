@@ -1268,8 +1268,8 @@ const ProductDetails = () => {
         <section ref={heroSectionRef} className="relative bg-slate-950 text-white pt-20 pb-12 sm:pt-24 sm:pb-16 md:pt-28 md:pb-20 overflow-hidden w-full border-b border-slate-900">
           {/* High-End Industrial Gradient Mesh & Particle Background */}
           <div className="absolute inset-0 z-0">
-            <div className="absolute top-[-10%] left-[5%] w-[500px] h-[500px] bg-blue-500/10 rounded-full mix-blend-screen filter blur-[120px] animate-pulse"></div>
-            <div className="absolute bottom-[-10%] right-[5%] w-[600px] h-[600px] bg-cyan-500/10 rounded-full mix-blend-screen filter blur-[120px] animate-pulse"></div>
+            <div className="absolute top-[-10%] left-[5%] w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-blue-500/10 rounded-full mix-blend-screen filter blur-[120px] animate-pulse"></div>
+            <div className="absolute bottom-[-10%] right-[5%] w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] bg-cyan-500/10 rounded-full mix-blend-screen filter blur-[120px] animate-pulse"></div>
             {/* Fine Tech Grid overlay */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-30"></div>
           </div>
@@ -1505,6 +1505,8 @@ const ProductDetails = () => {
                             src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=120&h=120"
                             className="w-14 h-14 rounded-full object-cover border-2 border-white shadow-md shadow-slate-200/60"
                             alt="Technical Consultant Avatar"
+                            loading="lazy"
+                            decoding="async"
                           />
                           <span className="absolute bottom-0.5 right-0.5 w-3.5 h-3.5 bg-emerald-500 rounded-full border-2 border-white animate-pulse" />
                         </div>
@@ -2074,6 +2076,8 @@ const ProductDetails = () => {
                             src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=150&h=150"
                             className="w-16 h-16 rounded-full object-cover border-2 border-white shadow-md"
                             alt="Technical Consultant Avatar"
+                            loading="lazy"
+                            decoding="async"
                           />
                           <span className="absolute bottom-0 right-0 w-4 h-4 bg-emerald-500 rounded-full border-2 border-white animate-pulse" />
                         </div>

@@ -77,8 +77,8 @@ export const ProductSpecs: React.FC<ProductSpecsProps> = ({ product, language })
 
       {/* Specs Table */}
       {product.specifications && Array.isArray(product.specifications) && product.specifications.length > 0 ? (
-        <div className="overflow-hidden rounded-2xl border border-slate-200 shadow-lg bg-white mb-6">
-          <table className="w-full divide-y divide-slate-200">
+        <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-lg bg-white mb-6 custom-scrollbar">
+          <table className="w-full min-w-[400px] divide-y divide-slate-200">
             <thead className="bg-slate-50">
               <tr>
                 <th className="px-6 py-4 text-left text-xs font-black text-slate-500 uppercase tracking-wider">

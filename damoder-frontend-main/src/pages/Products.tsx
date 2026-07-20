@@ -828,10 +828,10 @@ const Products = () => {
                         <div className="w-full">
                           <AutoSizer disableHeight>
                             {({ width }) => {
-                              const columnCount = width < 540 ? 2 : width < 1024 ? 3 : width < 1280 ? 4 : 4;
+                              const columnCount = width < 640 ? 1 : width < 1024 ? 2 : width < 1280 ? 3 : 4;
                               const rowCount = Math.ceil(paginatedProducts.length / columnCount);
                               const itemWidth = width / columnCount;
-                              const itemHeight = width < 540 ? 340 : width < 1024 ? 400 : 440; // Responsive heights
+                              const itemHeight = width < 640 ? 420 : width < 1024 ? 400 : 440; // Responsive heights
                               const totalGridHeight = rowCount * itemHeight;
 
                               return (

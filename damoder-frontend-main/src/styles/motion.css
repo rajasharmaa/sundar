@@ -274,6 +274,18 @@
     }
   }
 
+  /* ===== MOBILE PERFORMANCE OPTIMIZATION ===== */
+  /* Disable heavy animations on mobile devices to save battery and improve scrolling performance */
+  @media (max-width: 767px) {
+    .animate-pulse,
+    .gradient-animated,
+    .border-pulse,
+    .empty-state-float,
+    .empty-state-pulse {
+      animation: none !important;
+    }
+  }
+
   /* ===== FOCUS STATES ===== */
   .focus-ring {
     @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;

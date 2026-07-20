@@ -67,12 +67,12 @@ const WhatsAppOrderModal: React.FC<WhatsAppOrderModalProps> = ({
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className={`bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden relative border border-blue-50 animate-in zoom-in-95 duration-200 ${
+                className={`bg-white rounded-3xl shadow-2xl w-full max-w-md max-h-[90vh] flex flex-col relative border border-blue-50 animate-in zoom-in-95 duration-200 ${
                   highContrast ? 'border-4 border-black bg-white text-black' : ''
                 }`}
               >
                 {/* Header */}
-                <div className={`bg-gradient-to-r from-green-600 to-emerald-700 p-6 text-white flex justify-between items-center ${
+                <div className={`bg-gradient-to-r from-green-600 to-emerald-700 p-6 text-white flex justify-between items-center shrink-0 rounded-t-3xl ${
                   highContrast ? 'bg-black text-white border-b-2 border-black' : ''
                 }`}>
                   <div>
@@ -94,7 +94,7 @@ const WhatsAppOrderModal: React.FC<WhatsAppOrderModalProps> = ({
                 </div>
 
                 {/* Content */}
-                <div className="p-6 space-y-4">
+                <div className="p-6 space-y-4 overflow-y-auto custom-scrollbar">
                   <div className={`bg-gray-50 p-4 rounded-2xl border border-gray-100/50 ${
                     highContrast ? 'border-2 border-black bg-white text-black' : ''
                   }`}>

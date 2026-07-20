@@ -506,6 +506,11 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
                 </span>
               )}
             </Link>
+            <MobileMenuButton 
+              isMobileMenuOpen={isMobileMenuOpen} 
+              toggleMobileMenu={toggleMobileMenu} 
+              isTransparent={isCurrentlyTransparent} 
+            />
             {/* Removed redundant RFQ button - now in MobileBottomNavbar */}
           </div>
         </div>

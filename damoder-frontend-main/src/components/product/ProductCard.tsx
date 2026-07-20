@@ -138,6 +138,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         <img
           src={getOptimizedUrl(images[0] || '/placeholder.svg')}
           alt={product.name}
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-contain p-6 transform group-hover:scale-110 transition-transform duration-500"
         />
 

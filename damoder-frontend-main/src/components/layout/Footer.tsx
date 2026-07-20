@@ -38,11 +38,11 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#0F172A] text-slate-300 pt-20 pb-12 border-t border-slate-800 relative z-20 overflow-hidden">
+    <footer className="bg-[#0F172A] text-slate-300 pt-20 pb-28 lg:pb-12 border-t border-slate-800 relative z-20 overflow-hidden">
 
       {/* Decorative radial glows for premium vibe */}
-      <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-blue-600/5 rounded-full blur-[100px] -translate-y-1/2 pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[100px] translate-y-1/2 pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] bg-blue-600/5 rounded-full blur-[100px] -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] bg-blue-500/5 rounded-full blur-[100px] translate-y-1/2 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
 

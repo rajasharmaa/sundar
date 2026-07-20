@@ -13,8 +13,8 @@
 @layer utilities {
   /* Mobile First Approach - Smallest Screens */
 
-  /* Small Mobile Devices (320px - 480px) */
-  @media (max-width: 480px) {
+  /* Small Mobile Devices (0px - 639px) - Tailwind < sm */
+  @media (max-width: 639px) {
     .nav-container {
       @apply h-[60px] px-2.5;
     }
@@ -33,8 +33,29 @@
       padding: 0.75rem;
     }
 
+    .shop-slider-container,
     .shop-slider {
-      height: 200px;
+      height: 250px;
+    }
+    
+    .shop-slider-section {
+      @apply px-3;
+    }
+    
+    .slide-content {
+      @apply p-4;
+    }
+    
+    .slider-dot {
+      @apply w-2 h-2;
+    }
+    
+    .slider-dot.active {
+      @apply w-6;
+    }
+    
+    .autoplay-control {
+      @apply px-3 py-1.5 text-sm;
     }
 
     .footer-grid {
@@ -58,40 +79,8 @@
     }
   }
 
-  /* Medium Mobile Devices (481px - 640px) */
-  @media (min-width: 481px) and (max-width: 640px) {
-    .shop-slider-container {
-      height: 300px;
-    }
-
-    .shop-slider-section {
-      @apply px-3;
-    }
-
-    .slide-content {
-      @apply p-4;
-    }
-
-    .slider-dot {
-      @apply w-2 h-2;
-    }
-
-    .slider-dot.active {
-      @apply w-6;
-    }
-
-    .autoplay-control {
-      @apply px-3 py-1.5 text-sm;
-    }
-
-    .media-grid {
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      @apply gap-4;
-    }
-  }
-
-  /* Tablets (641px - 768px) */
-  @media (min-width: 641px) and (max-width: 768px) {
+  /* Tablets (640px - 767px) - Tailwind sm */
+  @media (min-width: 640px) and (max-width: 767px) {
     .hero-section {
       @apply py-10 px-6;
     }
@@ -148,8 +137,8 @@
     }
   }
 
-  /* Desktops (769px and above) */
-  @media (min-width: 769px) {
+  /* Desktops (768px and above) - Tailwind md */
+  @media (min-width: 768px) {
     .hero-section {
       @apply py-16 px-8;
     }
@@ -206,8 +195,8 @@
     }
   }
 
-  /* Large Desktops (1400px and above) */
-  @media (min-width: 1400px) {
+  /* Large Desktops (1280px and above) - Tailwind xl */
+  @media (min-width: 1280px) {
     .hero-section {
       @apply py-20 px-12;
     }
