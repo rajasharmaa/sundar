@@ -825,40 +825,12 @@ const Products = () => {
                       {/* Professional Product Grid - High-Resolution Focus */}
                       {/* Virtualized Product Grid */}
                       <ErrorBoundary>
-                        <div className="w-full">
-                          <AutoSizer disableHeight>
-                            {({ width }) => {
-                              const columnCount = width < 640 ? 1 : width < 1024 ? 2 : width < 1280 ? 3 : 4;
-                              const rowCount = Math.ceil(paginatedProducts.length / columnCount);
-                              const itemWidth = width / columnCount;
-                              const itemHeight = width < 640 ? 420 : width < 1024 ? 400 : 440; // Responsive heights
-                              const totalGridHeight = rowCount * itemHeight;
-
-                              return (
-                                <Grid
-                                  columnCount={columnCount}
-                                  columnWidth={itemWidth}
-                                  height={totalGridHeight}
-                                  rowCount={rowCount}
-                                  rowHeight={itemHeight}
-                                  width={width}
-                                  style={{ overflow: 'hidden' }}
-                                >
-                                  {({ columnIndex, rowIndex, style }) => {
-                                    const index = rowIndex * columnCount + columnIndex;
-                                    const product = paginatedProducts[index];
-                                    if (!product) return null;
-
-                                    return (
-                                      <div style={{ ...style, padding: '12px' }} key={product._id || product.id}>
-                                        <ProductCardEnhanced product={product} />
-                                      </div>
-                                    );
-                                  }}
-                                </Grid>
-                              );
-                            }}
-                          </AutoSizer>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
+                          {paginatedProducts.map((product) => (
+                            <div key={product._id || product.id} className="w-full">
+                              <ProductCardEnhanced product={product} />
+                            </div>
+                          ))}
                         </div>
                       </ErrorBoundary>
 
