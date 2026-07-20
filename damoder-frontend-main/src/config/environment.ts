@@ -17,8 +17,7 @@ const checkUrl = async (url: string): Promise<string> => {
   try {
     const response = await fetch(`${url.replace('/api/v1', '')}/health`, {
       method: 'GET',
-      signal: controller.signal,
-      credentials: 'include'
+      signal: controller.signal
     });
     clearTimeout(timeoutId);
     if (response.ok) {
@@ -88,17 +87,18 @@ const getApiUrl = async (): Promise<string> => {
     return import.meta.env.VITE_STAGING_API_URL || envUrl || DEV_API_URL;
   }
 
-  // Priority 2: Auto-detect backend availability
+  // Priority 2: Explicit development URL (If you set this in .env, we trust it unconditionally)
+  if (envUrl) {
+    logger.info(`✅ Using explicit VITE_API_URL from .env: ${envUrl}`);
+    return envUrl;
+  }
+
+  // Priority 3: Auto-detect backend availability
   try {
     const detectedUrl = await detectBackendAvailability();
     return detectedUrl;
   } catch (error) {
     console.warn('Backend detection failed:', error);
-  }
-
-  // Priority 3: Explicit development URL
-  if (envUrl && envUrl.includes('localhost')) {
-    return envUrl;
   }
 
   // Priority 4: Auto-detect based on hostname
