@@ -40,11 +40,57 @@ interface HomepageCategory {
   image?: string;
   productCount?: number;
   trending?: boolean;
+  productImages?: string[];
 }
 
 const isSafeImage = (url?: string): boolean => {
   if (!url) return false;
   return /^\//.test(url) || /^https?:\/\//.test(url);
+};
+
+const CategorySlideshow = ({ category, index }: { category: HomepageCategory, index: number }) => {
+  const images = category.productImages && category.productImages.length > 0 
+    ? category.productImages 
+    : (isSafeImage(category.image) ? [category.image] : ['/placeholder.svg']);
+    
+  const [currentIdx, setCurrentIdx] = useState(0);
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+    
+    const interval = setInterval(() => {
+      // Pick a random image instead of sequential
+      setCurrentIdx(prev => {
+        let nextIdx;
+        do {
+          nextIdx = Math.floor(Math.random() * images.length);
+        } while (nextIdx === prev && images.length > 1);
+        return nextIdx;
+      });
+    }, 3500 + (index * 700)); // Randomize stagger
+    
+    return () => clearInterval(interval);
+  }, [images.length, index]);
+
+  // For very large sets, only render a subset to prevent DOM bloat
+  const displayImages = images.slice(0, 10);
+
+  return (
+    <>
+      {displayImages.map((img, i) => (
+        <img
+          key={img + i}
+          src={img}
+          alt={category.name}
+          width={420}
+          height={256}
+          className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 ${i === currentIdx ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+          loading={index === 0 && i === 0 ? 'eager' : 'lazy'}
+          decoding="async"
+        />
+      ))}
+    </>
+  );
 };
 
 // Register GSAP plugins
@@ -98,9 +144,24 @@ const Index = () => {
           api.products.getAll()
         ]);
 
-        if (Array.isArray(cats)) setCategories(cats.slice(0, 4)); // Show top 4
-        // Filter for featured products that were explicitly ticked
         const prodList = Array.isArray(prods) ? prods : (prods as any)?.data || [];
+        
+        if (Array.isArray(cats)) {
+          const enrichedCats = cats.map(cat => {
+            const catProds = prodList.filter(p => {
+              if (typeof p.category === 'string') return p.category === cat._id || p.category === cat.name;
+              return p.category?._id === cat._id || p.category?.name === cat.name;
+            });
+            const allImages = catProds.flatMap(p => p.images || (p.image ? [p.image] : [])).filter(isSafeImage);
+            return {
+              ...cat,
+              productImages: allImages.length > 0 ? allImages : undefined
+            };
+          });
+          setCategories(enrichedCats);
+        }
+        
+        // Filter for featured products that were explicitly ticked
         const featuredProds = prodList.filter(p => p.featured === true);
         setFeaturedProducts(featuredProds.slice(0, 8)); // Show top 8
       } catch (err) {
@@ -683,15 +744,7 @@ const Index = () => {
                       <Link to={`/products?category=${category._id || category.id || category.slug || category.name?.toLowerCase().replace(/\s+/g, '-')}`} className="block">
                         <div className="bg-white rounded-[2rem] sm:rounded-[3rem] overflow-hidden shadow-2xl group border border-white/50">
                           <div className="relative h-56 sm:h-64 overflow-hidden">
-                          <img
-                            src={isSafeImage(category.image) ? category.image : '/placeholder.svg'}
-                            alt={category.name}
-                            width={420}
-                            height={256}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            loading={i === 0 ? 'eager' : 'lazy'}
-                            decoding="async"
-                          />
+                          <CategorySlideshow category={category} index={i} />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                             {category.trending && (
                               <div className="absolute top-6 left-6 bg-orange-500 text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg">
