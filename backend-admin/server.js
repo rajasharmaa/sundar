@@ -153,6 +153,20 @@ const csrfProtection = (req, res, next) => {
   if (!mutatingMethods.includes(req.method)) {
     return next();
   }
+  
+  // Skip CSRF check if using Bearer token authentication
+  // Bearer tokens are immune to CSRF attacks because they are not automatically attached by the browser
+  const authHeader = req.headers['authorization'];
+  if (authHeader && authHeader.startsWith('Bearer ')) {
+    return next();
+  }
+  
+  // Skip CSRF check for login and refresh token endpoints because they don't have Bearer tokens yet
+  // and they are inherently protected (login requires credentials, refresh requires valid refresh token in body)
+  if (req.path === '/admin/login' || req.path === '/admin/refresh-token' || req.path === '/api/admin/login' || req.path === '/api/admin/refresh-token') {
+    return next();
+  }
+
   const cookieToken = req.cookies?.['_csrf'];
   const headerToken = req.headers['x-csrf-token'];
 
