@@ -75,10 +75,11 @@ const corsOptions = {
     // Allow all localhost origins only in development mode and check against allowed origins
     const isProd = process.env.NODE_ENV && process.env.NODE_ENV.trim().toLowerCase() === 'production';
     const isLocalhost = !isProd && (origin.startsWith('http://localhost') || origin.startsWith('http://127.0.0.1'));
+    const isVercel = origin && origin.endsWith('.vercel.app');
     
     // ✅ M4-5 FIX: Removed verbose console.log CORS debug statements
     // (were logging allowedOrigins array on every request — a security/performance issue)
-    if (isLocalhost || allowedOrigins.indexOf(origin) !== -1) {
+    if (isLocalhost || isVercel || allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
