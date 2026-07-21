@@ -53,6 +53,7 @@ const publicRoutes = require('./routes/public');
 
 // Create express app
 const app = express();
+app.set('trust proxy', 1);
 const PORT = process.env.PORT || 3001;
 
 // Connect to database and Redis
