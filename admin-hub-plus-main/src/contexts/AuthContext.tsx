@@ -118,7 +118,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setState((prev) => ({ ...prev, isLoading: true }));
     
     try {
-      await authService.login(credentials);
+      const response = await authService.login(credentials);
+      if (response.token) {
+        localStorage.setItem('admin_token', response.token);
+      }
+      if (response.refreshToken) {
+        localStorage.setItem('admin_refresh_token', response.refreshToken);
+      }
       await checkAuth();
     } catch (error) {
       setState((prev) => ({ ...prev, isLoading: false }));
