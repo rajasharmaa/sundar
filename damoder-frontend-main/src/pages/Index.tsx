@@ -745,13 +745,13 @@ const Index = () => {
                         <div className="bg-white rounded-[2rem] sm:rounded-[3rem] overflow-hidden shadow-2xl group border border-white/50">
                           <div className="relative h-56 sm:h-64 overflow-hidden">
                           <CategorySlideshow category={category} index={i} />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 pointer-events-none" />
                             {category.trending && (
-                              <div className="absolute top-6 left-6 bg-orange-500 text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg">
+                              <div className="absolute top-6 left-6 bg-orange-500 text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg z-20">
                                 TRENDING
                               </div>
                             )}
-                            <div className="absolute bottom-6 left-6 text-white">
+                            <div className="absolute bottom-6 left-6 text-white z-20 pointer-events-none">
                               <span className="text-[10px] font-black uppercase tracking-widest opacity-70">{t('home.collection')}</span>
                               <h3 className="text-3xl font-black uppercase tracking-tighter leading-none">{category.name}</h3>
                             </div>
