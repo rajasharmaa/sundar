@@ -87,9 +87,13 @@ api.interceptors.response.use(
 
       try {
         const localRefreshToken = localStorage.getItem('admin_refresh_token');
+        const csrfTokenStr = await fetchCsrfToken();
         const response = await axios.post(`${API_BASE_URL}/admin/refresh-token`, {
           refreshToken: localRefreshToken || undefined
-        }, { withCredentials: true });
+        }, { 
+          withCredentials: true,
+          headers: csrfTokenStr ? { 'X-CSRF-Token': csrfTokenStr } : {}
+        });
         const newToken = response.data.token;
 
         if (response.data.success && newToken) {

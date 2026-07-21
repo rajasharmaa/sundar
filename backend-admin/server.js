@@ -137,7 +137,7 @@ app.get('/api/csrf-token', (req, res) => {
   let token = req.cookies?.['_csrf'];
   if (!token) {
     token = crypto.randomBytes(32).toString('hex');
-    const isProd = process.env.NODE_ENV === 'production';
+    const isProd = process.env.NODE_ENV !== 'development' && process.env.NODE_ENV !== 'test';
     res.cookie('_csrf', token, {
       httpOnly: true,
       secure: isProd,

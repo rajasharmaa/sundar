@@ -70,7 +70,7 @@ const login = async (req, res) => {
       console.error('Failed to store admin refresh token in MongoDB:', dbError.message);
     }
 
-    const isProd = process.env.NODE_ENV === 'production';
+    const isProd = process.env.NODE_ENV !== 'development' && process.env.NODE_ENV !== 'test';
     res.cookie('adminToken', token, {
       httpOnly: true,
       secure: isProd,
@@ -114,7 +114,7 @@ const logout = async (req, res) => {
       }
     }
 
-    const isProd = process.env.NODE_ENV === 'production';
+    const isProd = process.env.NODE_ENV !== 'development' && process.env.NODE_ENV !== 'test';
     res.clearCookie('adminToken', {
       httpOnly: true,
       secure: isProd,
@@ -193,7 +193,7 @@ const refreshToken = async (req, res) => {
         { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
       );
 
-      const isProd = process.env.NODE_ENV === 'production';
+      const isProd = process.env.NODE_ENV !== 'development' && process.env.NODE_ENV !== 'test';
       res.cookie('adminToken', newToken, {
         httpOnly: true,
         secure: isProd,
