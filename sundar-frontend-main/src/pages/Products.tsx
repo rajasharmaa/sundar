@@ -48,7 +48,7 @@ export default function Products() {
     totalProducts: '500+',
     customers: '1000+',
     categories: '12+',
-    experience: '25+'
+    experience: '8+'
   });
 
   const {

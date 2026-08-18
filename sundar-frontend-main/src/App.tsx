@@ -13,6 +13,7 @@ import { Toaster as Sonner } from "@/components/common/ui/sonner";
 import { TooltipProvider } from "@/components/common/ui/tooltip";
 import LoadingSpinner from "@/components/common/LoadingSpinner";
 import { ScrollOffsetProvider } from "@/components/ui/ScrollOffsetProvider";
+import { MotionConfig } from "framer-motion";
 
 // Context Providers
 import { AccessibilityProvider } from "@/context/AccessibilityContext";
@@ -140,35 +141,37 @@ const App = () => {
   return (
     <HelmetProvider>
       <AccessibilityProvider>
-        <QueryClientProvider client={queryClient}>
-          <TooltipProvider>
-            <Toaster />
-            <Sonner />
-            <BrowserRouter
-              future={{
-                v7_startTransition: true,
-                v7_relativeSplatPath: true
-              }}
-            >
-              <WhatsAppButton />
-              <MobileBottomNavbar />
-              <ErrorBoundary
-                showDetails={import.meta.env.DEV}
-                onError={(error, errorInfo) => {
-                  console.error('Global Error Boundary caught:', error, errorInfo);
+        <MotionConfig>
+          <QueryClientProvider client={queryClient}>
+            <TooltipProvider>
+              <Toaster />
+              <Sonner />
+              <BrowserRouter
+                future={{
+                  v7_startTransition: true,
+                  v7_relativeSplatPath: true
                 }}
               >
-                <ScrollOffsetProvider offset={100}>
-                  <Suspense fallback={<RouteLoader />}>
-                    <div className="pb-20 md:pb-0 min-h-screen flex flex-col w-full">
-                      <AppRoutes />
-                    </div>
-                  </Suspense>
-                </ScrollOffsetProvider>
-              </ErrorBoundary>
-            </BrowserRouter>
-          </TooltipProvider>
-        </QueryClientProvider>
+                <WhatsAppButton />
+                <MobileBottomNavbar />
+                <ErrorBoundary
+                  showDetails={import.meta.env.DEV}
+                  onError={(error, errorInfo) => {
+                    console.error('Global Error Boundary caught:', error, errorInfo);
+                  }}
+                >
+                  <ScrollOffsetProvider offset={100}>
+                    <Suspense fallback={<RouteLoader />}>
+                      <div className="pb-20 md:pb-0 min-h-screen flex flex-col w-full">
+                        <AppRoutes />
+                      </div>
+                    </Suspense>
+                  </ScrollOffsetProvider>
+                </ErrorBoundary>
+              </BrowserRouter>
+            </TooltipProvider>
+          </QueryClientProvider>
+        </MotionConfig>
       </AccessibilityProvider>
     </HelmetProvider>
   );

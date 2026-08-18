@@ -22,6 +22,7 @@ import CustomPackaging from '@/components/home/CustomPackaging';
 import CompanyTimeline from '@/components/home/CompanyTimeline';
 import FinalCTA from '@/components/home/FinalCTA';
 import Testimonials from '@/components/home/Testimonials';
+import ClientLogos from '@/components/home/ClientLogos';
 
 // Lazy load heavy existing components
 const FeaturedProductsSlider = lazy(() => import('@/components/FeaturedProductsSlider'));
@@ -166,6 +167,9 @@ const Index = () => {
 
         {/* Section 12 - Testimonials */}
         <Testimonials />
+
+        {/* Section 13 - Client Logos */}
+        <ClientLogos />
 
         {/* Section 14 */}
         <CompanyTimeline />

@@ -1,16 +1,5 @@
 // Application-wide type definitions
 
-export interface User {
-  id: string;
-  name: string;
-  email: string;
-  phone?: string;
-  role: 'user';
-  avatar?: string;
-  createdAt?: string;
-  updatedAt?: string;
-}
-
 export interface SizeOption {
   size: string;
   price_100_percent: number;  // Standard price (100%)
@@ -70,37 +59,6 @@ export interface Category {
   description?: string;
   image?: string;
   productCount?: number;
-}
-
-export interface CartItem {
-  id: string;
-  productId: string;
-  quantity: number;
-  selectedSize?: string;
-  price: number;
-}
-
-export interface Order {
-  id: string;
-  userId: string;
-  items: CartItem[];
-  totalAmount: number;
-  status: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
-  shippingAddress: ShippingAddress;
-  paymentMethod: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
-export interface ShippingAddress {
-  fullName: string;
-  phone: string;
-  addressLine1: string;
-  addressLine2?: string;
-  city: string;
-  state: string;
-  pincode: string;
-  country: string;
 }
 
 export interface ApiResponse<T> {

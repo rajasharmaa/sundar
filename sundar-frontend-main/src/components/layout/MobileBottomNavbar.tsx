@@ -28,9 +28,6 @@ const MobileBottomNavbar = () => {
 
   return (
     <>
-      {/* Spacer to prevent content from being hidden behind navbar */}
-      <div className="h-[84px] lg:hidden" />
-
       <motion.nav
         initial={{ y: 100 }}
         animate={{ y: 0 }}

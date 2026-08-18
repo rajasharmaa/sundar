@@ -112,7 +112,7 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Premium Industrial Hero Banner */}
-          <div 
+          <div
             className="relative bg-slate-900 text-white rounded-[3rem] px-6 sm:px-10 py-16 sm:py-24 overflow-hidden mb-16 shadow-2xl border border-slate-800 bg-cover bg-center"
             style={settings.aboutUsBanner ? { backgroundImage: `url(${settings.aboutUsBanner})` } : {}}
           >
@@ -220,7 +220,7 @@ const About = () => {
                   <div key={milestone.year} className="relative group">
                     {/* Circle Node */}
                     <div className="absolute -left-[35px] sm:-left-[51px] top-1 w-6 h-6 bg-white border-4 border-green-600 rounded-full group-hover:bg-green-600 transition-colors" />
-                    
+
                     <div className="p-6 bg-slate-50 rounded-3xl border border-slate-100 hover:bg-white hover:shadow-xl transition-all duration-300">
                       <span className="text-2xl font-black text-green-600 block mb-2">{milestone.year}</span>
                       <h3 className="text-sm font-black text-slate-800 uppercase tracking-wider mb-2">{milestone.title}</h3>

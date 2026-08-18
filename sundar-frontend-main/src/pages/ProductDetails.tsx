@@ -39,7 +39,7 @@ interface ProductWithSizes extends Product {
   price?: number;
 }
 
-const SALES_PHONE = import.meta.env.VITE_SALES_PHONE || '+91 98765 43210';
+const SALES_PHONE = import.meta.env.VITE_SALES_PHONE || '+91 98930 53053';
 
 export default function ProductDetails() {
   const { id } = useParams<{ id: string }>();
@@ -281,13 +281,17 @@ export default function ProductDetails() {
                     transition={{ duration: 0.5, type: 'spring', bounce: 0.3 }}
                     className="w-full h-full flex items-center justify-center"
                   >
-                    <motion.img 
+                    <motion.div
                       animate={{ y: [0, -15, 0] }}
                       transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                      src={validImages[activeImageIndex]} 
-                      alt={product.name} 
-                      className="w-full h-full object-contain filter drop-shadow-[0_30px_30px_rgba(0,0,0,0.4)]"
-                    />
+                      className="w-full h-full relative group cursor-zoom-in"
+                    >
+                      <img 
+                        src={validImages[activeImageIndex]} 
+                        alt={product.name} 
+                        className="w-full h-full object-contain filter drop-shadow-[0_30px_30px_rgba(0,0,0,0.4)] transition-transform duration-500 ease-out group-hover:scale-150 group-hover:drop-shadow-2xl"
+                      />
+                    </motion.div>
                   </motion.div>
                 )}
               </AnimatePresence>
