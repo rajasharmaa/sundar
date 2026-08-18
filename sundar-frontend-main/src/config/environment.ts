@@ -50,7 +50,7 @@ export const ENV_CONFIG = {
   API_URL: import.meta.env.VITE_API_URL || '', // Will be updated by initializeApiUrl
 
   // Frontend URL
-  FRONTEND_URL: import.meta.env.VITE_FRONTEND_URL || 
+  FRONTEND_URL: import.meta.env.VITE_FRONTEND_URL ||
     (typeof window !== 'undefined' && window.location.origin !== 'null' ? window.location.origin : 'http://localhost:5173'),
 
   // Cookie Settings
