@@ -26,7 +26,7 @@ export function AdminTabs({ activeTab, onTabChange }: AdminTabsProps) {
   return (
     <aside className="hidden md:flex flex-col w-72 h-screen bg-slate-950 border-r border-slate-800 shrink-0">
       <div className="p-6 flex items-center gap-3 border-b border-slate-800">
-        <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-900/50">
+        <div className="w-10 h-10 bg-gradient-to-br from-green-600 to-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-green-900/50">
           <Command className="w-6 h-6" />
         </div>
         <div>
@@ -49,14 +49,14 @@ export function AdminTabs({ activeTab, onTabChange }: AdminTabsProps) {
               className={cn(
                 'w-full flex items-center gap-3 px-3 py-3 rounded-xl transition-all duration-300 relative group',
                 isActive
-                  ? 'text-white bg-blue-600/10'
+                  ? 'text-white bg-green-600/10'
                   : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/50'
               )}
             >
               {isActive && (
                 <motion.div
                   layoutId="active-nav"
-                  className="absolute inset-0 bg-blue-600 rounded-xl"
+                  className="absolute inset-0 bg-green-600 rounded-xl"
                   initial={false}
                   transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                 />
@@ -65,7 +65,7 @@ export function AdminTabs({ activeTab, onTabChange }: AdminTabsProps) {
               <div className="relative z-10 flex items-center gap-3 w-full">
                 <div className={cn(
                   'transition-colors duration-300',
-                  isActive ? 'text-white' : 'text-slate-500 group-hover:text-blue-400'
+                  isActive ? 'text-white' : 'text-slate-500 group-hover:text-green-400'
                 )}>
                   {tab.icon}
                 </div>

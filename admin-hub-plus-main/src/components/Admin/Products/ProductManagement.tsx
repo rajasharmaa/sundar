@@ -19,7 +19,7 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
 import { Plus, Upload, Edit2, ArrowUpRight } from 'lucide-react';
-import toast from 'react-hot-toast';
+import { toast } from 'sonner';
 
 type ViewState = 'grid' | 'detail' | 'create' | 'bulk-edit';
 
@@ -153,7 +153,10 @@ export function ProductManagement() {
 
   const confirmDelete = () => {
     if (productToDelete) {
-      deleteMutation.mutate(productToDelete._id);
+      const id = productToDelete._id || productToDelete.id;
+      if (id) {
+        deleteMutation.mutate(id);
+      }
     }
   };
 
@@ -175,9 +178,10 @@ export function ProductManagement() {
   const handleSaveProduct = async (data: ProductFormData & { images?: File[] }) => {
     console.log('🔴 Saving product:', data);
     if (selectedProduct) {
-      console.log('🔵 Updating existing product:', selectedProduct._id, 'with data:', data);
+      const productId = selectedProduct._id || (selectedProduct as any).id;
+      console.log('📝 Updating existing product:', productId, 'with data:', data);
       try {
-        const result = await updateMutation.mutateAsync({ id: selectedProduct._id, data });
+        const result = await updateMutation.mutateAsync({ id: productId, data });
         console.log('✅ Update successful:', result);
       } catch (error) {
         console.error('❌ Update failed:', error);
@@ -228,7 +232,7 @@ export function ProductManagement() {
             <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="p-2 bg-blue-50 text-blue-600 rounded-xl">
+                  <div className="p-2 bg-green-50 text-green-600 rounded-xl">
                     <Upload className="w-5 h-5" />
                   </div>
                   <div>
@@ -249,7 +253,7 @@ export function ProductManagement() {
                       href={catalog.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs text-blue-600 hover:text-blue-700 font-bold inline-flex items-center gap-1 mt-1 hover:underline"
+                      className="text-xs text-green-600 hover:text-green-700 font-bold inline-flex items-center gap-1 mt-1 hover:underline"
                     >
                       View PDF Catalog <ArrowUpRight className="w-3.5 h-3.5" />
                     </a>
@@ -272,10 +276,10 @@ export function ProductManagement() {
                 <p className="text-[10px] text-slate-500 font-medium mb-3">Replace catalog with a newly uploaded PDF document.</p>
               </div>
 
-              <label className="flex flex-col items-center justify-center border-2 border-dashed border-slate-200 hover:border-blue-500 rounded-xl p-3 cursor-pointer transition-colors group">
+              <label className="flex flex-col items-center justify-center border-2 border-dashed border-slate-200 hover:border-green-500 rounded-xl p-3 cursor-pointer transition-colors group">
                 <div className="flex flex-col items-center justify-center text-center">
-                  <Upload className="w-6 h-6 text-slate-400 group-hover:text-blue-500 mb-1 transition-colors" />
-                  <span className="text-[11px] font-bold text-slate-700 group-hover:text-blue-600 transition-colors">
+                  <Upload className="w-6 h-6 text-slate-400 group-hover:text-green-500 mb-1 transition-colors" />
+                  <span className="text-[11px] font-bold text-slate-700 group-hover:text-green-600 transition-colors">
                     {isUploadingCatalog ? 'Uploading...' : 'Select catalog PDF'}
                   </span>
                   <span className="text-[9px] text-slate-400 font-medium mt-0.5">PDF file format (Max 20MB)</span>

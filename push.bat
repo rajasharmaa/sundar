@@ -1,2 +1,0 @@
-git push -u origin main > push_log.txt 2>&1
-pause

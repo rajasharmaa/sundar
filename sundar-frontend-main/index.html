@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- Add x-ua-compatible for IE support -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+
+  <!-- Primary Meta Tags -->
+  <title>Sundar Corporation | Packaging Material Manufacturer & Supplier</title>
+  <meta name="description"
+    content="Sundar Corporation - Leading manufacturer and supplier of BOPP bags, PP woven sacks, and industrial packaging materials. High-quality packaging solutions with bulk discounts and reliable delivery." />
+  <meta name="author" content="Sundar Corporation" />
+  <meta name="keywords"
+    content="packaging materials, BOPP bags, PP woven bags, industrial packaging, jumbo bags, bulk bags, packaging manufacturer, woven sacks, FIBC bags" />
+
+  <!-- Favicon Suite -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <!-- Theme & Mobile Optimizations -->
+  <meta name="theme-color" content="#2563eb" />
+  <meta name="msapplication-TileColor" content="#2563eb" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="Sundar Corporation | Packaging Material Manufacturer" />
+  <meta property="og:description"
+    content="Trusted manufacturer and supplier of packaging materials, BOPP bags, and PP woven sacks. Bulk order discounts and pan-India delivery." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sundarcorporation.com" />
+  <meta property="og:image" content="https://sundarcorporation.com/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Sundar Corporation - Packaging Manufacturer" />
+  <meta property="og:locale" content="en_IN" />
+  <meta property="og:site_name" content="Sundar Corporation" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sundar Corporation | Packaging Manufacturer" />
+  <meta name="twitter:description"
+    content="Your trusted partner for industrial packaging materials and custom printing in Central India." />
+  <meta name="twitter:image" content="https://sundarcorporation.com/twitter-image.jpg" />
+  <meta name="twitter:site" content="@SundarCorp" />
+  <meta name="twitter:creator" content="@SundarCorp" />
+
+  <!-- PWA Support -->
+  <link rel="manifest" href="/manifest.json" crossorigin="use-credentials" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://sundarcorporation.com" />
+
+  <!-- Preload Critical Resources -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- DNS Prefetch for Performance -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+  <link rel="dns-prefetch" href="https://lh3.googleusercontent.com" />
+
+  <!-- Additional for India-specific SEO -->
+  <meta name="geo.region" content="IN-MP" />
+  <meta name="geo.placename" content="Indore, Madhya Pradesh" />
+  <meta name="geo.position" content="22.7196;75.8577" />
+  <meta name="ICBM" content="22.7196, 75.8577" />
+
+  <!-- Additional Trust Signals -->
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="language" content="English" />
+  <meta name="rating" content="General" />
+  <meta name="revisit-after" content="7 days" />
+</head>
+
+<body>
+  <!-- Critical: Fix scroll offset for fixed navbar -->
+  <script>
+    // Immediate scroll fix - runs before any React code
+    (function() {
+      // Set CSS variables for scroll offset
+      document.documentElement.style.setProperty('--navbar-offset', '100px');
+      
+      // Handle hash on page load
+      if (window.location.hash) {
+        window.addEventListener('load', function() {
+          const elementId = window.location.hash.substring(1);
+          const element = document.getElementById(elementId);
+          if (element) {
+            const offset = 100; // Navbar height + buffer
+            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+            window.scrollTo({
+              top: elementPosition - offset,
+              behavior: 'smooth'
+            });
+          }
+        });
+      }
+      
+      // Intercept all anchor clicks
+      document.addEventListener('click', function(e) {
+        const target = e.target.closest('a[href^="#"]');
+        if (target && target.getAttribute('href') !== '#') {
+          const elementId = target.getAttribute('href').substring(1);
+          const element = document.getElementById(elementId);
+          if (element) {
+            e.preventDefault();
+            const offset = 100;
+            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+            window.scrollTo({
+              top: elementPosition - offset,
+              behavior: 'smooth'
+            });
+            history.pushState(null, null, `#${elementId}`);
+          }
+        }
+      }, true);
+    })();
+  </script>
+
+  <!-- Accessibility: Skip to main content -->
+  <a href="#main-content" class="skip-to-main"
+    style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
+    Skip to main content
+  </a>
+
+  <div id="root"></div>
+
+  <!-- Add loading fallback for better UX -->
+  <noscript>
+    <div style="text-align:center;padding:50px;background:#f8f9fa;">
+      <h2>JavaScript is Required</h2>
+      <p>Please enable JavaScript to view this website properly.</p>
+    </div>
+  </noscript>
+
+  <script type="module" src="/src/main.tsx"></script>
+
+  <!-- Schema.org JSON-LD for Rich Snippets -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://sundarcorporation.com/#business",
+          "name": "Sundar Corporation",
+          "description": "Leading packaging material manufacturer in Indore specializing in BOPP & PP woven bags.",
+          "url": "https://sundarcorporation.com",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "1st floor, 37 Ellora plaza, 3, Maharani Rd",
+            "addressLocality": "Indore",
+            "addressRegion": "Madhya Pradesh",
+            "postalCode": "452007",
+            "addressCountry": "IN"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "22.7196",
+            "longitude": "75.8577"
+          },
+          "priceRange": "₹₹",
+          "openingHours": [
+            "Mo-Fr 09:00-18:00",
+            "Sa 09:00-16:00"
+          ],
+          "foundingDate": "2017",
+          "foundingLocation": "Indore, India",
+          "areaServed": ["India"],
+          "image": [
+            "https://sundarcorporation.com/logo.jpg",
+            "https://sundarcorporation.com/showroom.jpg"
+          ],
+          "makesOffer": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "BOPP Woven Bags",
+                "description": "High-quality BOPP bags for packaging"
+              },
+              "businessFunction": "http://purl.org/goodrelations/v1#Sell"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "PP Woven Sacks",
+                "description": "Durable PP woven bags for industrial use"
+              },
+              "businessFunction": "http://purl.org/goodrelations/v1#Sell"
+            }
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://sundarcorporation.com/#website",
+          "url": "https://sundarcorporation.com",
+          "name": "Sundar Corporation",
+          "description": "Packaging Material Manufacturer",
+          "publisher": {
+            "@id": "https://sundarcorporation.com/#business"
+          },
+          "inLanguage": "en-IN"
+        }
+      ]
+    }
+    </script>
+</body>
+
+</html>

@@ -34,7 +34,7 @@ export function UserCard({ user, onStatusChange, onRoleChange, onDelete }: UserC
   const getRoleBadgeColor = (role: string) => {
     switch (role?.toLowerCase()) {
       case 'admin': return 'bg-purple-100 text-purple-800 border-purple-200';
-      case 'user': return 'bg-blue-100 text-blue-800 border-blue-200';
+      case 'user': return 'bg-green-100 text-green-800 border-green-200';
       default: return 'bg-gray-100 text-gray-800 border-gray-200';
     }
   };
@@ -47,7 +47,7 @@ export function UserCard({ user, onStatusChange, onRoleChange, onDelete }: UserC
           <div className="flex items-center gap-3">
             <div className={cn(
               "w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg",
-              user.avatar ? '' : 'bg-gradient-to-br from-blue-500 to-purple-600'
+              user.avatar ? '' : 'bg-gradient-to-br from-green-500 to-purple-600'
             )}>
               {user.avatar ? (
                 <img src={user.avatar} alt={user.name} className="w-12 h-12 rounded-full object-cover" />
@@ -81,7 +81,7 @@ export function UserCard({ user, onStatusChange, onRoleChange, onDelete }: UserC
               <DropdownMenuSeparator />
               <DropdownMenuItem 
                 onClick={() => onRoleChange(user._id, user.role === 'admin' ? 'user' : 'admin')}
-                disabled={user.role === 'admin' && user.email === 'admin@damodartraders.com'}
+                disabled={user.role === 'admin' && user.email === 'admin@Sundar CorporationCorporation.com'}
               >
                 <Shield className="w-4 h-4 mr-2" />
                 {user.role === 'admin' ? 'Remove Admin' : 'Make Admin'}

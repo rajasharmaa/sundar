@@ -246,7 +246,7 @@ export function CategoryManagement() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+        <Loader2 className="w-8 h-8 animate-spin text-green-600" />
       </div>
     );
   }
@@ -255,13 +255,13 @@ export function CategoryManagement() {
     <div className="animate-fade-in">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl font-bold flex items-center gap-2">
-          <Layers className="w-7 h-7 text-blue-600" />
+          <Layers className="w-7 h-7 text-green-600" />
           Category Management
         </h2>
         
         <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>
           <DialogTrigger asChild>
-            <Button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700">
+            <Button className="bg-gradient-to-r from-green-600 to-cyan-600 hover:from-green-700 hover:to-cyan-700">
               <Plus className="w-4 h-4 mr-2" />
               Add Category
             </Button>
@@ -277,7 +277,7 @@ export function CategoryManagement() {
                   id="name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="e.g., PVC Pipes"
+                  placeholder="e.g., PVC Bags"
                 />
               </div>
               <div>
@@ -286,7 +286,7 @@ export function CategoryManagement() {
                   id="slug"
                   value={formData.slug}
                   onChange={(e) => setFormData({ ...formData, slug: e.target.value.toLowerCase().replace(/\s+/g, '-') })}
-                  placeholder="e.g., pvc-pipes"
+                  placeholder="e.g., pvc-bags"
                 />
               </div>
               <div>
@@ -321,7 +321,7 @@ export function CategoryManagement() {
                   ) : (
                     <div 
                       onClick={() => fileInputRef.current?.click()}
-                      className="w-32 h-32 rounded-lg border-2 border-dashed border-gray-300 flex flex-col items-center justify-center cursor-pointer hover:border-blue-500 hover:bg-blue-50 transition-colors"
+                      className="w-32 h-32 rounded-lg border-2 border-dashed border-gray-300 flex flex-col items-center justify-center cursor-pointer hover:border-green-500 hover:bg-green-50 transition-colors"
                     >
                       <ImageIcon className="w-10 h-10 text-gray-400 mb-2" />
                       <span className="text-xs text-gray-500 text-center px-2">Click to upload image</span>
@@ -516,7 +516,7 @@ export function CategoryManagement() {
                 ) : (
                   <div 
                     onClick={() => fileInputRef.current?.click()}
-                    className="w-32 h-32 rounded-lg border-2 border-dashed border-gray-300 flex flex-col items-center justify-center cursor-pointer hover:border-blue-500 hover:bg-blue-50 transition-colors"
+                    className="w-32 h-32 rounded-lg border-2 border-dashed border-gray-300 flex flex-col items-center justify-center cursor-pointer hover:border-green-500 hover:bg-green-50 transition-colors"
                   >
                     <ImageIcon className="w-10 h-10 text-gray-400 mb-2" />
                     <span className="text-xs text-gray-500 text-center px-2">Click to upload image</span>

@@ -38,6 +38,8 @@ export function SiteSettingsPanel() {
             next.founderImage = res.url;
           } else if (type === 'previewImage') {
             next.virtualTour.previewImage = res.url;
+          } else if (type === 'manufacturingImage' || type === 'aboutUsBanner' || type === 'contactUsBanner' || type === 'productsBanner') {
+            (next as any)[type] = res.url;
           } else if (typeof type === 'number') {
             next.shopPhotos = [...next.shopPhotos];
             next.shopPhotos[type] = {
@@ -107,7 +109,7 @@ export function SiteSettingsPanel() {
   if (isLoading || !settingsForm) {
     return (
       <div className="flex items-center justify-center h-64">
-        <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+        <Loader2 className="w-8 h-8 animate-spin text-green-600" />
       </div>
     );
   }
@@ -118,7 +120,7 @@ export function SiteSettingsPanel() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
         <div>
           <h2 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-            <Settings className="w-6 h-6 text-blue-600 animate-spin-slow" />
+            <Settings className="w-6 h-6 text-green-600 animate-spin-slow" />
             Global Site Settings
           </h2>
           <p className="text-sm text-slate-500 font-medium mt-1">
@@ -138,7 +140,7 @@ export function SiteSettingsPanel() {
           <button
             onClick={handleSaveSettings}
             disabled={isSaving}
-            className="flex items-center gap-2 px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-lg shadow-blue-600/20 disabled:opacity-50"
+            className="flex items-center gap-2 px-6 py-2.5 bg-green-600 hover:bg-green-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-lg shadow-green-600/20 disabled:opacity-50"
           >
             {isSaving ? (
               <>
@@ -160,7 +162,7 @@ export function SiteSettingsPanel() {
         <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between">
           <div>
             <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2 mb-4">
-              <ImageIcon className="w-5 h-5 text-blue-600" />
+              <ImageIcon className="w-5 h-5 text-green-600" />
               Brand Identity (Logo)
             </h3>
 
@@ -187,7 +189,7 @@ export function SiteSettingsPanel() {
                     placeholder="Enter corporate logo image URL..."
                     value={settingsForm.logo}
                     onChange={(e) => setSettingsForm({ ...settingsForm, logo: e.target.value })}
-                    className="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:border-blue-500 bg-slate-50"
+                    className="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:border-green-500 bg-slate-50"
                   />
                 </div>
 
@@ -196,7 +198,7 @@ export function SiteSettingsPanel() {
                     Or Upload File:
                   </span>
 
-                  <label className="cursor-pointer inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold text-xs rounded-xl border border-blue-200 transition-colors w-max">
+                  <label className="cursor-pointer inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-green-50 hover:bg-green-100 text-green-700 font-bold text-xs rounded-xl border border-green-200 transition-colors w-max">
                     {uploadingField === 'logo' ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin" />
@@ -260,7 +262,7 @@ export function SiteSettingsPanel() {
                     placeholder="Enter founder image URL..."
                     value={settingsForm.founderImage}
                     onChange={(e) => setSettingsForm({ ...settingsForm, founderImage: e.target.value })}
-                    className="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:border-blue-500 bg-slate-50"
+                    className="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:border-green-500 bg-slate-50"
                   />
                 </div>
 
@@ -269,7 +271,7 @@ export function SiteSettingsPanel() {
                     Or Upload File:
                   </span>
 
-                  <label className="cursor-pointer inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold text-xs rounded-xl border border-blue-200 transition-colors w-max">
+                  <label className="cursor-pointer inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-green-50 hover:bg-green-100 text-green-700 font-bold text-xs rounded-xl border border-green-200 transition-colors w-max">
                     {uploadingField === 'founderImage' ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin" />
@@ -337,7 +339,7 @@ export function SiteSettingsPanel() {
                 ...settingsForm,
                 virtualTour: { ...settingsForm.virtualTour, previewImage: e.target.value }
               })}
-              className="w-full px-4 py-2 border border-slate-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-blue-500 bg-slate-50"
+              className="w-full px-4 py-2 border border-slate-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-green-500 bg-slate-50"
             />
 
             <div className="space-y-1.5">
@@ -345,7 +347,7 @@ export function SiteSettingsPanel() {
                 Or Upload File:
               </span>
 
-              <label className="cursor-pointer flex items-center justify-center gap-2 px-4 py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold text-xs rounded-xl border border-blue-200 transition-colors w-full">
+              <label className="cursor-pointer flex items-center justify-center gap-2 px-4 py-2 bg-green-50 hover:bg-green-100 text-green-700 font-bold text-xs rounded-xl border border-green-200 transition-colors w-full">
                 {uploadingField === 'previewImage' ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin" />
@@ -393,7 +395,7 @@ export function SiteSettingsPanel() {
                     virtualTour: { ...settingsForm.virtualTour, iframeUrl: val }
                   });
                 }}
-                className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:border-blue-500 bg-slate-50 resize-none"
+                className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:border-green-500 bg-slate-50 resize-none"
               />
               <p className="text-[10px] text-slate-400 mt-1 font-medium leading-relaxed">
                 Found on Google Maps: Share &rarr; Embed a map &rarr; Extract URL from the `src` attribute inside the `&lt;iframe&gt;`.
@@ -413,7 +415,7 @@ export function SiteSettingsPanel() {
                   ...settingsForm,
                   virtualTour: { ...settingsForm.virtualTour, googleMapsUrl: e.target.value }
                 })}
-                className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:border-blue-500 bg-slate-50"
+                className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:border-green-500 bg-slate-50"
               />
               <p className="text-[10px] text-slate-400 mt-1 font-medium leading-relaxed">
                 The link opened when visitors click the "Open in Google Maps" or "Explore in 3D Photosphere" red buttons.
@@ -448,7 +450,7 @@ export function SiteSettingsPanel() {
 
                 <div className="flex-1 w-full space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-extrabold text-blue-600 bg-blue-50 border border-blue-100 px-3 py-1 rounded-full uppercase tracking-wider">
+                    <span className="text-[10px] font-extrabold text-green-600 bg-green-50 border border-green-100 px-3 py-1 rounded-full uppercase tracking-wider">
                       Slide Slot {idx + 1}
                     </span>
                   </div>
@@ -462,11 +464,11 @@ export function SiteSettingsPanel() {
                       nextPhotos[idx] = { ...nextPhotos[idx], image: e.target.value };
                       setSettingsForm({ ...settingsForm, shopPhotos: nextPhotos });
                     }}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-blue-500 bg-white"
+                    className="w-full px-3 py-2 border border-slate-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-green-500 bg-white"
                   />
 
                   <div className="space-y-1">
-                    <label className="cursor-pointer flex items-center justify-center gap-2 px-3 py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold text-xs rounded-xl border border-blue-200 transition-colors w-full">
+                    <label className="cursor-pointer flex items-center justify-center gap-2 px-3 py-2 bg-green-50 hover:bg-green-100 text-green-700 font-bold text-xs rounded-xl border border-green-200 transition-colors w-full">
                       {uploadingField === `slide-${idx}` ? (
                         <>
                           <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -508,7 +510,7 @@ export function SiteSettingsPanel() {
                       nextPhotos[idx] = { ...nextPhotos[idx], caption: e.target.value };
                       setSettingsForm({ ...settingsForm, shopPhotos: nextPhotos });
                     }}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-blue-500 bg-white"
+                    className="w-full px-3 py-2 border border-slate-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-green-500 bg-white"
                   />
                 </div>
 
@@ -526,7 +528,7 @@ export function SiteSettingsPanel() {
                       nextPhotos[idx] = { ...nextPhotos[idx], description: e.target.value };
                       setSettingsForm({ ...settingsForm, shopPhotos: nextPhotos });
                     }}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-blue-500 bg-white resize-none"
+                    className="w-full px-3 py-2 border border-slate-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-green-500 bg-white resize-none"
                   />
                 </div>
               </div>
@@ -606,7 +608,7 @@ export function SiteSettingsPanel() {
                         <span className="text-xs font-bold text-slate-400">No Image</span>
                       )}
                     </div>
-                    <label className="cursor-pointer flex items-center justify-center gap-2 px-3 py-2.5 bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold text-xs rounded-xl border border-blue-200 transition-colors w-full">
+                    <label className="cursor-pointer flex items-center justify-center gap-2 px-3 py-2.5 bg-green-50 hover:bg-green-100 text-green-700 font-bold text-xs rounded-xl border border-green-200 transition-colors w-full">
                       {uploadingField === `banner-${idx}` ? (
                         <><Loader2 className="w-3.5 h-3.5 animate-spin" /> Uploading...</>
                       ) : (
@@ -638,21 +640,21 @@ export function SiteSettingsPanel() {
                           nextBanners[idx] = { ...nextBanners[idx], title: e.target.value };
                           setSettingsForm({ ...settingsForm, banners: nextBanners });
                         }}
-                        className="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:border-blue-500 bg-white"
+                        className="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:border-green-500 bg-white"
                       />
                     </div>
                     <div className="md:col-span-2">
                       <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Subtitle</label>
                       <input
                         type="text"
-                        placeholder="e.g. Flat 20% off on all industrial pipes"
+                        placeholder="e.g. Flat 20% off on all industrial bags"
                         value={banner.subtitle}
                         onChange={(e) => {
                           const nextBanners = [...settingsForm.banners];
                           nextBanners[idx] = { ...nextBanners[idx], subtitle: e.target.value };
                           setSettingsForm({ ...settingsForm, banners: nextBanners });
                         }}
-                        className="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:border-blue-500 bg-white"
+                        className="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:border-green-500 bg-white"
                       />
                     </div>
                     <div>
@@ -666,7 +668,7 @@ export function SiteSettingsPanel() {
                           nextBanners[idx] = { ...nextBanners[idx], buttonText: e.target.value };
                           setSettingsForm({ ...settingsForm, banners: nextBanners });
                         }}
-                        className="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:border-blue-500 bg-white"
+                        className="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:border-green-500 bg-white"
                       />
                     </div>
                     <div>
@@ -680,7 +682,7 @@ export function SiteSettingsPanel() {
                           nextBanners[idx] = { ...nextBanners[idx], buttonLink: e.target.value };
                           setSettingsForm({ ...settingsForm, banners: nextBanners });
                         }}
-                        className="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:border-blue-500 bg-white"
+                        className="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:border-green-500 bg-white"
                       />
                     </div>
                     <div className="md:col-span-1">
@@ -692,7 +694,7 @@ export function SiteSettingsPanel() {
                           nextBanners[idx] = { ...nextBanners[idx], placement: e.target.value as any };
                           setSettingsForm({ ...settingsForm, banners: nextBanners });
                         }}
-                        className="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:border-blue-500 bg-white"
+                        className="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:border-green-500 bg-white"
                       >
                         <option value="home_middle">Homepage (Under Why Choose Us)</option>
                         <option value="contact_page">Contact Us Page</option>
@@ -709,7 +711,7 @@ export function SiteSettingsPanel() {
                           nextBanners[idx] = { ...nextBanners[idx], bannerType: e.target.value as any };
                           setSettingsForm({ ...settingsForm, banners: nextBanners });
                         }}
-                        className="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:border-blue-500 bg-white"
+                        className="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:border-green-500 bg-white"
                       >
                         <option value="abstract_split">Abstract Split (Modern 3D)</option>
                         <option value="full_image">Full Image (Classic Hero)</option>
@@ -725,7 +727,7 @@ export function SiteSettingsPanel() {
                           nextBanners[idx] = { ...nextBanners[idx], themeColor: e.target.value as any };
                           setSettingsForm({ ...settingsForm, banners: nextBanners });
                         }}
-                        className="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:border-blue-500 bg-white"
+                        className="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:border-green-500 bg-white"
                       >
                         <option value="blue">Blue (Corporate)</option>
                         <option value="green">Green (Vibrant)</option>
@@ -743,7 +745,7 @@ export function SiteSettingsPanel() {
                           nextBanners[idx] = { ...nextBanners[idx], textAlign: e.target.value as any };
                           setSettingsForm({ ...settingsForm, banners: nextBanners });
                         }}
-                        className="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:border-blue-500 bg-white"
+                        className="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:border-green-500 bg-white"
                       >
                         <option value="left">Left Aligned</option>
                         <option value="center">Center Aligned</option>
@@ -761,7 +763,7 @@ export function SiteSettingsPanel() {
                             nextBanners[idx] = { ...nextBanners[idx], isActive: e.target.checked };
                             setSettingsForm({ ...settingsForm, banners: nextBanners });
                           }}
-                          className="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                          className="w-4 h-4 rounded border-slate-300 text-green-600 focus:ring-green-500"
                         />
                         Banner is Active
                       </label>
@@ -771,6 +773,85 @@ export function SiteSettingsPanel() {
               </div>
             ))
           )}
+        </div>
+      </div>
+
+      {/* Global Page Banners */}
+      <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+        <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2 mb-6">
+          <ImageIcon className="w-5 h-5 text-indigo-600" />
+          Global Page Banners
+        </h3>
+        <p className="text-sm text-slate-500 font-medium mb-6">
+          Customize the background images for various pages across the website.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {[
+            { id: 'manufacturingImage', label: 'Manufacturing & Global Background', desc: 'Used in Products, Manufacturing, and various home sections.' },
+            { id: 'aboutUsBanner', label: 'About Us Banner', desc: 'Hero background for the About Us page.' },
+            { id: 'contactUsBanner', label: 'Contact Us Banner', desc: 'Hero background for the Contact page.' },
+            { id: 'productsBanner', label: 'Products Banner', desc: 'Hero background for the Products page.' }
+          ].map((field) => (
+            <div key={field.id} className="p-5 bg-slate-50 border border-slate-200 rounded-2xl space-y-4">
+              <div className="flex flex-col sm:flex-row items-center gap-4">
+                <div className="p-1 bg-white border border-slate-200 rounded-xl w-32 h-20 flex items-center justify-center overflow-hidden shrink-0 relative group">
+                  <img
+                    src={(settingsForm as any)[field.id] || '/placeholder.svg'}
+                    alt={field.label}
+                    className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = '/placeholder.svg';
+                    }}
+                  />
+                </div>
+
+                <div className="flex-1 w-full space-y-2">
+                  <span className="block text-[10px] font-extrabold text-indigo-600 uppercase tracking-wider">
+                    {field.label}
+                  </span>
+                  
+                  <input
+                    type="url"
+                    placeholder="Enter image URL..."
+                    value={(settingsForm as any)[field.id] || ''}
+                    onChange={(e) => setSettingsForm({ ...settingsForm, [field.id]: e.target.value })}
+                    className="w-full px-3 py-2 border border-slate-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-green-500 bg-white"
+                  />
+
+                  <div className="space-y-1">
+                    <label className="cursor-pointer flex items-center justify-center gap-2 px-3 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold text-xs rounded-xl border border-indigo-200 transition-colors w-full">
+                      {uploadingField === field.id ? (
+                        <>
+                          <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                          Uploading...
+                        </>
+                      ) : (
+                        <>
+                          <Upload className="w-3.5 h-3.5" />
+                          Upload Image
+                        </>
+                      )}
+                      <input
+                        type="file"
+                        accept="image/*"
+                        disabled={uploadingField !== null}
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (file) handleImageUpload(file, field.id as any);
+                        }}
+                        className="hidden"
+                      />
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <p className="text-[10px] text-slate-400 font-medium leading-relaxed">
+                {field.desc}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -788,7 +869,7 @@ export function SiteSettingsPanel() {
           type="button"
           onClick={handleSaveSettings}
           disabled={isSaving}
-          className="px-10 py-3 bg-blue-600 text-white hover:bg-blue-700 font-bold rounded-xl text-xs uppercase tracking-wider transition-colors shadow-lg shadow-blue-600/20 disabled:opacity-50 flex items-center gap-2"
+          className="px-10 py-3 bg-green-600 text-white hover:bg-green-700 font-bold rounded-xl text-xs uppercase tracking-wider transition-colors shadow-lg shadow-green-600/20 disabled:opacity-50 flex items-center gap-2"
         >
           {isSaving ? (
             <>

@@ -1,0 +1,171 @@
+/* ♿ DAMODER B2B ACCESSIBILITY AND FARMER-UX STYLESYSTEM */
+
+/* ==========================================================================
+   1. Typographic Scaling Override Rules
+   ========================================================================== */
+html.text-scale-normal {
+  font-size: 16px;
+}
+
+html.text-scale-large {
+  font-size: 19px !important;
+}
+
+html.text-scale-extra-large {
+  font-size: 22px !important;
+}
+
+/* Ensure typography elements respond to root font-size scaling */
+html.text-scale-large p,
+html.text-scale-large span,
+html.text-scale-large a,
+html.text-scale-large li,
+html.text-scale-large button,
+html.text-scale-large input,
+html.text-scale-large label {
+  font-size: 1.05rem !important;
+}
+
+html.text-scale-extra-large p,
+html.text-scale-extra-large span,
+html.text-scale-extra-large a,
+html.text-scale-extra-large li,
+html.text-scale-extra-large button,
+html.text-scale-extra-large input,
+html.text-scale-extra-large label {
+  font-size: 1.15rem !important;
+  font-weight: 500 !important; /* Make slightly bolder for enhanced readability */
+}
+
+/* ==========================================================================
+   2. Lite Mode: Performance Enhancements for Slow Devices & 3G Networks
+   ========================================================================== */
+html.lite-mode *,
+html.lite-mode *::before,
+html.lite-mode *::after {
+  /* Disable heavy animations and transitions */
+  transition-duration: 0s !important;
+  animation-duration: 0s !important;
+  animation-delay: 0s !important;
+  animation-iteration-count: 1 !important;
+  scroll-behavior: auto !important;
+}
+
+/* Simplify gradients to flat, high-performance colors */
+html.lite-mode {
+  --bg-gradient-industrial: #f3f4f6 !important;
+  --primary-gradient: #2563eb !important;
+}
+
+html.lite-mode .animate-pulse,
+html.lite-mode .animate-bounce,
+html.lite-mode .animate-spin {
+  animation: none !important;
+}
+
+/* Fallback spinner inside loading overlays in Lite Mode */
+html.lite-mode .animate-spin::after {
+  content: ' Loading...';
+  font-weight: bold;
+}
+
+/* Disable parallax and heavy backgrounds */
+html.lite-mode .bg-parallax,
+html.lite-mode .bg-fixed {
+  background-attachment: scroll !important;
+}
+
+/* ==========================================================================
+   3. High Contrast Mode: Optimal Sunlight Readability for Rural Farmers
+   ========================================================================== */
+html.high-contrast {
+  /* High contrast light color palette overrides */
+  --background: #ffffff !important;
+  --foreground: #000000 !important;
+  --primary: #000000 !important;
+  --primary-foreground: #ffffff !important;
+  --secondary: #f3f4f6 !important;
+  --secondary-foreground: #000000 !important;
+  --muted: #e5e7eb !important;
+  --muted-foreground: #000000 !important;
+  --accent: #facc15 !important; /* Bright Amber for highlights */
+  --accent-foreground: #000000 !important;
+  --border: #000000 !important;
+  --ring: #000000 !important;
+}
+
+html.high-contrast body {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Contrast Enhancement: Pure black outlines & text shadows */
+html.high-contrast a,
+html.high-contrast button,
+html.high-contrast input,
+html.high-contrast select,
+html.high-contrast textarea {
+  border: 2px solid #000000 !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+  background-color: #ffffff !important;
+}
+
+html.high-contrast button:hover,
+html.high-contrast button:focus,
+html.high-contrast a:hover {
+  background-color: #facc15 !important; /* Stark amber highlight */
+  color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+html.high-contrast input::placeholder {
+  color: #111827 !important;
+  opacity: 1 !important;
+}
+
+/* Strict outlines on active elements for keyboard accessibility */
+html.high-contrast *:focus {
+  outline: 3px solid #facc15 !important;
+  outline-offset: 2px !important;
+}
+
+/* High visibility banners & notifications */
+html.high-contrast .bg-green-600,
+html.high-contrast .bg-indigo-600,
+html.high-contrast .bg-emerald-600,
+html.high-contrast .bg-green-600 {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+}
+
+/* Ensure text on cards is perfectly readable in direct sunlight */
+html.high-contrast .card,
+html.high-contrast .bg-white,
+html.high-contrast .bg-gray-50,
+html.high-contrast .bg-gray-100 {
+  background-color: #ffffff !important;
+  border: 2px solid #000000 !important;
+  color: #000000 !important;
+}
+
+html.high-contrast h1,
+html.high-contrast h2,
+html.high-contrast h3,
+html.high-contrast h4,
+html.high-contrast h5,
+html.high-contrast h6 {
+  color: #000000 !important;
+  font-weight: 800 !important;
+}
+
+/* Highlight badge indicators */
+html.high-contrast .badge,
+html.high-contrast .bg-green-500,
+html.high-contrast .bg-rose-500 {
+  background-color: #facc15 !important;
+  color: #000000 !important;
+  border: 1px solid #000000 !important;
+  font-weight: bold !important;
+}

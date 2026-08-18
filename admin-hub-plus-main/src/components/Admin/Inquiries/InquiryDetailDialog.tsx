@@ -49,7 +49,7 @@ export function InquiryDetailDialog({ inquiry, open, onOpenChange }: InquiryDeta
     switch (quality) {
       case 'hot': return 'bg-red-100 text-red-800 border-red-300';
       case 'warm': return 'bg-yellow-100 text-yellow-800 border-yellow-300';
-      case 'cold': return 'bg-blue-100 text-blue-800 border-blue-300';
+      case 'cold': return 'bg-green-100 text-green-800 border-green-300';
       default: return 'bg-gray-100 text-gray-800 border-gray-300';
     }
   };
@@ -79,7 +79,7 @@ export function InquiryDetailDialog({ inquiry, open, onOpenChange }: InquiryDeta
       <DialogContent className="max-w-4xl p-0 overflow-hidden bg-white shadow-2xl border border-slate-200">
         <DialogHeader className="p-6 pb-4 border-b border-slate-100 flex items-center justify-between">
           <DialogTitle className="flex items-center gap-2 text-xl font-extrabold text-slate-900">
-            <MessageSquare className="w-5.5 h-5.5 text-blue-600 shrink-0" />
+            <MessageSquare className="w-5.5 h-5.5 text-green-600 shrink-0" />
             Inquiry Details
           </DialogTitle>
         </DialogHeader>
@@ -174,7 +174,7 @@ export function InquiryDetailDialog({ inquiry, open, onOpenChange }: InquiryDeta
           {inquiry.products && inquiry.products.length > 0 ? (
             <div>
               <h4 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
-                <ClipboardList className="w-4 h-4 shrink-0 text-blue-600" />
+                <ClipboardList className="w-4 h-4 shrink-0 text-green-600" />
                 B2B Request For Quote (RFQ) - {inquiry.products.length} Items
               </h4>
               <div className="bg-slate-50 border border-slate-200 rounded-xl overflow-x-auto">
@@ -201,7 +201,7 @@ export function InquiryDetailDialog({ inquiry, open, onOpenChange }: InquiryDeta
                           {item.priceType === '50' ? (
                             <Badge className="bg-emerald-100 text-emerald-800 border-emerald-300 text-[10px] py-0">Wholesale (50%)</Badge>
                           ) : (
-                            <Badge className="bg-blue-100 text-blue-800 border-blue-300 text-[10px] py-0">Standard (100%)</Badge>
+                            <Badge className="bg-green-100 text-green-800 border-green-300 text-[10px] py-0">Standard (100%)</Badge>
                           )}
                         </td>
                         <td className="p-3 text-center font-semibold tabular-nums">{item.quantity}</td>
@@ -209,9 +209,9 @@ export function InquiryDetailDialog({ inquiry, open, onOpenChange }: InquiryDeta
                         <td className="p-3 text-right font-bold text-slate-900 tabular-nums">₹{((item.unitPrice || 0) * item.quantity).toFixed(2)}</td>
                       </tr>
                     ))}
-                    <tr className="bg-blue-50/50 font-bold border-t-2 border-slate-300">
+                    <tr className="bg-green-50/50 font-bold border-t-2 border-slate-300">
                       <td colSpan={5} className="p-3 text-slate-700">Estimated RFQ Total Value:</td>
-                      <td className="p-3 text-right text-sm text-blue-600 font-black tabular-nums">
+                      <td className="p-3 text-right text-sm text-green-600 font-black tabular-nums">
                         ₹{(inquiry.totalEstimatedValue || inquiry.products.reduce((sum, p) => sum + ((p.unitPrice || 0) * p.quantity), 0)).toFixed(2)}
                       </td>
                     </tr>
@@ -263,7 +263,7 @@ export function InquiryDetailDialog({ inquiry, open, onOpenChange }: InquiryDeta
                       <div className="text-xs font-medium text-purple-700 mb-0.5">Price Type:</div>
                       <div className="text-sm">
                         {(inquiry.priceType === '100' || inquiry.priceType === 'Standard (100%)') ? (
-                          <Badge className="bg-blue-100 text-blue-800 border-blue-300">
+                          <Badge className="bg-green-100 text-green-800 border-green-300">
                             Standard (100%)
                           </Badge>
                         ) : (
@@ -326,12 +326,12 @@ export function InquiryDetailDialog({ inquiry, open, onOpenChange }: InquiryDeta
           {inquiry.attachmentUrl && (
             <div>
               <h4 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
-                <Paperclip className="w-4 h-4 shrink-0 text-blue-600" />
+                <Paperclip className="w-4 h-4 shrink-0 text-green-600" />
                 Attached Document
               </h4>
               <div className="bg-slate-50 border border-slate-200 p-4 rounded-lg flex items-center justify-between">
                 <div className="flex items-center gap-3 overflow-hidden">
-                  <FileText className="w-8 h-8 text-blue-500 shrink-0" />
+                  <FileText className="w-8 h-8 text-green-500 shrink-0" />
                   <div className="truncate">
                     <div className="text-sm font-bold text-slate-800 truncate">{inquiry.attachmentName || 'Attachment'}</div>
                     <div className="text-[10px] text-slate-500">Uploaded via Cloudinary</div>
@@ -341,7 +341,7 @@ export function InquiryDetailDialog({ inquiry, open, onOpenChange }: InquiryDeta
                   href={inquiry.attachmentUrl} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-bold transition-colors flex items-center gap-1.5 shrink-0"
+                  className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-xs font-bold transition-colors flex items-center gap-1.5 shrink-0"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
                   View Document
@@ -354,11 +354,11 @@ export function InquiryDetailDialog({ inquiry, open, onOpenChange }: InquiryDeta
           {inquiry.replyMessage && (
             <div>
               <h4 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
-                <Mail className="w-4 h-4 shrink-0 text-blue-600" />
+                <Mail className="w-4 h-4 shrink-0 text-green-600" />
                 Response Sent to Customer
               </h4>
-              <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg overflow-hidden">
-                <div className="text-sm text-blue-800 font-medium truncate mb-2">{inquiry.replySubject || `Re: ${inquiry.subject}`}</div>
+              <div className="bg-green-50 border border-green-200 p-4 rounded-lg overflow-hidden">
+                <div className="text-sm text-green-800 font-medium truncate mb-2">{inquiry.replySubject || `Re: ${inquiry.subject}`}</div>
                 <p className="text-gray-800 text-sm whitespace-pre-wrap break-words max-w-full">{inquiry.replyMessage}</p>
                 {inquiry.repliedAt && (
                   <div className="text-[10px] text-gray-400 mt-3 text-right">
@@ -397,7 +397,7 @@ export function InquiryDetailDialog({ inquiry, open, onOpenChange }: InquiryDeta
                     href={inquiry.pageSource || '#'} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:underline flex items-center gap-1 truncate"
+                    className="text-green-600 hover:underline flex items-center gap-1 truncate"
                   >
                     <ExternalLink className="w-3 h-3 shrink-0" />
                     <span className="truncate">{inquiry.pageSource || 'Direct'}</span>
@@ -450,7 +450,7 @@ export function InquiryDetailDialog({ inquiry, open, onOpenChange }: InquiryDeta
               href={`mailto:${inquiry.email}`}
               className="w-full"
             >
-              <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+              <Button className="w-full bg-green-600 hover:bg-green-700 text-white">
                 <Mail className="w-4 h-4 mr-2 shrink-0" />
                 <span className="truncate">Email</span>
               </Button>

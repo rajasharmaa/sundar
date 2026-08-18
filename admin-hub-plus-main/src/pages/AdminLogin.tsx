@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
 import { Lock, User, ArrowLeft } from 'lucide-react';
-import toast from 'react-hot-toast';
+import { toast } from 'sonner';
 
 const loginSchema = z.object({
   username: z.string().min(1, 'Username is required'),
@@ -63,7 +63,7 @@ export default function AdminLogin() {
         {/* Logo */}
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold text-primary">
-            Damodar Traders
+            Sundar Corporation
             <span className="admin-badge">ADMIN</span>
           </h1>
           <p className="text-muted-foreground text-sm mt-2">Administrator Panel</p>

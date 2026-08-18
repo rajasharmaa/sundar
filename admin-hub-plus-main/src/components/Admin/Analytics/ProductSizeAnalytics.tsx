@@ -44,7 +44,7 @@ export function ProductSizeAnalytics() {
     return (
       <Card className="p-6">
         <div className="flex items-center gap-2 mb-4">
-          <Ruler className="w-5 h-5 text-blue-600" />
+          <Ruler className="w-5 h-5 text-green-600" />
           <h3 className="text-lg font-bold">Product Size Analytics</h3>
         </div>
         <div className="text-center py-8 text-muted-foreground">Loading...</div>
@@ -56,12 +56,12 @@ export function ProductSizeAnalytics() {
     <div className="space-y-6">
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Card className="p-4 bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
+        <Card className="p-4 bg-gradient-to-br from-green-50 to-green-100 border-green-200">
           <div className="flex items-center gap-3">
-            <Package className="w-8 h-8 text-blue-600" />
+            <Package className="w-8 h-8 text-green-600" />
             <div>
               <div className="text-2xl font-bold">{summary.totalProducts}</div>
-              <div className="text-sm text-blue-700">Total Products</div>
+              <div className="text-sm text-green-700">Total Products</div>
             </div>
           </div>
         </Card>
@@ -114,7 +114,7 @@ export function ProductSizeAnalytics() {
       {/* Product Size Details Table */}
       <Card className="p-6">
         <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-          <Ruler className="w-5 h-5 text-blue-600" />
+          <Ruler className="w-5 h-5 text-green-600" />
           Product Size Details
         </h3>
         
@@ -161,7 +161,7 @@ export function ProductSizeAnalytics() {
                         {product.sizes.split(', ').map((size) => (
                           <span
                             key={size}
-                            className="bg-blue-50 text-blue-700 text-xs px-2 py-1 rounded border border-blue-200"
+                            className="bg-green-50 text-green-700 text-xs px-2 py-1 rounded border border-green-200"
                           >
                             {size}
                           </span>

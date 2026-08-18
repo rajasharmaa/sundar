@@ -208,7 +208,7 @@ export function InquiryManagement() {
             {filter.value === 'unread' && (
               <span className={cn(
                 "ml-2 text-xs px-2 py-0.5 rounded-full font-bold",
-                activeFilter === filter.value ? "bg-white/20 text-white" : "bg-blue-100 text-blue-700"
+                activeFilter === filter.value ? "bg-white/20 text-white" : "bg-green-100 text-green-700"
               )}>
                 {inquiries.filter((i) => !i.read).length}
               </span>

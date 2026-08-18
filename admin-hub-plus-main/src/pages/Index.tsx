@@ -9,10 +9,10 @@ const Index = () => {
       <div className="admin-header py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
-            Damodar Traders
+            Sundar Corporation
           </h1>
           <p className="text-xl text-primary-foreground/80 mb-8">
-            Industrial Piping Solutions - Admin Management System
+            Industrial Packaging Solutions - Admin Management System
           </p>
           <Link to="/admin-login">
             <Button size="lg" variant="secondary" className="font-semibold">

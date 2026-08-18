@@ -4,7 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Toaster as HotToaster } from 'react-hot-toast';
+
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ProtectedRoute } from "@/components/Layout/ProtectedRoute";
 import { Loader2 } from 'lucide-react';
@@ -40,7 +40,7 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <HotToaster position="top-right" />
+
         <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
           <Suspense fallback={<RouteLoader />}>
             <Routes>

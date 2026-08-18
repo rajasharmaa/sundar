@@ -17,13 +17,16 @@ const fetchCsrfToken = async (): Promise<string | null> => {
   if (csrfToken) return csrfToken;
   if (csrfPromise) return csrfPromise;
 
-  csrfPromise = axios.get(`${API_BASE_URL}/csrf-token`, { withCredentials: true })
+  csrfPromise = axios.get(`${API_BASE_URL}/v1/csrf-token`, { withCredentials: true })
     .then(res => {
       csrfToken = res.data.csrfToken || null;
       return csrfToken;
     })
     .catch(err => {
-      console.error('Failed to fetch CSRF token', err);
+      // Suppress 404 error log if backend does not support CSRF token endpoint
+      if (err.response?.status !== 404) {
+        console.warn('CSRF token fetch failed:', err.message);
+      }
       return null;
     })
     .finally(() => {
@@ -39,7 +42,7 @@ api.interceptors.request.use(
     // Attach CSRF Token for mutating requests
     const mutatingMethods = ['POST', 'PUT', 'DELETE', 'PATCH'];
     if (config.method && mutatingMethods.includes(config.method.toUpperCase())) {
-      if (config.url && !config.url.includes('/csrf-token')) {
+      if (config.url && !config.url.includes('/v1/csrf-token')) {
         const token = await fetchCsrfToken();
         if (token) {
           config.headers['X-CSRF-Token'] = token;
@@ -155,5 +158,14 @@ api.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+export const uploadImage = async (file: File): Promise<string> => {
+  const formData = new FormData();
+  formData.append('file', file);
+  const response = await api.post('/admin/settings/upload', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  });
+  return response.data.url;
+};
 
 export default api;

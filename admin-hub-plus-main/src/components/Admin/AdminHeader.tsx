@@ -1,7 +1,7 @@
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { LogOut, Bell, Search, Menu } from 'lucide-react';
-import toast from 'react-hot-toast';
+import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
 import { ADMIN_ROUTES } from '@/utils/constants';
 
@@ -32,7 +32,7 @@ export function AdminHeader() {
           <input 
             type="text" 
             placeholder="Search orders, products, or users (Press '/' to focus)" 
-            className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl outline-none transition-all duration-200 font-medium text-slate-900 placeholder:text-slate-400 text-sm"
+            className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-green-500 focus:ring-4 focus:ring-green-500/10 rounded-xl outline-none transition-all duration-200 font-medium text-slate-900 placeholder:text-slate-400 text-sm"
           />
         </div>
       </div>
@@ -51,7 +51,7 @@ export function AdminHeader() {
             <p className="text-sm font-bold text-slate-900 leading-none">{user?.username || 'Super Admin'}</p>
             <p className="text-xs text-slate-500 mt-1 font-medium">{user?.role || 'Administrator'}</p>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-lg border border-blue-200">
+          <div className="w-10 h-10 rounded-xl bg-green-100 text-green-700 flex items-center justify-center font-bold text-lg border border-green-200">
             {(user?.username || 'A').charAt(0).toUpperCase()}
           </div>
         </div>

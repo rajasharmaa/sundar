@@ -1,6 +1,6 @@
 // Product Types
 
-// 📏 Size Option with Dual-Tier Pricing (Damodar Traders Price List)
+// 📏 Size Option with Dual-Tier Pricing (Sundar Corporation Price List)
 export interface SizeOption {
   size: string;
   price_100_percent: number;  // Standard price
@@ -21,12 +21,13 @@ export interface ProductImage {
 }
 
 export interface Product {
-  _id: string;
+  _id?: string;
+  id?: string;
   name: string;
   image: string;
   imagePublicId?: string;
   images?: ProductImage[];
-  category: 'pipes' | 'fittings' | 'valves' | 'other' | 'G.I. Fittings' | 'C.I. Fittings' | 'Pipe Nipples' | 'Pipe Clamps' | 'Pipe Bends' | 'Adapters' | 'Washers' | 'Flanges' | 'Tubes' | 'Accessories';
+  category: 'bags' | 'bags' | 'sacks' | 'other' | 'G.I. Bags' | 'C.I. Bags' | 'Bag Nipples' | 'Bag Clamps' | 'Bag Bends' | 'Adapters' | 'Washers' | 'Flanges' | 'Tubes' | 'Accessories';
   brand?: string;
   productCode?: string;
   description: string;
@@ -37,6 +38,10 @@ export interface Product {
   temperatureRange: string;
   standards: string;
   application: string;
+  dimensions?: string;
+  capacity?: string;
+  printingType?: string;
+  lamination?: string;
   specifications?: Specification[];
   featured?: boolean;
   minPrice?: number;
@@ -46,6 +51,16 @@ export interface Product {
   wishlistCount?: number;
   createdAt: string;
   updatedAt: string;
+
+  // Editorial Dynamic Fields
+  benefits?: { title: string; desc?: string; image?: string }[];
+  industries?: { name: string; desc?: string; image?: string }[];
+  faqs?: { q: string; a: string }[];
+  customizationTypes?: string[];
+  manufacturingProcess?: string;
+  materialComposition?: string;
+  printingDetails?: string;
+  themeColor?: string;
 }
 
 export interface ProductFormData {
@@ -54,6 +69,7 @@ export interface ProductFormData {
   brand?: string;
   productCode?: string;
   description: string;
+  themeColor?: string;
   sizeOptions: SizeOption[];
   discount?: number;
   material?: string;
@@ -61,10 +77,23 @@ export interface ProductFormData {
   temperatureRange?: string;
   standards?: string;
   application?: string;
+  dimensions?: string;
+  capacity?: string;
+  printingType?: string;
+  lamination?: string;
   specifications?: Specification[];
   featured?: boolean;
   image?: File;
   images?: File[];
+
+  // Editorial Dynamic Fields
+  benefits?: { title: string; desc?: string; image?: string }[];
+  industries?: { name: string; desc?: string; image?: string }[];
+  faqs?: { q: string; a: string }[];
+  customizationTypes?: string[];
+  manufacturingProcess?: string;
+  materialComposition?: string;
+  printingDetails?: string;
 }
 
 // Inquiry Types
@@ -300,5 +329,9 @@ export interface SiteSettings {
   virtualTour: VirtualTourSettings;
   shopPhotos: ShopPhotoSettings[];
   banners: BannerSettings[];
+  manufacturingImage?: string;
+  aboutUsBanner?: string;
+  contactUsBanner?: string;
+  productsBanner?: string;
 }
 

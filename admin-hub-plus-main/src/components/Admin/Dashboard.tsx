@@ -157,7 +157,7 @@ export function Dashboard({ onTabChange }: DashboardProps) {
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-                  <BarChart3 className="w-5 h-5 text-blue-600" />
+                  <BarChart3 className="w-5 h-5 text-green-600" />
                   Performance Analytics
                 </h3>
                 <p className="text-sm text-slate-500 font-medium mt-1">Traffic and engagement metrics over time</p>
@@ -183,10 +183,10 @@ export function Dashboard({ onTabChange }: DashboardProps) {
               
               <div className="space-y-4 flex-1">
                 {isProductsLoading ? (
-                  Array(4).fill(0).map((_, i) => <Skeleton key={i} className="h-16 w-full rounded-xl" />)
+                  Array(4).fill(0).map((_, i) => <Skeleton key={`top-prod-skel-${i}`} className="h-16 w-full rounded-xl" />)
                 ) : (
                   topProducts?.slice(0, 4).map((product: TopProduct, index: number) => (
-                    <div key={product._id} className="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-100 transition-colors group">
+                    <div key={product._id || (product as any).id || `top-prod-${index}`} className="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-100 transition-colors group">
                       <div className="w-12 h-12 rounded-lg bg-slate-100 border border-slate-200 overflow-hidden shrink-0 relative">
                         <img src={product.image || '/placeholder.svg'} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                         <div className="absolute top-0 left-0 bg-slate-900/80 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-br-lg">{index + 1}</div>
@@ -204,7 +204,7 @@ export function Dashboard({ onTabChange }: DashboardProps) {
                   ))
                 )}
               </div>
-              <Button onClick={() => onTabChange('products')} variant="ghost" className="w-full mt-4 text-blue-600 hover:text-blue-700 hover:bg-blue-50 font-bold text-sm">
+              <Button onClick={() => onTabChange('products')} variant="ghost" className="w-full mt-4 text-green-600 hover:text-green-700 hover:bg-green-50 font-bold text-sm">
                 View All Products <ChevronRight className="w-4 h-4 ml-1" />
               </Button>
             </motion.div>
@@ -214,7 +214,7 @@ export function Dashboard({ onTabChange }: DashboardProps) {
               <div className="flex items-center justify-between mb-6">
                 <div>
                   <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-                    <MessageSquare className="w-5 h-5 text-blue-600" />
+                    <MessageSquare className="w-5 h-5 text-green-600" />
                     High-Intent Products
                   </h3>
                   <p className="text-xs text-slate-500 font-medium mt-1">Generating the most inquiries</p>
@@ -223,10 +223,10 @@ export function Dashboard({ onTabChange }: DashboardProps) {
               
               <div className="space-y-4 flex-1">
                 {isInquiredLoading ? (
-                  Array(4).fill(0).map((_, i) => <Skeleton key={i} className="h-16 w-full rounded-xl" />)
+                  Array(4).fill(0).map((_, i) => <Skeleton key={`inq-skel-${i}`} className="h-16 w-full rounded-xl" />)
                 ) : (
                   mostInquiredProducts?.slice(0, 4).map((product: InquiredProduct, index: number) => (
-                    <div key={product.productId} className="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-100 transition-colors group">
+                    <div key={product.productId || `inq-prod-${index}`} className="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-100 transition-colors group">
                       <div className="w-12 h-12 rounded-lg bg-slate-100 border border-slate-200 overflow-hidden shrink-0 relative">
                         <img src={product.image || '/placeholder.svg'} alt={product.productName} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                         <div className="absolute top-0 left-0 bg-slate-900/80 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-br-lg">{index + 1}</div>
@@ -236,7 +236,7 @@ export function Dashboard({ onTabChange }: DashboardProps) {
                         <p className="text-xs text-slate-500 font-medium truncate">Lead: {new Date(product.lastInquiry).toLocaleDateString(undefined, {month:'short', day:'numeric'})}</p>
                       </div>
                       <div className="text-right shrink-0">
-                        <span className="inline-flex items-center justify-center px-2 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold">
+                        <span className="inline-flex items-center justify-center px-2 py-1 rounded-full bg-green-100 text-green-700 text-xs font-bold">
                           {product.inquiryCount} leads
                         </span>
                       </div>
@@ -244,7 +244,7 @@ export function Dashboard({ onTabChange }: DashboardProps) {
                   ))
                 )}
               </div>
-              <Button onClick={() => onTabChange('inquiries')} variant="ghost" className="w-full mt-4 text-blue-600 hover:text-blue-700 hover:bg-blue-50 font-bold text-sm">
+              <Button onClick={() => onTabChange('inquiries')} variant="ghost" className="w-full mt-4 text-green-600 hover:text-green-700 hover:bg-green-50 font-bold text-sm">
                 Review Inquiries <ChevronRight className="w-4 h-4 ml-1" />
               </Button>
             </motion.div>
@@ -256,7 +256,7 @@ export function Dashboard({ onTabChange }: DashboardProps) {
           
           {/* Quick Actions Widget */}
           <motion.div variants={itemVariants} className="bg-slate-900 rounded-2xl p-6 relative overflow-hidden shadow-lg shadow-slate-900/20">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/20 rounded-full blur-2xl" />
             <h3 className="text-lg font-bold text-white mb-4 relative z-10">Quick Actions</h3>
             <div className="grid grid-cols-2 gap-3 relative z-10">
               <button onClick={() => onTabChange('products')} className="flex flex-col items-center justify-center gap-2 p-4 bg-white/10 hover:bg-white/20 border border-white/10 rounded-xl transition-all duration-300 text-white group">
@@ -264,7 +264,7 @@ export function Dashboard({ onTabChange }: DashboardProps) {
                 <span className="text-xs font-bold">Manage Products</span>
               </button>
               <button onClick={() => onTabChange('inquiries')} className="flex flex-col items-center justify-center gap-2 p-4 bg-white/10 hover:bg-white/20 border border-white/10 rounded-xl transition-all duration-300 text-white group">
-                <MessageSquare className="w-6 h-6 text-blue-400 group-hover:scale-110 transition-transform" />
+                <MessageSquare className="w-6 h-6 text-green-400 group-hover:scale-110 transition-transform" />
                 <span className="text-xs font-bold">Review Leads</span>
               </button>
               <button onClick={() => onTabChange('bulk-prices')} className="col-span-2 flex items-center justify-between p-4 bg-white/10 hover:bg-white/20 border border-white/10 rounded-xl transition-all duration-300 text-white group">
@@ -287,10 +287,10 @@ export function Dashboard({ onTabChange }: DashboardProps) {
             </div>
             <div className="space-y-3">
               {isCompanyLoading ? (
-                Array(3).fill(0).map((_, i) => <Skeleton key={i} className="h-12 w-full rounded-lg" />)
+                Array(3).fill(0).map((_, i) => <Skeleton key={`comp-skel-${i}`} className="h-12 w-full rounded-lg" />)
               ) : (
                 companyData?.slice(0, 4).map((company: CompanyData, index: number) => (
-                  <div key={company.companyName} className="flex items-center justify-between p-3 rounded-lg border border-slate-100 hover:border-purple-200 hover:bg-purple-50 transition-colors">
+                  <div key={company.companyName || `comp-${index}`} className="flex items-center justify-between p-3 rounded-lg border border-slate-100 hover:border-purple-200 hover:bg-purple-50 transition-colors">
                     <div className="flex items-center gap-3">
                       <div className="w-6 h-6 rounded-md bg-purple-100 text-purple-700 text-xs font-bold flex items-center justify-center">
                         {index + 1}
@@ -320,10 +320,10 @@ export function Dashboard({ onTabChange }: DashboardProps) {
             </div>
             <div className="space-y-3">
               {isLocationLoading ? (
-                Array(3).fill(0).map((_, i) => <Skeleton key={i} className="h-12 w-full rounded-lg" />)
+                Array(3).fill(0).map((_, i) => <Skeleton key={`loc-skel-${i}`} className="h-12 w-full rounded-lg" />)
               ) : (
                 locationData?.slice(0, 4).map((loc: LocationData, index: number) => (
-                  <div key={loc.location} className="flex items-center justify-between p-3 rounded-lg border border-slate-100 hover:border-rose-200 hover:bg-rose-50 transition-colors">
+                  <div key={loc.location || `loc-${index}`} className="flex items-center justify-between p-3 rounded-lg border border-slate-100 hover:border-rose-200 hover:bg-rose-50 transition-colors">
                     <div className="flex items-center gap-3">
                       <div className="w-6 h-6 rounded-md bg-rose-100 text-rose-700 text-xs font-bold flex items-center justify-center">
                         {index + 1}

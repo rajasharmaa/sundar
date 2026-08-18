@@ -100,7 +100,7 @@ export function BulkPriceEditor() {
   }, [filterProducts]);
 
   const handlePriceChange = (productId: string, sizeIndex: number, priceType: '100' | '50', newPrice: number) => {
-    const product = products.find(p => p._id === productId);
+    const product = products.find(p => (p._id || p.id) === productId);
     if (!product || !product.sizeOptions[sizeIndex]) return;
 
     const key = `${productId}-${sizeIndex}-${priceType}`;
@@ -119,7 +119,7 @@ export function BulkPriceEditor() {
     } else {
       // Create new edit
       const newEdit: PriceEdit = {
-        productId: product._id || '',
+        productId: (product._id || product.id) || '',
         productName: product.name,
         sizeIndex,
         size: product.sizeOptions[sizeIndex].size,
@@ -211,7 +211,7 @@ export function BulkPriceEditor() {
 
     const data = filteredProducts.flatMap(product => {
       return product.sizeOptions.map((sizeOption, idx) => ({
-        'Product ID': product._id,
+        'Product ID': (product._id || product.id),
         'Product Name': product.name,
         'Category': product.category,
         'Brand': (product as any).brand || '',
@@ -268,7 +268,7 @@ export function BulkPriceEditor() {
             continue;
           }
 
-          const product = products.find(p => p._id === productId);
+          const product = products.find(p => (p._id || p.id) === productId);
           if (!product) {
             errorCount++;
             continue;
@@ -325,7 +325,7 @@ export function BulkPriceEditor() {
   };
 
   const adjustPrice = (productId: string, sizeIndex: number, priceType: '100' | '50', percentage: number) => {
-    const product = products.find(p => p._id === productId);
+    const product = products.find(p => (p._id || p.id) === productId);
     if (!product || !product.sizeOptions[sizeIndex]) return;
 
     const key = `${productId}-${sizeIndex}-${priceType}`;
@@ -345,7 +345,7 @@ export function BulkPriceEditor() {
       }));
     } else {
       const newEdit: PriceEdit = {
-        productId: product._id || '',
+        productId: (product._id || product.id) || '',
         productName: product.name,
         sizeIndex,
         size: product.sizeOptions[sizeIndex].size,
@@ -465,7 +465,7 @@ export function BulkPriceEditor() {
       <div className="bg-card border rounded-lg overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white">
+            <thead className="bg-gradient-to-r from-green-600 to-cyan-600 text-white">
               <tr>
                 <th className="px-4 py-3 text-left text-xs font-medium uppercase">Product</th>
                 <th className="px-4 py-3 text-left text-xs font-medium uppercase">Size</th>
@@ -486,16 +486,16 @@ export function BulkPriceEditor() {
                   const price100 = sizeOption?.price_100_percent ?? 0;
                   const price50 = sizeOption?.price_50_percent ?? 0;
                   
-                  const hasEdit100 = hasChanges(product._id, sizeIndex, '100');
-                  const hasEdit50 = hasChanges(product._id, sizeIndex, '50');
+                  const hasEdit100 = hasChanges((product._id || product.id), sizeIndex, '100');
+                  const hasEdit50 = hasChanges((product._id || product.id), sizeIndex, '50');
                   const editedPrice100 = getEditedPrice(
-                    product._id,
+                    (product._id || product.id),
                     sizeIndex,
                     '100',
                     price100
                   );
                   const editedPrice50 = getEditedPrice(
-                    product._id,
+                    (product._id || product.id),
                     sizeIndex,
                     '50',
                     price50
@@ -503,8 +503,8 @@ export function BulkPriceEditor() {
 
                   return (
                     <tr
-                      key={`${product._id}-${sizeIndex}`}
-                      className={`hover:bg-muted/50 ${hasEdit100 || hasEdit50 ? 'bg-blue-50 dark:bg-blue-900/20' : ''}`}
+                      key={`${(product._id || product.id)}-${sizeIndex}`}
+                      className={`hover:bg-muted/50 ${hasEdit100 || hasEdit50 ? 'bg-green-50 dark:bg-green-900/20' : ''}`}
                     >
                       <td className="px-4 py-3">
                         <div>
@@ -531,13 +531,13 @@ export function BulkPriceEditor() {
                             <CardContent className="p-3">
                               <div className="space-y-2">
                                 <div className="flex items-center justify-between">
-                                  <label htmlFor={`price-100-${product._id}-${sizeIndex}`} className="text-xs font-medium text-blue-600">100% Price</label>
+                                  <label htmlFor={`price-100-${(product._id || product.id)}-${sizeIndex}`} className="text-xs font-medium text-green-600">100% Price</label>
                                   <Badge variant="outline" className="text-xs">Standard</Badge>
                                 </div>
                                 <div className="flex items-center gap-2">
                                   <Input
-                                    id={`price-100-${product._id}-${sizeIndex}`}
-                                    name={`price-100-${product._id}-${sizeIndex}`}
+                                    id={`price-100-${(product._id || product.id)}-${sizeIndex}`}
+                                    name={`price-100-${(product._id || product.id)}-${sizeIndex}`}
                                     type="number"
                                     min="0"
                                     step="0.01"
@@ -546,7 +546,7 @@ export function BulkPriceEditor() {
                                     onChange={(e) => {
                                       const value = e.target.value === '' ? 0 : parseFloat(e.target.value);
                                       handlePriceChange(
-                                        product._id,
+                                        (product._id || product.id),
                                         sizeIndex,
                                         '100',
                                         isNaN(value) ? 0 : value
@@ -559,13 +559,13 @@ export function BulkPriceEditor() {
                                       }
                                     }}
                                     autoComplete="off"
-                                    className={`w-full font-semibold ${hasEdit100 ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20' : ''}`}
+                                    className={`w-full font-semibold ${hasEdit100 ? 'border-green-500 bg-green-50 dark:bg-green-900/20' : ''}`}
                                   />
                                   {hasEdit100 && (
                                     <Button
                                       variant="ghost"
                                       size="sm"
-                                      onClick={() => resetPrice(product._id, sizeIndex, '100')}
+                                      onClick={() => resetPrice((product._id || product.id), sizeIndex, '100')}
                                       className="h-9 w-9 p-0"
                                       aria-label="Reset 100% price"
                                     >
@@ -577,7 +577,7 @@ export function BulkPriceEditor() {
                                   <Button
                                     variant="outline"
                                     size="sm"
-                                    onClick={() => adjustPrice(product._id, sizeIndex, '100', -10)}
+                                    onClick={() => adjustPrice((product._id || product.id), sizeIndex, '100', -10)}
                                     className="h-7 flex-1 text-xs"
                                     title="Decrease by 10%"
                                   >
@@ -587,7 +587,7 @@ export function BulkPriceEditor() {
                                   <Button
                                     variant="outline"
                                     size="sm"
-                                    onClick={() => adjustPrice(product._id, sizeIndex, '100', 10)}
+                                    onClick={() => adjustPrice((product._id || product.id), sizeIndex, '100', 10)}
                                     className="h-7 flex-1 text-xs"
                                     title="Increase by 10%"
                                   >
@@ -597,7 +597,7 @@ export function BulkPriceEditor() {
                                   <Button
                                     variant="outline"
                                     size="sm"
-                                    onClick={() => adjustPrice(product._id, sizeIndex, '100', 25)}
+                                    onClick={() => adjustPrice((product._id || product.id), sizeIndex, '100', 25)}
                                     className="h-7 flex-1 text-xs"
                                     title="Increase by 25%"
                                   >
@@ -615,13 +615,13 @@ export function BulkPriceEditor() {
                             <CardContent className="p-3">
                               <div className="space-y-2">
                                 <div className="flex items-center justify-between">
-                                  <label htmlFor={`price-50-${product._id}-${sizeIndex}`} className="text-xs font-medium text-green-600">50% Price</label>
+                                  <label htmlFor={`price-50-${(product._id || product.id)}-${sizeIndex}`} className="text-xs font-medium text-green-600">50% Price</label>
                                   <Badge variant="outline" className="text-xs bg-green-50 text-green-700">Wholesale</Badge>
                                 </div>
                                 <div className="flex items-center gap-2">
                                   <Input
-                                    id={`price-50-${product._id}-${sizeIndex}`}
-                                    name={`price-50-${product._id}-${sizeIndex}`}
+                                    id={`price-50-${(product._id || product.id)}-${sizeIndex}`}
+                                    name={`price-50-${(product._id || product.id)}-${sizeIndex}`}
                                     type="number"
                                     min="0"
                                     step="0.01"
@@ -630,7 +630,7 @@ export function BulkPriceEditor() {
                                     onChange={(e) => {
                                       const value = e.target.value === '' ? 0 : parseFloat(e.target.value);
                                       handlePriceChange(
-                                        product._id,
+                                        (product._id || product.id),
                                         sizeIndex,
                                         '50',
                                         isNaN(value) ? 0 : value
@@ -649,7 +649,7 @@ export function BulkPriceEditor() {
                                     <Button
                                       variant="ghost"
                                       size="sm"
-                                      onClick={() => resetPrice(product._id, sizeIndex, '50')}
+                                      onClick={() => resetPrice((product._id || product.id), sizeIndex, '50')}
                                       className="h-9 w-9 p-0"
                                       aria-label="Reset 50% price"
                                     >
@@ -661,7 +661,7 @@ export function BulkPriceEditor() {
                                   <Button
                                     variant="outline"
                                     size="sm"
-                                    onClick={() => adjustPrice(product._id, sizeIndex, '50', -10)}
+                                    onClick={() => adjustPrice((product._id || product.id), sizeIndex, '50', -10)}
                                     className="h-7 flex-1 text-xs"
                                     title="Decrease by 10%"
                                   >
@@ -671,7 +671,7 @@ export function BulkPriceEditor() {
                                   <Button
                                     variant="outline"
                                     size="sm"
-                                    onClick={() => adjustPrice(product._id, sizeIndex, '50', 10)}
+                                    onClick={() => adjustPrice((product._id || product.id), sizeIndex, '50', 10)}
                                     className="h-7 flex-1 text-xs"
                                     title="Increase by 10%"
                                   >
@@ -681,7 +681,7 @@ export function BulkPriceEditor() {
                                   <Button
                                     variant="outline"
                                     size="sm"
-                                    onClick={() => adjustPrice(product._id, sizeIndex, '50', 25)}
+                                    onClick={() => adjustPrice((product._id || product.id), sizeIndex, '50', 25)}
                                     className="h-7 flex-1 text-xs"
                                     title="Increase by 25%"
                                   >

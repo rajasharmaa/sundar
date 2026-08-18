@@ -12,8 +12,8 @@ export function UsersStats({ users }: UsersStatsProps) {
       label: 'Total Users',
       value: users.length,
       icon: Users,
-      color: 'text-blue-600',
-      bgColor: 'bg-blue-50',
+      color: 'text-green-600',
+      bgColor: 'bg-green-50',
       description: 'All registered accounts'
     },
     {

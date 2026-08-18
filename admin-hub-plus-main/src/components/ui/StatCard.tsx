@@ -23,7 +23,7 @@ export function StatCard({
 }: StatCardProps) {
   // Define color schemes based on variant
   const colors = {
-    products: 'from-blue-500/20 to-blue-600/5 text-blue-600 border-blue-200/50 bg-blue-100',
+    products: 'from-green-500/20 to-green-600/5 text-green-600 border-green-200/50 bg-green-100',
     inquiries: 'from-emerald-500/20 to-emerald-600/5 text-emerald-600 border-emerald-200/50 bg-emerald-100',
     users: 'from-purple-500/20 to-purple-600/5 text-purple-600 border-purple-200/50 bg-purple-100',
     alerts: 'from-rose-500/20 to-rose-600/5 text-rose-600 border-rose-200/50 bg-rose-100',

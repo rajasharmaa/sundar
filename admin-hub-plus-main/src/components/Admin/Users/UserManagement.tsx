@@ -17,7 +17,7 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
 import { Users, UserX } from 'lucide-react';
-import toast from 'react-hot-toast';
+import { toast } from 'sonner';
 
 type FilterValue = 'all' | 'active' | 'inactive' | 'admin' | 'user';
 

@@ -25,12 +25,29 @@ export const productService = {
     formData.append('sizeOptions', JSON.stringify(data.sizeOptions));
     formData.append('discount', String(data.discount || 0));
     formData.append('material', data.material);
-    formData.append('pressureRating', data.pressureRating);
-    formData.append('temperatureRange', data.temperatureRange);
-    formData.append('standards', data.standards);
-    formData.append('application', data.application);
-    if (data.specifications) {
-      formData.append('specifications', JSON.stringify(data.specifications));
+    if (data.dimensions) formData.append('dimensions', data.dimensions);
+    if (data.capacity) formData.append('capacity', data.capacity);
+    if (data.printingType) formData.append('printingType', data.printingType);
+    if (data.lamination) formData.append('lamination', data.lamination);
+    if (data.themeColor) formData.append('themeColor', data.themeColor);
+    
+    // Serialize dynamic arrays
+    if (data.benefits) formData.append('benefits', JSON.stringify(data.benefits));
+    if (data.industries) formData.append('industries', JSON.stringify(data.industries));
+    if (data.faqs) formData.append('faqs', JSON.stringify(data.faqs));
+    if (data.customizationTypes) formData.append('customizationTypes', JSON.stringify(data.customizationTypes));
+    
+    // Add dynamic strings
+    if (data.manufacturingProcess) formData.append('manufacturingProcess', data.manufacturingProcess);
+    if (data.materialComposition) formData.append('materialComposition', data.materialComposition);
+    if (data.printingDetails) formData.append('printingDetails', data.printingDetails);
+
+    if (data.specifications && Array.isArray(data.specifications)) {
+      const specsObject = data.specifications.reduce((acc, curr) => {
+        if (curr.key && curr.value) acc[curr.key] = curr.value;
+        return acc;
+      }, {} as Record<string, string>);
+      formData.append('specifications', JSON.stringify(specsObject));
     }
     if (data.featured !== undefined) {
       formData.append('featured', String(data.featured));
@@ -67,12 +84,29 @@ export const productService = {
     }
     if (data.discount !== undefined) formData.append('discount', String(data.discount));
     if (data.material !== undefined && data.material !== null && data.material !== '') formData.append('material', data.material);
-    if (data.pressureRating !== undefined && data.pressureRating !== null && data.pressureRating !== '') formData.append('pressureRating', data.pressureRating);
-    if (data.temperatureRange !== undefined && data.temperatureRange !== null && data.temperatureRange !== '') formData.append('temperatureRange', data.temperatureRange);
-    if (data.standards !== undefined && data.standards !== null && data.standards !== '') formData.append('standards', data.standards);
-    if (data.application !== undefined && data.application !== null && data.application !== '') formData.append('application', data.application);
-    if (data.specifications !== undefined) {
-      formData.append('specifications', JSON.stringify(data.specifications));
+    if (data.dimensions !== undefined && data.dimensions !== null && data.dimensions !== '') formData.append('dimensions', data.dimensions);
+    if (data.capacity !== undefined && data.capacity !== null && data.capacity !== '') formData.append('capacity', data.capacity);
+    if (data.printingType !== undefined && data.printingType !== null && data.printingType !== '') formData.append('printingType', data.printingType);
+    if (data.lamination !== undefined && data.lamination !== null && data.lamination !== '') formData.append('lamination', data.lamination);
+    if (data.themeColor !== undefined && data.themeColor !== null && data.themeColor !== '') formData.append('themeColor', data.themeColor);
+    
+    // Serialize dynamic arrays for updates
+    if (data.benefits !== undefined) formData.append('benefits', JSON.stringify(data.benefits));
+    if (data.industries !== undefined) formData.append('industries', JSON.stringify(data.industries));
+    if (data.faqs !== undefined) formData.append('faqs', JSON.stringify(data.faqs));
+    if (data.customizationTypes !== undefined) formData.append('customizationTypes', JSON.stringify(data.customizationTypes));
+    
+    // Add dynamic strings for updates
+    if (data.manufacturingProcess !== undefined && data.manufacturingProcess !== null && data.manufacturingProcess !== '') formData.append('manufacturingProcess', data.manufacturingProcess);
+    if (data.materialComposition !== undefined && data.materialComposition !== null && data.materialComposition !== '') formData.append('materialComposition', data.materialComposition);
+    if (data.printingDetails !== undefined && data.printingDetails !== null && data.printingDetails !== '') formData.append('printingDetails', data.printingDetails);
+
+    if (data.specifications !== undefined && Array.isArray(data.specifications)) {
+      const specsObject = data.specifications.reduce((acc, curr) => {
+        if (curr.key && curr.value) acc[curr.key] = curr.value;
+        return acc;
+      }, {} as Record<string, string>);
+      formData.append('specifications', JSON.stringify(specsObject));
     }
     if (data.featured !== undefined) {
       formData.append('featured', String(data.featured));

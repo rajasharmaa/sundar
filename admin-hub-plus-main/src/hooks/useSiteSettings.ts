@@ -14,7 +14,7 @@ export const DEFAULT_SETTINGS: SiteSettings = {
     {
       image: 'https://lh3.googleusercontent.com/gps-cs-s/AHVAweqgLB9yVgiMyQhTQR76qltycH7dCvQbyaLD68eqONCZxOhkKi3QY0eVh5-CmdWucsgVECLETk-NK1DT738kZB-qrADr6QNf6zF7VnzF0O35xBZqL_RFBUjNhU5-hYzXDk3V1A5D=s1360-w1360-h1020-rw',
       caption: 'Main Showroom',
-      description: 'Experience our extensive range of premium industrial fittings.'
+      description: 'Experience our extensive range of premium industrial bags.'
     },
     {
       image: 'https://lh3.googleusercontent.com/gps-cs-s/AHVAweofwt3aI2ZzdlAuOiwzd00uT4cWGzHn5zwXQSUoZKS3OX_la-MjcY8U0sA6zaRBGxDvnHYCloIHkmsFQ4I8XeucpIJp5DPytZw9mBZ5qvoW2SnW8jqHQoTjpOE1Nd_z23mQR0nN=s1360-w1360-h1020-rw',
@@ -31,7 +31,12 @@ export const DEFAULT_SETTINGS: SiteSettings = {
       caption: 'Quality Lab',
       description: 'Rigorous testing to maintain our legacy of trust since 2011.'
     }
-  ]
+  ],
+  banners: [],
+  manufacturingImage: '/manufacturing.jpg',
+  aboutUsBanner: '',
+  contactUsBanner: '',
+  productsBanner: ''
 };
 
 export const useSiteSettings = () => {

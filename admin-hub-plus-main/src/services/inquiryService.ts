@@ -69,7 +69,7 @@ export const inquiryService = {
   // Get mailto link for replying
   getReplyLink(inquiry: Inquiry): string {
     const subject = encodeURIComponent(`Re: ${inquiry.subject}`);
-    const body = encodeURIComponent(`Dear ${inquiry.name},\n\nThank you for your inquiry.\n\n---\nOriginal Message:\n${inquiry.message}\n\nBest Regards,\nDamodar Traders`);
+    const body = encodeURIComponent(`Dear ${inquiry.name},\n\nThank you for your inquiry.\n\n---\nOriginal Message:\n${inquiry.message}\n\nBest Regards,\nSundar Corporation`);
     return `mailto:${inquiry.email}?subject=${subject}&body=${body}`;
   },
 };

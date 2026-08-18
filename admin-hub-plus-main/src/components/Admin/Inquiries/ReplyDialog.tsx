@@ -12,7 +12,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import type { Inquiry } from '@/types';
 import { Mail, Send, Loader2 } from 'lucide-react';
-import toast from 'react-hot-toast';
+import { toast } from 'sonner';
 
 interface ReplyDialogProps {
   inquiry: Inquiry | null;
@@ -30,7 +30,7 @@ export function ReplyDialog({ inquiry, open, onOpenChange, onSendReply }: ReplyD
   useEffect(() => {
     if (inquiry && open) {
       setReplySubject(`Re: ${inquiry.subject}`);
-      setReplyMessage(`Dear ${inquiry.name},\n\nThank you for your inquiry.\n\n---\nOriginal Message:\n${inquiry.message}\n\nBest Regards,\nDamodar Traders`);
+      setReplyMessage(`Dear ${inquiry.name},\n\nThank you for your inquiry.\n\n---\nOriginal Message:\n${inquiry.message}\n\nBest Regards,\nSundar Corporation`);
     }
   }, [inquiry, open]);
 

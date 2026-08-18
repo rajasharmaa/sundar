@@ -102,9 +102,10 @@ export function InventoryManagement() {
       }
 
       // Update sequentially (or Promise.all if your backend handles high concurrency well)
-      const updatePromises = Array.from(productUpdates.values()).map(p => 
-        productService.update(p._id!, { sizeOptions: p.sizeOptions })
-      );
+      const updatePromises = Array.from(productUpdates.values()).map(p => {
+        const productId = p._id || (p as any).id;
+        return productService.update(productId, { sizeOptions: p.sizeOptions });
+      });
       
       await Promise.all(updatePromises);
 
@@ -142,7 +143,7 @@ export function InventoryManagement() {
           <Button variant="outline" onClick={() => refetch()} className="font-bold">
             <RefreshCw className="w-4 h-4 mr-2" /> Refresh
           </Button>
-          <Button onClick={handleSave} disabled={stockEdits.size === 0 || isSaving} className="bg-blue-600 hover:bg-blue-700 text-white font-bold">
+          <Button onClick={handleSave} disabled={stockEdits.size === 0 || isSaving} className="bg-green-600 hover:bg-green-700 text-white font-bold">
             {isSaving ? <LoadingSpinner size="sm" className="mr-2" /> : <Save className="w-4 h-4 mr-2" />}
             Save Changes ({stockEdits.size})
           </Button>
@@ -189,7 +190,7 @@ export function InventoryManagement() {
             placeholder="Search products..." 
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-9 border-slate-200 focus:ring-blue-500/20 rounded-xl font-medium"
+            className="pl-9 border-slate-200 focus:ring-green-500/20 rounded-xl font-medium"
           />
         </div>
         <div className="flex gap-2 p-1 bg-slate-100 rounded-xl w-full md:w-auto">
@@ -267,7 +268,7 @@ export function InventoryManagement() {
                           min="0"
                           className={cn(
                             "w-24 text-right font-bold rounded-xl",
-                            edit ? "border-blue-400 bg-blue-50 focus:ring-blue-500/20 text-blue-700" : "border-slate-200"
+                            edit ? "border-green-400 bg-green-50 focus:ring-green-500/20 text-green-700" : "border-slate-200"
                           )}
                           value={currentDisplayStock}
                           onChange={(e) => handleStockChange(product._id!, sizeIndex, e.target.value)}

@@ -42,7 +42,7 @@ export function InquiryCard({
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'new': return 'bg-blue-100 text-blue-700 border-blue-200';
+      case 'new': return 'bg-green-100 text-green-700 border-green-200';
       case 'pending': return 'bg-amber-100 text-amber-700 border-amber-200';
       case 'completed': return 'bg-emerald-100 text-emerald-700 border-emerald-200';
       default: return 'bg-slate-100 text-slate-700 border-slate-200';
@@ -63,12 +63,12 @@ export function InquiryCard({
       {/* Premium glowing background on hover */}
       <div className={cn(
         "absolute -inset-0.5 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500",
-        !inquiry.read ? "bg-blue-400" : "bg-slate-300"
+        !inquiry.read ? "bg-green-400" : "bg-slate-300"
       )} />
       
       <div className={cn(
         "relative flex flex-col h-full bg-white rounded-2xl border transition-all duration-300 shadow-sm hover:shadow-md overflow-hidden",
-        !inquiry.read ? "border-blue-200" : "border-slate-200"
+        !inquiry.read ? "border-green-200" : "border-slate-200"
       )}>
         
         {/* Clickable Card Body */}
@@ -80,8 +80,8 @@ export function InquiryCard({
           {/* Unread indicator dot */}
           {!inquiry.read && (
             <span className="absolute top-4 right-4 flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
             </span>
           )}
 
@@ -101,7 +101,7 @@ export function InquiryCard({
                   {inquiry.status}
                 </span>
                 {inquiry.attachmentUrl && (
-                  <span className="inline-flex items-center text-blue-500 bg-blue-50 px-1 py-0.5 rounded text-[10px] font-bold" title={`Has attachment: ${inquiry.attachmentName}`}>
+                  <span className="inline-flex items-center text-green-500 bg-green-50 px-1 py-0.5 rounded text-[10px] font-bold" title={`Has attachment: ${inquiry.attachmentName}`}>
                     <Paperclip className="w-3 h-3 mr-0.5 shrink-0" />
                     Doc
                   </span>
@@ -120,10 +120,10 @@ export function InquiryCard({
               <MessageSquare className="w-4 h-4 text-slate-400" />
               {inquiry.subject}
             </h5>
-            <div className="bg-slate-50 border border-slate-100 rounded-xl p-3.5 text-sm text-slate-600 line-clamp-3 leading-relaxed relative group-hover:bg-blue-50/50 transition-colors duration-300">
+            <div className="bg-slate-50 border border-slate-100 rounded-xl p-3.5 text-sm text-slate-600 line-clamp-3 leading-relaxed relative group-hover:bg-green-50/50 transition-colors duration-300">
               {inquiry.message}
               {/* Fade out long text */}
-              <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-slate-50 group-hover:from-blue-50/50 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-slate-50 group-hover:from-green-50/50 to-transparent" />
             </div>
           </div>
 
@@ -155,19 +155,19 @@ export function InquiryCard({
 
           {/* Product Interest Box */}
           {inquiry.products && inquiry.products.length > 0 ? (
-            <div className="p-3 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-between group/product cursor-default" onClick={(e) => e.stopPropagation()}>
+            <div className="p-3 rounded-xl bg-green-50 border border-green-100 flex items-center justify-between group/product cursor-default" onClick={(e) => e.stopPropagation()}>
               <div className="flex items-center gap-2 min-w-0">
-                <div className="p-1.5 bg-blue-100 rounded-lg shrink-0">
-                  <ClipboardList className="w-4 h-4 text-blue-600" />
+                <div className="p-1.5 bg-green-100 rounded-lg shrink-0">
+                  <ClipboardList className="w-4 h-4 text-green-600" />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-blue-600/80 mb-0.5">B2B Bulk RFQ</p>
-                  <p className="text-sm font-bold text-blue-900 truncate">{inquiry.products.length} industrial items</p>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-green-600/80 mb-0.5">B2B Bulk RFQ</p>
+                  <p className="text-sm font-bold text-green-900 truncate">{inquiry.products.length} industrial items</p>
                 </div>
               </div>
               <div className="shrink-0 text-right">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600/80 block">Est. Value</span>
-                <span className="text-sm font-extrabold text-blue-955">₹{(inquiry.totalEstimatedValue || inquiry.products.reduce((sum, p) => sum + ((p.unitPrice || 0) * p.quantity), 0)).toFixed(0)}</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-green-600/80 block">Est. Value</span>
+                <span className="text-sm font-extrabold text-green-955">₹{(inquiry.totalEstimatedValue || inquiry.products.reduce((sum, p) => sum + ((p.unitPrice || 0) * p.quantity), 0)).toFixed(0)}</span>
               </div>
             </div>
           ) : inquiry.productName ? (
@@ -197,7 +197,7 @@ export function InquiryCard({
             value={inquiry.status}
             onValueChange={(value) => onStatusChange(inquiry._id, value as Inquiry['status'])}
           >
-            <SelectTrigger className="h-9 flex-1 bg-white border-slate-200 text-xs font-semibold focus:ring-blue-500/20">
+            <SelectTrigger className="h-9 flex-1 bg-white border-slate-200 text-xs font-semibold focus:ring-green-500/20">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -211,7 +211,7 @@ export function InquiryCard({
 
           <div className="flex items-center gap-1.5 shrink-0">
             {!inquiry.read && (
-              <Button size="sm" variant="outline" onClick={() => onMarkAsRead(inquiry._id)} className="h-9 px-3 border-blue-200 text-blue-600 hover:bg-blue-50 hover:text-blue-700 bg-white" title="Mark as Read">
+              <Button size="sm" variant="outline" onClick={() => onMarkAsRead(inquiry._id)} className="h-9 px-3 border-green-200 text-green-600 hover:bg-green-50 hover:text-green-700 bg-white" title="Mark as Read">
                 <CheckCircle2 className="w-4 h-4" />
               </Button>
             )}
