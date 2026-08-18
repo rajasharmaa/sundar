@@ -7,58 +7,7 @@ const isDevelopment = import.meta.env.MODE === 'development';
 const isProduction = import.meta.env.MODE === 'production';
 const isStaging = import.meta.env.VITE_APP_ENV === 'staging';
 
-// Base URLs with fallback chain
-const DEV_API_URL = 'http://127.0.0.1:3000/api/v1';
-const PROD_API_URL = 'https://sundar-corporation-v1-0.onrender.com/api/v1';
-
-const checkUrl = async (url: string): Promise<string> => {
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 3000); // 3-second timeout
-  try {
-    const response = await fetch(`${url.replace('/api/v1', '')}/health`, {
-      method: 'GET',
-      signal: controller.signal
-    });
-    clearTimeout(timeoutId);
-    if (response.ok) {
-      logger.info(`✅ Backend detected at: ${url}`);
-      return url;
-    }
-    throw new Error(`Health check failed for ${url}`);
-  } catch (error) {
-    clearTimeout(timeoutId);
-    logger.debug(`Backend not available at ${url}:`, error);
-    throw error;
-  }
-};
-
-// 🔥 AUTO-DETECT BACKEND AVAILABILITY
-const detectBackendAvailability = async (): Promise<string> => {
-  // Try common local development ports
-  const localPorts = [5000, 3000, 8000, 4000, 8080];
-
-  const currentHost = typeof window !== 'undefined' ? (window.location.hostname === 'localhost' ? '127.0.0.1' : window.location.hostname) : '127.0.0.1';
-  
-  for (const port of localPorts) {
-    try {
-      const localUrl = `http://${currentHost}:${port}/api/v1`;
-      await checkUrl(localUrl);
-      return localUrl;
-    } catch (error) {
-      // Continue to next port
-    }
-  }
-
-  logger.debug('Local backend checks failed, checking production fallback...');
-  try {
-    const prodUrl = 'https://sundar-corporation-v1-0.onrender.com/api/v1';
-    await checkUrl(prodUrl);
-    return prodUrl;
-  } catch (prodError) {
-    logger.warn('⚠️ No backend detected, using default configuration');
-    return DEV_API_URL;
-  }
-};
+// No hardcoded URLs, relying solely on environment variables
 
 // Determine environment automatically
 const getEnvironmentType = (): 'development' | 'production' | 'staging' => {
@@ -76,45 +25,17 @@ const getEnvironmentType = (): 'development' | 'production' | 'staging' => {
 
 const currentEnv = getEnvironmentType();
 
-// API URL with multiple fallback layers and auto-detection
+// API URL directly from environment variables
 const getApiUrl = async (): Promise<string> => {
   const envUrl = import.meta.env.VITE_API_URL;
 
-  // Priority 1: Environment-specific URLs
-  if (currentEnv === 'production') {
-    return import.meta.env.VITE_PROD_API_URL || PROD_API_URL;
-  }
-
-  if (currentEnv === 'staging') {
-    return import.meta.env.VITE_STAGING_API_URL || envUrl || DEV_API_URL;
-  }
-
-  // Priority 2: Explicit development URL (If you set this in .env, we trust it unconditionally)
   if (envUrl) {
     logger.info(`✅ Using explicit VITE_API_URL from .env: ${envUrl}`);
     return envUrl;
   }
 
-  // Priority 3: Auto-detect backend availability
-  try {
-    const detectedUrl = await detectBackendAvailability();
-    return detectedUrl;
-  } catch (error) {
-    console.warn('Backend detection failed:', error);
-  }
-
-  // Priority 4: Auto-detect based on hostname
-  const isLocalhost = window.location.hostname === 'localhost' ||
-    window.location.hostname === '127.0.0.1' ||
-    window.location.hostname.startsWith('192.168.') ||
-    window.location.hostname.startsWith('10.');
-
-  if (isLocalhost) {
-    return DEV_API_URL;
-  }
-
-  // Priority 5: Production as fallback
-  return PROD_API_URL;
+  logger.warn('⚠️ No VITE_API_URL found in environment variables! Please set it in .env or Vercel dashboard.');
+  return '';
 };
 
 // Environment-specific configuration
@@ -125,14 +46,12 @@ export const ENV_CONFIG = {
   isStaging: currentEnv === 'staging',
   environment: currentEnv,
 
-  // API Configuration with fallback safety
-  API_URL: DEV_API_URL, // Will be updated after detection
+  // API Configuration
+  API_URL: import.meta.env.VITE_API_URL || '', // Will be updated by initializeApiUrl
 
-  // Frontend URL with proper detection
-  FRONTEND_URL: isProduction
-    ? (import.meta.env.VITE_PROD_FRONTEND_URL || 'https://damoder.vercel.app')
-    : (import.meta.env.VITE_FRONTEND_URL ||
-      (window.location.origin !== 'null' ? window.location.origin : 'http://localhost:5173')),
+  // Frontend URL
+  FRONTEND_URL: import.meta.env.VITE_FRONTEND_URL || 
+    (typeof window !== 'undefined' && window.location.origin !== 'null' ? window.location.origin : 'http://localhost:5173'),
 
   // Cookie Settings
   COOKIE_SETTINGS: {
