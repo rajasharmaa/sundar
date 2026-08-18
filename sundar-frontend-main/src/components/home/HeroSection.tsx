@@ -88,7 +88,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ companyInfo }) => {
     "/hero/Screenshot 2026-08-14 161556.png",
     "/hero/Screenshot 2026-08-14 161646.png",
     "/hero/Screenshot 2026-08-14 162040.png",
-    "/hero/Screenshot 2026-08-14 162108.png",
+    "/hero/Screenshot 2026-08-14 162244.png",
     "/hero/Screenshot 2026-08-14 185840.png"
   ];
 
