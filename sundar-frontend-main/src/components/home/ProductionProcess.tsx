@@ -53,10 +53,10 @@ const ProductionProcess: React.FC = () => {
         </h2>
       </div>
 
-      <div className="overflow-x-auto lg:overflow-visible">
-        <div ref={containerRef} className="flex flex-col lg:flex-row gap-12 lg:gap-0 px-6 lg:px-[10vw] w-max lg:w-max">
+      <div className="overflow-hidden lg:overflow-visible">
+        <div ref={containerRef} className="flex flex-col lg:flex-row gap-12 lg:gap-0 px-6 lg:px-[10vw] w-full lg:w-max">
           {steps.map((step, index) => (
-            <div key={index} className="flex flex-col lg:w-[400px] lg:flex-shrink-0 lg:pr-24 relative group">
+            <div key={index} className="flex flex-col w-full lg:w-[400px] lg:flex-shrink-0 lg:pr-24 relative group">
               <div className="text-7xl lg:text-9xl font-serif font-bold text-gray-100 group-hover:text-[#22c55e]/20 transition-colors duration-500 mb-4">
                 {step.num}
               </div>
