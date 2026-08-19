@@ -77,13 +77,13 @@ export default function Products() {
   const handleSearch = useCallback((query: string) => {
     const sanitized = query.replace(/[<>]/g, '');
     setSearchQuery(sanitized);
-    setSearchInput(sanitized);
+    // Don't update searchInput here, it causes cursor jumping/flickering while typing
     setSearchParams(prev => {
       const newParams = new URLSearchParams(prev);
       if (sanitized) newParams.set('search', sanitized);
       else newParams.delete('search');
       return newParams;
-    });
+    }, { replace: true });
   }, [setSearchParams]);
 
   const searchParam = searchParams.get('search') || '';
@@ -92,9 +92,13 @@ export default function Products() {
     const searchFromURL = searchParam.replace(/[<>]/g, '');
     if (searchFromURL !== searchQuery) {
       setSearchQuery(searchFromURL);
-      setSearchInput(searchFromURL);
+      // Only update the input field if the change came from URL (like back button)
+      // and not from the user currently typing
+      if (searchFromURL !== debouncedSearchQuery.replace(/[<>]/g, '')) {
+        setSearchInput(searchFromURL);
+      }
     }
-  }, [searchParam, searchQuery]);
+  }, [searchParam, searchQuery, debouncedSearchQuery]);
 
   useEffect(() => {
     if (debouncedSearchQuery !== searchQuery) {

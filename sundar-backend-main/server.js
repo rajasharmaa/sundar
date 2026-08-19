@@ -134,7 +134,7 @@ async function startServer() {
       logger.info(`🌍 Environment: ${config.NODE_ENV}`);
       if (isRender) {
         logger.info('🚀 Optimized for Render free tier cold-start resilience');
-        
+
         // 🔥 SELF-PING TO PREVENT RENDER SLEEP (Every 14 minutes)
         setInterval(() => {
           logger.info('💓 Sending self-ping to keep Render awake...');
