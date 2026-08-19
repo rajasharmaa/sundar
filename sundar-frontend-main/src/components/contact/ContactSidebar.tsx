@@ -1,15 +1,11 @@
 import {
-  Phone, Mail, MapPin, Clock, ShieldCheck,
-  BadgeCheck, Award, FileText, Download
+  Phone, Mail, MapPin, Clock
 } from 'lucide-react';
 import ScrollReveal from '@/components/ScrollReveal';
-import { downloadCatalog } from '@/utils/catalogHelper';
-
 // Static Configuration Arrays (Issue 17: Moved outside component to prevent re-creation)
 const CONTACT_PHONE_1 = import.meta.env.VITE_SALES_PHONE || '+91 98930 53053';
 const CONTACT_PHONE_2 = import.meta.env.VITE_OFFICE_PHONE || '+91 98260 53653';
 const CONTACT_EMAIL_1 = import.meta.env.VITE_CONTACT_EMAIL_1 || 'sundarcorporation@yahoo.com';
-const CONTACT_EMAIL_2 = import.meta.env.VITE_CONTACT_EMAIL_2 || 'sundarcorporation@yahoo.com';
 
 const DIRECT_CHANNELS = [
   {
@@ -22,7 +18,7 @@ const DIRECT_CHANNELS = [
   {
     icon: Mail,
     title: 'Email Hub',
-    details: [CONTACT_EMAIL_1, CONTACT_EMAIL_2],
+    details: [CONTACT_EMAIL_1],
     action: `mailto:${CONTACT_EMAIL_1}`,
     color: '-green- -green-'
   },
@@ -35,12 +31,6 @@ const DIRECT_CHANNELS = [
   }
 ] as const;
 
-const TRUST_BADGES = [
-  { icon: ShieldCheck, title: "ISO 9001:2015 Approved", desc: "Quality management and supply checks are fully audited.", doc: "iso_certificate.pdf" },
-  { icon: BadgeCheck, title: "GST Registered Billing", desc: "Complete transparency with corporate tax invoices.", doc: "gst_certificate.pdf" },
-  { icon: Award, title: "Premium Quality Packaging", desc: "Providing durable and strength-tested bags.", doc: "quality_certificate.pdf" },
-  { icon: FileText, title: "Verified Material Quality", desc: "Sourcing premium raw materials for superior products.", doc: "material_certificate.pdf" }
-] as const;
 
 export function ContactSidebar() {
   return (
@@ -71,46 +61,6 @@ export function ContactSidebar() {
         </div>
       </ScrollReveal>
 
-      {/* Trust & Verification Badges Widget */}
-      <ScrollReveal direction="left" delay={0.1} distance={40}>
-        <div className="bg-white rounded-2xl p-6 shadow-xl shadow-slate-200 border border-slate-100 space-y-4">
-          <h3 className="text-xs font-black text-slate-900 uppercase tracking-widest pb-2.5 border-b border-slate-100">Verification & Trust</h3>
-          <div className="space-y-3">
-            {TRUST_BADGES.map((badge, index) => (
-              <div key={index} className="flex gap-3 items-start pb-3 border-b border-slate-50 last:border-0 last:pb-0">
-                <div className="p-2 bg-green-50 text-green-600 rounded-lg flex-shrink-0 mt-0.5">
-                  <badge.icon size={16} />
-                </div>
-                <div className="flex-1">
-                  <h4 className="font-extrabold text-slate-800 text-[10px] uppercase tracking-wide">{badge.title}</h4>
-                  <p className="text-[10px] text-slate-500 font-semibold mt-0.5 leading-relaxed">{badge.desc}</p>
-                  <a
-                    href={`/documents/${badge.doc}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-1 inline-flex items-center gap-0.5 text-[9px] font-black uppercase text-green-600 hover:text-green-800 transition-colors"
-                  >
-                    <Download size={10} />
-                    Verify Document
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Download Catalog Link */}
-          <div className="pt-3 border-t border-slate-100">
-            <button
-              onClick={downloadCatalog}
-              type="button"
-              className="w-full py-3 bg-slate-50 hover:bg-green-50 hover:text-green-700 transition-colors border border-slate-150 rounded-xl flex items-center justify-center gap-1.5 font-black text-[10px] uppercase tracking-wider text-slate-700 cursor-pointer"
-            >
-              <Download size={13} />
-              Download Catalog
-            </button>
-          </div>
-        </div>
-      </ScrollReveal>
 
       {/* Working Hours Card */}
       <ScrollReveal direction="left" delay={0.2} distance={40}>

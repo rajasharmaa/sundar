@@ -4,7 +4,7 @@ import { useSiteSettings } from '@/hooks/useSiteSettings';
 
 // Static procurement benefits list
 const HERO_STATS = [
-  { val: "Est. 2011", desc: "Industrial Legacy" },
+  { val: "Est. 2017", desc: "Industrial Legacy" },
   { val: "Certified", desc: "Quality Standards" },
   { val: "Ready Stock", desc: "Indore Distribution" },
   { val: "PAN-India", desc: "Logistics Partners" }
