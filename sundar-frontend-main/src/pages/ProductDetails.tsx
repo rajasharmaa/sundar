@@ -169,7 +169,7 @@ export default function ProductDetails() {
         <section ref={heroRef} className="relative w-full min-h-[100vh] lg:min-h-[800px] flex flex-col lg:flex-row overflow-hidden bg-[var(--theme-color)]">
           
           {/* LEFT HALF (Navy) */}
-          <div className="relative w-full lg:w-1/2 bg-[var(--theme-color)] pt-32 pb-40 lg:pb-20 px-8 lg:px-20 flex flex-col justify-center items-start lg:items-end z-10">
+          <div className="relative w-full lg:w-1/2 bg-[var(--theme-color)] py-16 lg:pt-32 lg:pb-20 px-8 lg:px-20 flex flex-col justify-center items-start lg:items-end z-10 order-3 lg:order-1">
             {/* Rotated Background Text */}
             <div className="absolute left-4 lg:left-12 top-1/2 -translate-y-1/2 -rotate-90 origin-left text-white/[0.03] font-black text-[60px] lg:text-[100px] tracking-widest uppercase whitespace-nowrap pointer-events-none">
               Specifications
@@ -216,7 +216,7 @@ export default function ProductDetails() {
           </div>
 
           {/* RIGHT HALF (Emerald Green) */}
-          <div className="relative w-full lg:w-1/2 bg-[#00C878] pt-40 lg:pt-20 pb-32 px-8 lg:px-20 flex flex-col justify-center items-start z-10 lg:pl-[240px] xl:pl-[280px]">
+          <div className="relative w-full lg:w-1/2 bg-[#00C878] pt-24 pb-16 lg:pt-20 lg:pb-32 px-8 lg:px-20 flex flex-col justify-center items-start z-10 lg:pl-[240px] xl:pl-[280px] order-1 lg:order-2">
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -256,7 +256,7 @@ export default function ProductDetails() {
           </div>
 
           {/* CENTER FLOATING IMAGE & MULTI-IMAGE THUMBNAILS */}
-          <div className="absolute top-[15%] lg:top-1/2 left-1/2 -translate-x-1/2 lg:-translate-y-1/2 w-[90%] max-w-[400px] lg:max-w-[500px] xl:max-w-[550px] aspect-[4/5] lg:aspect-[3/4] z-30 pointer-events-auto flex flex-col items-center justify-center">
+          <div className="relative lg:absolute order-2 lg:order-none lg:top-1/2 lg:left-1/2 self-center lg:-translate-x-1/2 lg:-translate-y-1/2 w-[90%] max-w-[400px] lg:max-w-[500px] xl:max-w-[550px] aspect-[4/5] lg:aspect-[3/4] z-30 pointer-events-auto flex flex-col items-center justify-center py-10 lg:py-0">
             
             {/* Elegant Floating Pedestal (Pulsing Animation) */}
             <motion.div 
