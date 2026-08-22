@@ -74,15 +74,31 @@ Colors: ${data.colors}
 Additional Notes: ${data.notes || 'None'}
       `.trim();
 
-      await api.inquiries.submit({
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-        companyName: data.company,
-        subject: `Request for Quote: ${data.category}`,
-        message: messageBody,
-        pageSource: 'Request Quote Form',
-      });
+      if (data.designFile && data.designFile.length > 0) {
+        // Send as multipart/form-data if there is a file
+        const formData = new window.FormData();
+        formData.append('name', data.name);
+        formData.append('email', data.email);
+        formData.append('phone', data.phone);
+        formData.append('companyName', data.company);
+        formData.append('subject', `Request for Quote: ${data.category}`);
+        formData.append('message', messageBody);
+        formData.append('pageSource', 'Request Quote Form');
+        formData.append('file', data.designFile[0]);
+
+        await api.inquiries.submit(formData);
+      } else {
+        // Send as JSON if no file
+        await api.inquiries.submit({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          companyName: data.company,
+          subject: `Request for Quote: ${data.category}`,
+          message: messageBody,
+          pageSource: 'Request Quote Form',
+        });
+      }
 
       setIsSuccess(true);
     } catch (error: any) {
@@ -270,11 +286,23 @@ Additional Notes: ${data.notes || 'None'}
                             
                             <div>
                               <label className="block text-xs font-bold text-navy/70 uppercase tracking-wider mb-2">Upload Reference Artwork (Optional)</label>
-                              <label className="block border-2 border-dashed border-navy/20 rounded-lg p-10 text-center hover:bg-navy/5 transition-colors cursor-pointer">
-                                <UploadCloud className="w-12 h-12 text-navy/30 mx-auto mb-4" />
-                                <p className="font-bold text-navy mb-1">Click to upload or drag & drop</p>
-                                <p className="text-xs text-navy/50 uppercase tracking-wider">PDF, AI, JPG, or PNG (Max 10MB)</p>
-                                <input type="file" {...register('designFile')} className="hidden" />
+                              <label className="block border-2 border-dashed border-navy/20 rounded-lg p-10 text-center hover:bg-navy/5 transition-colors cursor-pointer relative">
+                                {watch('designFile') && watch('designFile')?.[0] ? (
+                                  <div className="flex flex-col items-center">
+                                    <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
+                                      <CheckCircle2 className="w-6 h-6 text-emerald-500" />
+                                    </div>
+                                    <p className="font-bold text-navy mb-1">{watch('designFile')![0].name}</p>
+                                    <p className="text-xs text-emerald-600 font-medium">Click to change file</p>
+                                  </div>
+                                ) : (
+                                  <>
+                                    <UploadCloud className="w-12 h-12 text-navy/30 mx-auto mb-4" />
+                                    <p className="font-bold text-navy mb-1">Click to upload or drag & drop</p>
+                                    <p className="text-xs text-navy/50 uppercase tracking-wider">PDF, AI, JPG, or PNG (Max 10MB)</p>
+                                  </>
+                                )}
+                                <input type="file" accept=".pdf,.ai,.jpg,.jpeg,.png" {...register('designFile')} className="hidden" />
                               </label>
                             </div>
                           </motion.div>

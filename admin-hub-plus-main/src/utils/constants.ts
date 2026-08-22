@@ -1,5 +1,10 @@
 // API Configuration
-export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+const hostname = window.location.hostname;
+const configuredApiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+// If VITE_API_URL uses localhost but we are accessing via an IP on mobile/network, replace localhost with the actual IP
+export const API_BASE_URL = configuredApiUrl.includes('localhost') && hostname !== 'localhost' 
+  ? configuredApiUrl.replace('localhost', hostname) 
+  : configuredApiUrl;
 
 // Admin Routes
 export const ADMIN_ROUTES = {

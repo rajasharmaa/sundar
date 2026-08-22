@@ -30,6 +30,12 @@ const getApiUrl = async (): Promise<string> => {
   const envUrl = import.meta.env.VITE_API_URL;
 
   if (envUrl) {
+    const hostname = typeof window !== 'undefined' ? window.location.hostname : 'localhost';
+    if ((envUrl.includes('localhost') || envUrl.includes('127.0.0.1')) && hostname !== 'localhost' && hostname !== '127.0.0.1') {
+      const fixedUrl = envUrl.replace(/localhost|127\.0\.0\.1/, hostname);
+      logger.info(`✅ Using dynamic VITE_API_URL for network/mobile testing: ${fixedUrl}`);
+      return fixedUrl;
+    }
     logger.info(`✅ Using explicit VITE_API_URL from .env: ${envUrl}`);
     return envUrl;
   }
