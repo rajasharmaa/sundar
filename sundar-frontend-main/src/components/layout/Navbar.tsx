@@ -179,19 +179,27 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
 
       {/* Mobile Top Bar */}
       <nav className={`fixed top-0 left-0 right-0 lg:hidden z-[100] ${bgClass} transition-all duration-300`}>
-        <div className="px-4 sm:px-6 flex items-center justify-between h-16">
-          <Logo isDark={!isCurrentlyTransparent} />
-          <div className="flex items-center gap-2">
+        <div className="px-3 sm:px-6 flex items-center justify-between h-16">
+          <div className="flex-shrink-0 scale-[0.85] sm:scale-100 origin-left">
+            <Logo isDark={!isCurrentlyTransparent} />
+          </div>
+          <div className="flex items-center gap-1 sm:gap-2">
             <button
               onClick={toggleLanguage}
-              className={`p-2 rounded-lg transition-colors ${isCurrentlyTransparent ? 'text-white' : 'text-gray-600'}`}
+              className={`p-1.5 sm:p-2 rounded-lg transition-colors hidden sm:block ${isCurrentlyTransparent ? 'text-white' : 'text-gray-600'}`}
               aria-label="Toggle Language"
             >
               <Languages size={18} />
             </button>
+            <Link
+              to="/request-quote"
+              className="text-[10px] sm:text-xs font-bold uppercase tracking-wider px-3 py-2 bg-amber-500 text-navy rounded shadow-sm hover:bg-amber-400 transition-colors mr-1 whitespace-nowrap"
+            >
+              Get Quote
+            </Link>
             <button
               onClick={toggleMobileMenu}
-              className={`p-3 rounded-lg transition-colors ${isCurrentlyTransparent ? 'hover:bg-white/20 text-white' : 'hover:bg-gray-100 text-gray-800'}`}
+              className={`p-1.5 sm:p-2 rounded-lg transition-colors ${isCurrentlyTransparent ? 'hover:bg-white/20 text-white' : 'hover:bg-gray-100 text-gray-800'}`}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMobileMenuOpen}
             >
@@ -216,14 +224,23 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
             {/* Mobile Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 shrink-0">
               <Logo isDark={true} />
-              <button onClick={toggleMobileMenu} className="p-3 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-colors" aria-label="Close menu">
-                <X size={28} />
-              </button>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={toggleLanguage}
+                  className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
+                  aria-label="Toggle Language"
+                >
+                  <Languages size={20} />
+                </button>
+                <button onClick={toggleMobileMenu} className="p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-colors" aria-label="Close menu">
+                  <X size={28} />
+                </button>
+              </div>
             </div>
 
             {/* Mobile Links */}
             <div className="flex-1 overflow-y-auto px-4 py-6">
-              <div className="flex flex-col space-y-1 pb-24">
+              <div className="flex flex-col space-y-1 pb-10">
                 <MobileEntry href="/" isActive={isRouteActive(location.pathname, '/')} onClick={toggleMobileMenu}>
                   {t('nav.home')}
                 </MobileEntry>
@@ -291,17 +308,6 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
                   {t('nav.contact')}
                 </MobileEntry>
               </div>
-            </div>
-
-            {/* Bottom CTA */}
-            <div className="sticky bottom-0 left-0 right-0 p-6 border-t border-gray-100 bg-white/95 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.03)] z-50">
-              <Link
-                to="/request-quote"
-                onClick={toggleMobileMenu}
-                className="flex items-center justify-center w-full py-4 bg-amber-500 text-navy rounded-xl font-bold text-lg shadow-lg shadow-amber-500/20 hover:bg-amber-400 transition-colors uppercase tracking-wider"
-              >
-                Request Quote
-              </Link>
             </div>
           </motion.div>
         )}
