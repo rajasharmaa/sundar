@@ -1,4 +1,4 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Inquiry } from '@/types';
@@ -6,7 +6,7 @@ import {
   Phone, Mail, MapPin, Calendar, Clock, Monitor, Smartphone, Tablet,
   Globe, Building2, User, Package, Link as LinkIcon, MessageSquare,
   ExternalLink, Copy, Check, FileText, Users, Briefcase, ShieldCheck, ClipboardList,
-  Paperclip
+  Paperclip, Trash2
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -14,9 +14,10 @@ interface InquiryDetailDialogProps {
   inquiry: Inquiry | null;
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  onDelete?: (inquiry: Inquiry) => void;
 }
 
-export function InquiryDetailDialog({ inquiry, open, onOpenChange }: InquiryDetailDialogProps) {
+export function InquiryDetailDialog({ inquiry, open, onOpenChange, onDelete }: InquiryDetailDialogProps) {
   const [copiedField, setCopiedField] = useState<string | null>(null);
 
   if (!inquiry) return null;
@@ -77,11 +78,14 @@ export function InquiryDetailDialog({ inquiry, open, onOpenChange }: InquiryDeta
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-4xl p-0 overflow-hidden bg-white shadow-2xl border border-slate-200">
-        <DialogHeader className="p-6 pb-4 border-b border-slate-100 flex items-center justify-between">
+        <DialogHeader className="p-6 pb-4 border-b border-slate-100 flex flex-col gap-1 items-start justify-between">
           <DialogTitle className="flex items-center gap-2 text-xl font-extrabold text-slate-900">
             <MessageSquare className="w-5.5 h-5.5 text-green-600 shrink-0" />
             Inquiry Details
           </DialogTitle>
+          <DialogDescription className="sr-only">
+            Detailed information about the selected customer inquiry.
+          </DialogDescription>
         </DialogHeader>
 
         <div className="max-h-[75vh] overflow-y-auto p-6 space-y-6">
@@ -262,7 +266,7 @@ export function InquiryDetailDialog({ inquiry, open, onOpenChange }: InquiryDeta
                     <div className="flex-1 min-w-0">
                       <div className="text-xs font-medium text-purple-700 mb-0.5">Price Type:</div>
                       <div className="text-sm">
-                        {(inquiry.priceType === '100' || inquiry.priceType === 'Standard (100%)') ? (
+                        {inquiry.priceType === '100' ? (
                           <Badge className="bg-green-100 text-green-800 border-green-300">
                             Standard (100%)
                           </Badge>
@@ -436,7 +440,7 @@ export function InquiryDetailDialog({ inquiry, open, onOpenChange }: InquiryDeta
           )}
 
           {/* Quick Actions - Responsive layout */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t mt-4">
+          <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 pt-4 border-t mt-4">
             <a
               href={`tel:${inquiry.phone}`}
               className="w-full"
@@ -466,6 +470,19 @@ export function InquiryDetailDialog({ inquiry, open, onOpenChange }: InquiryDeta
                 <span className="truncate">WhatsApp</span>
               </Button>
             </a>
+            {onDelete && (
+              <Button 
+                variant="destructive" 
+                className="w-full"
+                onClick={() => {
+                  onOpenChange(false);
+                  onDelete(inquiry);
+                }}
+              >
+                <Trash2 className="w-4 h-4 mr-2 shrink-0" />
+                <span className="truncate">Delete</span>
+              </Button>
+            )}
           </div>
         </div>
       </DialogContent>

@@ -195,7 +195,7 @@ export function InquiryCard({
         <div className="p-5 pt-0 border-t border-slate-100 flex items-center justify-between gap-2 mt-auto">
           <Select
             value={inquiry.status}
-            onValueChange={(value) => onStatusChange(inquiry._id, value as Inquiry['status'])}
+            onValueChange={(value) => onStatusChange(inquiry._id || '', value as Inquiry['status'])}
           >
             <SelectTrigger className="h-9 flex-1 bg-white border-slate-200 text-xs font-semibold focus:ring-green-500/20">
               <SelectValue />
@@ -211,7 +211,7 @@ export function InquiryCard({
 
           <div className="flex items-center gap-1.5 shrink-0">
             {!inquiry.read && (
-              <Button size="sm" variant="outline" onClick={() => onMarkAsRead(inquiry._id)} className="h-9 px-3 border-green-200 text-green-600 hover:bg-green-50 hover:text-green-700 bg-white" title="Mark as Read">
+              <Button size="sm" variant="outline" onClick={() => onMarkAsRead(inquiry._id || '')} className="h-9 px-3 border-green-200 text-green-600 hover:bg-green-50 hover:text-green-700 bg-white" title="Mark as Read">
                 <CheckCircle2 className="w-4 h-4" />
               </Button>
             )}

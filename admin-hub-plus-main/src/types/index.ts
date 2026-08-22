@@ -101,6 +101,7 @@ export type InquiryStatus = 'new' | 'pending' | 'completed';
 
 export interface Inquiry {
   _id: string;
+  id?: string;
   name: string;
   email: string;
   phone?: string;

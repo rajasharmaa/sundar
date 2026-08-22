@@ -48,11 +48,14 @@ export function InquiryManagement() {
     setSelectedInquiryForView(inquiry);
     if (!inquiry.read) {
       // Mark as read automatically when opened
-      inquiryService.markAsRead(inquiry._id)
-        .then(() => {
-          refetch(); // Refresh list to update read count/badge
-        })
-        .catch((err) => console.error(err));
+      const inquiryId = inquiry._id;
+      if (inquiryId) {
+        inquiryService.markAsRead(inquiryId)
+          .then(() => {
+            refetch(); // Refresh list to update read count/badge
+          })
+          .catch((err) => console.error(err));
+      }
     }
   };
   const [pageSize, setPageSize] = useState(20);
@@ -132,11 +135,14 @@ export function InquiryManagement() {
   const handleSendReply = async (data: { to: string; subject: string; message: string }) => {
     if (!selectedInquiryForReply) return;
 
-    await inquiryService.sendReply(selectedInquiryForReply._id, {
-      subject: data.subject,
-      message: data.message,
-      status: 'completed'
-    });
+    const replyId = selectedInquiryForReply._id;
+    if (replyId) {
+      await inquiryService.sendReply(replyId, {
+        subject: data.subject,
+        message: data.message,
+        status: 'completed'
+      });
+    }
     
     // Invalidate queries to refresh list
     queryClient.invalidateQueries({ queryKey: ['inquiries'] });
@@ -144,7 +150,10 @@ export function InquiryManagement() {
 
   const confirmDelete = () => {
     if (inquiryToDelete) {
-      deleteMutation.mutate(inquiryToDelete._id);
+      const deleteId = inquiryToDelete._id;
+      if (deleteId) {
+        deleteMutation.mutate(deleteId);
+      }
     }
   };
 
@@ -250,7 +259,7 @@ export function InquiryManagement() {
           >
             {inquiries.map((inquiry) => (
               <motion.div 
-                key={inquiry._id}
+                key={inquiry._id || Math.random().toString()}
                 variants={{
                   hidden: { opacity: 0, y: 20 },
                   show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } }
@@ -335,6 +344,7 @@ export function InquiryManagement() {
         onOpenChange={(open) => {
           if (!open) setSelectedInquiryForView(null);
         }}
+        onDelete={handleDelete}
       />
 
       {/* Delete Confirmation Dialog */}
