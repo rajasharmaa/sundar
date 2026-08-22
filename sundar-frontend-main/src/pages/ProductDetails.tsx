@@ -230,7 +230,15 @@ export default function ProductDetails() {
           </div>
 
           {/* RIGHT HALF (Emerald Green) */}
-          <div className="relative w-full lg:w-1/2 bg-[#00C878] pt-24 pb-16 lg:pt-20 lg:pb-32 px-8 lg:px-20 flex flex-col justify-center items-start z-10 lg:pl-[240px] xl:pl-[280px] order-1 lg:order-2">
+          <div className="relative w-full lg:w-1/2 bg-[#00C878] pt-24 pb-20 lg:pt-20 lg:pb-32 px-8 lg:px-20 flex flex-col justify-center items-start z-10 lg:pl-[240px] xl:pl-[280px] order-1 lg:order-2">
+            
+            {/* Creative Divider (Mobile) */}
+            <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none lg:hidden translate-y-[1px] z-20">
+              <svg viewBox="0 0 1440 120" className="w-full h-[30px] sm:h-[50px] block" preserveAspectRatio="none">
+                <path d="M0,120 L1440,120 L1440,40 C1000,-40 400,100 0,0 Z" style={{ fill: 'var(--theme-color)' }} />
+              </svg>
+            </div>
+
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -270,13 +278,13 @@ export default function ProductDetails() {
           </div>
 
           {/* CENTER FLOATING IMAGE & MULTI-IMAGE THUMBNAILS */}
-          <div className="relative lg:absolute order-2 lg:order-none lg:top-1/2 lg:left-1/2 self-center lg:-translate-x-1/2 lg:-translate-y-1/2 w-[90%] max-w-[400px] lg:max-w-[500px] xl:max-w-[550px] aspect-[4/5] lg:aspect-[3/4] z-30 pointer-events-auto flex flex-col items-center justify-center py-10 lg:py-0">
+          <div className="relative lg:absolute order-2 lg:order-none lg:top-1/2 lg:left-1/2 self-center lg:-translate-x-1/2 lg:-translate-y-1/2 w-full max-w-[450px] lg:max-w-[500px] xl:max-w-[550px] aspect-[4/5] lg:aspect-[3/4] z-30 pointer-events-auto flex flex-col items-center justify-center py-4 lg:py-0 px-4">
             
             {/* Elegant Floating Pedestal (Pulsing Animation) */}
             <motion.div 
               animate={{ scale: [1, 1.05, 1], opacity: [0.8, 0.4, 0.8] }}
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="absolute top-[85%] left-1/2 -translate-x-1/2 w-[60%] h-[15%] pointer-events-none"
+              className="absolute top-[88%] left-1/2 -translate-x-1/2 w-[70%] lg:w-[60%] h-[15%] pointer-events-none"
             >
               <div className="absolute inset-0 bg-black/30 blur-xl rounded-full"></div>
               <div className="absolute inset-x-8 bottom-1/2 h-2 bg-white/20 blur-sm rounded-full"></div>
@@ -284,7 +292,7 @@ export default function ProductDetails() {
             </motion.div>
 
             {/* Product Image (Floating Animation) */}
-            <div className="relative w-full h-[85%] flex items-center justify-center z-10 pointer-events-none">
+            <div className="relative w-full h-[95%] lg:h-[90%] flex items-center justify-center z-10 pointer-events-none">
               <AnimatePresence mode="wait">
                 {validImages.length > 0 && (
                   <motion.div
@@ -303,7 +311,7 @@ export default function ProductDetails() {
                       <img 
                         src={validImages[activeImageIndex]} 
                         alt={product.name} 
-                        className="w-full h-full object-contain filter drop-shadow-[0_30px_30px_rgba(0,0,0,0.4)] transition-transform duration-500 ease-out group-hover:scale-150 group-hover:drop-shadow-2xl"
+                        className="w-full h-full object-contain filter drop-shadow-[0_30px_30px_rgba(0,0,0,0.4)] transition-transform duration-500 ease-out group-hover:scale-150 group-hover:drop-shadow-2xl scale-[1.25] lg:scale-100"
                       />
                     </motion.div>
                   </motion.div>
