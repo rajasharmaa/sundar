@@ -5,6 +5,8 @@ import { UploadCloud, CheckCircle2, ChevronRight, ChevronLeft, Package, Box, Ima
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import SEO from '../components/SEO/MetaTags';
+import { api } from '@/services/api/api-client';
+import { toast } from 'sonner';
 
 type FormData = {
   // Step 1: Product
@@ -59,12 +61,35 @@ const RequestQuote = () => {
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
-    // Simulate API call
-    setTimeout(() => {
-      console.log('Form Data:', data);
-      setIsSubmitting(false);
+    try {
+      // Format RFQ data as an Inquiry
+      const messageBody = `
+RFQ Details:
+Category: ${data.category}
+Dimensions: ${data.dimensions}
+Quantity: ${data.quantity}
+Material: ${data.material}
+Printing Required: ${data.printingRequired}
+Colors: ${data.colors}
+Additional Notes: ${data.notes || 'None'}
+      `.trim();
+
+      await api.inquiries.submit({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        companyName: data.company,
+        subject: `Request for Quote: ${data.category}`,
+        message: messageBody,
+        pageSource: 'Request Quote Form',
+      });
+
       setIsSuccess(true);
-    }, 1500);
+    } catch (error: any) {
+      toast.error(error.message || 'Failed to submit quote request. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

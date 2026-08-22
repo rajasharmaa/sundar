@@ -152,7 +152,17 @@ export function ProductDetailEnhanced({ product, initialImage, initialImages = [
   const [uploadingImageIds, setUploadingImageIds] = useState<string[]>([]);
   const [activeTab, setActiveTab] = useState<'basic' | 'editorial' | 'sizes' | 'specs' | 'faqs'>('basic');
 
-  const categoriesList = PRODUCT_CATEGORIES;
+  const { data: dbCategories = [] } = useQuery({
+    queryKey: ['admin-categories'],
+    queryFn: async () => {
+      const response = await api.get('/admin/categories');
+      return response.data.data || [];
+    },
+  });
+
+  const categoriesList = dbCategories.length > 0 
+    ? dbCategories.map((c: any) => ({ label: c.name, value: c.slug }))
+    : PRODUCT_CATEGORIES;
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {

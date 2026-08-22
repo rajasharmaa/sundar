@@ -3,27 +3,30 @@ import { AdminHeader } from '@/components/Admin/AdminHeader';
 import { AdminTabs, AdminTab } from '@/components/Admin/AdminTabs';
 import { Dashboard } from '@/components/Admin/Dashboard';
 import { ProductManagement } from '@/components/Admin/Products/ProductManagement';
-import { UserManagement } from '@/components/Admin/Users/UserManagement';
-import { WishlistManagement } from '@/components/Admin/Wishlist/WishlistManagement';
+import { CatalogManagement } from '@/components/Admin/Catalog/CatalogManagement';
 import { AnalyticsPanel } from '@/components/Admin/Analytics/AnalyticsPanel';
 import { InquiryManagement } from '@/components/Admin/Inquiries/InquiryManagement';
 import { CategoryManagement } from '@/components/Admin/Categories/CategoryManagement';
-import { BulkPriceEditor } from '@/components/Admin/Products/BulkPriceEditor';
-import { InventoryManagement } from '@/components/Admin/Inventory/InventoryManagement';
 import { SiteSettingsPanel } from '@/components/Admin/Settings/SiteSettingsPanel';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function AdminPanel() {
   const [activeTab, setActiveTab] = useState<AdminTab>('dashboard');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className="flex h-screen bg-slate-50 overflow-hidden font-sans">
       {/* Sidebar Navigation */}
-      <AdminTabs activeTab={activeTab} onTabChange={setActiveTab} />
+      <AdminTabs 
+        activeTab={activeTab} 
+        onTabChange={setActiveTab} 
+        isOpen={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+      />
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden bg-slate-50">
-        <AdminHeader />
+        <AdminHeader onMenuClick={() => setMobileMenuOpen(true)} />
 
         <main className="flex-1 overflow-y-auto overflow-x-hidden relative">
           <div className="absolute inset-0 bg-slate-50 -z-10" />
@@ -42,13 +45,10 @@ export default function AdminPanel() {
               >
                 {activeTab === 'dashboard' && <Dashboard onTabChange={setActiveTab} />}
                 {activeTab === 'products' && <ProductManagement />}
-                {activeTab === 'inventory' && <InventoryManagement />}
-                {activeTab === 'users' && <UserManagement />}
-                {activeTab === 'wishlist' && <WishlistManagement />}
+                {activeTab === 'catalog' && <CatalogManagement />}
                 {activeTab === 'analytics' && <AnalyticsPanel />}
                 {activeTab === 'inquiries' && <InquiryManagement />}
                 {activeTab === 'categories' && <CategoryManagement />}
-                {activeTab === 'bulk-prices' && <BulkPriceEditor />}
                 {activeTab === 'settings' && <SiteSettingsPanel />}
               </motion.div>
             </AnimatePresence>

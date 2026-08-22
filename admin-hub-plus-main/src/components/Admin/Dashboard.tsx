@@ -117,7 +117,6 @@ export function Dashboard({ onTabChange }: DashboardProps) {
           variant="products"
           icon={Package}
           isLoading={isLoading}
-          trend={4.2}
         />
         <StatCard
           title="Total Inquiries"
@@ -126,7 +125,6 @@ export function Dashboard({ onTabChange }: DashboardProps) {
           variant="inquiries"
           icon={MessageSquare}
           isLoading={isLoading}
-          trend={12.5}
         />
         <StatCard
           title="Registered Users"
@@ -135,7 +133,6 @@ export function Dashboard({ onTabChange }: DashboardProps) {
           variant="users"
           icon={Users}
           isLoading={isLoading}
-          trend={2.4}
         />
         <StatCard
           title="Pending Action"

@@ -274,7 +274,7 @@ const AccessibilityWidget: React.FC<AccessibilityWidgetProps> = ({
   }
 
   return (
-    <div ref={widgetRef} className="fixed bottom-28 lg:bottom-6 left-6 z-[999] flex flex-col items-start">
+    <div ref={widgetRef} className="fixed bottom-36 lg:bottom-6 left-4 lg:left-6 z-[999] flex flex-col items-start">
       {/* Popover Panel */}
       <AnimatePresence>
         {isOpen && (

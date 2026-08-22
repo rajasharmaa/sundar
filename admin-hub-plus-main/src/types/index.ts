@@ -220,6 +220,7 @@ export interface FilteredProductsResponse {
 export interface AdminUser {
   id: string;
   username: string;
+  role?: string;
 }
 
 export interface User {

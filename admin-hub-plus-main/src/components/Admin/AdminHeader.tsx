@@ -1,13 +1,25 @@
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
-import { LogOut, Bell, Search, Menu } from 'lucide-react';
+import { LogOut, Bell, Menu } from 'lucide-react';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
 import { ADMIN_ROUTES } from '@/utils/constants';
+import { useQuery } from '@tanstack/react-query';
+import { analyticsService } from '@/services/analyticsService';
 
-export function AdminHeader() {
+interface AdminHeaderProps {
+  onMenuClick?: () => void;
+}
+
+export function AdminHeader({ onMenuClick }: AdminHeaderProps) {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+
+  const { data: stats } = useQuery({
+    queryKey: ['admin-stats'],
+    queryFn: analyticsService.getStats,
+    staleTime: 30000,
+  });
 
   const handleLogout = async () => {
     try {
@@ -19,21 +31,22 @@ export function AdminHeader() {
     }
   };
 
+  const hasNewInquiries = stats?.newInquiries ? stats.newInquiries > 0 : false;
+
   return (
     <header className="h-20 px-6 bg-white border-b border-slate-200 flex items-center justify-between sticky top-0 z-40 shadow-sm">
-      {/* Mobile Menu Trigger & Search */}
+      {/* Mobile Menu Trigger & Title */}
       <div className="flex items-center gap-4 flex-1">
-        <button className="md:hidden p-2 text-slate-500 hover:bg-slate-100 rounded-lg">
+        <button 
+          onClick={onMenuClick}
+          className="md:hidden p-2 text-slate-500 hover:bg-slate-100 rounded-lg transition-colors"
+        >
           <Menu className="w-6 h-6" />
         </button>
         
-        <div className="hidden md:flex relative max-w-md w-full">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-          <input 
-            type="text" 
-            placeholder="Search orders, products, or users (Press '/' to focus)" 
-            className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-green-500 focus:ring-4 focus:ring-green-500/10 rounded-xl outline-none transition-all duration-200 font-medium text-slate-900 placeholder:text-slate-400 text-sm"
-          />
+        <div className="hidden md:flex flex-col">
+          <h1 className="text-xl font-bold text-slate-900 leading-none">Admin Dashboard</h1>
+          <p className="text-sm text-slate-500 font-medium mt-1">Manage your product showcase and inquiries</p>
         </div>
       </div>
 
@@ -41,7 +54,9 @@ export function AdminHeader() {
       <div className="flex items-center gap-4">
         <button className="relative p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-colors">
           <Bell className="w-5 h-5" />
-          <span className="absolute top-1 right-1 w-2 h-2 bg-rose-500 rounded-full border-2 border-white" />
+          {hasNewInquiries && (
+            <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-rose-500 rounded-full border-2 border-white animate-pulse" />
+          )}
         </button>
 
         <div className="h-8 w-px bg-slate-200 mx-2 hidden sm:block" />
@@ -49,7 +64,7 @@ export function AdminHeader() {
         <div className="flex items-center gap-3">
           <div className="hidden sm:block text-right">
             <p className="text-sm font-bold text-slate-900 leading-none">{user?.username || 'Super Admin'}</p>
-            <p className="text-xs text-slate-500 mt-1 font-medium">{user?.role || 'Administrator'}</p>
+            <p className="text-xs text-slate-500 mt-1 font-medium capitalize">{user?.role || 'Administrator'}</p>
           </div>
           <div className="w-10 h-10 rounded-xl bg-green-100 text-green-700 flex items-center justify-center font-bold text-lg border border-green-200">
             {(user?.username || 'A').charAt(0).toUpperCase()}

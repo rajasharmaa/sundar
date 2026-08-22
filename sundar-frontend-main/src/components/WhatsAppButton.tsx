@@ -3,13 +3,13 @@ import { useLocation, useParams } from 'react-router-dom';
 
 const WhatsAppButton = () => {
     const location = useLocation();
-    const params = useParams();
 
-    const isProductDetailsPage = params.id && location.pathname.startsWith('/products/');
+    const pathParts = location.pathname.split('/').filter(Boolean);
+    const isProductDetailsPage = pathParts.length >= 2 && pathParts[0] === 'products';
 
     const EXCLUDED_PATHS = ['/login', '/register', '/forgot-password', '/reset-password', '/account', '/rfq', '/contact'];
     const isExcluded = EXCLUDED_PATHS.some(path => 
-      location.pathname === path || location.pathname.startsWith(path + '/')
+      location.pathname === path || location.pathname.startsWith('/' + path.replace(/^\//, '') + '/')
     );
 
     if (isExcluded) {

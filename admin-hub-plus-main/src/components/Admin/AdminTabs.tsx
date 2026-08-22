@@ -1,12 +1,14 @@
 import { cn } from '@/lib/utils';
-import { LayoutDashboard, Package, BarChart3, MessageSquare, Users, Heart, Layers, DollarSign, Command, Settings } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { LayoutDashboard, Package, BarChart3, MessageSquare, Layers, Settings, Command, FileText, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-export type AdminTab = 'dashboard' | 'products' | 'inventory' | 'users' | 'wishlist' | 'analytics' | 'inquiries' | 'categories' | 'bulk-prices' | 'settings';
+export type AdminTab = 'dashboard' | 'products' | 'analytics' | 'inquiries' | 'categories' | 'catalog' | 'settings';
 
 interface AdminTabsProps {
   activeTab: AdminTab;
   onTabChange: (tab: AdminTab) => void;
+  isOpen?: boolean;
+  onClose?: () => void;
 }
 
 const tabs: { id: AdminTab; label: string; icon: React.ReactNode }[] = [
@@ -14,25 +16,29 @@ const tabs: { id: AdminTab; label: string; icon: React.ReactNode }[] = [
   { id: 'analytics', label: 'Product Analytics', icon: <BarChart3 className="w-5 h-5" /> },
   { id: 'inquiries', label: 'Inquiries & Leads', icon: <MessageSquare className="w-5 h-5" /> },
   { id: 'products', label: 'Product Catalog', icon: <Package className="w-5 h-5" /> },
-  { id: 'inventory', label: 'Stock & Inventory', icon: <Package className="w-5 h-5" /> },
+  { id: 'catalog', label: 'PDF Catalogs', icon: <FileText className="w-5 h-5" /> },
   { id: 'categories', label: 'Category Settings', icon: <Layers className="w-5 h-5" /> },
-  { id: 'bulk-prices', label: 'Bulk Pricing', icon: <DollarSign className="w-5 h-5" /> },
-  { id: 'users', label: 'User Management', icon: <Users className="w-5 h-5" /> },
-  { id: 'wishlist', label: 'Wishlist Insights', icon: <Heart className="w-5 h-5" /> },
   { id: 'settings', label: 'Site Settings', icon: <Settings className="w-5 h-5" /> },
 ];
 
-export function AdminTabs({ activeTab, onTabChange }: AdminTabsProps) {
-  return (
-    <aside className="hidden md:flex flex-col w-72 h-screen bg-slate-950 border-r border-slate-800 shrink-0">
-      <div className="p-6 flex items-center gap-3 border-b border-slate-800">
-        <div className="w-10 h-10 bg-gradient-to-br from-green-600 to-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-green-900/50">
-          <Command className="w-6 h-6" />
+export function AdminTabs({ activeTab, onTabChange, isOpen, onClose }: AdminTabsProps) {
+  const SidebarContent = () => (
+    <>
+      <div className="p-6 flex items-center justify-between gap-3 border-b border-slate-800">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-gradient-to-br from-green-600 to-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-green-900/50">
+            <Command className="w-6 h-6" />
+          </div>
+          <div>
+            <h2 className="text-lg font-bold text-white tracking-tight leading-none">Hub Plus</h2>
+            <p className="text-xs text-slate-400 font-medium mt-1 uppercase tracking-wider">Admin Portal</p>
+          </div>
         </div>
-        <div>
-          <h2 className="text-lg font-bold text-white tracking-tight leading-none">Hub Plus</h2>
-          <p className="text-xs text-slate-400 font-medium mt-1 uppercase tracking-wider">Admin Portal</p>
-        </div>
+        {onClose && (
+          <button onClick={onClose} className="md:hidden p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800">
+            <X className="w-5 h-5" />
+          </button>
+        )}
       </div>
 
       <div className="flex-1 overflow-y-auto py-6 px-4 space-y-1 custom-scrollbar">
@@ -45,7 +51,10 @@ export function AdminTabs({ activeTab, onTabChange }: AdminTabsProps) {
           return (
             <button
               key={tab.id}
-              onClick={() => onTabChange(tab.id)}
+              onClick={() => {
+                onTabChange(tab.id);
+                if (onClose) onClose();
+              }}
               className={cn(
                 'w-full flex items-center gap-3 px-3 py-3 rounded-xl transition-all duration-300 relative group',
                 isActive
@@ -85,6 +94,39 @@ export function AdminTabs({ activeTab, onTabChange }: AdminTabsProps) {
           </div>
         </div>
       </div>
-    </aside>
+    </>
+  );
+
+  return (
+    <>
+      {/* Desktop Sidebar */}
+      <aside className="hidden md:flex flex-col w-72 h-screen bg-slate-950 border-r border-slate-800 shrink-0">
+        <SidebarContent />
+      </aside>
+
+      {/* Mobile Sidebar */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={onClose}
+              className="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-40 md:hidden"
+            />
+            <motion.aside
+              initial={{ x: '-100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="fixed inset-y-0 left-0 w-72 bg-slate-950 border-r border-slate-800 flex flex-col z-50 md:hidden"
+            >
+              <SidebarContent />
+            </motion.aside>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
