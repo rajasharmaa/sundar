@@ -222,45 +222,60 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
             </div>
 
             {/* Mobile Links */}
-            <div className="flex-1 overflow-y-auto px-6 py-6">
-              <div className="flex flex-col space-y-2 pb-24">
+            <div className="flex-1 overflow-y-auto px-4 py-6">
+              <div className="flex flex-col space-y-1 pb-24">
                 <MobileEntry href="/" isActive={isRouteActive(location.pathname, '/')} onClick={toggleMobileMenu}>
                   {t('nav.home')}
                 </MobileEntry>
 
                 {/* Products Accordion */}
-                <div className="border border-gray-100 rounded-2xl overflow-hidden bg-white shadow-sm">
+                <div className="rounded-2xl overflow-hidden transition-all duration-300">
                   <button
                     onClick={toggleMobileProductsMenu}
-                    className="w-full flex items-center justify-between px-5 py-4 min-h-[44px] bg-white hover:bg-gray-50 transition-colors"
+                    className={`flex items-center justify-between w-full px-4 py-4 min-h-[44px] rounded-2xl text-[17px] font-medium transition-all duration-300 ${
+                      isMobileProductsOpen || isRouteActive(location.pathname, '/products') || isRouteActive(location.pathname, '/categories')
+                        ? 'bg-[#22c55e]/5 text-[#22c55e]'
+                        : 'text-gray-700 hover:bg-gray-50'
+                    }`}
                     aria-expanded={isMobileProductsOpen}
                   >
-                    <span className={`text-lg font-medium ${isMobileProductsOpen ? 'text-industrial' : 'text-gray-800'}`}>
-                      {t('nav.products')}
-                    </span>
-                    <ChevronDown size={20} className={`text-gray-400 transition-transform duration-300 ${isMobileProductsOpen ? 'rotate-180 text-industrial' : ''}`} />
+                    <span className="tracking-wide">{t('nav.products')}</span>
+                    <motion.div animate={{ rotate: isMobileProductsOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
+                      <ChevronDown size={20} className={isMobileProductsOpen ? 'text-[#22c55e]' : 'text-gray-400'} />
+                    </motion.div>
                   </button>
 
-                  <div className={`grid transition-[grid-template-rows] duration-300 ease-in-out bg-gray-50/50 ${isMobileProductsOpen ? 'grid-rows-[1fr] border-t border-gray-100' : 'grid-rows-[0fr]'}`}>
-                    <div className="overflow-hidden min-h-0">
-                      <div className="py-2">
-                        <MobileSubLink href="/categories" onClick={toggleMobileMenu} isFirst>
-                          {t('home.allCategories')}
-                        </MobileSubLink>
-                        {categories.length > 0 ? (
-                          categories.map((item: any, index: number) => (
-                            <MobileSubLink
-                              key={`${item._id || item.id || 'mob-cat'}-${index}`}
-                              href={`/products?category=${item.slug || item.name.toLowerCase().replace(/\s+/g, '')}`}
-                              onClick={toggleMobileMenu}
-                            >
-                              {item.name}
-                            </MobileSubLink>
-                          ))
-                        ) : null}
-                      </div>
-                    </div>
-                  </div>
+                  <AnimatePresence>
+                    {isMobileProductsOpen && (
+                      <motion.div 
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-2 py-2 mb-2 bg-gray-50/50 rounded-b-2xl -mt-4 pt-6">
+                          <MobileSubLink href="/categories" onClick={toggleMobileMenu} isActive={isRouteActive(location.pathname, '/categories')}>
+                            {t('home.allCategories')}
+                          </MobileSubLink>
+                          {categories.length > 0 && categories.map((item: any, index: number) => {
+                            const slug = item.slug || item.name.toLowerCase().replace(/\s+/g, '');
+                            const isCatActive = location.search.includes(`category=${slug}`);
+                            return (
+                              <MobileSubLink
+                                key={`${item._id || item.id || 'mob-cat'}-${index}`}
+                                href={`/products?category=${slug}`}
+                                onClick={toggleMobileMenu}
+                                isActive={isCatActive}
+                              >
+                                {item.name}
+                              </MobileSubLink>
+                            );
+                          })}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
 
                 <MobileEntry href="/custom-manufacturing" isActive={isRouteActive(location.pathname, '/custom-manufacturing')} onClick={toggleMobileMenu}>
@@ -459,23 +474,31 @@ const MobileEntry = ({ href, isActive, onClick, children }: { href: string; isAc
   <Link
     to={href}
     onClick={onClick}
-    className={`flex items-center justify-between w-full px-4 py-3 min-h-[44px] rounded-2xl text-lg font-medium transition-all ${isActive
-      ? 'bg-[#22c55e]/10 text-[#22c55e] shadow-sm border border-[#22c55e]/20'
+    className={`flex items-center justify-between w-full px-4 py-4 min-h-[44px] rounded-2xl text-[17px] font-medium transition-all duration-300 group ${isActive
+      ? 'bg-[#22c55e]/5 text-[#22c55e]'
       : 'text-gray-700 hover:bg-gray-50 active:scale-[0.98]'
       }`}
   >
-    <span>{children}</span>
-    {isActive && <div className="w-2 h-2 rounded-full bg-[#22c55e]" />}
-    {!isActive && <ArrowRight size={20} className="text-gray-300" />}
+    <span className="tracking-wide">{children}</span>
+    {isActive ? (
+      <motion.div layoutId="activeMobileIndicator" className="w-2 h-2 rounded-full bg-[#22c55e]" />
+    ) : (
+      <ArrowRight size={18} className="text-gray-300 group-hover:text-[#22c55e] transition-colors" />
+    )}
   </Link>
 );
 
-const MobileSubLink = ({ href, onClick, children, isFirst }: { href: string; onClick: () => void; children: React.ReactNode; isFirst?: boolean }) => (
+const MobileSubLink = ({ href, onClick, children, isActive }: { href: string; onClick: () => void; children: React.ReactNode; isActive?: boolean }) => (
   <Link
     to={href}
     onClick={onClick}
-    className="block px-4 py-3 text-base text-gray-600 hover:text-[#22c55e] hover:bg-[#22c55e]/5 transition-colors border-l-2 border-transparent hover:border-[#22c55e] ml-4 pl-4 min-h-[44px]"
+    className={`flex items-center gap-3 px-4 py-3 text-[15px] font-medium rounded-xl transition-all duration-300 ${
+      isActive 
+        ? 'text-[#22c55e] bg-white shadow-sm' 
+        : 'text-gray-600 hover:text-[#22c55e] hover:bg-white'
+    }`}
   >
+    <div className={`w-1.5 h-1.5 rounded-full transition-colors ${isActive ? 'bg-[#22c55e]' : 'bg-gray-300'}`} />
     {children}
   </Link>
 );
