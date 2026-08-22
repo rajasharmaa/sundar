@@ -41,6 +41,17 @@ interface ProductWithSizes extends Product {
 
 const SALES_PHONE = import.meta.env.VITE_SALES_PHONE || '+91 98930 53053';
 
+const isColorLight = (color: string) => {
+  if (!color) return false;
+  let hex = color.replace('#', '');
+  if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+  if (hex.length !== 6) return false;
+  const r = parseInt(hex.slice(0, 2), 16);
+  const g = parseInt(hex.slice(2, 4), 16);
+  const b = parseInt(hex.slice(4, 6), 16);
+  return (r * 0.299 + g * 0.587 + b * 0.114) > 186;
+};
+
 export default function ProductDetails() {
   const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<ProductWithSizes | null>(null);
@@ -145,6 +156,9 @@ export default function ProductDetails() {
   const restOfName = nameParts.slice(1).join(' ');
   const categoryName = typeof product.category === 'string' ? product.category : ((product.category as any)?.name || 'Category');
 
+  const themeColor = product.themeColor || "#07111F";
+  const isThemeLight = isColorLight(themeColor);
+
   return (
     <>
       <SEO
@@ -171,7 +185,7 @@ export default function ProductDetails() {
           {/* LEFT HALF (Navy) */}
           <div className="relative w-full lg:w-1/2 bg-[var(--theme-color)] py-16 lg:pt-32 lg:pb-20 px-8 lg:px-20 flex flex-col justify-center items-start lg:items-end z-10 order-3 lg:order-1">
             {/* Rotated Background Text */}
-            <div className="absolute left-4 lg:left-12 top-1/2 -translate-y-1/2 -rotate-90 origin-left text-white/[0.03] font-black text-[60px] lg:text-[100px] tracking-widest uppercase whitespace-nowrap pointer-events-none">
+            <div className={`absolute left-4 lg:left-12 top-1/2 -translate-y-1/2 -rotate-90 origin-left ${isThemeLight ? 'text-slate-900/[0.05]' : 'text-white/[0.03]'} font-black text-[60px] lg:text-[100px] tracking-widest uppercase whitespace-nowrap pointer-events-none`}>
               Specifications
             </div>
 
@@ -187,27 +201,27 @@ export default function ProductDetails() {
                 {Array.isArray(product.specifications) && product.specifications.length > 0 ? (
                   product.specifications.slice(0, 4).map((spec: any, idx: number) => (
                     <div key={idx} className="flex flex-col">
-                      <span className="text-[#00C878] font-bold text-sm tracking-widest uppercase mb-1">{spec.name}:</span>
-                      <span className="text-[#F5F7F6] text-xl font-medium">{spec.value}</span>
+                      <span className={`font-bold text-sm tracking-widest uppercase mb-1 ${isThemeLight ? 'text-slate-800' : 'text-[#00C878]'}`}>{spec.name}:</span>
+                      <span className={`text-xl font-medium ${isThemeLight ? 'text-slate-900' : 'text-[#F5F7F6]'}`}>{spec.value}</span>
                     </div>
                   ))
                 ) : (
                   <>
                     <div className="flex flex-col">
-                      <span className="text-[#00C878] font-bold text-sm tracking-widest uppercase mb-1">Material:</span>
-                      <span className="text-[#F5F7F6] text-xl font-medium">100% Virgin PP/HDPE</span>
+                      <span className={`font-bold text-sm tracking-widest uppercase mb-1 ${isThemeLight ? 'text-slate-800' : 'text-[#00C878]'}`}>Material:</span>
+                      <span className={`text-xl font-medium ${isThemeLight ? 'text-slate-900' : 'text-[#F5F7F6]'}`}>100% Virgin PP/HDPE</span>
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-[#00C878] font-bold text-sm tracking-widest uppercase mb-1">Strength:</span>
-                      <span className="text-[#F5F7F6] text-xl font-medium">Industrial Grade</span>
+                      <span className={`font-bold text-sm tracking-widest uppercase mb-1 ${isThemeLight ? 'text-slate-800' : 'text-[#00C878]'}`}>Strength:</span>
+                      <span className={`text-xl font-medium ${isThemeLight ? 'text-slate-900' : 'text-[#F5F7F6]'}`}>Industrial Grade</span>
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-[#00C878] font-bold text-sm tracking-widest uppercase mb-1">Sizes:</span>
-                      <span className="text-[#F5F7F6] text-xl font-medium">Customizable</span>
+                      <span className={`font-bold text-sm tracking-widest uppercase mb-1 ${isThemeLight ? 'text-slate-800' : 'text-[#00C878]'}`}>Sizes:</span>
+                      <span className={`text-xl font-medium ${isThemeLight ? 'text-slate-900' : 'text-[#F5F7F6]'}`}>Customizable</span>
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-[#00C878] font-bold text-sm tracking-widest uppercase mb-1">Usage:</span>
-                      <span className="text-[#F5F7F6] text-xl font-medium">Heavy Duty Packaging</span>
+                      <span className={`font-bold text-sm tracking-widest uppercase mb-1 ${isThemeLight ? 'text-slate-800' : 'text-[#00C878]'}`}>Usage:</span>
+                      <span className={`text-xl font-medium ${isThemeLight ? 'text-slate-900' : 'text-[#F5F7F6]'}`}>Heavy Duty Packaging</span>
                     </div>
                   </>
                 )}
@@ -241,10 +255,10 @@ export default function ProductDetails() {
               </div>
 
               <div className="flex items-center gap-6">
-                <Link to={`/request-quote?product=${product.slug || product._id}`} className="flex items-center gap-4 bg-[var(--theme-color)] text-white rounded px-8 py-4 font-bold uppercase tracking-widest text-sm hover:bg-black transition-colors shadow-2xl group">
+                <Link to={`/request-quote?product=${product.slug || product._id}`} className={`flex items-center gap-4 bg-[var(--theme-color)] ${isThemeLight ? 'text-slate-900' : 'text-white'} rounded px-8 py-4 font-bold uppercase tracking-widest text-sm hover:bg-black hover:text-white transition-colors shadow-2xl group`}>
                   Request Quote
-                  <div className="bg-white rounded p-1.5 group-hover:scale-110 transition-transform">
-                    <Package className="text-[var(--theme-color)] w-4 h-4" />
+                  <div className={`rounded p-1.5 group-hover:scale-110 transition-transform ${isThemeLight ? 'bg-slate-900' : 'bg-white'}`}>
+                    <Package className={`w-4 h-4 ${isThemeLight ? 'text-[var(--theme-color)]' : 'text-[var(--theme-color)]'}`} />
                   </div>
                 </Link>
                 <a href={`https://wa.me/${SALES_PHONE.replace(/[^0-9]/g, '')}?text=I'm interested in ${encodeURIComponent(product.name)}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 bg-[#25D366] text-white rounded px-6 py-4 font-bold uppercase tracking-widest text-sm hover:bg-[#128C7E] transition-colors shadow-lg">
@@ -398,7 +412,7 @@ export default function ProductDetails() {
 
         {/* 7. INTERACTIVE FEATURES */}
         {features.length > 0 && (
-          <section className="py-24 lg:py-32 bg-[var(--theme-color)] text-white overflow-hidden">
+          <section className={`py-24 lg:py-32 bg-[var(--theme-color)] ${isThemeLight ? 'text-slate-900' : 'text-white'} overflow-hidden`}>
           <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
             <div className="mb-16 lg:mb-24">
               <h2 className="text-4xl lg:text-[52px] font-black tracking-tight">Why This Product Performs</h2>
@@ -412,14 +426,14 @@ export default function ProductDetails() {
                   <div
                     key={idx}
                     onMouseEnter={() => setActiveFeatureIndex(idx)}
-                    className="group cursor-pointer border-b border-white/10 last:border-0 pb-6 mb-6"
+                    className={`group cursor-pointer border-b ${isThemeLight ? 'border-slate-900/10' : 'border-white/10'} last:border-0 pb-6 mb-6`}
                   >
                     <div className="flex gap-6 items-start">
-                      <span className={`text-sm font-bold tracking-[0.2em] transition-colors duration-300 mt-2 ${activeFeatureIndex === idx ? 'text-[#00C878]' : 'text-white/30'}`}>
+                      <span className={`text-sm font-bold tracking-[0.2em] transition-colors duration-300 mt-2 ${activeFeatureIndex === idx ? (isThemeLight ? 'text-slate-800' : 'text-[#00C878]') : (isThemeLight ? 'text-slate-900/30' : 'text-white/30')}`}>
                         0{idx + 1}
                       </span>
                       <div>
-                        <h3 className={`text-2xl lg:text-4xl font-black tracking-tight transition-colors duration-300 mb-4 ${activeFeatureIndex === idx ? 'text-white' : 'text-white/40 group-hover:text-white/70'}`}>
+                        <h3 className={`text-2xl lg:text-4xl font-black tracking-tight transition-colors duration-300 mb-4 ${activeFeatureIndex === idx ? (isThemeLight ? 'text-slate-900' : 'text-white') : (isThemeLight ? 'text-slate-900/40 group-hover:text-slate-900/70' : 'text-white/40 group-hover:text-white/70')}`}>
                           {feature.title}
                         </h3>
                         <AnimatePresence>
@@ -428,7 +442,7 @@ export default function ProductDetails() {
                               initial={{ opacity: 0, height: 0 }}
                               animate={{ opacity: 1, height: 'auto' }}
                               exit={{ opacity: 0, height: 0 }}
-                              className="text-[#64748B] text-lg lg:text-xl leading-relaxed"
+                              className={`text-lg lg:text-xl leading-relaxed ${isThemeLight ? 'text-slate-700' : 'text-[#64748B]'}`}
                             >
                               {feature.desc}
                             </motion.p>
@@ -584,19 +598,19 @@ export default function ProductDetails() {
 
         {/* 10. INDUSTRIES WE SERVE (Creative Horizontal Accordion) */}
         {industries.length > 0 && (
-          <section className="relative py-24 lg:py-32 bg-[var(--theme-color)] text-white overflow-hidden">
+          <section className={`relative py-24 lg:py-32 bg-[var(--theme-color)] ${isThemeLight ? 'text-slate-900' : 'text-white'} overflow-hidden`}>
           {/* Subtle Glow Background */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#00C878]/5 rounded-full blur-[120px] pointer-events-none" />
           
           <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12">
             <div className="mb-16 lg:mb-24 text-center flex flex-col items-center">
-              <div className="text-[10px] font-bold text-[#00C878] tracking-[0.2em] uppercase mb-6 flex items-center gap-4">
-                <span className="w-12 h-[1px] bg-[#00C878]/50"></span>
+              <div className={`text-[10px] font-bold ${isThemeLight ? 'text-slate-800' : 'text-[#00C878]'} tracking-[0.2em] uppercase mb-6 flex items-center gap-4`}>
+                <span className={`w-12 h-[1px] ${isThemeLight ? 'bg-slate-900/30' : 'bg-[#00C878]/50'}`}></span>
                 03 // Applications
-                <span className="w-12 h-[1px] bg-[#00C878]/50"></span>
+                <span className={`w-12 h-[1px] ${isThemeLight ? 'bg-slate-900/30' : 'bg-[#00C878]/50'}`}></span>
               </div>
               <h2 className="text-4xl lg:text-[64px] font-black tracking-tight leading-[1.05]">
-                Engineered for <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/30">Impact.</span>
+                Engineered for <span className={`text-transparent bg-clip-text bg-gradient-to-r ${isThemeLight ? 'from-slate-900 to-slate-900/30' : 'from-white to-white/30'}`}>Impact.</span>
               </h2>
             </div>
 
@@ -612,15 +626,15 @@ export default function ProductDetails() {
                     key={idx}
                     onMouseEnter={() => setActiveIndustryIndex(idx)}
                     onClick={() => setActiveIndustryIndex(idx)}
-                    className={`group relative rounded-[32px] overflow-hidden transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] border border-white/5 cursor-pointer bg-white/[0.02]
-                      ${isActive ? 'flex-[4] lg:flex-[5] bg-white/[0.05] border-white/10 shadow-[0_0_40px_rgba(0,200,120,0.1)]' : 'flex-1 hover:bg-white/[0.04]'}
+                    className={`group relative rounded-[32px] overflow-hidden transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] border cursor-pointer
+                      ${isActive ? (isThemeLight ? 'flex-[4] lg:flex-[5] bg-slate-900/[0.05] border-slate-900/20 shadow-[0_0_40px_rgba(0,0,0,0.05)]' : 'flex-[4] lg:flex-[5] bg-white/[0.05] border-white/10 shadow-[0_0_40px_rgba(0,200,120,0.1)]') : (isThemeLight ? 'flex-1 border-slate-900/5 bg-slate-900/[0.02] hover:bg-slate-900/[0.04]' : 'flex-1 border-white/5 bg-white/[0.02] hover:bg-white/[0.04]')}
                     `}
                   >
                     {/* Background Layer 1: Radial Glow */}
                     <div className={`absolute inset-0 bg-gradient-to-br from-[#00C878]/10 via-transparent to-transparent transition-opacity duration-1000 z-0 ${isActive ? 'opacity-100' : 'opacity-0'}`} />
                     
                     {/* Background Layer 2: Abstract Grid */}
-                    <div className={`absolute inset-0 transition-opacity duration-1000 z-0 ${isActive ? 'opacity-[0.03]' : 'opacity-[0.01]'}`} style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+                    <div className={`absolute inset-0 transition-opacity duration-1000 z-0 ${isActive ? 'opacity-[0.03]' : 'opacity-[0.01]'}`} style={{ backgroundImage: `radial-gradient(circle at 2px 2px, ${isThemeLight ? 'rgba(0,0,0,0.8)' : 'white'} 1px, transparent 0)`, backgroundSize: '32px 32px' }} />
 
                     {/* Background Layer 3: Giant Icon Watermark */}
                     <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none transition-all duration-[1500ms] ease-out z-0 ${isActive ? 'opacity-[0.04] scale-[3.5] rotate-[15deg]' : 'opacity-[0.01] scale-[1] rotate-0'}`}>
@@ -635,7 +649,7 @@ export default function ProductDetails() {
                     </div>
                     
                     {/* Top-Right Big Number */}
-                    <div className={`absolute top-6 lg:top-8 right-6 lg:right-8 text-5xl lg:text-7xl font-black transition-colors duration-700 leading-none select-none pointer-events-none z-10 ${isActive ? 'text-white/20' : 'text-white/5 group-hover:text-white/10'}`}>
+                    <div className={`absolute top-6 lg:top-8 right-6 lg:right-8 text-5xl lg:text-7xl font-black transition-colors duration-700 leading-none select-none pointer-events-none z-10 ${isActive ? (isThemeLight ? 'text-slate-900/20' : 'text-white/20') : (isThemeLight ? 'text-slate-900/5 group-hover:text-slate-900/10' : 'text-white/5 group-hover:text-white/10')}`}>
                       0{idx + 1}
                     </div>
 
@@ -646,10 +660,10 @@ export default function ProductDetails() {
                         className={`absolute inset-0 flex items-center justify-center lg:items-end lg:justify-center lg:pb-12 transition-all duration-700
                           ${isActive ? 'opacity-0 scale-90 pointer-events-none' : 'opacity-100 scale-100 delay-200'}`}
                       >
-                        <div className="lg:hidden text-lg font-black text-white/50 uppercase tracking-[0.2em] whitespace-nowrap">
+                        <div className={`lg:hidden text-lg font-black ${isThemeLight ? 'text-slate-900/50' : 'text-white/50'} uppercase tracking-[0.2em] whitespace-nowrap`}>
                           {ind.name}
                         </div>
-                        <div className="hidden lg:block text-2xl font-black text-white/40 uppercase tracking-[0.3em] whitespace-nowrap" style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>
+                        <div className={`hidden lg:block text-2xl font-black ${isThemeLight ? 'text-slate-900/40' : 'text-white/40'} uppercase tracking-[0.3em] whitespace-nowrap`} style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>
                           {ind.name}
                         </div>
                       </div>
@@ -661,12 +675,12 @@ export default function ProductDetails() {
                       >
                         <div>
                           <div className={`w-14 h-14 bg-[#00C878] rounded-[16px] mb-8 flex items-center justify-center transform transition-transform duration-1000 ${isActive ? 'rotate-[-10deg] scale-100' : 'rotate-0 scale-50'}`}>
-                            <Icon size={24} className="text-[var(--theme-color)]" />
+                            <Icon size={24} className="text-white" />
                           </div>
-                          <h3 className="text-4xl lg:text-5xl font-black text-white mb-6 tracking-tight leading-[1.1]">
+                          <h3 className={`text-4xl lg:text-5xl font-black ${isThemeLight ? 'text-slate-900' : 'text-white'} mb-6 tracking-tight leading-[1.1]`}>
                             {ind.name}
                           </h3>
-                          <p className="text-white/70 text-lg leading-relaxed max-w-sm font-medium">
+                          <p className={`text-lg leading-relaxed max-w-sm font-medium ${isThemeLight ? 'text-slate-700' : 'text-white/70'}`}>
                             {ind.desc}
                           </p>
                         </div>
