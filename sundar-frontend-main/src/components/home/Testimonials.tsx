@@ -58,8 +58,8 @@ export default function Testimonials() {
                   "{t.content}"
                 </p>
                 <div className="flex items-center gap-4 mt-auto">
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#00C878] shadow-sm border border-gray-100">
-                    <Building2 className="w-6 h-6" />
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold shadow-sm" style={{ backgroundColor: `hsl(${idx * 40 + 120}, 70%, 45%)` }}>
+                    {t.name.split(' ').map(n => n[0]).join('')}
                   </div>
                   <div>
                     <h4 className="font-bold text-navy">{t.name}</h4>

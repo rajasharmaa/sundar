@@ -70,10 +70,10 @@ const Footer = () => {
             {/* Social Media Links */}
             <div className="flex gap-3 pt-2">
               {[
-                { icon: Facebook, href: '#', label: 'Facebook' },
-                { icon: Twitter, href: '#', label: 'Twitter' },
-                { icon: Instagram, href: '#', label: 'Instagram' },
-                { icon: Linkedin, href: '#', label: 'LinkedIn' }
+                { icon: Facebook, href: 'https://facebook.com/sundarcorporation', label: 'Facebook' },
+                { icon: Twitter, href: 'https://twitter.com/sundarcorp', label: 'Twitter' },
+                { icon: Instagram, href: 'https://instagram.com/sundarcorporation', label: 'Instagram' },
+                { icon: Linkedin, href: 'https://linkedin.com/company/sundar-corporation', label: 'LinkedIn' }
               ].map((soc, sIdx) => {
                 const Icon = soc.icon;
                 return (

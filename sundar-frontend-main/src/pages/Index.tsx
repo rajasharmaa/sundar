@@ -24,6 +24,14 @@ import FinalCTA from '@/components/home/FinalCTA';
 import Testimonials from '@/components/home/Testimonials';
 import ClientLogos from '@/components/home/ClientLogos';
 
+// Newly Added Components
+import CertificationsShowcase from '@/components/home/CertificationsShowcase';
+import MachineryShowcase from '@/components/home/MachineryShowcase';
+import ProductionCapacityDashboard from '@/components/home/ProductionCapacityDashboard';
+import ProductSpecsComparison from '@/components/home/ProductSpecsComparison';
+import FactoryVideoSection from '@/components/home/FactoryVideoSection';
+import GoogleMapSection from '@/components/home/GoogleMapSection';
+
 // Lazy load heavy existing components
 const FeaturedProductsSlider = lazy(() => import('@/components/FeaturedProductsSlider'));
 const MediaGallery = lazy(() => import('@/components/MediaGallery'));
@@ -127,16 +135,25 @@ const Index = () => {
         {/* Section 04 */}
         <WhyChooseUs />
 
-        {/* Section 05 */}
-        <ManufacturingCapability companyInfo={companyInfo} categoriesCount={categories.length} />
+        {/* Section 05: NEW Certifications */}
+        <CertificationsShowcase />
 
         {/* Section 06 */}
-        <ProductionProcess />
+        <ManufacturingCapability companyInfo={companyInfo} categoriesCount={categories.length} />
 
         {/* Section 07 */}
+        <ProductionProcess />
+
+        {/* Section 08: NEW Machinery */}
+        <MachineryShowcase />
+
+        {/* Section 09: NEW Capacity Dashboard */}
+        <ProductionCapacityDashboard />
+
+        {/* Section 10 */}
         <IndustriesServed />
 
-        {/* Section 08 - Featured Products from existing CMS */}
+        {/* Section 11 - Featured Products from existing CMS */}
         {featuredProducts && featuredProducts.length > 0 && (
           <div className="py-24 bg-white">
             <Suspense fallback={<div className="h-64 bg-gray-50 animate-pulse rounded-3xl" />}>
@@ -154,24 +171,30 @@ const Index = () => {
           </div>
         )}
 
-        {/* Section 09 */}
+        {/* Section 12: NEW Product Specs Comparison */}
+        <ProductSpecsComparison />
+
+        {/* Section 13 */}
         <QualityTechnology />
 
-        {/* Section 10 - Media Gallery */}
+        {/* Section 14: NEW Factory Video */}
+        <FactoryVideoSection />
+
+        {/* Section 15 - Media Gallery */}
         <Suspense fallback={<div className="h-64 bg-navy animate-pulse" />}>
           <MediaGallery />
         </Suspense>
 
-        {/* Section 11 */}
+        {/* Section 16 */}
         <CustomPackaging />
 
-        {/* Section 12 - Testimonials */}
+        {/* Section 17 - Testimonials */}
         <Testimonials />
 
-        {/* Section 13 - Client Logos */}
+        {/* Section 18 - Client Logos */}
         <ClientLogos />
 
-        {/* Section 14 */}
+        {/* Section 19 */}
         <CompanyTimeline />
 
         {/* Extra - Existing Shop Slider */}
@@ -181,7 +204,10 @@ const Index = () => {
           </Suspense>
         </div>
 
-        {/* Section 17 */}
+        {/* Section 20: NEW Google Maps */}
+        <GoogleMapSection />
+
+        {/* Section 21 */}
         <FinalCTA />
       </main>
 
