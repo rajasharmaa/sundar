@@ -74,7 +74,7 @@ const MobileBottomNavbar = () => {
                 </div>
 
                 <motion.span
-                  className={`relative z-10 text-[10px] sm:text-[11px] font-medium whitespace-nowrap transition-all duration-200 ${active ? 'text-green-600 font-semibold' : 'text-gray-500'}`}
+                  className={`relative z-10 text-xs sm:text-xs font-medium whitespace-nowrap transition-all duration-200 ${active ? 'text-green-600 font-semibold' : 'text-gray-500'}`}
                   animate={{ scale: active ? 1.05 : 1 }}
                 >
                   {item.label}
@@ -100,3 +100,4 @@ const MobileBottomNavbar = () => {
 };
 
 export default MobileBottomNavbar;
+

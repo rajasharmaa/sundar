@@ -262,7 +262,7 @@ const Categories = () => {
                         <Package className={`w-4 h-4 ${selectedCategory === 'all' ? 'text-green-200' : 'text-gray-400'}`} />
                         <span>All Products</span>
                       </div>
-                      <span className={`text-[10px] px-2 py-1 rounded-full font-black ${selectedCategory === 'all' ? 'bg-green-700 text-white' : 'bg-gray-100 text-gray-500'
+                      <span className={`text-xs px-2 py-1 rounded-full font-black ${selectedCategory === 'all' ? 'bg-green-700 text-white' : 'bg-gray-100 text-gray-500'
                         }`}>
                         {products.length}
                       </span>
@@ -435,7 +435,7 @@ const Categories = () => {
                 ) : (
                   <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
                     {featuredProducts.map((product, i) => (
-                      <ScrollReveal key={product._id || product.id} delay={i * 0.1} distance={20}>
+                      <ScrollReveal key={product.slug || product._id || product.id} delay={i * 0.1} distance={20}>
                         <CatalogueProductCard product={product} />
                       </ScrollReveal>
                     ))}
@@ -453,3 +453,4 @@ const Categories = () => {
 };
 
 export default Categories;
+

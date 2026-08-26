@@ -64,8 +64,8 @@ const createInquiry = async (req, res) => {
         const sanitizedMessage = sanitizeInput(trimmedMsg.substring(0, 2000));
         const rawPhone = phone ? phone.trim() : '';
         const cleanPhone = rawPhone.replace(/\D/g, '');
-        const finalPhone = cleanPhone.length === 12 && cleanPhone.startsWith('91') 
-            ? cleanPhone.slice(2) 
+        const finalPhone = cleanPhone.length === 12 && cleanPhone.startsWith('91')
+            ? cleanPhone.slice(2)
             : cleanPhone;
 
         // Phone format validation
@@ -165,7 +165,7 @@ const createInquiry = async (req, res) => {
         const conditions = [];
         if (sanitizedEmail) conditions.push({ email: sanitizedEmail.toLowerCase() });
         if (finalPhone) conditions.push({ phone: finalPhone });
-        
+
         if (conditions.length > 0) {
             duplicateQuery.$or = conditions;
             const hasDuplicate = await db.collection('inquiries').findOne(duplicateQuery);
@@ -756,10 +756,10 @@ const deleteInquiry = async (req, res) => {
         }
 
         const db = await connectToDB();
-        
+
         // Find the inquiry first to get attachment information
         const inquiry = await db.collection('inquiries').findOne({ _id: new ObjectId(id) });
-        
+
         if (!inquiry) {
             const error = createError.notFound('Inquiry not found');
             return sendErrorResponse(res, error, req.requestId);

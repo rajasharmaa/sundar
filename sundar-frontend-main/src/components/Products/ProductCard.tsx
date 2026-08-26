@@ -43,7 +43,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   isInWishlist = false,
   onViewDetails
 }) => {
-  const productId = product._id || product.id || '';
+  const productId = product.slug || product._id || product.id || '';
   
   // Calculate price from sizeOptions (use minimum 100% price for display)
   const minPrice = product.sizeOptions?.length 
@@ -170,7 +170,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           </Link>
           
           <a
-            href={`mailto:info@damoder.com?subject=Inquiry about ${encodeURIComponent(product.name)}`}
+            href={`mailto:info@sundarcorporation.com?subject=Inquiry about ${encodeURIComponent(product.name)}`}
             className="p-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
             title="Send Inquiry"
           >
@@ -198,3 +198,5 @@ const ProductCard: React.FC<ProductCardProps> = ({
 };
 
 export default ProductCard;
+
+

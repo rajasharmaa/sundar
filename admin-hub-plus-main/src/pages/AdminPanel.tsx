@@ -17,9 +17,9 @@ export default function AdminPanel() {
   return (
     <div className="flex h-screen bg-slate-50 overflow-hidden font-sans">
       {/* Sidebar Navigation */}
-      <AdminTabs 
-        activeTab={activeTab} 
-        onTabChange={setActiveTab} 
+      <AdminTabs
+        activeTab={activeTab}
+        onTabChange={setActiveTab}
         isOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
       />

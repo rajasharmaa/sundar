@@ -193,7 +193,7 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
             </button>
             <Link
               to="/request-quote"
-              className="text-[10px] sm:text-xs font-bold uppercase tracking-wider px-3 py-2 bg-amber-500 text-navy rounded shadow-sm hover:bg-amber-400 transition-colors mr-1 whitespace-nowrap"
+              className="text-xs sm:text-xs font-bold uppercase tracking-wider px-3 py-2 bg-amber-500 text-navy rounded shadow-sm hover:bg-amber-400 transition-colors mr-1 whitespace-nowrap"
             >
               Get Quote
             </Link>
@@ -342,7 +342,7 @@ const Logo = ({ isDark = true }: { isDark?: boolean }) => {
         <span className={`font-black text-base sm:text-lg tracking-tight leading-none whitespace-nowrap transition-colors uppercase ${isDark ? 'text-[#0B2023] group-hover:text-[#22c55e]' : 'text-white group-hover:text-[#22c55e]'}`}>
           Sundar Corporation
         </span>
-        <span className={`text-[8px] sm:text-[10px] font-bold tracking-widest uppercase ${isDark ? 'text-gray-400' : 'text-white/60'}`}>
+        <span className={`text-[8px] sm:text-xs font-bold tracking-widest uppercase ${isDark ? 'text-gray-400' : 'text-white/60'}`}>
           Quality & Trust
         </span>
       </div>
@@ -426,14 +426,14 @@ const DesktopNav = ({ currentPath, textColorClass, isTransparent, categories }: 
 
               {/* Footer */}
               <div className="bg-slate-50/80 px-5 py-3 border-t border-slate-100 flex justify-between items-center">
-                <span className="text-[11px] text-slate-500 font-medium">
+                <span className="text-xs text-slate-500 font-medium">
                   {isHindi ? 'सभी पैकेजिंग समाधान' : 'Explore all our packaging solutions'}
                 </span>
                 <div className="flex items-center gap-5">
-                  <Link to="/categories" className="text-slate-500 hover:text-[#22c55e] font-bold text-[11px] uppercase tracking-widest transition-colors">
+                  <Link to="/categories" className="text-slate-500 hover:text-[#22c55e] font-bold text-xs uppercase tracking-widest transition-colors">
                     {isHindi ? 'श्रेणियाँ' : 'All Categories'}
                   </Link>
-                  <Link to="/products" className="text-[#22c55e] hover:text-[#16a34a] font-bold text-[11px] uppercase tracking-widest flex items-center gap-1 transition-colors">
+                  <Link to="/products" className="text-[#22c55e] hover:text-[#16a34a] font-bold text-xs uppercase tracking-widest flex items-center gap-1 transition-colors">
                     <span>{isHindi ? 'सभी उत्पाद' : 'View All'}</span>
                     <ArrowRight size={14} />
                   </Link>
@@ -510,3 +510,4 @@ const MobileSubLink = ({ href, onClick, children, isActive }: { href: string; on
 );
 
 export default Navbar;
+

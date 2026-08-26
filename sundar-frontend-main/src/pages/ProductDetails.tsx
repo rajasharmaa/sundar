@@ -181,7 +181,7 @@ export default function ProductDetails() {
 
         {/* 1. SPLIT-SCREEN HERO SECTION (Reference Image Style) */}
         <section ref={heroRef} className="relative w-full min-h-[100vh] lg:min-h-[800px] flex flex-col lg:flex-row overflow-hidden bg-[var(--theme-color)]">
-          
+
           {/* LEFT HALF (Navy) */}
           <div className="relative w-full lg:w-1/2 bg-[var(--theme-color)] py-16 lg:pt-32 lg:pb-20 px-8 lg:px-20 flex flex-col justify-center items-start lg:items-end z-10 order-3 lg:order-1">
             {/* Rotated Background Text */}
@@ -231,7 +231,7 @@ export default function ProductDetails() {
 
           {/* RIGHT HALF (Emerald Green) */}
           <div className="relative w-full lg:w-1/2 bg-[#00C878] pt-24 pb-20 lg:pt-20 lg:pb-32 px-8 lg:px-20 flex flex-col justify-center items-start z-10 lg:pl-[240px] xl:pl-[280px] order-1 lg:order-2">
-            
+
             {/* Creative Divider (Mobile) */}
             <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none lg:hidden translate-y-[1px] z-20">
               <svg viewBox="0 0 1440 120" className="w-full h-[30px] sm:h-[50px] block" preserveAspectRatio="none">
@@ -279,9 +279,9 @@ export default function ProductDetails() {
 
           {/* CENTER FLOATING IMAGE & MULTI-IMAGE THUMBNAILS */}
           <div className="relative lg:absolute order-2 lg:order-none lg:top-1/2 lg:left-1/2 self-center lg:-translate-x-1/2 lg:-translate-y-1/2 w-full max-w-[450px] lg:max-w-[500px] xl:max-w-[550px] aspect-[4/5] lg:aspect-[3/4] z-30 pointer-events-auto flex flex-col items-center justify-center py-4 lg:py-0 px-4">
-            
+
             {/* Elegant Floating Pedestal (Pulsing Animation) */}
-            <motion.div 
+            <motion.div
               animate={{ scale: [1, 1.05, 1], opacity: [0.8, 0.4, 0.8] }}
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
               className="absolute top-[88%] left-1/2 -translate-x-1/2 w-[70%] lg:w-[60%] h-[15%] pointer-events-none"
@@ -308,9 +308,9 @@ export default function ProductDetails() {
                       transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
                       className="w-full h-full relative group cursor-zoom-in"
                     >
-                      <img 
-                        src={validImages[activeImageIndex]} 
-                        alt={product.name} 
+                      <img
+                        src={validImages[activeImageIndex]}
+                        alt={product.name}
                         className="w-full h-full object-contain filter drop-shadow-[0_30px_30px_rgba(0,0,0,0.4)] transition-transform duration-500 ease-out group-hover:scale-150 group-hover:drop-shadow-2xl scale-[1.25] lg:scale-100"
                       />
                     </motion.div>
@@ -318,7 +318,7 @@ export default function ProductDetails() {
                 )}
               </AnimatePresence>
             </div>
-            
+
             {/* Multiple Images Thumbnail Gallery */}
             {validImages.length > 1 && (
               <div className="relative z-20 mt-8 flex items-center gap-3 bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/20 shadow-xl">
@@ -334,7 +334,7 @@ export default function ProductDetails() {
               </div>
             )}
           </div>
-          
+
           {/* Scroll Indicator */}
           <div className="hidden lg:flex absolute bottom-8 left-12 flex-col items-center gap-3 opacity-50 z-20">
             <span className="text-[9px] font-bold text-white tracking-[0.3em] uppercase rotated-text" style={{ writingMode: 'vertical-rl' }}>
@@ -360,7 +360,7 @@ export default function ProductDetails() {
               ].map((fact, idx) => (
                 <div key={idx} className="p-8 lg:p-12 text-center group hover:bg-[#F5F7F6] transition-colors duration-500">
                   <div className="text-2xl lg:text-3xl font-black text-[var(--theme-color)] mb-2">{fact.value}</div>
-                  <div className="text-[10px] font-bold text-[#64748B] tracking-[0.2em] uppercase">{fact.label}</div>
+                  <div className="text-xs font-bold text-[#64748B] tracking-[0.2em] uppercase">{fact.label}</div>
                 </div>
               ))}
             </div>
@@ -381,7 +381,7 @@ export default function ProductDetails() {
                 className="lg:col-span-6 flex gap-8"
               >
                 <div className="hidden sm:block">
-                  <div className="text-[10px] font-bold text-[#00C878] tracking-[0.2em] uppercase" style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>
+                  <div className="text-xs font-bold text-[#00C878] tracking-[0.2em] uppercase" style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>
                     01 // Product Story
                   </div>
                 </div>
@@ -408,7 +408,7 @@ export default function ProductDetails() {
                   </p>
                 </div>
 
-                <a href="#specifications" className="inline-flex items-center gap-3 text-[11px] font-bold text-[var(--theme-color)] tracking-[0.2em] uppercase hover:text-[#00C878] transition-colors group">
+                <a href="#specifications" className="inline-flex items-center gap-3 text-xs font-bold text-[var(--theme-color)] tracking-[0.2em] uppercase hover:text-[#00C878] transition-colors group">
                   Explore Specifications
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </a>
@@ -421,138 +421,138 @@ export default function ProductDetails() {
         {/* 7. INTERACTIVE FEATURES */}
         {features.length > 0 && (
           <section className={`py-24 lg:py-32 bg-[var(--theme-color)] ${isThemeLight ? 'text-slate-900' : 'text-white'} overflow-hidden`}>
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-            <div className="mb-16 lg:mb-24">
-              <h2 className="text-4xl lg:text-[52px] font-black tracking-tight">Why This Product Performs</h2>
-            </div>
+            <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+              <div className="mb-16 lg:mb-24">
+                <h2 className="text-4xl lg:text-[52px] font-black tracking-tight">Why This Product Performs</h2>
+              </div>
 
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+              <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
 
-              {/* Left: Interactive List */}
-              <div className="space-y-2">
-                {features.map((feature, idx) => (
-                  <div
-                    key={idx}
-                    onMouseEnter={() => setActiveFeatureIndex(idx)}
-                    className={`group cursor-pointer border-b ${isThemeLight ? 'border-slate-900/10' : 'border-white/10'} last:border-0 pb-6 mb-6`}
-                  >
-                    <div className="flex gap-6 items-start">
-                      <span className={`text-sm font-bold tracking-[0.2em] transition-colors duration-300 mt-2 ${activeFeatureIndex === idx ? (isThemeLight ? 'text-slate-800' : 'text-[#00C878]') : (isThemeLight ? 'text-slate-900/30' : 'text-white/30')}`}>
-                        0{idx + 1}
-                      </span>
-                      <div>
-                        <h3 className={`text-2xl lg:text-4xl font-black tracking-tight transition-colors duration-300 mb-4 ${activeFeatureIndex === idx ? (isThemeLight ? 'text-slate-900' : 'text-white') : (isThemeLight ? 'text-slate-900/40 group-hover:text-slate-900/70' : 'text-white/40 group-hover:text-white/70')}`}>
-                          {feature.title}
-                        </h3>
-                        <AnimatePresence>
-                          {activeFeatureIndex === idx && (
-                            <motion.p
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: 'auto' }}
-                              exit={{ opacity: 0, height: 0 }}
-                              className={`text-lg lg:text-xl leading-relaxed ${isThemeLight ? 'text-slate-700' : 'text-[#64748B]'}`}
-                            >
-                              {feature.desc}
-                            </motion.p>
-                          )}
-                        </AnimatePresence>
+                {/* Left: Interactive List */}
+                <div className="space-y-2">
+                  {features.map((feature, idx) => (
+                    <div
+                      key={idx}
+                      onMouseEnter={() => setActiveFeatureIndex(idx)}
+                      className={`group cursor-pointer border-b ${isThemeLight ? 'border-slate-900/10' : 'border-white/10'} last:border-0 pb-6 mb-6`}
+                    >
+                      <div className="flex gap-6 items-start">
+                        <span className={`text-sm font-bold tracking-[0.2em] transition-colors duration-300 mt-2 ${activeFeatureIndex === idx ? (isThemeLight ? 'text-slate-800' : 'text-[#00C878]') : (isThemeLight ? 'text-slate-900/30' : 'text-white/30')}`}>
+                          0{idx + 1}
+                        </span>
+                        <div>
+                          <h3 className={`text-2xl lg:text-4xl font-black tracking-tight transition-colors duration-300 mb-4 ${activeFeatureIndex === idx ? (isThemeLight ? 'text-slate-900' : 'text-white') : (isThemeLight ? 'text-slate-900/40 group-hover:text-slate-900/70' : 'text-white/40 group-hover:text-white/70')}`}>
+                            {feature.title}
+                          </h3>
+                          <AnimatePresence>
+                            {activeFeatureIndex === idx && (
+                              <motion.p
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                exit={{ opacity: 0, height: 0 }}
+                                className={`text-lg lg:text-xl leading-relaxed ${isThemeLight ? 'text-slate-700' : 'text-[#64748B]'}`}
+                              >
+                                {feature.desc}
+                              </motion.p>
+                            )}
+                          </AnimatePresence>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+
+                {/* Right: Dynamic Image (Bright Photography Studio) */}
+                <div
+                  className="hidden lg:block relative aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl border border-black/5"
+                  style={{ backgroundColor: '#e5e7eb' }} // Light gray base
+                >
+                  {/* 3D Studio SVG Environment */}
+                  <svg className="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="none" viewBox="0 0 100 100">
+                    <defs>
+                      <radialGradient id="center-spot" cx="50%" cy="0%" r="70%">
+                        <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
+                        <stop offset="40%" stopColor="#ffffff" stopOpacity="0.5" />
+                        <stop offset="100%" stopColor="transparent" stopOpacity="0" />
+                      </radialGradient>
+                      <radialGradient id="side-spot" cx="50%" cy="0%" r="70%">
+                        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
+                        <stop offset="40%" stopColor="#ffffff" stopOpacity="0.3" />
+                        <stop offset="100%" stopColor="transparent" stopOpacity="0" />
+                      </radialGradient>
+                      <linearGradient id="floor-grad" x1="0%" y1="75%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
+                        <stop offset="100%" stopColor="#9ca3af" stopOpacity="0.4" />
+                      </linearGradient>
+                      <filter id="soft-blur" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="4" />
+                      </filter>
+                    </defs>
+
+                    {/* Base Gray Wall */}
+                    <rect width="100" height="100" fill="#d1d5db" />
+
+                    {/* Left Spotlight */}
+                    <ellipse cx="15" cy="-5" rx="35" ry="80" fill="url(#side-spot)" transform="rotate(-15 15 -5)" filter="url(#soft-blur)" />
+
+                    {/* Right Spotlight */}
+                    <ellipse cx="85" cy="-5" rx="35" ry="80" fill="url(#side-spot)" transform="rotate(15 85 -5)" filter="url(#soft-blur)" />
+
+                    {/* Center Main Spotlight */}
+                    <ellipse cx="50" cy="-10" rx="45" ry="90" fill="url(#center-spot)" filter="url(#soft-blur)" />
+
+                    {/* Infinity Cove Floor */}
+                    <rect x="0" y="75" width="100" height="25" fill="url(#floor-grad)" />
+                    <ellipse cx="50" cy="75" rx="60" ry="8" fill="#ffffff" filter="url(#soft-blur)" opacity="0.8" />
+
+                    {/* Central Floor Highlight (under product) */}
+                    <ellipse cx="50" cy="85" rx="35" ry="8" fill="#ffffff" filter="url(#soft-blur)" />
+                  </svg>
+
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeFeatureIndex}
+                      initial={{ opacity: 0, scale: 0.9, y: 50 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
+                      transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
+                      className="absolute inset-0 w-full h-full flex items-center justify-center p-12 z-10"
+                    >
+                      {(() => {
+                        const activeImage = features[activeFeatureIndex]?.image || (validImages.length > 0 ? validImages[activeFeatureIndex % validImages.length] : null);
+
+                        return activeImage ? (
+                          <div className="relative w-full h-full flex items-center justify-center">
+                            {/* Dark Contact Shadow for Bright Floor */}
+                            <div className="absolute bottom-[2%] w-[40%] h-[12px] bg-black/40 blur-md rounded-[100%]" />
+                            <div className="absolute bottom-[3%] w-[25%] h-[8px] bg-black/60 blur-sm rounded-[100%]" />
+
+                            <motion.img
+                              src={activeImage}
+                              alt={`${product.name} Feature`}
+                              className="relative w-full h-[90%] object-contain z-10"
+                              style={{ filter: `drop-shadow(0 25px 25px rgba(0,0,0,0.3))` }}
+                              animate={{
+                                y: [-5, 5, -5],
+                              }}
+                              transition={{
+                                repeat: Infinity,
+                                duration: 5,
+                                ease: "easeInOut"
+                              }}
+                            />
+                          </div>
+                        ) : (
+                          <ImagePlaceholder className="rounded-2xl bg-black/5 border-black/10 text-black/30 relative z-10" />
+                        );
+                      })()}
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+
               </div>
-
-              {/* Right: Dynamic Image (Bright Photography Studio) */}
-              <div 
-                className="hidden lg:block relative aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl border border-black/5"
-                style={{ backgroundColor: '#e5e7eb' }} // Light gray base
-              >
-                {/* 3D Studio SVG Environment */}
-                <svg className="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="none" viewBox="0 0 100 100">
-                  <defs>
-                    <radialGradient id="center-spot" cx="50%" cy="0%" r="70%">
-                      <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
-                      <stop offset="40%" stopColor="#ffffff" stopOpacity="0.5" />
-                      <stop offset="100%" stopColor="transparent" stopOpacity="0" />
-                    </radialGradient>
-                    <radialGradient id="side-spot" cx="50%" cy="0%" r="70%">
-                      <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
-                      <stop offset="40%" stopColor="#ffffff" stopOpacity="0.3" />
-                      <stop offset="100%" stopColor="transparent" stopOpacity="0" />
-                    </radialGradient>
-                    <linearGradient id="floor-grad" x1="0%" y1="75%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
-                      <stop offset="100%" stopColor="#9ca3af" stopOpacity="0.4" />
-                    </linearGradient>
-                    <filter id="soft-blur" x="-20%" y="-20%" width="140%" height="140%">
-                      <feGaussianBlur stdDeviation="4" />
-                    </filter>
-                  </defs>
-
-                  {/* Base Gray Wall */}
-                  <rect width="100" height="100" fill="#d1d5db" />
-                  
-                  {/* Left Spotlight */}
-                  <ellipse cx="15" cy="-5" rx="35" ry="80" fill="url(#side-spot)" transform="rotate(-15 15 -5)" filter="url(#soft-blur)" />
-                  
-                  {/* Right Spotlight */}
-                  <ellipse cx="85" cy="-5" rx="35" ry="80" fill="url(#side-spot)" transform="rotate(15 85 -5)" filter="url(#soft-blur)" />
-                  
-                  {/* Center Main Spotlight */}
-                  <ellipse cx="50" cy="-10" rx="45" ry="90" fill="url(#center-spot)" filter="url(#soft-blur)" />
-
-                  {/* Infinity Cove Floor */}
-                  <rect x="0" y="75" width="100" height="25" fill="url(#floor-grad)" />
-                  <ellipse cx="50" cy="75" rx="60" ry="8" fill="#ffffff" filter="url(#soft-blur)" opacity="0.8" />
-                  
-                  {/* Central Floor Highlight (under product) */}
-                  <ellipse cx="50" cy="85" rx="35" ry="8" fill="#ffffff" filter="url(#soft-blur)" />
-                </svg>
-                
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeFeatureIndex}
-                    initial={{ opacity: 0, scale: 0.9, y: 50 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
-                    transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
-                    className="absolute inset-0 w-full h-full flex items-center justify-center p-12 z-10"
-                  >
-                    {(() => {
-                      const activeImage = features[activeFeatureIndex]?.image || (validImages.length > 0 ? validImages[activeFeatureIndex % validImages.length] : null);
-                      
-                      return activeImage ? (
-                        <div className="relative w-full h-full flex items-center justify-center">
-                          {/* Dark Contact Shadow for Bright Floor */}
-                          <div className="absolute bottom-[2%] w-[40%] h-[12px] bg-black/40 blur-md rounded-[100%]" />
-                          <div className="absolute bottom-[3%] w-[25%] h-[8px] bg-black/60 blur-sm rounded-[100%]" />
-                          
-                          <motion.img
-                            src={activeImage}
-                            alt={`${product.name} Feature`}
-                            className="relative w-full h-[90%] object-contain z-10"
-                            style={{ filter: `drop-shadow(0 25px 25px rgba(0,0,0,0.3))` }}
-                            animate={{ 
-                              y: [-5, 5, -5],
-                            }}
-                            transition={{
-                              repeat: Infinity,
-                              duration: 5,
-                              ease: "easeInOut"
-                            }}
-                          />
-                        </div>
-                      ) : (
-                        <ImagePlaceholder className="rounded-2xl bg-black/5 border-black/10 text-black/30 relative z-10" />
-                      );
-                    })()}
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-
             </div>
-          </div>
-        </section>
+          </section>
         )}
 
         {/* 8. PRODUCT RANGE (Horizontal Scroll) */}
@@ -560,12 +560,12 @@ export default function ProductDetails() {
           <section className="py-24 lg:py-32 bg-[#F5F7F6] overflow-hidden">
             <div className="max-w-[1400px] mx-auto px-6 lg:px-12 mb-16 flex items-end justify-between">
               <div>
-                <div className="text-[10px] font-bold text-[#64748B] tracking-[0.2em] uppercase mb-4">
+                <div className="text-xs font-bold text-[#64748B] tracking-[0.2em] uppercase mb-4">
                   02 // Product Variants
                 </div>
                 <h2 className="text-4xl lg:text-[52px] font-black text-[var(--theme-color)] tracking-tight">Explore The Range</h2>
               </div>
-              <div className="hidden md:flex items-center gap-4 text-[10px] font-bold text-[var(--theme-color)] tracking-[0.2em] uppercase">
+              <div className="hidden md:flex items-center gap-4 text-xs font-bold text-[var(--theme-color)] tracking-[0.2em] uppercase">
                 Swipe to explore <MoveRight size={16} />
               </div>
             </div>
@@ -594,7 +594,7 @@ export default function ProductDetails() {
                     <p className="text-[#64748B] text-lg leading-relaxed mb-8">
                       {variant.description || `Industrial specification tailored for ${variant.size} capacity. Ideal for standard logistics and bulk handling.`}
                     </p>
-                    <a href="#product-inquiry" className="inline-flex items-center gap-2 text-[11px] font-bold text-[#00C878] tracking-[0.2em] uppercase hover:text-[var(--theme-color)] transition-colors">
+                    <a href="#product-inquiry" className="inline-flex items-center gap-2 text-xs font-bold text-[#00C878] tracking-[0.2em] uppercase hover:text-[var(--theme-color)] transition-colors">
                       Inquire Option <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                     </a>
                   </div>
@@ -607,100 +607,100 @@ export default function ProductDetails() {
         {/* 10. INDUSTRIES WE SERVE (Creative Horizontal Accordion) */}
         {industries.length > 0 && (
           <section className={`relative py-24 lg:py-32 bg-[var(--theme-color)] ${isThemeLight ? 'text-slate-900' : 'text-white'} overflow-hidden`}>
-          {/* Subtle Glow Background */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#00C878]/5 rounded-full blur-[120px] pointer-events-none" />
-          
-          <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12">
-            <div className="mb-16 lg:mb-24 text-center flex flex-col items-center">
-              <div className={`text-[10px] font-bold ${isThemeLight ? 'text-slate-800' : 'text-[#00C878]'} tracking-[0.2em] uppercase mb-6 flex items-center gap-4`}>
-                <span className={`w-12 h-[1px] ${isThemeLight ? 'bg-slate-900/30' : 'bg-[#00C878]/50'}`}></span>
-                03 // Applications
-                <span className={`w-12 h-[1px] ${isThemeLight ? 'bg-slate-900/30' : 'bg-[#00C878]/50'}`}></span>
-              </div>
-              <h2 className="text-4xl lg:text-[64px] font-black tracking-tight leading-[1.05]">
-                Engineered for <span className={`text-transparent bg-clip-text bg-gradient-to-r ${isThemeLight ? 'from-slate-900 to-slate-900/30' : 'from-white to-white/30'}`}>Impact.</span>
-              </h2>
-            </div>
+            {/* Subtle Glow Background */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#00C878]/5 rounded-full blur-[120px] pointer-events-none" />
 
-            <div className="flex flex-col lg:flex-row w-full h-[600px] lg:h-[550px] gap-4">
-              {industries.map((ind, idx) => {
-                const activeIdx = activeIndustryIndex !== null ? activeIndustryIndex : 0;
-                const isActive = activeIdx === idx;
-                const Icons = [Layers, Factory, Shield, Box, Hexagon];
-                const Icon = Icons[idx % Icons.length];
-                
-                return (
-                  <div
-                    key={idx}
-                    onMouseEnter={() => setActiveIndustryIndex(idx)}
-                    onClick={() => setActiveIndustryIndex(idx)}
-                    className={`group relative rounded-[32px] overflow-hidden transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] border cursor-pointer
+            <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12">
+              <div className="mb-16 lg:mb-24 text-center flex flex-col items-center">
+                <div className={`text-xs font-bold ${isThemeLight ? 'text-slate-800' : 'text-[#00C878]'} tracking-[0.2em] uppercase mb-6 flex items-center gap-4`}>
+                  <span className={`w-12 h-[1px] ${isThemeLight ? 'bg-slate-900/30' : 'bg-[#00C878]/50'}`}></span>
+                  03 // Applications
+                  <span className={`w-12 h-[1px] ${isThemeLight ? 'bg-slate-900/30' : 'bg-[#00C878]/50'}`}></span>
+                </div>
+                <h2 className="text-4xl lg:text-[64px] font-black tracking-tight leading-[1.05]">
+                  Engineered for <span className={`text-transparent bg-clip-text bg-gradient-to-r ${isThemeLight ? 'from-slate-900 to-slate-900/30' : 'from-white to-white/30'}`}>Impact.</span>
+                </h2>
+              </div>
+
+              <div className="flex flex-col lg:flex-row w-full h-[600px] lg:h-[550px] gap-4">
+                {industries.map((ind, idx) => {
+                  const activeIdx = activeIndustryIndex !== null ? activeIndustryIndex : 0;
+                  const isActive = activeIdx === idx;
+                  const Icons = [Layers, Factory, Shield, Box, Hexagon];
+                  const Icon = Icons[idx % Icons.length];
+
+                  return (
+                    <div
+                      key={idx}
+                      onMouseEnter={() => setActiveIndustryIndex(idx)}
+                      onClick={() => setActiveIndustryIndex(idx)}
+                      className={`group relative rounded-[32px] overflow-hidden transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] border cursor-pointer
                       ${isActive ? (isThemeLight ? 'flex-[4] lg:flex-[5] bg-slate-900/[0.05] border-slate-900/20 shadow-[0_0_40px_rgba(0,0,0,0.05)]' : 'flex-[4] lg:flex-[5] bg-white/[0.05] border-white/10 shadow-[0_0_40px_rgba(0,200,120,0.1)]') : (isThemeLight ? 'flex-1 border-slate-900/5 bg-slate-900/[0.02] hover:bg-slate-900/[0.04]' : 'flex-1 border-white/5 bg-white/[0.02] hover:bg-white/[0.04]')}
                     `}
-                  >
-                    {/* Background Layer 1: Radial Glow */}
-                    <div className={`absolute inset-0 bg-gradient-to-br from-[#00C878]/10 via-transparent to-transparent transition-opacity duration-1000 z-0 ${isActive ? 'opacity-100' : 'opacity-0'}`} />
-                    
-                    {/* Background Layer 2: Abstract Grid */}
-                    <div className={`absolute inset-0 transition-opacity duration-1000 z-0 ${isActive ? 'opacity-[0.03]' : 'opacity-[0.01]'}`} style={{ backgroundImage: `radial-gradient(circle at 2px 2px, ${isThemeLight ? 'rgba(0,0,0,0.8)' : 'white'} 1px, transparent 0)`, backgroundSize: '32px 32px' }} />
+                    >
+                      {/* Background Layer 1: Radial Glow */}
+                      <div className={`absolute inset-0 bg-gradient-to-br from-[#00C878]/10 via-transparent to-transparent transition-opacity duration-1000 z-0 ${isActive ? 'opacity-100' : 'opacity-0'}`} />
 
-                    {/* Background Layer 3: Giant Icon Watermark */}
-                    <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none transition-all duration-[1500ms] ease-out z-0 ${isActive ? 'opacity-[0.04] scale-[3.5] rotate-[15deg]' : 'opacity-[0.01] scale-[1] rotate-0'}`}>
-                      <Icon size={240} strokeWidth={1} />
-                    </div>
+                      {/* Background Layer 2: Abstract Grid */}
+                      <div className={`absolute inset-0 transition-opacity duration-1000 z-0 ${isActive ? 'opacity-[0.03]' : 'opacity-[0.01]'}`} style={{ backgroundImage: `radial-gradient(circle at 2px 2px, ${isThemeLight ? 'rgba(0,0,0,0.8)' : 'white'} 1px, transparent 0)`, backgroundSize: '32px 32px' }} />
 
-                    {/* Background Layer 4: Giant Typographic Watermark */}
-                    <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none transition-all duration-[2000ms] ease-out flex items-center justify-center z-0 ${isActive ? 'opacity-[0.03] scale-100 rotate-[-5deg]' : 'opacity-0 scale-50 rotate-0'}`}>
-                      <span className="text-[100px] lg:text-[220px] font-black whitespace-nowrap leading-none tracking-tighter">
-                        {ind.name}
-                      </span>
-                    </div>
-                    
-                    {/* Top-Right Big Number */}
-                    <div className={`absolute top-6 lg:top-8 right-6 lg:right-8 text-5xl lg:text-7xl font-black transition-colors duration-700 leading-none select-none pointer-events-none z-10 ${isActive ? (isThemeLight ? 'text-slate-900/20' : 'text-white/20') : (isThemeLight ? 'text-slate-900/5 group-hover:text-slate-900/10' : 'text-white/5 group-hover:text-white/10')}`}>
-                      0{idx + 1}
-                    </div>
+                      {/* Background Layer 3: Giant Icon Watermark */}
+                      <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none transition-all duration-[1500ms] ease-out z-0 ${isActive ? 'opacity-[0.04] scale-[3.5] rotate-[15deg]' : 'opacity-[0.01] scale-[1] rotate-0'}`}>
+                        <Icon size={240} strokeWidth={1} />
+                      </div>
 
-                    <div className="relative z-10 w-full h-full overflow-hidden">
-                      
-                      {/* Collapsed Text */}
-                      <div 
-                        className={`absolute inset-0 flex items-center justify-center lg:items-end lg:justify-center lg:pb-12 transition-all duration-700
+                      {/* Background Layer 4: Giant Typographic Watermark */}
+                      <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none transition-all duration-[2000ms] ease-out flex items-center justify-center z-0 ${isActive ? 'opacity-[0.03] scale-100 rotate-[-5deg]' : 'opacity-0 scale-50 rotate-0'}`}>
+                        <span className="text-[100px] lg:text-[220px] font-black whitespace-nowrap leading-none tracking-tighter">
+                          {ind.name}
+                        </span>
+                      </div>
+
+                      {/* Top-Right Big Number */}
+                      <div className={`absolute top-6 lg:top-8 right-6 lg:right-8 text-5xl lg:text-7xl font-black transition-colors duration-700 leading-none select-none pointer-events-none z-10 ${isActive ? (isThemeLight ? 'text-slate-900/20' : 'text-white/20') : (isThemeLight ? 'text-slate-900/5 group-hover:text-slate-900/10' : 'text-white/5 group-hover:text-white/10')}`}>
+                        0{idx + 1}
+                      </div>
+
+                      <div className="relative z-10 w-full h-full overflow-hidden">
+
+                        {/* Collapsed Text */}
+                        <div
+                          className={`absolute inset-0 flex items-center justify-center lg:items-end lg:justify-center lg:pb-12 transition-all duration-700
                           ${isActive ? 'opacity-0 scale-90 pointer-events-none' : 'opacity-100 scale-100 delay-200'}`}
-                      >
-                        <div className={`lg:hidden text-lg font-black ${isThemeLight ? 'text-slate-900/50' : 'text-white/50'} uppercase tracking-[0.2em] whitespace-nowrap`}>
-                          {ind.name}
-                        </div>
-                        <div className={`hidden lg:block text-2xl font-black ${isThemeLight ? 'text-slate-900/40' : 'text-white/40'} uppercase tracking-[0.3em] whitespace-nowrap`} style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>
-                          {ind.name}
-                        </div>
-                      </div>
-
-                      {/* Expanded Content */}
-                      <div 
-                        className={`absolute bottom-0 left-0 w-full lg:w-[450px] p-8 lg:p-12 transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-end h-full
-                          ${isActive ? 'opacity-100 translate-y-0 lg:translate-x-0 delay-100' : 'opacity-0 translate-y-12 lg:translate-y-0 lg:-translate-x-24 pointer-events-none'}`}
-                      >
-                        <div>
-                          <div className={`w-14 h-14 bg-[#00C878] rounded-[16px] mb-8 flex items-center justify-center transform transition-transform duration-1000 ${isActive ? 'rotate-[-10deg] scale-100' : 'rotate-0 scale-50'}`}>
-                            <Icon size={24} className="text-white" />
-                          </div>
-                          <h3 className={`text-4xl lg:text-5xl font-black ${isThemeLight ? 'text-slate-900' : 'text-white'} mb-6 tracking-tight leading-[1.1]`}>
+                        >
+                          <div className={`lg:hidden text-lg font-black ${isThemeLight ? 'text-slate-900/50' : 'text-white/50'} uppercase tracking-[0.2em] whitespace-nowrap`}>
                             {ind.name}
-                          </h3>
-                          <p className={`text-lg leading-relaxed max-w-sm font-medium ${isThemeLight ? 'text-slate-700' : 'text-white/70'}`}>
-                            {ind.desc}
-                          </p>
+                          </div>
+                          <div className={`hidden lg:block text-2xl font-black ${isThemeLight ? 'text-slate-900/40' : 'text-white/40'} uppercase tracking-[0.3em] whitespace-nowrap`} style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>
+                            {ind.name}
+                          </div>
                         </div>
-                      </div>
 
+                        {/* Expanded Content */}
+                        <div
+                          className={`absolute bottom-0 left-0 w-full lg:w-[450px] p-8 lg:p-12 transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-end h-full
+                          ${isActive ? 'opacity-100 translate-y-0 lg:translate-x-0 delay-100' : 'opacity-0 translate-y-12 lg:translate-y-0 lg:-translate-x-24 pointer-events-none'}`}
+                        >
+                          <div>
+                            <div className={`w-14 h-14 bg-[#00C878] rounded-[16px] mb-8 flex items-center justify-center transform transition-transform duration-1000 ${isActive ? 'rotate-[-10deg] scale-100' : 'rotate-0 scale-50'}`}>
+                              <Icon size={24} className="text-white" />
+                            </div>
+                            <h3 className={`text-4xl lg:text-5xl font-black ${isThemeLight ? 'text-slate-900' : 'text-white'} mb-6 tracking-tight leading-[1.1]`}>
+                              {ind.name}
+                            </h3>
+                            <p className={`text-lg leading-relaxed max-w-sm font-medium ${isThemeLight ? 'text-slate-700' : 'text-white/70'}`}>
+                              {ind.desc}
+                            </p>
+                          </div>
+                        </div>
+
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
         )}
 
         {/* 11 & 12. TECHNICAL SPECIFICATIONS & CUSTOMIZATION */}
@@ -709,7 +709,7 @@ export default function ProductDetails() {
 
             {/* Left: Specs (Dark) */}
             <div className="bg-[#08131F] text-white p-12 lg:p-24 flex flex-col justify-center">
-              <div className="text-[10px] font-bold text-[#00C878] tracking-[0.2em] uppercase mb-8">
+              <div className="text-xs font-bold text-[#00C878] tracking-[0.2em] uppercase mb-8">
                 04 // Technical Data
               </div>
               <h2 className="text-4xl lg:text-[52px] font-black tracking-tight mb-16">
@@ -741,13 +741,13 @@ export default function ProductDetails() {
 
               <div className="flex flex-wrap gap-4 mb-16">
                 {['SIZE', 'COLOR', 'PRINTING', 'LAMINATION', 'PACKAGING'].map((opt, i) => (
-                  <div key={i} className="px-6 py-3 bg-white border border-[#E5E7EB] rounded-full text-[11px] font-bold text-[var(--theme-color)] tracking-[0.2em] hover:bg-[var(--theme-color)] hover:text-white transition-colors duration-300 cursor-pointer shadow-sm">
+                  <div key={i} className="px-6 py-3 bg-white border border-[#E5E7EB] rounded-full text-xs font-bold text-[var(--theme-color)] tracking-[0.2em] hover:bg-[var(--theme-color)] hover:text-white transition-colors duration-300 cursor-pointer shadow-sm">
                     {opt}
                   </div>
                 ))}
               </div>
 
-              <a href="#product-inquiry" className="inline-flex items-center gap-3 text-[11px] font-bold text-[var(--theme-color)] tracking-[0.2em] uppercase hover:text-[#00C878] transition-colors group">
+              <a href="#product-inquiry" className="inline-flex items-center gap-3 text-xs font-bold text-[var(--theme-color)] tracking-[0.2em] uppercase hover:text-[#00C878] transition-colors group">
                 Discuss Your Requirements
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </a>
@@ -761,7 +761,7 @@ export default function ProductDetails() {
           <div className="max-w-[1400px] mx-auto px-6 lg:px-12 grid lg:grid-cols-12 gap-16">
 
             <div className="lg:col-span-5">
-              <div className="text-[10px] font-bold text-[#64748B] tracking-[0.2em] uppercase mb-4">
+              <div className="text-xs font-bold text-[#64748B] tracking-[0.2em] uppercase mb-4">
                 05 // Why Sundar
               </div>
               <h2 className="text-4xl lg:text-[52px] font-black text-[var(--theme-color)] tracking-tight leading-tight mb-8">
@@ -805,46 +805,46 @@ export default function ProductDetails() {
         {/* 15. FAQ */}
         {faqs.length > 0 && (
           <section className="py-24 lg:py-32 bg-[#F5F7F6]">
-          <div className="max-w-[1000px] mx-auto px-6 lg:px-12">
-            <h2 className="text-4xl lg:text-[52px] font-black text-[var(--theme-color)] tracking-tight mb-16 text-center">
-              Questions?<br />We've Got Answers.
-            </h2>
+            <div className="max-w-[1000px] mx-auto px-6 lg:px-12">
+              <h2 className="text-4xl lg:text-[52px] font-black text-[var(--theme-color)] tracking-tight mb-16 text-center">
+                Questions?<br />We've Got Answers.
+              </h2>
 
-            <div className="space-y-4">
-              {faqs.map((faq, idx) => (
-                <div
-                  key={idx}
-                  className="bg-white rounded-[16px] border border-[#E5E7EB] overflow-hidden transition-all duration-300 hover:shadow-lg"
-                >
-                  <button
-                    onClick={() => setOpenFaqIndex(openFaqIndex === idx ? null : idx)}
-                    className="w-full flex items-center justify-between p-8 text-left focus:outline-none"
+              <div className="space-y-4">
+                {faqs.map((faq, idx) => (
+                  <div
+                    key={idx}
+                    className="bg-white rounded-[16px] border border-[#E5E7EB] overflow-hidden transition-all duration-300 hover:shadow-lg"
                   >
-                    <span className="text-lg lg:text-xl font-bold text-[var(--theme-color)]">
-                      {faq.q}
-                    </span>
-                    <div className={`shrink-0 transition-transform duration-300 ${openFaqIndex === idx ? 'rotate-180 text-[#00C878]' : 'text-[#64748B]'}`}>
-                      <ChevronDown size={24} />
-                    </div>
-                  </button>
-                  <AnimatePresence>
-                    {openFaqIndex === idx && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: 'easeInOut' }}
-                      >
-                        <div className="px-8 pb-8 text-[#64748B] text-lg leading-relaxed">
-                          {faq.a}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ))}
+                    <button
+                      onClick={() => setOpenFaqIndex(openFaqIndex === idx ? null : idx)}
+                      className="w-full flex items-center justify-between p-8 text-left focus:outline-none"
+                    >
+                      <span className="text-lg lg:text-xl font-bold text-[var(--theme-color)]">
+                        {faq.q}
+                      </span>
+                      <div className={`shrink-0 transition-transform duration-300 ${openFaqIndex === idx ? 'rotate-180 text-[#00C878]' : 'text-[#64748B]'}`}>
+                        <ChevronDown size={24} />
+                      </div>
+                    </button>
+                    <AnimatePresence>
+                      {openFaqIndex === idx && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        >
+                          <div className="px-8 pb-8 text-[#64748B] text-lg leading-relaxed">
+                            {faq.a}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
           </section>
         )}
 
@@ -894,9 +894,9 @@ export default function ProductDetails() {
               <p className="text-gray-500 font-medium mb-10 max-w-sm">
                 Receive detailed pricing, lead times, and engineering specifications for {product.name}.
               </p>
-              <InquiryForm 
-                productId={product.id || (product as any)._id || ''} 
-                productName={product.name} 
+              <InquiryForm
+                productId={product.id || (product as any)._id || ''}
+                productName={product.name}
                 trigger={
                   <button className="w-full inline-flex items-center justify-center gap-3 px-8 py-5 bg-industrial text-navy font-black uppercase tracking-widest text-sm rounded hover:bg-industrial-dark transition-colors shadow-[0_0_20px_rgba(245,158,11,0.3)]">
                     <MessageSquare className="w-5 h-5" />
@@ -915,3 +915,4 @@ export default function ProductDetails() {
     </>
   );
 };
+

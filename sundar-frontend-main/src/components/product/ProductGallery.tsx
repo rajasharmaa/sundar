@@ -158,7 +158,7 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({ product, languag
       {/* External API indicator */}
       {product.external && (
         <div className="absolute top-4 left-36 z-20">
-          <Badge className="bg-slate-100 hover:bg-slate-100 text-slate-800 border border-slate-200 text-[10px] font-bold">
+          <Badge className="bg-slate-100 hover:bg-slate-100 text-slate-800 border border-slate-200 text-xs font-bold">
             {language === 'hi' ? 'लाइव कैटलॉग' : 'Live Catalog'}
           </Badge>
         </div>
@@ -434,3 +434,4 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({ product, languag
     </div>
   );
 };
+

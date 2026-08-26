@@ -25,7 +25,7 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({ companyInfo }) => {
       <div className="bg-slate-50 rounded-3xl p-6 border border-slate-100">
         <div className="flex items-center gap-2 mb-4">
           <Zap className="w-3.5 h-3.5 text-green-600" />
-          <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-900">Sourcing Optimization</h4>
+          <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-900">Sourcing Optimization</h4>
         </div>
         <div className="space-y-3">
           {[
@@ -35,7 +35,7 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({ companyInfo }) => {
           ].map((tip, i) => (
             <div key={i} className="flex gap-3 items-start">
               <div className="w-1 h-1 rounded-full bg-green-600 mt-1.5 shrink-0" />
-              <p className="text-[11px] font-bold text-slate-500 leading-tight">{tip}</p>
+              <p className="text-xs font-bold text-slate-500 leading-tight">{tip}</p>
             </div>
           ))}
         </div>
@@ -44,7 +44,7 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({ companyInfo }) => {
       {/* Enhanced Stats Card */}
       <div className="bg-white rounded-[2.5rem] p-8 border border-slate-100 shadow-xl shadow-slate-900/5">
         <div className="flex items-center justify-between mb-8 pb-4 border-b border-slate-50">
-          <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">Network Stats</h4>
+          <h4 className="text-xs font-black uppercase tracking-[0.3em] text-slate-400">Network Stats</h4>
           <BarChart3 size={14} className="text-slate-300" />
         </div>
         <div className="grid grid-cols-2 gap-x-8 gap-y-10">
@@ -59,8 +59,8 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({ companyInfo }) => {
                 {stat.value}
               </p>
               <div className="mt-1">
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">{stat.label}</p>
-                <p className="text-[10px] font-bold text-slate-300 uppercase tracking-widest">{stat.sub}</p>
+                <p className="text-xs font-black text-slate-400 uppercase tracking-widest leading-none">{stat.label}</p>
+                <p className="text-xs font-bold text-slate-300 uppercase tracking-widest">{stat.sub}</p>
               </div>
             </div>
           ))}
@@ -72,7 +72,7 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({ companyInfo }) => {
         {/* Subtle decorative element */}
         <div className="absolute -top-24 -right-24 w-48 h-48 bg-green-600/10 rounded-full blur-3xl" />
 
-        <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 mb-8 border-b border-white/5 pb-4 relative z-10">Direct Support</h4>
+        <h4 className="text-xs font-black uppercase tracking-[0.3em] text-slate-500 mb-8 border-b border-white/5 pb-4 relative z-10">Direct Support</h4>
 
         <div className="space-y-6 relative z-10">
           {[
@@ -100,7 +100,7 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({ companyInfo }) => {
                 {item.icon}
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-1">{item.label}</p>
+                <p className="text-xs font-black uppercase tracking-widest text-slate-500 mb-1">{item.label}</p>
                 {item.href ? (
                   <a href={item.href} className="text-sm font-bold hover:text-green-400 transition-colors flex items-center gap-2">
                     {item.value}
@@ -148,4 +148,5 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({ companyInfo }) => {
 };
 
 export default ContactSidebar;
+
 

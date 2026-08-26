@@ -84,7 +84,7 @@ const Blog = () => {
                         </div>
                         <div className="lg:w-1/2 p-12 lg:p-20 flex flex-col justify-center">
                            <div className="flex items-center gap-3 mb-6">
-                              <span className="px-4 py-1.5 bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest rounded-full">Featured</span>
+                              <span className="px-4 py-1.5 bg-blue-600 text-white text-xs font-black uppercase tracking-widest rounded-full">Featured</span>
                               <span className="text-gray-400 text-sm font-bold flex items-center gap-2">
                                  <Clock size={14} /> 12 min read
                               </span>
@@ -149,7 +149,7 @@ const Blog = () => {
                                  className="w-full aspect-[4/3] object-cover group-hover:scale-110 transition-transform duration-700"
                               />
                               <div className="absolute top-6 left-6">
-                                 <span className="px-4 py-1.5 bg-white/90 backdrop-blur-sm text-gray-900 text-[10px] font-black uppercase tracking-widest rounded-full shadow-sm">
+                                 <span className="px-4 py-1.5 bg-white/90 backdrop-blur-sm text-gray-900 text-xs font-black uppercase tracking-widest rounded-full shadow-sm">
                                     {post.category}
                                  </span>
                               </div>
@@ -166,7 +166,7 @@ const Blog = () => {
                               <p className="text-gray-600 font-medium leading-relaxed mb-6">
                                  {post.excerpt}
                               </p>
-                              <button className="flex items-center gap-2 text-blue-600 font-black uppercase tracking-widest text-[10px] group-hover:gap-4 transition-all">
+                              <button className="flex items-center gap-2 text-blue-600 font-black uppercase tracking-widest text-xs group-hover:gap-4 transition-all">
                                  <span>Read More</span>
                                  <ArrowRight size={14} />
                               </button>
@@ -215,3 +215,4 @@ const Blog = () => {
 };
 
 export default Blog;
+

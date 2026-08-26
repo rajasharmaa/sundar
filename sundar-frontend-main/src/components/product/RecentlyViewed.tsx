@@ -165,14 +165,14 @@ export const RecentlyViewed = ({ limit = 5, className = '', showClearButton = tr
                   <div className="mt-auto flex items-center justify-between border-t border-gray-50 pt-3">
                     <div className="flex items-center gap-1.5 text-gray-400">
                       <Clock className="w-3 h-3" />
-                      <span className="text-[10px] font-bold uppercase tracking-tighter">
+                      <span className="text-xs font-bold uppercase tracking-tighter">
                         {formatTimeAgo(product.viewedAt)}
                       </span>
                     </div>
 
                     <Link
                       to={`/products/${product.id || product._id}`}
-                      className="text-[10px] font-bold text-green-600 uppercase tracking-widest hover:underline"
+                      className="text-xs font-bold text-green-600 uppercase tracking-widest hover:underline"
                     >
                       View
                     </Link>
@@ -189,3 +189,4 @@ export const RecentlyViewed = ({ limit = 5, className = '', showClearButton = tr
 
 
 export default RecentlyViewed;
+

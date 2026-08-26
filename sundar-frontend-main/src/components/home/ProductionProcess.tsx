@@ -1,79 +1,92 @@
-import React, { useRef, useEffect } from 'react';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
-gsap.registerPlugin(ScrollTrigger);
-
-const steps = [
-  { num: "01", title: "Material Selection", desc: "Selecting high-grade polymers and raw materials for maximum strength." },
-  { num: "02", title: "Fabric / Film Production", desc: "Advanced extrusion and weaving for consistent material quality." },
-  { num: "03", title: "Printing / Lamination", desc: "Precision multi-color printing and protective barrier lamination." },
-  { num: "04", title: "Conversion", desc: "Automated cutting and stitching for precise dimensions and durability." },
-  { num: "05", title: "Quality Inspection", desc: "Rigorous testing for strength, GSM, and print accuracy." },
-  { num: "06", title: "Packaging & Dispatch", desc: "Secure baling and optimized logistics for on-time delivery." }
+const processSteps = [
+  {
+    id: '01',
+    title: 'Raw Material Selection',
+    description: 'Sourcing premium quality granules and additives for superior strength and durability.'
+  },
+  {
+    id: '02',
+    title: 'Yarn Extrusion & Weaving',
+    description: 'Advanced tape extrusion and precision circular weaving for perfect fabric quality.'
+  },
+  {
+    id: '03',
+    title: 'Printing / Lamination',
+    description: 'Precision multi-color printing and protective barrier lamination.'
+  },
+  {
+    id: '04',
+    title: 'Conversion',
+    description: 'Automated cutting and stitching for precise dimensions and durability.'
+  },
+  {
+    id: '05',
+    title: 'Quality Inspection',
+    description: 'Rigorous testing for strength, GSM, and print accuracy.'
+  },
+  {
+    id: '06',
+    title: 'Packaging & Dispatch',
+    description: 'Secure bundling and palletizing for safe and efficient global transit.'
+  }
 ];
 
-const ProductionProcess: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+const ProductionProcess = () => {
+  const targetRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+  });
 
-  useEffect(() => {
-    let ctx = gsap.context(() => {
-      const container = containerRef.current;
-      if (!container) return;
-
-      const totalWidth = container.scrollWidth - window.innerWidth + 200;
-      
-      // Only apply horizontal scroll on desktop
-      if (window.innerWidth >= 1024) {
-        gsap.to(container, {
-          x: -totalWidth,
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            pin: true,
-            scrub: 1,
-            end: () => "+=" + container.offsetWidth,
-            invalidateOnRefresh: true,
-          }
-        });
-      }
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
-
+  // Map vertical scroll progress to horizontal movement
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-70%"]);
+  
   return (
-    <section ref={sectionRef} className="py-24 bg-white overflow-hidden relative">
-      <div className="max-w-[1400px] mx-auto px-6 mb-16 z-10">
-        <span className="text-[#22c55e] font-semibold text-sm uppercase tracking-widest mb-4 block">
-          Production Process
-        </span>
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-[#0B2023] leading-tight">
-          From Material To <br /> Finished Product
-        </h2>
-      </div>
+    <section ref={targetRef} className="relative h-[300vh] bg-white">
+      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
+        <div className="max-w-[1400px] w-full mx-auto px-6 lg:px-12">
+          
+          {/* Header */}
+          <div className="mb-16 mt-[-10vh]">
+            <h4 className="text-[#00C878] font-bold text-sm tracking-widest uppercase mb-4">Production Process</h4>
+            <h2 className="text-4xl lg:text-6xl font-black text-[#07111F] tracking-tight leading-tight max-w-2xl font-serif">
+              From Material To Finished Product
+            </h2>
+          </div>
 
-      <div className="overflow-hidden lg:overflow-visible">
-        <div ref={containerRef} className="flex flex-col lg:flex-row gap-12 lg:gap-0 px-6 lg:px-[10vw] w-full lg:w-max">
-          {steps.map((step, index) => (
-            <div key={index} className="flex flex-col w-full lg:w-[400px] lg:flex-shrink-0 lg:pr-24 relative group">
-              <div className="text-7xl lg:text-9xl font-serif font-bold text-gray-100 group-hover:text-[#22c55e]/20 transition-colors duration-500 mb-4">
-                {step.num}
-              </div>
-
-              <div className="hidden lg:block w-full h-px bg-gray-200 mb-8 relative">
-                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#22c55e] scale-0 group-hover:scale-100 transition-transform duration-300" />
-                <div className="h-full bg-[#22c55e] w-0 group-hover:w-full transition-all duration-700 ease-out" />
-              </div>
-
-              <h3 className="text-2xl font-bold text-[#0B2023] tracking-tight mb-4 group-hover:text-[#22c55e] transition-colors">
-                {step.title}
-              </h3>
-              <p className="text-gray-500 font-medium">
-                {step.desc}
-              </p>
-            </div>
-          ))}
+          {/* Horizontal Scroll Track */}
+          <div className="flex items-center overflow-hidden">
+            <motion.div style={{ x }} className="flex gap-8 md:gap-12 w-max pr-[20vw] md:pr-[40vw]">
+              {processSteps.map((step) => (
+                <div 
+                  key={step.id} 
+                  className="flex-none w-[280px] md:w-[340px] relative group"
+                >
+                  {/* Giant Background Number */}
+                  <div className="text-[100px] md:text-[120px] leading-none font-black text-gray-50 mb-8 select-none transition-colors duration-500 group-hover:text-gray-100">
+                    {step.id}
+                  </div>
+                  
+                  {/* Divider Line */}
+                  <div className="h-[1px] w-full bg-gray-200 mb-8 relative overflow-hidden">
+                    <div className="absolute top-0 left-0 h-full bg-[#00C878] w-0 group-hover:w-full transition-all duration-700 ease-out" />
+                  </div>
+                  
+                  {/* Content */}
+                  <h3 className="text-xl md:text-2xl font-bold text-[#07111F] mb-4 group-hover:text-[#00C878] transition-colors duration-300">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-500 font-medium leading-relaxed text-sm md:text-base pr-4">
+                    {step.description}
+                  </p>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+          
         </div>
       </div>
     </section>

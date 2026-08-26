@@ -24,7 +24,7 @@ interface CatalogueProductCardProps {
 
 export const CatalogueProductCard: React.FC<CatalogueProductCardProps> = ({ product, isFeatured }) => {
   const { settings } = useSiteSettings();
-  const productId = product._id || product.id;
+  const productId = product.slug || product._id || product.id;
 
   // Safe image resolution
   const imageSrc = product.imageUrl || product.image || '/assets/masterbatch.png'; // Fallback
@@ -64,7 +64,7 @@ export const CatalogueProductCard: React.FC<CatalogueProductCardProps> = ({ prod
         className="relative flex flex-col h-full bg-white rounded-t-full rounded-b-[32px] shadow-sm overflow-visible transition-all duration-300 hover:shadow-2xl"
       >
         {/* NEW Badge */}
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white text-emerald-700 text-[10px] font-black tracking-widest px-5 py-1.5 rounded-full shadow-md z-20 border border-emerald-600/20">
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white text-emerald-700 text-xs font-black tracking-widest px-5 py-1.5 rounded-full shadow-md z-20 border border-emerald-600/20">
           NEW
         </div>
 
@@ -107,13 +107,13 @@ export const CatalogueProductCard: React.FC<CatalogueProductCardProps> = ({ prod
 
           {/* Thin line with View Details Pill */}
           <div className="relative w-full h-[2px] bg-emerald-600/20 my-2 flex justify-center items-center">
-            <div className="bg-emerald-600 text-white text-[10px] font-black px-4 py-1.5 rounded-full z-10 tracking-widest shadow-md">
+            <div className="bg-emerald-600 text-white text-xs font-black px-4 py-1.5 rounded-full z-10 tracking-widest shadow-md">
               VIEW DETAILS
             </div>
           </div>
 
           {/* Description */}
-          <p className="text-[11px] text-gray-400 font-medium leading-relaxed mt-5 px-2 line-clamp-2">
+          <p className="text-xs text-gray-400 font-medium leading-relaxed mt-5 px-2 line-clamp-2">
             {product.description || "High-performance industrial packaging engineered for ultimate strength and durability."}
           </p>
         </div>
@@ -121,3 +121,5 @@ export const CatalogueProductCard: React.FC<CatalogueProductCardProps> = ({ prod
     </Link>
   );
 };
+
+

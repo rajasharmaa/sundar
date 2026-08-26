@@ -35,7 +35,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
       </div>
       <div>
         <h3 className="text-lg font-black text-white uppercase tracking-tight leading-none mb-1">{title}</h3>
-        <p className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">{subtitle}</p>
+        <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">{subtitle}</p>
       </div>
     </div>
   );
@@ -156,7 +156,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
                 <div className={`w-12 h-6 rounded-full transition-colors ${formData.urgent ? 'bg-amber-400' : 'bg-slate-700'}`} />
                 <div className={`absolute top-1 w-4 h-4 rounded-full bg-slate-900 shadow-sm transition-all ${formData.urgent ? 'left-7' : 'left-1'}`} />
               </div>
-              <span className="text-[11px] font-black text-slate-400 uppercase tracking-widest group-hover:text-amber-400 transition-colors">
+              <span className="text-xs font-black text-slate-400 uppercase tracking-widest group-hover:text-amber-400 transition-colors">
                 Flag as Urgent Requirement
               </span>
             </label>
@@ -185,7 +185,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
             </>
           )}
         </motion.button>
-        <p className="text-[10px] text-slate-400 mt-6 font-bold uppercase tracking-[0.15em] text-center">
+        <p className="text-xs text-slate-400 mt-6 font-bold uppercase tracking-[0.15em] text-center">
           * Our technical team typically responds within 24 business hours
         </p>
       </div>
@@ -195,4 +195,5 @@ const ContactForm: React.FC<ContactFormProps> = ({
 };
 
 export default ContactForm;
+
 

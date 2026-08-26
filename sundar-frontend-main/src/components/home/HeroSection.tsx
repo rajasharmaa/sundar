@@ -10,11 +10,11 @@ const LoopingTypewriter = ({ texts, typingSpeed = 100, deletingSpeed = 50, pause
   const [text, setText] = React.useState("");
   const [isDeleting, setIsDeleting] = React.useState(false);
   const [loopNum, setLoopNum] = React.useState(0);
-  
+
   React.useEffect(() => {
     let timer: NodeJS.Timeout;
     const current = texts[loopNum % texts.length];
-    
+
     if (isDeleting) {
       timer = setTimeout(() => {
         setText(current.substring(0, text.length - 1));
@@ -94,17 +94,17 @@ const HeroSection: React.FC<HeroSectionProps> = ({ companyInfo }) => {
 
   return (
     <section className="relative w-full bg-white overflow-hidden pb-10">
-      
+
       {/* Top Cream Section */}
       <div className="relative bg-[#FDFBF7] pt-28 pb-12 px-6 flex flex-col items-center text-center z-20">
-        
+
         {/* Subtle Animated Background Orbs */}
-        <motion.div 
+        <motion.div
           animate={{ y: [0, -30, 0], opacity: [0.3, 0.6, 0.3] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-20 left-10 md:left-32 w-32 h-32 bg-[#22c55e]/10 rounded-full blur-3xl pointer-events-none"
         />
-        <motion.div 
+        <motion.div
           animate={{ y: [0, 40, 0], opacity: [0.2, 0.5, 0.2] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
           className="absolute top-40 right-10 md:right-32 w-48 h-48 bg-[#0B2023]/5 rounded-full blur-3xl pointer-events-none"
@@ -143,7 +143,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ companyInfo }) => {
           >
             {/* Shimmer effect on hover */}
             <div className="absolute inset-0 -translate-x-[150%] group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12"></div>
-            
+
             <span className="relative z-10">Book A Consultation</span>
             <div className="relative z-10 ml-3 bg-white text-[#0B2023] rounded-full p-1 transition-transform duration-300 group-hover:translate-x-1">
               <ArrowRight className="w-3.5 h-3.5" />
@@ -154,11 +154,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ companyInfo }) => {
 
       {/* The Curved Gallery */}
       <div className="relative z-10 w-full bg-white flex justify-center items-center gap-2 md:gap-4 lg:gap-6 h-[55vw] md:h-[45vw] lg:h-[38vw] px-4 md:px-10 py-[12vw] md:py-[10vw] lg:py-[8vw]">
-        
+
         {/* Top Smile Curve Mask */}
-        <svg 
-          viewBox="0 0 1440 200" 
-          className="absolute top-0 left-0 w-full h-[12vw] md:h-[10vw] lg:h-[8vw] pointer-events-none z-20" 
+        <svg
+          viewBox="0 0 1440 200"
+          className="absolute top-0 left-0 w-full h-[12vw] md:h-[10vw] lg:h-[8vw] pointer-events-none z-20"
           preserveAspectRatio="none"
         >
           <path d="M0,0 Q720,200 1440,0 Z" fill="#FDFBF7"></path>
@@ -189,9 +189,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ companyInfo }) => {
                 }}
                 className="w-full h-full"
               >
-                <img 
-                  src={img} 
-                  alt={`Gallery image ${index + 1}`} 
+                <img
+                  src={img}
+                  alt={`Gallery image ${index + 1}`}
                   className="w-full h-full object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-110"
                 />
               </motion.div>
@@ -200,9 +200,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ companyInfo }) => {
         })}
 
         {/* Bottom Smile Curve Mask */}
-        <svg 
-          viewBox="0 0 1440 200" 
-          className="absolute bottom-0 left-0 w-full h-[12vw] md:h-[10vw] lg:h-[8vw] pointer-events-none z-20" 
+        <svg
+          viewBox="0 0 1440 200"
+          className="absolute bottom-0 left-0 w-full h-[12vw] md:h-[10vw] lg:h-[8vw] pointer-events-none z-20"
           preserveAspectRatio="none"
         >
           <path d="M0,0 Q720,200 1440,0 L1440,200 L0,200 Z" fill="#FDFBF7"></path>
@@ -214,7 +214,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ companyInfo }) => {
 
         {/* Stats Grid */}
         <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-center pb-12">
-          
+
           <div className="flex flex-col items-center">
             <div className="text-5xl lg:text-7xl font-bold text-[#0B2023] flex items-center justify-center tracking-tighter">
               <AnimatedCounter to={260} /><span className="text-[#22c55e] font-medium ml-1">+</span>

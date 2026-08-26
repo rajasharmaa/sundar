@@ -359,7 +359,7 @@ const QuickInquiryModal = ({ isOpen, onClose, productId, productName }: QuickInq
                         <div className="w-full border-t border-slate-200" />
                       </div>
                       <div className="relative flex justify-center text-sm">
-                        <span className="px-4 bg-white text-slate-400 font-semibold tracking-wider uppercase text-[10px]">
+                        <span className="px-4 bg-white text-slate-400 font-semibold tracking-wider uppercase text-xs">
                           Need immediate response?
                         </span>
                       </div>
@@ -388,3 +388,4 @@ const QuickInquiryModal = ({ isOpen, onClose, productId, productName }: QuickInq
 };
 
 export default QuickInquiryModal;
+

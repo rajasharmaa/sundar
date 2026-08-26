@@ -64,7 +64,7 @@ export const SEO: React.FC<SEOProps> = ({
   const canonicalUrl = canonical || `${BASE_URL}${currentPath}`;
   const ogImage = og.image || image;
   const ogUrl = og.url || canonicalUrl;
-  
+
   // Generate structured data for products
   const productSchema = productData ? {
     "@context": "https://schema.org",
@@ -95,13 +95,13 @@ export const SEO: React.FC<SEOProps> = ({
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
-      
+
       {/* Robots */}
       <meta name="robots" content={noIndex ? 'noindex, nofollow' : 'index, follow'} />
-      
+
       {/* Canonical URL */}
       <link rel="canonical" href={canonicalUrl} />
-      
+
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />
       <meta property="og:title" content={og.title || fullTitle} />
@@ -109,22 +109,22 @@ export const SEO: React.FC<SEOProps> = ({
       <meta property="og:image" content={ogImage} />
       <meta property="og:url" content={ogUrl} />
       <meta property="og:site_name" content={SITE_NAME} />
-      
+
       {/* Twitter Card */}
       <meta name="twitter:card" content={twitter.card || 'summary_large_image'} />
       <meta name="twitter:title" content={twitter.title || fullTitle} />
       <meta name="twitter:description" content={twitter.description || description} />
       <meta name="twitter:image" content={twitter.image || ogImage} />
       {TWITTER_HANDLE && <meta name="twitter:creator" content={TWITTER_HANDLE} />}
-      
+
       {/* Additional SEO */}
       <meta name="author" content={SITE_NAME} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      
+
       {/* Favicon */}
       <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-      
+
       {/* Structured Data (JSON-LD) */}
       {productSchema && (
         <script type="application/ld+json">

@@ -305,7 +305,7 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
             {[1, 2, 3].map((s) => (
               <div
                 key={s}
-                className={`w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-black transition-all ${step === s
+                className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-black transition-all ${step === s
                     ? 'bg-green-600 text-white ring-4 ring-green-100'
                     : step > s
                       ? 'bg-emerald-500 text-white'
@@ -316,7 +316,7 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
               </div>
             ))}
           </div>
-          <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+          <span className="text-xs font-black text-slate-400 uppercase tracking-widest">
             Step {step} of 3
           </span>
         </div>
@@ -328,7 +328,7 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
               <div className="p-1.5 bg-green-50 text-green-600 rounded-lg shadow-sm">
                 <User size={16} />
               </div>
-              <h3 className="text-[10px] font-black text-slate-900 uppercase tracking-widest">Your Contact Details</h3>
+              <h3 className="text-xs font-black text-slate-900 uppercase tracking-widest">Your Contact Details</h3>
             </div>
 
             <div className="grid md:grid-cols-2 gap-4">
@@ -346,7 +346,7 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
                     }`}
                 />
                 {formErrors.name && (
-                  <p className="text-[10px] text-rose-500 font-bold ml-1">{formErrors.name}</p>
+                  <p className="text-xs text-rose-500 font-bold ml-1">{formErrors.name}</p>
                 )}
               </div>
 
@@ -364,7 +364,7 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
                     }`}
                 />
                 {formErrors.email && (
-                  <p className="text-[10px] text-rose-500 font-bold ml-1">{formErrors.email}</p>
+                  <p className="text-xs text-rose-500 font-bold ml-1">{formErrors.email}</p>
                 )}
               </div>
 
@@ -382,7 +382,7 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
                     }`}
                 />
                 {formErrors.phone && (
-                  <p className="text-[10px] text-rose-500 font-bold ml-1">{formErrors.phone}</p>
+                  <p className="text-xs text-rose-500 font-bold ml-1">{formErrors.phone}</p>
                 )}
               </div>
 
@@ -414,7 +414,7 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
               <div className="p-1.5 -green- -green- rounded-lg shadow-sm">
                 <Building2 size={16} />
               </div>
-              <h3 className="text-[10px] font-black text-slate-900 uppercase tracking-widest">Your Company Details</h3>
+              <h3 className="text-xs font-black text-slate-900 uppercase tracking-widest">Your Company Details</h3>
             </div>
 
             <div className="grid md:grid-cols-2 gap-4">
@@ -432,7 +432,7 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
                     }`}
                 />
                 {formErrors.companyName && (
-                  <p className="text-[10px] text-rose-500 font-bold ml-1">{formErrors.companyName}</p>
+                  <p className="text-xs text-rose-500 font-bold ml-1">{formErrors.companyName}</p>
                 )}
               </div>
 
@@ -542,7 +542,7 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
               <div className="p-1.5 bg-industrial/10 text-industrial rounded-lg shadow-sm">
                 <MessageSquare size={16} />
               </div>
-              <h3 className="text-[10px] font-black text-slate-900 uppercase tracking-widest">Product & Sizing Requirements</h3>
+              <h3 className="text-xs font-black text-slate-900 uppercase tracking-widest">Product & Sizing Requirements</h3>
             </div>
 
             {/* Honeypot field (anti-spam) */}
@@ -574,11 +574,11 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
               ></textarea>
               <div className="flex justify-between items-center px-1">
                 {formErrors.message ? (
-                  <p className="text-[10px] text-rose-500 font-bold">{formErrors.message}</p>
+                  <p className="text-xs text-rose-500 font-bold">{formErrors.message}</p>
                 ) : (
                   <span />
                 )}
-                <span className="text-[10px] font-bold text-slate-450">
+                <span className="text-xs font-bold text-slate-450">
                   {formData.message.length} / 1000 characters
                 </span>
               </div>
@@ -650,3 +650,4 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
 }
 
 export default ContactForm;
+

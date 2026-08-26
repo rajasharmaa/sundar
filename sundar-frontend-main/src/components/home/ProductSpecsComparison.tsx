@@ -59,7 +59,7 @@ const ProductSpecsComparison: React.FC = () => {
                   <th className="py-6 px-4 text-white font-bold text-sm uppercase tracking-widest border-b border-white/10 border-l border-white/10">HDPE Bags</th>
                   <th className="py-6 px-4 text-white font-bold text-sm uppercase tracking-widest border-b border-white/10 border-l border-white/10">PP Woven Sacks</th>
                   <th className="py-6 px-4 text-[#22c55e] font-bold text-sm uppercase tracking-widest border-b border-white/10 border-l border-white/10 bg-white/5 relative">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#22c55e] text-white text-[10px] px-3 py-1 rounded-full whitespace-nowrap shadow-md">Premium</div>
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#22c55e] text-white text-xs px-3 py-1 rounded-full whitespace-nowrap shadow-md">Premium</div>
                     BOPP Laminated
                   </th>
                   <th className="py-6 px-4 text-white font-bold text-sm uppercase tracking-widest border-b border-white/10 border-l border-white/10">FIBC Jumbo Bags</th>
@@ -88,3 +88,4 @@ const ProductSpecsComparison: React.FC = () => {
 };
 
 export default ProductSpecsComparison;
+

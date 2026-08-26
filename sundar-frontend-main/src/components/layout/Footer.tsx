@@ -202,12 +202,12 @@ const Footer = () => {
           </div>
 
           {/* Copyright Info */}
-          <p className="text-[10px] font-bold text-white/40 tracking-wider uppercase">
+          <p className="text-xs font-bold text-white/40 tracking-wider uppercase">
             © {new Date().getFullYear()} Sundar Corporation. ALL RIGHTS RESERVED.
           </p>
 
           {/* Legal / Policy Links */}
-          <div className="flex gap-4 text-[10px] font-bold uppercase tracking-wider">
+          <div className="flex gap-4 text-xs font-bold uppercase tracking-wider">
             <Link to="/privacy-policy" className="text-white/40 hover:text-white transition-colors">Privacy Policy</Link>
             <Link to="/terms-conditions" className="text-white/40 hover:text-white transition-colors">Terms of Supply</Link>
           </div>
@@ -220,3 +220,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

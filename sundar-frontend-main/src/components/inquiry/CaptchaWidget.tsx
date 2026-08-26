@@ -54,7 +54,7 @@ const CaptchaWidget = ({ onVerify, label = 'Security Verification' }: CaptchaWid
 
   return (
     <div className="space-y-2">
-      <label className="text-[10px] font-black text-slate-500 uppercase tracking-wider ml-1 flex items-center gap-1.5">
+      <label className="text-xs font-black text-slate-500 uppercase tracking-wider ml-1 flex items-center gap-1.5">
         <ShieldCheck size={13} className="text-green-500" />
         {label} <span className="text-rose-500">*</span>
       </label>
@@ -93,15 +93,16 @@ const CaptchaWidget = ({ onVerify, label = 'Security Verification' }: CaptchaWid
 
       {/* Feedback */}
       {verified === true && (
-        <p className="text-[10px] font-bold text-green-600 ml-1 flex items-center gap-1">
+        <p className="text-xs font-bold text-green-600 ml-1 flex items-center gap-1">
           <ShieldCheck size={11} /> Verified
         </p>
       )}
       {verified === false && answer.trim() !== '' && (
-        <p className="text-[10px] font-bold text-red-500 ml-1">Incorrect answer, please try again.</p>
+        <p className="text-xs font-bold text-red-500 ml-1">Incorrect answer, please try again.</p>
       )}
     </div>
   );
 };
 
 export default CaptchaWidget;
+

@@ -189,7 +189,7 @@ export const QuickPreviewModal = ({ productId, isOpen, onClose }: QuickPreviewMo
                     {/* Actions */}
                     <div className="flex gap-3">
                       <Link
-                        to={`/products/${product.id}`}
+                        to={`/products/${product.slug || product.id}`}
                         className="flex-1 py-3 bg-gradient-to-r from-green-600 to-cyan-600 text-white font-semibold rounded-xl hover:from-green-700 hover:to-cyan-700 transition-all text-center"
                       >
                         View Details
@@ -230,3 +230,4 @@ export const QuickPreviewModal = ({ productId, isOpen, onClose }: QuickPreviewMo
 };
 
 export default QuickPreviewModal;
+

@@ -96,7 +96,7 @@ const productSchema = new Schema({
     trim: true,
     maxlength: 100
   },
-  
+
   // 💰 Pricing - DEPRECATED: Use sizeOptions with dual-tier pricing instead
   price: {
     type: Number,
@@ -116,10 +116,10 @@ const productSchema = new Schema({
   // causing Mongoose strict mode to silently drop them.
   minPrice: { type: Number, default: 0, min: 0, index: true },
   maxPrice: { type: Number, default: 0, min: 0, index: true },
-  
+
   // 📏 Size Options with Dual-Tier Pricing (NEW)
   sizeOptions: [sizeOptionSchema],
-  
+
   // Editorial Dynamic Fields
   benefits: [benefitSchema],
   industries: [industrySchema],
@@ -128,7 +128,7 @@ const productSchema = new Schema({
   manufacturingProcess: { type: String },
   materialComposition: { type: String },
   printingDetails: { type: String },
-  
+
   // 🖼️ Media & UI
   themeColor: {
     type: String,
@@ -149,7 +149,7 @@ const productSchema = new Schema({
     width: Number,
     height: Number
   }],
-  
+
   // 🔗 External Links (for affiliate products)
   external: {
     type: Boolean,
@@ -159,7 +159,7 @@ const productSchema = new Schema({
     type: String,
     trim: true
   },
-  
+
   // ⭐ Ratings & Reviews
   rating: {
     type: Number,
@@ -186,14 +186,14 @@ const productSchema = new Schema({
   lamination: { type: String, trim: true, maxlength: 100 },
   packagingApplication: { type: String, trim: true, maxlength: 100 },
   moq: { type: String, trim: true, maxlength: 100 },
-  
+
   // 📦 Inventory
   inStock: {
     type: Boolean,
     default: true,
     index: true
   },
-  
+
   // 🏷️ Status & Visibility
   active: {
     type: Boolean,
@@ -205,20 +205,20 @@ const productSchema = new Schema({
     default: false,
     index: true
   },
-  
+
   // 📊 Specifications (Flexible Map structure)
   specifications: {
     type: Map,
     of: String
   },
-  
+
   // 🏷️ Tags for enhanced search
   tags: [{
     type: String,
     trim: true,
     lowercase: true
   }],
-  
+
   // 📈 Analytics
   views: {
     type: Number,
@@ -234,7 +234,7 @@ const productSchema = new Schema({
     type: Number,
     default: 0
   },
-  
+
   // 💹 Price Tracking
   priceUpdatedAt: {
     type: Date,
@@ -242,8 +242,8 @@ const productSchema = new Schema({
   }
 }, {
   timestamps: true,
-  toJSON: { 
-    transform: function(doc, ret) {
+  toJSON: {
+    transform: function (doc, ret) {
       delete ret.__v;
       ret.id = ret._id.toString();
       delete ret._id;
@@ -253,7 +253,7 @@ const productSchema = new Schema({
 });
 
 // Pre-save middleware to calculate min/max prices from dual-tier pricing
-productSchema.pre('save', function() {
+productSchema.pre('save', function () {
   if (this.sizeOptions && this.sizeOptions.length > 0) {
     // Calculate min and max prices across all sizes (using 100% price as reference)
     const prices = this.sizeOptions.map(s => s.price_100_percent);
@@ -271,13 +271,13 @@ productSchema.index({ 'sizeOptions.price_50_percent': 1 });
 // 🔍 ENHANCED INDEXING STRATEGY FOR 100K+ PRODUCTS
 
 // Text search index for product discovery (optimized weights)
-productSchema.index({ 
-  name: 'text', 
-  description: 'text', 
+productSchema.index({
+  name: 'text',
+  description: 'text',
   category: 'text',
   brand: 'text',
   tags: 'text'
-}, { 
+}, {
   name: 'product_text_search',
   weights: {
     name: 10,      // Highest boost for exact name matches
@@ -331,18 +331,18 @@ productSchema.index({ brand: 1, category: 1, active: 1 }, { name: 'brand_categor
 productSchema.index({ tags: 1, active: 1 }, { name: 'tags_active' });
 
 // Composite indexes for complex filtering
-productSchema.index({ 
-  category: 1, 
-  brand: 1, 
-  price: 1, 
-  active: 1 
+productSchema.index({
+  category: 1,
+  brand: 1,
+  price: 1,
+  active: 1
 }, { name: 'category_brand_price_filter' });
 
-productSchema.index({ 
-  category: 1, 
-  inStock: 1, 
-  rating: -1, 
-  active: 1 
+productSchema.index({
+  category: 1,
+  inStock: 1,
+  rating: -1,
+  active: 1
 }, { name: 'category_stock_rating' });
 
 // Index for specification searches (sparse since not all products have specs)

@@ -135,8 +135,8 @@ export function Contact() {
                 ].map((proc, i) => (
                   <div key={i} className="relative group p-4 bg-slate-50 rounded-2xl border border-slate-100 hover:bg-white hover:shadow-2xl transition-all duration-300">
                     <span className="absolute top-2 right-2 text-2xl font-black text-green-500/10 group-hover:text-green-500/25 transition-colors">{proc.step}</span>
-                    <h3 className="text-[10px] font-black text-slate-800 uppercase tracking-wider mb-1 mt-2">{proc.title}</h3>
-                    <p className="text-[10px] text-slate-500 font-semibold leading-relaxed">{proc.desc}</p>
+                    <h3 className="text-xs font-black text-slate-800 uppercase tracking-wider mb-1 mt-2">{proc.title}</h3>
+                    <p className="text-xs text-slate-500 font-semibold leading-relaxed">{proc.desc}</p>
                   </div>
                 ))}
               </div>
@@ -167,7 +167,7 @@ export function Contact() {
                   <p className="text-slate-350 text-xs font-semibold leading-relaxed">
                     Explore our fully stocked distribution center at Ellora Plaza, Indore. Inspect sample HDPE bags, PP bags, BOPP bags, and jute bags in person.
                   </p>
-                  <div className="flex flex-col gap-2 font-bold text-[10px] text-slate-400">
+                  <div className="flex flex-col gap-2 font-bold text-xs text-slate-400">
                     <div className="flex items-center gap-1.5">
                       <CheckCircle2 size={14} className="text-emerald-400" />
                       <span>On-site Quality Inspection desk</span>

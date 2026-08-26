@@ -30,7 +30,7 @@ const ErrorMessage = ({ error }: { error?: string }) => (
         initial={{ opacity: 0, height: 0, y: -5 }}
         animate={{ opacity: 1, height: 'auto', y: 0 }}
         exit={{ opacity: 0, height: 0, y: -5 }}
-        className="flex items-center gap-1.5 text-[11px] font-bold text-red-600 mt-1.5 ml-1"
+        className="flex items-center gap-1.5 text-xs font-bold text-red-600 mt-1.5 ml-1"
       >
         <AlertCircle size={12} className="shrink-0" />
         <span>{error}</span>
@@ -122,3 +122,4 @@ export const FormTextarea: React.FC<TextareaProps> = ({ label, error, required, 
     </div>
   );
 };
+

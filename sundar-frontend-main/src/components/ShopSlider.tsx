@@ -124,7 +124,7 @@ const ShopSlider = () => {
                       <div className="p-8">
                         <div className="flex items-center gap-2 text-green-600 mb-2">
                            <MapPin size={14} />
-                           <span className="text-[10px] font-black uppercase tracking-widest">Indore, MP</span>
+                           <span className="text-xs font-black uppercase tracking-widest">Indore, MP</span>
                         </div>
                         <h3 className="text-2xl font-black text-gray-900 uppercase tracking-tighter">{photo.caption}</h3>
                         <p className="text-sm text-gray-500 font-medium line-clamp-1">{photo.description}</p>

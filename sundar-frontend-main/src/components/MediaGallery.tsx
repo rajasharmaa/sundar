@@ -92,7 +92,7 @@ const MediaGallery = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-4 sm:py-1.5 bg-green-50 text-green-600 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-4 sm:py-1.5 bg-green-50 text-green-600 rounded-full text-xs sm:text-xs font-bold uppercase tracking-widest mb-4">
               <Zap size={14} className="fill-current" aria-hidden="true" />
               <span>Trending Now</span>
             </div>
@@ -146,11 +146,11 @@ const MediaGallery = () => {
             >
               {popularProducts.map((product) => (
                 <motion.div
-                  key={product._id || product.id}
+                  key={product.slug || product._id || product.id}
                   variants={itemVariants}
                   className="group relative h-full hover:-translate-y-2 sm:hover:-translate-y-3 transition-transform duration-500 ease-out"
                 >
-                  <Link to={`/products/${product._id || product.id}`} className="block h-full flex flex-col">
+                  <Link to={`/products/${product.slug || product._id || product.slug || product.slug || product._id || product.id}`} className="block h-full flex flex-col">
                     <div className="h-full bg-white rounded-3xl sm:rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.02)] hover:shadow-[0_30px_70px_rgba(0,0,0,0.12)] transition-all duration-700 flex flex-col relative">
 
                       {/* Image Container with Magnetic Effect */}
@@ -171,11 +171,11 @@ const MediaGallery = () => {
 
                         {/* Status Overlay */}
                         <div className="absolute top-6 left-6 flex flex-col gap-2">
-                          <div className="px-4 py-1.5 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-black uppercase tracking-widest text-green-600 shadow-sm border border-white">
+                          <div className="px-4 py-1.5 bg-white/90 backdrop-blur-md rounded-full text-xs font-black uppercase tracking-widest text-green-600 shadow-sm border border-white">
                             {typeof product.category === 'string' ? product.category : ((product.category as any)?.name || 'Industrial')}
                           </div>
                           {product.discount > 0 && (
-                            <div className="px-4 py-1.5 bg-rose-600 text-white rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg">
+                            <div className="px-4 py-1.5 bg-rose-600 text-white rounded-full text-xs font-black uppercase tracking-widest shadow-lg">
                               {product.discount}% OFF
                             </div>
                           )}
@@ -185,7 +185,7 @@ const MediaGallery = () => {
                         <div className="absolute inset-0 bg-gradient-to-t from-green-900/80 via-green-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 p-8 flex flex-col justify-end">
                           <div className="flex items-center justify-between">
                             <div className="flex flex-col text-white">
-                              <span className="text-[10px] font-bold uppercase tracking-widest opacity-70">Category</span>
+                              <span className="text-xs font-bold uppercase tracking-widest opacity-70">Category</span>
                               <span className="text-sm font-black">{typeof product.category === 'string' ? product.category : ((product.category as any)?.name || 'Industrial')}</span>
                             </div>
                             <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-green-900 shadow-xl transform rotate-12 group-hover:rotate-0 transition-all duration-500">
@@ -206,13 +206,13 @@ const MediaGallery = () => {
 
                         <div className="mt-auto pt-4 sm:pt-6 border-t border-gray-50 flex items-center justify-between">
                           <div className="flex flex-col">
-                            <span className="text-[9px] sm:text-[10px] font-bold text-gray-400 uppercase tracking-widest">Availability</span>
-                            <span className="text-[10px] sm:text-xs font-black text-green-600 flex items-center gap-1.5 mt-0.5">
+                            <span className="text-[9px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest">Availability</span>
+                            <span className="text-xs sm:text-xs font-black text-green-600 flex items-center gap-1.5 mt-0.5">
                               <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)] animate-pulse" />
                               IN STOCK
                             </span>
                           </div>
-                          <div className="text-green-600 font-black text-[10px] sm:text-xs uppercase tracking-widest group-hover:translate-x-1 transition-transform flex items-center gap-1">
+                          <div className="text-green-600 font-black text-xs sm:text-xs uppercase tracking-widest group-hover:translate-x-1 transition-transform flex items-center gap-1">
                             Details <ChevronRight size={14} aria-hidden="true" />
                           </div>
                         </div>
@@ -230,3 +230,5 @@ const MediaGallery = () => {
 };
 
 export default MediaGallery;
+
+

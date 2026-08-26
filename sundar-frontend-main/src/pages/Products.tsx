@@ -282,7 +282,7 @@ export default function Products() {
                   }`}
                 >
                   {cat.label}
-                  <span className={`text-[10px] px-1.5 py-0.5 rounded-sm ${isActive ? 'bg-emerald-100 text-emerald-700' : 'bg-gray-100 text-gray-400'}`}>
+                  <span className={`text-xs px-1.5 py-0.5 rounded-sm ${isActive ? 'bg-emerald-100 text-emerald-700' : 'bg-gray-100 text-gray-400'}`}>
                     {count}
                   </span>
                   {isActive && (
@@ -392,7 +392,7 @@ export default function Products() {
                 const isFeatured = index % 7 === 0 && index !== 0;
                 return (
                   <motion.div 
-                    key={product._id || product.id}
+                    key={product.slug || product._id || product.id}
                     variants={{
                       hidden: { opacity: 0, y: 20 },
                       show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
@@ -530,3 +530,4 @@ export default function Products() {
     </div>
   );
 }
+

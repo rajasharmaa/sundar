@@ -123,7 +123,7 @@ export const ProductSpecs: React.FC<ProductSpecsProps> = ({ product, language })
                   <spec.icon className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-0.5">{spec.label}</span>
+                  <span className="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-0.5">{spec.label}</span>
                   <div className="text-sm sm:text-base font-extrabold text-slate-800 break-words">{spec.value}</div>
                 </div>
               </div>
@@ -134,3 +134,4 @@ export const ProductSpecs: React.FC<ProductSpecsProps> = ({ product, language })
     </div>
   );
 };
+

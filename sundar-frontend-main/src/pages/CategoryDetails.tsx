@@ -1022,7 +1022,7 @@ export default function CategoryDetails() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="flex items-center gap-2 text-[10px] font-bold text-[#00C878] tracking-[0.2em] uppercase mb-8"
+                  className="flex items-center gap-2 text-xs font-bold text-[#00C878] tracking-[0.2em] uppercase mb-8"
                 >
                   <Link to="/" className="hover:text-white transition-colors">HOME</Link>
                   <ChevronRight className="w-3 h-3" />
@@ -1291,7 +1291,7 @@ export default function CategoryDetails() {
                 {products.slice(0, 8).map((product) => (
                   <Link 
                     key={product.id} 
-                    to={`/products/${product.id}`}
+                    to={`/products/${product.slug || product.id}`}
                     className="group relative bg-gray-50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-500 border border-gray-100 flex flex-col h-full"
                   >
                     <div className="aspect-square relative p-8 flex items-center justify-center overflow-hidden">
@@ -1408,3 +1408,5 @@ export default function CategoryDetails() {
     </>
   );
 }
+
+

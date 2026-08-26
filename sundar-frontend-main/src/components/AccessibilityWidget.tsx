@@ -88,7 +88,7 @@ const AccessibilityPanel: React.FC<AccessibilityPanelProps> = ({
             <Zap className="w-4 h-4 text-amber-500" />
             {t('accessibility.liteMode')}
           </div>
-          <div className="text-[10px] text-gray-500 font-medium">
+          <div className="text-xs text-gray-500 font-medium">
             {t('accessibility.liteModeDesc')}
           </div>
         </div>
@@ -116,7 +116,7 @@ const AccessibilityPanel: React.FC<AccessibilityPanelProps> = ({
             <Eye className="w-4 h-4 text-green-500" />
             {t('accessibility.highContrast')}
           </div>
-          <div className="text-[10px] text-gray-500 font-medium">
+          <div className="text-xs text-gray-500 font-medium">
             {t('accessibility.highContrastDesc')}
           </div>
         </div>
@@ -312,3 +312,4 @@ const AccessibilityWidget: React.FC<AccessibilityWidgetProps> = ({
 };
 
 export default AccessibilityWidget;
+

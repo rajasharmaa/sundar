@@ -45,7 +45,7 @@ export function SuccessModal({ show, ticketNumber, onClose, onWhatsAppRedirect }
 
             {/* Direct WhatsApp Callout */}
             <div className="mb-8 pt-4 border-t border-slate-100 flex flex-col gap-2">
-              <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+              <p className="text-xs text-slate-400 font-bold uppercase tracking-wider">
                 Prefer Immediate Chat?
               </p>
               <button
@@ -73,3 +73,4 @@ export function SuccessModal({ show, ticketNumber, onClose, onWhatsAppRedirect }
 }
 
 export default SuccessModal;
+

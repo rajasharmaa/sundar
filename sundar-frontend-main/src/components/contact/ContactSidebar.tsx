@@ -80,7 +80,7 @@ export function ContactSidebar() {
               <span className="text-red-400 font-bold">Closed</span>
             </div>
           </div>
-          <p className="mt-4 text-[10px] text-slate-400 leading-relaxed font-medium italic">
+          <p className="mt-4 text-xs text-slate-400 leading-relaxed font-medium italic">
             * All technical specifications submitted after hours will be prioritized on the next business day.
           </p>
         </div>
@@ -90,3 +90,4 @@ export function ContactSidebar() {
 }
 
 export default ContactSidebar;
+

@@ -70,7 +70,7 @@ export function FAQSection() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.2, ease: "easeInOut" }}
                     >
-                      <div className="px-4 pb-4 pt-1 text-[11px] text-slate-550 leading-relaxed font-semibold border-t border-slate-150 bg-white">
+                      <div className="px-4 pb-4 pt-1 text-xs text-slate-550 leading-relaxed font-semibold border-t border-slate-150 bg-white">
                         {faq.a}
                       </div>
                     </motion.div>
@@ -86,3 +86,4 @@ export function FAQSection() {
 }
 
 export default FAQSection;
+

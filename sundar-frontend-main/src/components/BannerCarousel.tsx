@@ -130,7 +130,7 @@ export default function BannerCarousel({ banners }: { banners: BannerSettings[] 
                   <div className={`w-6 h-6 rounded-md flex items-center justify-center ${theme.line}`}>
                     <div className="w-2 h-2 bg-white rounded-full" />
                   </div>
-                  <span className="text-[10px] font-black tracking-widest text-white uppercase">Sundar Corporation</span>
+                  <span className="text-xs font-black tracking-widest text-white uppercase">Sundar Corporation</span>
                 </div>
               )}
 
@@ -155,7 +155,7 @@ export default function BannerCarousel({ banners }: { banners: BannerSettings[] 
                   }
                 >
                   {bannerType === 'full_image' && <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />}
-                  <span className={bannerType === 'full_image' ? "text-white font-extrabold tracking-[0.2em] uppercase text-[10px] md:text-xs" : "text-xs md:text-sm"}>
+                  <span className={bannerType === 'full_image' ? "text-white font-extrabold tracking-[0.2em] uppercase text-xs md:text-xs" : "text-xs md:text-sm"}>
                     {currentBanner.subtitle}
                   </span>
                 </motion.div>
@@ -278,3 +278,4 @@ export default function BannerCarousel({ banners }: { banners: BannerSettings[] 
     </section>
   );
 }
+

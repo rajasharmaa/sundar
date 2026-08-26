@@ -210,7 +210,7 @@ const About = () => {
           <ScrollReveal>
             <div className="bg-white rounded-[3rem] p-8 sm:p-12 border border-slate-150 shadow-xl mb-20">
               <div className="max-w-2xl mb-12">
-                <span className="text-[10px] font-black text-green-600 uppercase tracking-[0.2em] block mb-1">Company Journey</span>
+                <span className="text-xs font-black text-green-600 uppercase tracking-[0.2em] block mb-1">Company Journey</span>
                 <h2 className="text-2xl sm:text-3xl font-black text-slate-900 uppercase tracking-tight">Our Legacy & Milestones</h2>
                 <p className="text-slate-500 text-sm font-semibold mt-1">Tracing our growth from a local supplier to a trusted national packaging partner.</p>
               </div>
@@ -236,7 +236,7 @@ const About = () => {
           <ScrollReveal>
             <div className="bg-slate-900 text-white rounded-[3rem] p-8 sm:p-12 overflow-hidden mb-20 border border-slate-850 shadow-2xl">
               <div className="max-w-2xl mb-12">
-                <span className="text-[10px] font-black text-green-400 uppercase tracking-[0.2em] block mb-1">Infrastructure Visuals</span>
+                <span className="text-xs font-black text-green-400 uppercase tracking-[0.2em] block mb-1">Infrastructure Visuals</span>
                 <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight">Our Showroom & Warehousing Hub</h2>
                 <p className="text-slate-350 text-sm font-semibold mt-1">Take a tour of our fully equipped distribution infrastructure located in Indore.</p>
               </div>
@@ -252,7 +252,7 @@ const About = () => {
                         {item.title}
                       </h3>
                     </div>
-                    <p className="text-[11px] text-slate-400 font-semibold leading-relaxed mt-2">
+                    <p className="text-xs text-slate-400 font-semibold leading-relaxed mt-2">
                       {item.desc}
                     </p>
                   </div>
@@ -274,7 +274,7 @@ const About = () => {
                   />
                   <div className="absolute bottom-4 left-4 right-4 p-5 bg-white/95 backdrop-blur-md rounded-2xl shadow-lg border border-slate-100">
                     <h3 className="text-base font-black text-slate-900 uppercase tracking-tight">Mr. R. Singhal</h3>
-                    <p className="text-[10px] font-black text-green-600 uppercase tracking-widest mt-1">CEO & Mentor</p>
+                    <p className="text-xs font-black text-green-600 uppercase tracking-widest mt-1">CEO & Mentor</p>
                   </div>
                 </div>
               </div>
@@ -305,7 +305,7 @@ const About = () => {
           <ScrollReveal>
             <div className="bg-white rounded-[3rem] p-8 sm:p-12 border border-slate-150 shadow-xl mb-20 text-center">
               <div className="max-w-2xl mx-auto mb-12">
-                <span className="text-[10px] font-black text-green-600 uppercase tracking-[0.2em] block mb-1">Company Facts</span>
+                <span className="text-xs font-black text-green-600 uppercase tracking-[0.2em] block mb-1">Company Facts</span>
                 <h2 className="text-2xl sm:text-3xl font-black text-slate-900 uppercase tracking-tight">Business Information</h2>
                 <p className="text-slate-500 text-sm font-semibold mt-1">Key details and facts about our business operations.</p>
               </div>
@@ -361,7 +361,7 @@ const About = () => {
           <ScrollReveal>
             <div className="bg-white rounded-[3rem] p-8 sm:p-12 border border-slate-150 shadow-xl mb-20 relative overflow-hidden">
               <div className="max-w-2xl mb-10">
-                <span className="text-[10px] font-black text-green-600 uppercase tracking-[0.2em] block mb-1">Feedback</span>
+                <span className="text-xs font-black text-green-600 uppercase tracking-[0.2em] block mb-1">Feedback</span>
                 <h2 className="text-2xl sm:text-3xl font-black text-slate-900 uppercase tracking-tight">Client Testimonials</h2>
                 <p className="text-slate-500 text-sm font-semibold mt-1">Read what corporate engineers and purchasing heads say about our dispatches.</p>
               </div>
@@ -383,7 +383,7 @@ const About = () => {
                       <h4 className="font-extrabold text-slate-900 text-xs sm:text-sm uppercase tracking-wide">
                         {testimonials[currentTestimonial].author}
                       </h4>
-                      <p className="text-[10px] text-slate-400 font-black uppercase tracking-widest mt-0.5">
+                      <p className="text-xs text-slate-400 font-black uppercase tracking-widest mt-0.5">
                         {testimonials[currentTestimonial].role}
                       </p>
                     </div>
@@ -418,7 +418,7 @@ const About = () => {
           {/* Core Values */}
           <ScrollReveal>
             <div className="text-center mb-12">
-              <span className="text-[10px] font-black text-green-600 uppercase tracking-[0.2em] block mb-1">Our DNA</span>
+              <span className="text-xs font-black text-green-600 uppercase tracking-[0.2em] block mb-1">Our DNA</span>
               <h2 className="text-2xl sm:text-3xl font-black text-slate-900 uppercase tracking-tight">Our Core Values</h2>
             </div>
             <div className="grid md:grid-cols-3 gap-6 mb-20">
@@ -463,3 +463,4 @@ const About = () => {
 };
 
 export default About;
+

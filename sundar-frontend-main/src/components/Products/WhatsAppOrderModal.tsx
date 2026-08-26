@@ -185,7 +185,7 @@ const WhatsAppOrderModal: React.FC<WhatsAppOrderModalProps> = ({
                     <MessageCircle className="w-5 h-5" />
                     {t('whatsapp.sendButton')}
                   </button>
-                  <p className="text-[10px] text-center text-gray-500 font-medium">
+                  <p className="text-xs text-center text-gray-500 font-medium">
                     {language === 'hi' 
                       ? 'ऑर्डर संदेश भेजने के लिए आपको व्हाट्सएप पर पुनः निर्देशित किया जाएगा' 
                       : 'You will be redirected to WhatsApp to send this message'}
@@ -202,3 +202,4 @@ const WhatsAppOrderModal: React.FC<WhatsAppOrderModalProps> = ({
 };
 
 export default WhatsAppOrderModal;
+

@@ -25,7 +25,7 @@ export function MapSection() {
                 href="https://www.google.com/maps?q=22.6802222,75.9127778"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3 bg-white border-2 border-slate-100 text-slate-900 font-black uppercase tracking-widest text-[10px] rounded-xl hover:border-green-600 hover:text-green-600 transition-all flex items-center justify-center gap-1.5"
+                className="w-full py-3 bg-white border-2 border-slate-100 text-slate-900 font-black uppercase tracking-widest text-xs rounded-xl hover:border-green-600 hover:text-green-600 transition-all flex items-center justify-center gap-1.5"
               >
                 Open in Maps
                 <ExternalLink size={12} />
@@ -53,3 +53,4 @@ export function MapSection() {
 }
 
 export default MapSection;
+

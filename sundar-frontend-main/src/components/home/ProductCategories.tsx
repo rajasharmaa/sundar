@@ -119,7 +119,7 @@ const ProductCategories: React.FC<ProductCategoriesProps> = ({ categories, isLoa
                             }}
                           />
                         </div>
-                        <span className="text-[12px] md:text-[13px] font-bold text-[#0B2023] leading-snug group-hover:text-[#22c55e] transition-colors line-clamp-2 px-2">
+                        <span className="text-xs md:text-[13px] font-bold text-[#0B2023] leading-snug group-hover:text-[#22c55e] transition-colors line-clamp-2 px-2">
                           {name}
                         </span>
                       </Link>
@@ -139,3 +139,4 @@ const ProductCategories: React.FC<ProductCategoriesProps> = ({ categories, isLoa
 };
 
 export default ProductCategories;
+

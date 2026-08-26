@@ -427,20 +427,20 @@ const trackProductView = async (req, res) => {
     const { id } = req.params;
     const db = await connectToDB();
     const productsCollection = db.collection('products');
-    
+
     // Increment views by 1
     const result = await productsCollection.updateOne(
       { _id: new ObjectId(id) },
       { $inc: { views: 1 } }
     );
-    
+
     if (result.matchedCount === 0) {
       throw createError.notFound('Product not found');
     }
-    
+
     // Get updated product to return new view count
     const product = await productsCollection.findOne({ _id: new ObjectId(id) });
-    
+
     res.json({
       success: true,
       data: {
@@ -464,18 +464,18 @@ const getRelatedProducts = async (req, res) => {
   try {
     const { id } = req.params;
     const limit = parseInt(req.query.limit) || 6;
-    
+
     const db = await connectToDB();
     const productsCollection = db.collection('products');
-    
+
     // Get the current product to determine its category
     const currentProduct = await productsCollection.findOne({ _id: new ObjectId(id) });
-    
+
     if (!currentProduct) {
       const error = createError.productNotFound();
       return sendErrorResponse(res, error, req.requestId);
     }
-    
+
     // Find products in the same category, excluding the current product
     const relatedProducts = await productsCollection.find({
       category: { $regex: new RegExp(`^${currentProduct.category.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`, 'i') },
@@ -485,13 +485,13 @@ const getRelatedProducts = async (req, res) => {
       .sort({ createdAt: -1, views: -1 })
       .limit(limit)
       .toArray();
-    
+
     // Map _id to id for frontend compatibility
     const products = relatedProducts.map(item => ({
       ...item,
       id: item._id ? item._id.toString() : item.id
     }));
-    
+
     res.json({
       success: true,
       data: products
@@ -513,32 +513,32 @@ const getPopularInCategory = async (req, res) => {
     const { category } = req.params;
     const limit = parseInt(req.query.limit) || 6;
     const excludeId = req.query.exclude;
-    
+
     const db = await connectToDB();
     const productsCollection = db.collection('products');
-    
+
     // Build query
     const query = {
       category: { $regex: new RegExp(`^${category.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`, 'i') },
       active: { $ne: false }
     };
-    
+
     // Exclude specific product if provided
     if (excludeId) {
       query._id = { $ne: new ObjectId(excludeId) };
     }
-    
+
     const products = await productsCollection.find(query)
       .sort({ views: -1, createdAt: -1 })
       .limit(limit)
       .toArray();
-    
+
     // Map _id to id for frontend compatibility
     const popularProducts = products.map(item => ({
       ...item,
       id: item._id ? item._id.toString() : item.id
     }));
-    
+
     res.json({
       success: true,
       data: popularProducts
@@ -587,7 +587,7 @@ const getProductBySlug = async (req, res) => {
       const error = createError.productNotFound();
       return sendErrorResponse(res, error, req.requestId);
     }
-    
+
     res.json({
       success: true,
       data: product
@@ -608,21 +608,21 @@ const bulkPriceUpdate = async (req, res) => {
   try {
     logger.info('🔵 [BULK PRICE UPDATE] Request received:', { body: req.body });
     const { updates } = req.body; // Array of { productId, sizeIndex, priceType: '100' | '50', newPrice }
-    
+
     if (!Array.isArray(updates)) {
       logger.error('❌ [BULK PRICE UPDATE] Updates is not an array');
-      return res.status(400).json({ 
+      return res.status(400).json({
         success: false,
-        error: 'Updates must be an array' 
+        error: 'Updates must be an array'
       });
     }
-    
+
     logger.info(`📦 [BULK PRICE UPDATE] Processing ${updates.length} updates`);
-    
+
     const results = [];
     const db = await connectToDB();
     const productsCollection = db.collection('products');
-    
+
     // 🔧 M3-3 FIX: Fetch all existing products in one query
     const productIds = [...new Set(updates.map(u => u.productId).filter(Boolean))];
     const existingProducts = await productsCollection
@@ -633,37 +633,37 @@ const bulkPriceUpdate = async (req, res) => {
 
     const bulkOps = [];
     const cacheInvalidationIds = new Set();
-    
+
     for (const update of updates) {
       const { productId, sizeIndex, priceType, newPrice } = update;
-      
+
       logger.info(`🔄 [BULK PRICE UPDATE] Updating product ${productId}, size ${sizeIndex}, type ${priceType}, price ${newPrice}`);
-      
+
       // Validate required fields
       if (!productId) {
         logger.error('❌ [BULK PRICE UPDATE] Missing productId');
         results.push({ success: false, error: 'Missing productId' });
         continue;
       }
-      
+
       if (sizeIndex === undefined || sizeIndex === null) {
         logger.error('❌ [BULK PRICE UPDATE] Missing sizeIndex');
         results.push({ success: false, error: 'Missing sizeIndex' });
         continue;
       }
-      
+
       if (!priceType || !['100', '50'].includes(priceType)) {
         logger.error(`❌ [BULK PRICE UPDATE] Invalid priceType: ${priceType}`);
         results.push({ success: false, error: 'Invalid priceType' });
         continue;
       }
-      
+
       if (newPrice === undefined || newPrice === null) {
         logger.error('❌ [BULK PRICE UPDATE] Missing newPrice');
         results.push({ success: false, error: 'Missing newPrice' });
         continue;
       }
-      
+
       // 🔧 M3-3 FIX: Use pre-fetched product map instead of sequential findOne
       const product = productMap.get(productId);
       if (!product) {
@@ -671,13 +671,13 @@ const bulkPriceUpdate = async (req, res) => {
         results.push({ productId, success: false, error: 'Product not found' });
         continue;
       }
-      
+
       if (!product.sizeOptions[sizeIndex]) {
         logger.error(`❌ [BULK PRICE UPDATE] Invalid size index ${sizeIndex} for product ${productId}. Total sizes: ${product.sizeOptions.length}`);
         results.push({ productId, success: false, error: 'Invalid size index' });
         continue;
       }
-      
+
       // Update appropriate price field based on priceType
       const updateQuery = {};
       if (priceType === '100') {
@@ -691,7 +691,7 @@ const bulkPriceUpdate = async (req, res) => {
         results.push({ productId, success: false, error: 'Invalid price type' });
         continue;
       }
-      
+
       // 🔧 M3-3 FIX: Add to bulkOps array instead of awaiting sequential updateOne
       bulkOps.push({
         updateOne: {
@@ -704,23 +704,23 @@ const bulkPriceUpdate = async (req, res) => {
           }
         }
       });
-      
+
       cacheInvalidationIds.add(productId);
       results.push({ productId, success: true, priceType, newPrice });
     }
-    
+
     // 🔧 M3-3 FIX: Execute all updates in a single database roundtrip
     if (bulkOps.length > 0) {
       await productsCollection.bulkWrite(bulkOps, { ordered: false });
       logger.info(`✅ [BULK PRICE UPDATE] Saved ${bulkOps.length} updates to database`);
-      
+
       // 🔥 CRITICAL FIX: Invalidate Redis cache for products in parallel
       await Promise.all(Array.from(cacheInvalidationIds).map(id => invalidateProductCache(id)));
       logger.info(`🗑️ [BULK PRICE UPDATE] Cache invalidated for ${cacheInvalidationIds.size} products`);
     }
-    
+
     logger.info(`🎉 [BULK PRICE UPDATE] Completed. Success: ${results.filter(r => r.success).length}, Failed: ${results.filter(r => !r.success).length}`);
-    
+
     res.json({
       success: true,
       message: 'Bulk price update completed',
