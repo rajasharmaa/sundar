@@ -83,7 +83,7 @@ const ManufacturingCapability: React.FC<ManufacturingCapabilityProps> = ({ compa
           transition={{ duration: 0.8, delay: 1 }}
         >
           <Link
-            to="/manufacturing"
+            to="/custom-manufacturing"
             className="group relative inline-flex items-center justify-center px-8 py-4 bg-white text-[#0B2023] rounded-full font-semibold text-sm hover:bg-[#22c55e] hover:text-white hover:shadow-[0_0_20px_rgba(229,149,0,0.3)] transition-all duration-300 overflow-hidden"
           >
             <span className="relative z-10 uppercase tracking-wider">Explore Our Facility</span>
