@@ -2,48 +2,19 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Calendar, User, ArrowRight, TrendingUp, Filter, Search, Tag, Share2, Clock } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import IndustrialBackground from '@/components/IndustrialBackground';
 import ScrollReveal from '@/components/ScrollReveal';
+import { blogPosts } from './BlogArticle';
 
 const Blog = () => {
    const [activeCategory, setActiveCategory] = useState('All');
 
    const categories = ['All', 'Industry News', 'Packaging Guides', 'Sustainability', 'Custom Printing'];
 
-   const posts = [
-      {
-         id: 1,
-         title: 'Choosing the Right Bag Material: HDPE vs PP vs BOPP',
-         excerpt: 'A comprehensive guide on selecting the best woven bag material for your agricultural or industrial packaging needs.',
-         category: 'Packaging Guides',
-         date: 'May 12, 2024',
-         author: 'Sundar Corp',
-         readTime: '8 min read',
-         image: 'https://images.unsplash.com/photo-1605335198944-6725287e02df?auto=format&fit=crop&q=80'
-      },
-      {
-         id: 2,
-         title: 'How BOPP Lamination Enhances Brand Visibility',
-         excerpt: 'Learn how multicolor BOPP printed bags can transform your retail packaging and increase shelf appeal.',
-         category: 'Custom Printing',
-         date: 'May 05, 2024',
-         author: 'Packaging Team',
-         readTime: '6 min read',
-         image: 'https://images.unsplash.com/photo-1594897030264-ab7d87efc473?auto=format&fit=crop&q=80'
-      },
-      {
-         id: 3,
-         title: 'Sustainable Packaging: The Future of Woven Bags',
-         excerpt: 'How the woven sack industry is adopting recyclable materials and sustainable manufacturing practices.',
-         category: 'Sustainability',
-         date: 'April 28, 2024',
-         author: 'Quality Dept',
-         readTime: '10 min read',
-         image: 'https://images.unsplash.com/photo-1601598851547-4302969d0614?auto=format&fit=crop&q=80'
-      }
-   ];
+   const posts = blogPosts;
 
    return (
       <>
@@ -96,12 +67,12 @@ const Blog = () => {
                               As industries move towards greener practices, we analyze how material selection
                               impacts long-term sustainability and operational efficiency.
                            </p>
-                           <button className="flex items-center gap-4 text-gray-900 font-black uppercase tracking-widest text-sm group/btn">
+                           <Link to={`/blog/${posts[0].slug}`} className="flex items-center gap-4 text-gray-900 font-black uppercase tracking-widest text-sm group/btn">
                               <span>Read Full Article</span>
                               <div className="w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center group-hover/btn:bg-blue-600 group-hover/btn:translate-x-2 transition-all">
                                  <ArrowRight size={18} />
                               </div>
-                           </button>
+                           </Link>
                         </div>
                      </div>
                   </div>
@@ -166,10 +137,10 @@ const Blog = () => {
                               <p className="text-gray-600 font-medium leading-relaxed mb-6">
                                  {post.excerpt}
                               </p>
-                              <button className="flex items-center gap-2 text-blue-600 font-black uppercase tracking-widest text-xs group-hover:gap-4 transition-all">
+                              <Link to={`/blog/${post.slug}`} className="flex items-center gap-2 text-blue-600 font-black uppercase tracking-widest text-xs group-hover:gap-4 transition-all">
                                  <span>Read More</span>
                                  <ArrowRight size={14} />
-                              </button>
+                              </Link>
                            </div>
                         </article>
                      </ScrollReveal>

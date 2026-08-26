@@ -22,7 +22,7 @@ const FAQ = () => {
       general: [
          {
             q: 'How long has Sundar Corporation been in business?',
-            a: "Sundar Corporation was founded in 2011. Since then, we've grown into a leading industrial supplier in Central India, serving over 1500+ satisfied clients nationwide."
+            a: "Sundar Corporation was founded in 2017. Since then, we've grown into a leading industrial supplier in Central India, serving over 1500+ satisfied clients nationwide."
          },
          {
             q: 'Are your products ISO certified?',

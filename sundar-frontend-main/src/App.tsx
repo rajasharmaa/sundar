@@ -36,9 +36,13 @@ const NotFound = lazy(() => import("@/pages/NotFound"));
 const PrivacyPolicy = lazy(() => import('@/pages/PrivacyPolicy'));
 const TermsConditions = lazy(() => import('@/pages/TermsConditions'));
 const Blog = lazy(() => import('@/pages/Blog'));
+const BlogArticle = lazy(() => import('@/pages/BlogArticle'));
 const FAQ = lazy(() => import('@/pages/FAQ'));
 const Manufacturing = lazy(() => import('@/pages/Manufacturing'));
 const RequestQuote = lazy(() => import('@/pages/RequestQuote'));
+const Gallery = lazy(() => import('@/pages/Gallery'));
+const Exports = lazy(() => import('@/pages/Exports'));
+const Sustainability = lazy(() => import('@/pages/Sustainability'));
 
 // Global Error Handling
 const setupGlobalErrorHandling = () => {
@@ -123,6 +127,10 @@ const AppRoutes = () => {
         <Route path="/custom-manufacturing" element={<Manufacturing />} />
         <Route path="/request-quote" element={<RequestQuote />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogArticle />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/exports" element={<Exports />} />
+        <Route path="/sustainability" element={<Sustainability />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-conditions" element={<TermsConditions />} />

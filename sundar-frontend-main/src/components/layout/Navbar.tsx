@@ -301,6 +301,15 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
                 <MobileEntry href="/about" isActive={isRouteActive(location.pathname, '/about')} onClick={toggleMobileMenu}>
                   {t('nav.about')}
                 </MobileEntry>
+                <MobileEntry href="/gallery" isActive={isRouteActive(location.pathname, '/gallery')} onClick={toggleMobileMenu}>
+                  Gallery
+                </MobileEntry>
+                <MobileEntry href="/exports" isActive={isRouteActive(location.pathname, '/exports')} onClick={toggleMobileMenu}>
+                  Exports
+                </MobileEntry>
+                <MobileEntry href="/sustainability" isActive={isRouteActive(location.pathname, '/sustainability')} onClick={toggleMobileMenu}>
+                  Sustainability
+                </MobileEntry>
                 <MobileEntry href="/blog" isActive={isRouteActive(location.pathname, '/blog')} onClick={toggleMobileMenu}>
                   Blog
                 </MobileEntry>
@@ -362,6 +371,7 @@ const DesktopNav = ({ currentPath, textColorClass, isTransparent, categories }: 
   const { t, i18n } = useTranslation();
   const isHindi = i18n.language === 'hi';
   const [isProductsHovered, setIsProductsHovered] = useState(false);
+  const [isCompanyHovered, setIsCompanyHovered] = useState(false);
 
   return (
     <div className="flex items-center gap-6">
@@ -447,8 +457,57 @@ const DesktopNav = ({ currentPath, textColorClass, isTransparent, categories }: 
       <NavLink href="/custom-manufacturing" isActive={isRouteActive(currentPath, '/custom-manufacturing')} isTransparent={isTransparent}>
         Custom Manufacturing
       </NavLink>
-      <NavLink href="/about" isActive={isRouteActive(currentPath, '/about')} isTransparent={isTransparent}>
-        {t('nav.about')}
+
+      {/* Company Dropdown */}
+      <div
+        className="relative"
+        onMouseEnter={() => setIsCompanyHovered(true)}
+        onMouseLeave={() => setIsCompanyHovered(false)}
+      >
+        <button
+          className={`flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-[15px] font-medium transition-all duration-300 whitespace-nowrap ${
+            ['/about', '/gallery', '/exports', '/sustainability'].some(p => isRouteActive(currentPath, p))
+            ? 'bg-[#22c55e]/10 text-[#22c55e] shadow-sm'
+            : `${textColorClass} hover:bg-gray-50 hover:text-[#22c55e]`
+            }`}
+          aria-haspopup="menu"
+          aria-expanded={isCompanyHovered}
+        >
+          <span>Company</span>
+          <ChevronDown size={16} className={`transition-transform duration-300 ${isCompanyHovered ? 'rotate-180 text-[#22c55e]' : 'text-gray-400'}`} />
+        </button>
+
+        <AnimatePresence>
+          {isCompanyHovered && (
+            <motion.div
+              initial={{ opacity: 0, y: 15, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 10, scale: 0.95 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[240px] bg-white rounded-xl shadow-[0_25px_60px_-15px_rgba(15,23,42,0.15)] border-t-2 border-[#22c55e] z-50 overflow-hidden py-2"
+            >
+              {[
+                { name: 'About Us', path: '/about' },
+                { name: 'Gallery & Infra', path: '/gallery' },
+                { name: 'Global Exports', path: '/exports' },
+                { name: 'Sustainability', path: '/sustainability' }
+              ].map((item, idx) => (
+                <Link
+                  key={idx}
+                  to={item.path}
+                  className="flex items-center gap-2 px-5 py-2.5 text-slate-500 hover:text-[#22c55e] hover:bg-slate-50 transition-colors group"
+                >
+                  <ChevronRight size={12} strokeWidth={3} className="text-gray-300 group-hover:text-[#22c55e] group-hover:translate-x-1 transition-transform" />
+                  <span className="text-[14px] font-medium">{item.name}</span>
+                </Link>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      <NavLink href="/blog" isActive={isRouteActive(currentPath, '/blog')} isTransparent={isTransparent}>
+        Blog
       </NavLink>
       <NavLink href="/contact" isActive={isRouteActive(currentPath, '/contact')} isTransparent={isTransparent}>
         {t('nav.contact')}

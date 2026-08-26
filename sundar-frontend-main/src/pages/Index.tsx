@@ -108,7 +108,7 @@ const Index = () => {
     address: 'Panchmukhi Hanuman Mandir Rd, Musakhedi, Indore, MP 452001',
     stats: {
       clients: '1500+',
-      experience: '7+',
+      experience: '8+',
     }
   };
 
@@ -147,13 +147,10 @@ const Index = () => {
         {/* Section 08: NEW Machinery */}
         <MachineryShowcase />
 
-        {/* Section 09: NEW Capacity Dashboard */}
-        <ProductionCapacityDashboard />
-
-        {/* Section 10 */}
+        {/* Section 09 */}
         <IndustriesServed />
 
-        {/* Section 11 - Featured Products from existing CMS */}
+        {/* Section 10 - Featured Products from existing CMS */}
         {featuredProducts && featuredProducts.length > 0 && (
           <div className="py-24 bg-white">
             <Suspense fallback={<div className="h-64 bg-gray-50 animate-pulse rounded-3xl" />}>
@@ -171,43 +168,30 @@ const Index = () => {
           </div>
         )}
 
-        {/* Section 12: NEW Product Specs Comparison */}
+        {/* Section 11: NEW Product Specs Comparison */}
         <ProductSpecsComparison />
 
-        {/* Section 13 */}
-        <QualityTechnology />
-
-        {/* Section 14: NEW Factory Video */}
+        {/* Section 12: NEW Factory Video */}
         <FactoryVideoSection />
 
-        {/* Section 15 - Media Gallery */}
+        {/* Section 13 - Media Gallery */}
         <Suspense fallback={<div className="h-64 bg-navy animate-pulse" />}>
           <MediaGallery />
         </Suspense>
 
-        {/* Section 16 */}
+        {/* Section 14 */}
         <CustomPackaging />
 
-        {/* Section 17 - Testimonials */}
+        {/* Section 15 - Testimonials */}
         <Testimonials />
 
-        {/* Section 18 - Client Logos */}
+        {/* Section 16 - Client Logos */}
         <ClientLogos />
 
-        {/* Section 19 */}
-        <CompanyTimeline />
-
-        {/* Extra - Existing Shop Slider */}
-        <div className="bg-white">
-          <Suspense fallback={<div className="h-64 bg-gray-50 animate-pulse" />}>
-            <ShopSlider />
-          </Suspense>
-        </div>
-
-        {/* Section 20: NEW Google Maps */}
+        {/* Section 17: NEW Google Maps */}
         <GoogleMapSection />
 
-        {/* Section 21 */}
+        {/* Section 18 */}
         <FinalCTA />
       </main>
 

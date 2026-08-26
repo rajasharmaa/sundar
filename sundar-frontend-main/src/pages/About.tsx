@@ -19,8 +19,8 @@ import { useSiteSettings } from '@/hooks/useSiteSettings';
 const About = () => {
   const { settings } = useSiteSettings();
   const [stats, setStats] = useState([
-    { icon: Clock, value: '15+', label: 'Years of Excellence', suffix: 'Years', key: 'experience' },
-    { icon: Users, value: '5000+', label: 'Satisfied Clients', suffix: 'Clients', key: 'clients' },
+    { icon: Clock, value: '8+', label: 'Years of Excellence', suffix: 'Years', key: 'experience' },
+    { icon: Users, value: '1500+', label: 'Satisfied Clients', suffix: 'Clients', key: 'clients' },
     { icon: Package, value: '2500+', label: 'Products Range', suffix: 'Products', key: 'products' },
     { icon: MapPin, value: 'Pan-India', label: 'Service Coverage', suffix: 'Delivery', key: 'coverage' },
     { icon: Award, value: '25+', label: 'Industry Awards', suffix: 'Awards', key: 'awards' },
@@ -83,10 +83,17 @@ const About = () => {
   ];
 
   const galleryItems = [
-    { title: "Flagship Indore Showroom", desc: "Sample inspection desk for premium HDPE & PP Bags.", category: "Distribution" },
-    { title: "Indore HQ Warehouse", desc: "10,000+ Sq Ft storage facility with ready stocks of bulk bags.", category: "Logistics" },
-    { title: "Quality Testing Division", desc: "Rigorous tensile and drop testing area for heavy-duty sacks.", category: "Quality" },
-    { title: "Corporate Manufacturing Desk", desc: "Packaging experts compiling custom dimensional quotes.", category: "Commercial" }
+    { title: "Flagship Indore Showroom", desc: "Sample inspection desk for premium HDPE & PP Bags.", category: "Distribution", image: "https://images.unsplash.com/photo-1586528116311-ad8ed7e66a6a?auto=format&fit=crop&q=80&w=600" },
+    { title: "Indore HQ Warehouse", desc: "10,000+ Sq Ft storage facility with ready stocks of bulk bags.", category: "Logistics", image: "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&q=80&w=600" },
+    { title: "Quality Testing Division", desc: "Rigorous tensile and drop testing area for heavy-duty sacks.", category: "Quality", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=600" },
+    { title: "Corporate Manufacturing Desk", desc: "Packaging experts compiling custom dimensional quotes.", category: "Commercial", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=600" }
+  ];
+  
+  const teamMembers = [
+    { name: "Rahul Singhal", role: "Managing Director", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400" },
+    { name: "Priya Sharma", role: "Head of Operations", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400" },
+    { name: "Vikram Desai", role: "Chief Quality Officer", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400" },
+    { name: "Amit Verma", role: "Sales & Distribution Lead", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400" }
   ];
 
   const nextTestimonial = () => {
@@ -243,18 +250,20 @@ const About = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {galleryItems.map((item, index) => (
-                  <div key={index} className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors duration-300 flex flex-col justify-between h-48 group">
-                    <div>
-                      <span className="text-[9px] font-black uppercase tracking-widest text-green-400 bg-green-900/40 px-2.5 py-1 rounded-md">
+                  <div key={index} className="relative rounded-2xl overflow-hidden h-64 group shadow-lg">
+                    <img src={item.image} alt={item.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent" />
+                    <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                      <span className="text-[9px] font-black uppercase tracking-widest text-green-400 bg-green-900/40 px-2.5 py-1 rounded-md self-start mb-3">
                         {item.category}
                       </span>
-                      <h3 className="font-extrabold text-sm text-white mt-4 leading-tight group-hover:text-green-300 transition-colors">
+                      <h3 className="font-extrabold text-sm text-white leading-tight group-hover:text-green-300 transition-colors">
                         {item.title}
                       </h3>
+                      <p className="text-xs text-slate-300 font-semibold leading-relaxed mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        {item.desc}
+                      </p>
                     </div>
-                    <p className="text-xs text-slate-400 font-semibold leading-relaxed mt-2">
-                      {item.desc}
-                    </p>
                   </div>
                 ))}
               </div>
@@ -289,15 +298,37 @@ const About = () => {
                 </p>
                 <div className="flex gap-8 border-t border-slate-100 pt-6">
                   <div>
-                    <div className="text-2xl font-black text-slate-900">7+</div>
+                    <div className="text-2xl font-black text-slate-900">8+</div>
                     <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">Years Experience</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-black text-slate-900">5000+</div>
+                    <div className="text-2xl font-black text-slate-900">1500+</div>
                     <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">Satisfied Businesses</div>
                   </div>
                 </div>
               </div>
+            </div>
+          </ScrollReveal>
+
+          {/* Core Management Team */}
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <span className="text-xs font-black text-green-600 uppercase tracking-[0.2em] block mb-1">Our Leaders</span>
+              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 uppercase tracking-tight">The Core Team</h2>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+              {teamMembers.map((member, i) => (
+                <div key={member.name} className="bg-white rounded-[2rem] overflow-hidden border border-slate-150 shadow-xl group">
+                  <div className="h-64 overflow-hidden relative">
+                    <img src={member.image} alt={member.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors" />
+                  </div>
+                  <div className="p-6 text-center">
+                    <h3 className="text-lg font-black text-slate-900 uppercase tracking-tight">{member.name}</h3>
+                    <p className="text-xs font-black text-green-600 uppercase tracking-widest mt-1">{member.role}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </ScrollReveal>
 

@@ -68,9 +68,9 @@ export default function Products() {
     // Simulate fetching trust metrics
     setStats({
       totalProducts: safeAllProducts.length > 0 ? `${safeAllProducts.length}+` : '500+',
-      customers: '2500+',
+      customers: '1500+',
       categories: '15+',
-      experience: '30+'
+      experience: '8+'
     });
   }, [safeAllProducts.length]);
 
@@ -174,6 +174,18 @@ export default function Products() {
 
     return filtered;
   }, [safeAllProducts, searchQuery, selectedCategory, selectedMaterials, sortBy, normalizeCategory]);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 12;
+  
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, selectedCategory, selectedMaterials, sortBy]);
+
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
 
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = { all: safeAllProducts.length };
@@ -387,7 +399,7 @@ export default function Products() {
               }}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
-              {filteredProducts.map((product, index) => {
+              {currentProducts.map((product, index) => {
                 // Make every 7th product featured (large tile) if on desktop
                 const isFeatured = index % 7 === 0 && index !== 0;
                 return (
@@ -404,6 +416,38 @@ export default function Products() {
                 );
               })}
             </motion.div>
+            
+            {totalPages > 1 && (
+              <div className="flex justify-center mt-12 gap-2">
+                <button 
+                  onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                  disabled={currentPage === 1}
+                  className="px-4 py-2 bg-offwhite border border-gray-200 rounded-sm font-bold text-navy disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100 transition-colors"
+                >
+                  Prev
+                </button>
+                <div className="flex items-center gap-1">
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                    <button
+                      key={page}
+                      onClick={() => setCurrentPage(page)}
+                      className={`w-10 h-10 flex items-center justify-center rounded-sm font-bold text-sm transition-colors ${
+                        currentPage === page ? 'bg-emerald-500 text-white' : 'bg-offwhite text-navy hover:bg-gray-200'
+                      }`}
+                    >
+                      {page}
+                    </button>
+                  ))}
+                </div>
+                <button 
+                  onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                  disabled={currentPage === totalPages}
+                  className="px-4 py-2 bg-offwhite border border-gray-200 rounded-sm font-bold text-navy disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100 transition-colors"
+                >
+                  Next
+                </button>
+              </div>
+            )}
           </ErrorBoundary>
         )}
       </main>

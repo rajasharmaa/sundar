@@ -5,7 +5,7 @@ import {
   ArrowRight, Check, ShieldCheck,
   ChevronDown, Settings, Loader2, AlertCircle, Phone,
   MoveRight, Maximize2, Layers, CheckCircle2,
-  Factory, Shield, Box, Hexagon, Package, MessageSquare, PackageOpen
+  Factory, Shield, Box, Hexagon, Package, MessageSquare, PackageOpen, FileText
 } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -728,6 +728,10 @@ export default function ProductDetails() {
                   </div>
                 ))}
               </div>
+
+              <button className="mt-12 flex items-center justify-center gap-3 text-xs font-bold text-[var(--theme-color)] bg-white px-8 py-4 rounded-full tracking-[0.2em] uppercase hover:bg-[#00C878] hover:text-white transition-all self-start shadow-xl hover:scale-105 active:scale-95 group">
+                <FileText size={16} className="text-[#00C878] group-hover:text-white transition-colors" /> Download Specs PDF
+              </button>
             </div>
 
             {/* Right: Customization (Light) */}

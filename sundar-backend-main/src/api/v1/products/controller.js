@@ -70,10 +70,21 @@ const getProductById = async (req, res) => {
       async () => {
         const db = await connectToDB();
         const productsCollection = db.collection('products');
-        const product = await productsCollection.findOne({
-          _id: new ObjectId(productId),
-          active: { $ne: false }
-        });
+        
+        // Support finding by ObjectId or slug
+        const query = { active: { $ne: false } };
+        
+        // Check if productId is a valid 24-character hex string (ObjectId)
+        if (ObjectId.isValid(productId) && String(productId).length === 24) {
+          query.$or = [
+            { _id: new ObjectId(productId) },
+            { slug: productId }
+          ];
+        } else {
+          query.slug = productId;
+        }
+
+        const product = await productsCollection.findOne(query);
 
         if (!product) {
           return null; // Will trigger 404 error below
