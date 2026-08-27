@@ -108,7 +108,7 @@ export const RelatedProducts = ({ productId, category, limit = 6, className = ''
       <div className={`space-y-6 ${className}`}>
         <div className="flex items-center gap-2">
           <TrendingUp className="w-6 h-6 text-green-500" />
-          <h3 className="text-2xl font-bold text-gray-900">Related Products</h3>
+          <h3 className="text-2xl font-bold text-gray-900">Similar Works</h3>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {[...Array(limit)].map((_, i) => (
@@ -133,7 +133,7 @@ export const RelatedProducts = ({ productId, category, limit = 6, className = ''
               <TrendingUp className="w-5 h-5 text-green-600" />
             </div>
             <h3 className="text-xl xs:text-2xl font-black text-gray-900 tracking-tight flex items-center gap-2">
-              Related Products
+              Similar Works
               <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
             </h3>
           </div>
@@ -144,7 +144,7 @@ export const RelatedProducts = ({ productId, category, limit = 6, className = ''
           to="/products"
           className="group inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm font-bold text-gray-700 hover:border-green-600 hover:text-green-600 transition-all duration-300 shadow-sm hover:shadow-md ml-10 sm:ml-0"
         >
-          Explore All Products
+          Explore All Works
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>

@@ -8,6 +8,9 @@ import Footer from '@/components/layout/Footer';
 import { api, type Product } from '@/services/api/api-client';
 import { ImagePlaceholder } from '@/components/common/ui/ImagePlaceholder';
 import CountUp from 'react-countup';
+import ManufacturingProcessSection from '@/components/product/ManufacturingProcessSection';
+import MaterialCompositionTable from '@/components/product/MaterialCompositionTable';
+import SpecificationComparisonTable from '@/components/product/SpecificationComparisonTable';
 
 // ─── CATEGORY DATA ───────────────────────────────────────────────
 const categoryContentData: Record<string, any> = {
@@ -68,53 +71,50 @@ const categoryContentData: Record<string, any> = {
   // ─── 2. BOPP Laminated Bags ───
   'bopp-laminated-bags': {
     title: 'BOPP Laminated Bags Manufacturer',
-    subtitle: 'Premium Multicolor Printed Packaging for Maximum Shelf Appeal',
+    subtitle: 'High-quality and adaptable packaging solutions for strength and visual appeal',
     image: '/bopp-laminated.png',
     heroImage: '/machine/machine3.jpeg',
-    intro: 'BOPP (Biaxially Oriented Polypropylene) laminated bags represent the gold standard in retail-grade industrial packaging. The fusion of a sturdy PP woven base with a reverse-printed BOPP film delivers photographic print quality, exceptional moisture barrier properties, and a premium look that elevates brand presence on retail shelves.',
-    detailedContent: 'Our BOPP laminated bags are produced using a multi-stage process. First, the design artwork is reverse-printed onto a transparent BOPP film using rotogravure or CI flexo technology, ensuring the ink layer is sandwiched between the film and fabric — this makes the print scratch-proof and water-resistant. The printed film is then extrusion-coated onto the PP woven fabric using a molten PE adhesive layer, creating a permanently bonded, high-strength laminate.',
+    intro: 'At Sundar Corporation, we offer high-quality and adaptable packaging solutions like BOPP laminated PP woven sacks, known for their strength and visual appeal. Made from BOPP film stretched in two directions for added durability, these sacks are ideal for a wide range of packaging needs.',
+    detailedContent: 'As a leading BOPP woven bags and PP woven bag manufacturer, we supply top-grade BOPP laminated bags, including BOPP rice bags, across industries. Trusted by many, we are your go-to BOPP bags supplier delivering reliable and cost-effective BOPP laminated sacks for all your packaging requirements. Choosing BOPP laminated woven bags ensures both durability and attractiveness. These woven BOPP bags feature high-resolution graphics, smooth finishes, and vibrant colors—making your brand stand out on retail shelves.',
     features: [
-      'Photographic HD print quality up to 8 colors',
-      'Reverse printing protects ink from scratches',
-      'Excellent moisture and gas barrier',
-      'High gloss or matte finishes available',
-      'Tear-resistant and puncture-proof',
-      'Available in block-bottom and pillow styles'
+      'Resistance to moisture, oil, and grease',
+      'Excellent printability for brand enhancement',
+      'High tensile strength and toughness',
+      'Low-temperature and flex crack resistance',
+      'Superior oxygen and vapor barrier properties',
+      'Adjustable transparency and finish options'
     ],
     manufacturingSteps: [
-      { title: 'Rotogravure Printing', desc: 'High-resolution artwork is reverse-printed onto BOPP film using engraved cylinders for photographic quality.', icon: Eye },
-      { title: 'Extrusion Lamination', desc: 'Printed BOPP film is bonded to PP woven fabric using a molten PE adhesive layer at 280°C.', icon: Layers },
-      { title: 'Tubing & Gusseting', desc: 'The laminated fabric is formed into a tube and side gussets are created for volume expansion.', icon: Target },
-      { title: 'Bottom Sealing & Stitching', desc: 'Bags are sealed with heat or stitched with fold-over for a clean, professional finish.', icon: Box }
+      { title: 'Tape Extrusion', desc: 'PP granules are converted into tapes through extrusion in the tapeline.', icon: Eye },
+      { title: 'Circular Weaving', desc: 'Tapes are woven into fabric on circular looms to form the base material.', icon: Layers },
+      { title: 'Rotogravure Printing', desc: 'BOPP film is reverse-printed using rotogravure printing machines for sharp, multi-color graphics.', icon: Target },
+      { title: 'Lamination & Finishing', desc: 'Printed film is laminated onto woven fabric, then cut, stitched, and customized as per client needs.', icon: Box }
     ],
-    finishes: ['High Gloss', 'Matte Finish', 'Metallic/Pearl Effect', 'Clear Window Panel', 'Anti-Slip Coating'],
-    applications: ['Premium Rice & Basmati', 'Pet Food & Animal Nutrition', 'Specialty Fertilizers', 'Wall Putty & Construction', 'Detergents & FMCG'],
+    finishes: ['Gloss Finish', 'Gloss Metalized', 'Gloss Holographic', 'Matt Finish', 'Matt Metalized', 'Matt Gloss Combo'],
+    applications: ['Agricultural Products', 'Chemicals', 'Food-Grade Products', 'Rice & Grains', 'Fertilizers'],
     materialComposition: {
       title: 'Material Composition',
       items: [
-        { label: 'Outer Layer', value: 'BOPP Film (20 – 40 micron)' },
-        { label: 'Adhesive Layer', value: 'Low-Density Polyethylene (LDPE)' },
-        { label: 'Base Fabric', value: 'PP Woven (60 – 100 GSM)' },
-        { label: 'Print Type', value: 'Rotogravure / CI Flexo' },
-        { label: 'Colors', value: 'Up to 8 (CMYK + Spot)' },
-        { label: 'Inner Liner', value: 'Optional PE liner' }
+        { label: 'Base Material', value: 'Premium-grade PP Woven Fabric' },
+        { label: 'Outer Layer', value: 'Biaxially Oriented Polypropylene (BOPP) Film' },
+        { label: 'Lamination Process', value: 'Extrusion Lamination' },
+        { label: 'Properties', value: 'Lightweight, Tear-resistant, Weather-proof' },
+        { label: 'Color Consistency', value: 'In-house ink kitchen for Pantone-accuracy' }
       ]
     },
     specsTable: {
-      headers: ['Parameter', 'Standard', 'Premium', 'Block Bottom'],
+      headers: ['Feature', 'Description'],
       rows: [
-        ['Total GSM', '80 – 110', '100 – 140', '110 – 150'],
-        ['Load Capacity', '5 – 25 kg', '10 – 50 kg', '10 – 50 kg'],
-        ['Print Resolution', '120 LPI', '150 LPI', '150 LPI'],
-        ['Moisture Barrier', 'Good', 'Excellent', 'Excellent'],
-        ['Shelf Appeal', '★★★★', '★★★★★', '★★★★★'],
-        ['MOQ', '10,000 pcs', '10,000 pcs', '15,000 pcs'],
+        ['Brand Visibility', 'Enhanced with superior print quality'],
+        ['Sales Appeal', 'Increased through aesthetic packaging'],
+        ['Durability', 'Durable protection for storage and transit'],
+        ['Eco-Friendly', 'Reusable and recyclable'],
+        ['Quality Control', 'Automated systems with unique product codes']
       ]
     },
     faqs: [
-      { q: 'What is the MOQ for custom BOPP bags?', a: 'The minimum order quantity for custom BOPP bags is 10,000 pieces due to the cylinder/plate setup required for rotogravure printing.' },
-      { q: 'How many colors can you print on BOPP bags?', a: 'We can print up to 8 colors using our rotogravure machines, including CMYK process colors and Pantone spot colors for exact brand matching.' },
-      { q: 'Can you make BOPP bags with a block bottom?', a: 'Yes, we specialize in block-bottom BOPP bags that stand upright on shelves. These are popular for rice, pet food, and premium product packaging.' }
+      { q: 'Why choose Sundar Corporation as your BOPP laminated bags manufacturer?', a: 'We maintain strict quality control with automated systems, unique product codes, and advanced printing facilities. Our in-house ink kitchen ensures Pantone-accurate color consistency across all batches.' },
+      { q: 'Do you cater to small-batch custom orders or just bulk export?', a: 'Whether you need small-batch custom BOPP laminated woven bags or bulk woven BOPP bags for export, we provide complete packaging solutions that blend innovation, precision, and affordability.' }
     ]
   },
 
@@ -952,16 +952,16 @@ export default function CategoryDetails() {
     title: apiCategory.name,
     subtitle: apiCategory.description || fallback?.subtitle || `Premium ${apiCategory.name} solutions`,
     image: apiCategory.categoryImage || apiCategory.image || fallback?.image,
-    heroImage: fallback?.heroImage || '/manufacturing.jpg',
-    intro: fallback?.intro || apiCategory.description || `Explore our high-quality ${apiCategory.name}.`,
-    detailedContent: fallback?.detailedContent || '',
-    features: apiCategory.features || fallback?.features || ['High Quality', 'Durable', 'Cost Effective'],
-    manufacturingSteps: fallback?.manufacturingSteps || [],
-    finishes: fallback?.finishes || [],
-    applications: fallback?.applications || [],
-    materialComposition: fallback?.materialComposition || null,
-    specsTable: fallback?.specsTable || null,
-    faqs: fallback?.faqs || []
+    heroImage: apiCategory.heroImage || fallback?.heroImage || '/manufacturing.jpg',
+    intro: apiCategory.description || fallback?.intro || `Explore our high-quality ${apiCategory.name}.`,
+    detailedContent: apiCategory.longDescription || fallback?.detailedContent || '',
+    features: (apiCategory.features && apiCategory.features.length > 0) ? apiCategory.features : fallback?.features || ['High Quality', 'Durable', 'Cost Effective'],
+    manufacturingSteps: (apiCategory.manufacturingSteps && apiCategory.manufacturingSteps.length > 0) ? apiCategory.manufacturingSteps : fallback?.manufacturingSteps || [],
+    finishes: (apiCategory.finishes && apiCategory.finishes.length > 0) ? apiCategory.finishes : fallback?.finishes || [],
+    applications: (apiCategory.applications && apiCategory.applications.length > 0) ? apiCategory.applications : fallback?.applications || [],
+    materialComposition: apiCategory.materialComposition || fallback?.materialComposition || null,
+    specsTable: apiCategory.specsTable || fallback?.specsTable || null,
+    faqs: (apiCategory.faqs && apiCategory.faqs.length > 0) ? apiCategory.faqs : fallback?.faqs || []
   } : fallback;
 
   if (isLoadingCategory) {
@@ -1122,114 +1122,17 @@ export default function CategoryDetails() {
 
         {/* ══════════════ MATERIAL COMPOSITION ══════════════ */}
         {content.materialComposition && (
-          <section className="py-20 lg:py-28 bg-gray-50">
-            <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-              <div className="grid lg:grid-cols-2 gap-16 items-center">
-                <div>
-                  <div className="text-xs font-bold text-[#00C878] tracking-[0.2em] uppercase mb-4">Technical Data</div>
-                  <h2 className="text-3xl lg:text-5xl font-black text-[#0f172a] tracking-tight mb-6">
-                    {content.materialComposition.title}
-                  </h2>
-                  <p className="text-gray-500 leading-relaxed mb-8">
-                    Detailed breakdown of the raw materials and specifications that go into manufacturing our {content.title?.toLowerCase()}.
-                  </p>
-                  <Link to="/contact" className="inline-flex items-center gap-2 text-[#00C878] font-bold text-sm uppercase tracking-widest hover:text-[#0f172a] transition-colors group">
-                    Request Full Datasheet <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-                <div className="space-y-3">
-                  {content.materialComposition.items.map((item: any, idx: number) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: idx * 0.08 }}
-                      className="bg-white p-5 rounded-2xl border border-gray-100 flex items-center justify-between gap-4 hover:shadow-md transition-shadow"
-                    >
-                      <span className="font-bold text-[#0f172a] text-sm">{item.label}</span>
-                      <span className="text-gray-500 text-sm font-medium text-right">{item.value}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </section>
+          <MaterialCompositionTable items={content.materialComposition.items || content.materialComposition} themeColor="#00C878" />
         )}
 
         {/* ══════════════ MANUFACTURING PROCESS ══════════════ */}
         {content.manufacturingSteps.length > 0 && (
-          <section className="py-20 lg:py-28 bg-[#0f172a] text-white overflow-hidden relative">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00C878]/5 rounded-full blur-[120px] pointer-events-none" />
-            <div className="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10">
-              <div className="mb-16 text-center">
-                <div className="text-xs font-bold text-[#00C878] tracking-[0.2em] uppercase mb-4">Production</div>
-                <h2 className="text-3xl lg:text-5xl font-black tracking-tight">How It's Made</h2>
-              </div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {content.manufacturingSteps.map((step: any, idx: number) => (
-                  <motion.div 
-                    key={idx}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.12 }}
-                    className="bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-all duration-500 relative group h-full flex flex-col"
-                  >
-                    <div className="text-6xl font-black text-white/[0.03] absolute -top-2 -right-1 select-none pointer-events-none">0{idx + 1}</div>
-                    <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#00C878] transition-colors duration-500 border border-white/10">
-                      <step.icon className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className="text-xl font-bold mb-3">{step.title}</h3>
-                    <p className="text-white/60 leading-relaxed text-sm flex-grow">{step.desc}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </section>
+          <ManufacturingProcessSection steps={content.manufacturingSteps} themeColor="#00C878" />
         )}
 
         {/* ══════════════ SPECIFICATIONS TABLE ══════════════ */}
         {content.specsTable && (
-          <section className="py-20 lg:py-28 bg-white">
-            <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
-              <div className="text-center mb-16">
-                <div className="text-xs font-bold text-[#00C878] tracking-[0.2em] uppercase mb-4">Technical Specifications</div>
-                <h2 className="text-3xl lg:text-5xl font-black text-[#0f172a] tracking-tight">Product Specifications</h2>
-              </div>
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="overflow-x-auto pb-4"
-              >
-                <div className="min-w-[700px] bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
-                  <table className="w-full text-center border-collapse">
-                    <thead>
-                      <tr className="bg-[#0f172a]">
-                        {content.specsTable.headers.map((header: string, idx: number) => (
-                          <th key={idx} className={`py-5 px-6 font-bold text-sm uppercase tracking-widest border-b border-white/10 ${idx === 0 ? 'text-left text-white' : 'text-white/90 border-l border-white/10'}`}>
-                            {header}
-                          </th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {content.specsTable.rows.map((row: string[], rIdx: number) => (
-                        <tr key={rIdx} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-                          {row.map((cell: string, cIdx: number) => (
-                            <td key={cIdx} className={`py-4 px-6 text-sm ${cIdx === 0 ? 'text-left font-bold text-[#0f172a] bg-gray-50/50 uppercase tracking-wider text-xs' : 'font-medium text-gray-600 border-l border-gray-100'}`}>
-                              {cell}
-                            </td>
-                          ))}
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </motion.div>
-            </div>
-          </section>
+          <SpecificationComparisonTable data={content.specsTable} themeColor="#00C878" />
         )}
 
         {/* ══════════════ FINISHES & APPLICATIONS ══════════════ */}
@@ -1275,11 +1178,11 @@ export default function CategoryDetails() {
           <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
               <div>
-                <div className="text-xs font-bold text-[#00C878] tracking-[0.2em] uppercase mb-4">Product Range</div>
-                <h2 className="text-3xl lg:text-5xl font-black text-[#0f172a] tracking-tight">Explore The Collection</h2>
+                <div className="text-xs font-bold text-[#00C878] tracking-[0.2em] uppercase mb-4">Our Portfolio</div>
+                <h2 className="text-3xl lg:text-5xl font-black text-[#0f172a] tracking-tight">Works in {content.title}</h2>
               </div>
               <Link to="/products" className="inline-flex items-center gap-2 text-xs font-bold text-[#00C878] tracking-[0.2em] uppercase hover:text-[#0f172a] transition-colors group">
-                View All <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                View All Works <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
             {isLoading ? (
@@ -1305,10 +1208,10 @@ export default function CategoryDetails() {
                       <div className="pt-6 border-t border-gray-100 flex-grow flex flex-col">
                         <h3 className="text-lg font-black text-[#0f172a] mb-2 line-clamp-2">{product.name}</h3>
                         <p className="text-gray-400 text-sm leading-relaxed mb-4 line-clamp-2 flex-grow">
-                          {product.description || "Industrial-grade packaging solution."}
+                          {product.description || "Custom industrial packaging solution project."}
                         </p>
                         <div className="inline-flex items-center gap-2 text-xs font-bold text-[#0f172a] tracking-widest uppercase group-hover:text-[#00C878] transition-colors mt-auto">
-                          View Details <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                          View Project <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                         </div>
                       </div>
                     </div>
@@ -1318,8 +1221,8 @@ export default function CategoryDetails() {
             ) : (
               <div className="bg-gray-50 p-16 rounded-2xl border border-gray-100 text-center">
                 <Box className="w-16 h-16 text-gray-300 mx-auto mb-6" />
-                <h3 className="text-2xl font-black text-[#0f172a] mb-4">Products Coming Soon</h3>
-                <p className="text-gray-500 font-medium">We are currently updating our catalog for this category. Contact us for availability.</p>
+                <h3 className="text-2xl font-black text-[#0f172a] mb-4">Projects Coming Soon</h3>
+                <p className="text-gray-500 font-medium">We are currently updating our portfolio for this category. Contact us for custom requirements.</p>
                 <Link to="/contact" className="inline-flex items-center gap-2 mt-6 text-[#00C878] font-bold text-sm uppercase tracking-widest hover:text-[#0f172a] transition-colors group">
                   Contact Sales <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -1397,7 +1300,7 @@ export default function CategoryDetails() {
                 Get a Quote <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link to="/products" className="bg-gray-100 hover:bg-gray-200 text-[#0f172a] px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest transition-colors">
-                Browse All Products
+                Browse All Works
               </Link>
             </div>
           </div>

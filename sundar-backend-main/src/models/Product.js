@@ -128,6 +128,32 @@ const productSchema = new Schema({
   manufacturingProcess: { type: String },
   materialComposition: { type: String },
   printingDetails: { type: String },
+  longDescription: { type: String, maxlength: 10000 },
+  manufacturingSteps: [{
+    title: { type: String },
+    description: { type: String },
+    icon: { type: String }
+  }],
+  materialCompositionDetails: [{
+    label: { type: String },
+    value: { type: String }
+  }],
+  printingInfo: {
+    types: [{ type: String }],
+    colors: { type: String },
+    inks: { type: String },
+    description: { type: String }
+  },
+  specsTable: {
+    headers: [{ type: String }],
+    rows: [[{ type: String }]]
+  },
+  finishes: [{ type: String }],
+  applications: [{ type: String }],
+  whyChooseUs: [{
+    title: { type: String },
+    description: { type: String }
+  }],
 
   // 🖼️ Media & UI
   themeColor: {

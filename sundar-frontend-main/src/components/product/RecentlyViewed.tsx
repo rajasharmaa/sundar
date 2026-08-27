@@ -55,9 +55,9 @@ export const RecentlyViewed = ({ limit = 5, className = '', showClearButton = tr
         {/* Empty State Card */}
         <div className="flex flex-col items-center justify-center py-12 px-4 bg-gray-50/50 rounded-2xl border border-dashed border-gray-200 text-center">
           <Clock className="w-10 h-10 text-gray-300 mb-3 animate-pulse" />
-          <h4 className="text-sm font-bold text-gray-950 mb-1">No recently viewed products</h4>
+          <h4 className="text-sm font-bold text-gray-950 mb-1">No recently viewed works</h4>
           <p className="text-xs text-gray-500 max-w-sm">
-            Your recently viewed products will appear here as you browse the catalog.
+            Your recently viewed works will appear here as you browse the portfolio.
           </p>
         </div>
       </div>

@@ -16,6 +16,11 @@ import { InquiryForm } from '@/components/product/InquiryForm';
 import { ImagePlaceholder } from '@/components/common/ui/ImagePlaceholder';
 import RelatedProducts from '@/components/product/RelatedProducts';
 import RecentlyViewed from '@/components/product/RecentlyViewed';
+import GlobalPresenceSection from '@/components/product/GlobalPresenceSection';
+import ManufacturingProcessSection from '@/components/product/ManufacturingProcessSection';
+import MaterialCompositionTable from '@/components/product/MaterialCompositionTable';
+import SpecificationComparisonTable from '@/components/product/SpecificationComparisonTable';
+import PrintingDetailsSection from '@/components/product/PrintingDetailsSection';
 
 // Interfaces
 interface SizeOption {
@@ -37,6 +42,14 @@ interface ProductWithSizes extends Product {
   closure?: string;
   faqs?: { q: string; a: string; }[];
   price?: number;
+  longDescription?: string;
+  manufacturingSteps?: any[];
+  materialCompositionDetails?: any[];
+  printingInfo?: any;
+  specsTable?: any;
+  finishes?: string[];
+  applications?: string[];
+  whyChooseUs?: any[];
 }
 
 const SALES_PHONE = import.meta.env.VITE_SALES_PHONE || '+91 98930 53053';
@@ -404,7 +417,7 @@ export default function ProductDetails() {
               >
                 <div className="prose prose-lg text-[#111827] leading-[1.8] mb-10">
                   <p className="text-[#64748B]">
-                    {product.description || "Manufactured from premium grade materials using advanced extrusion and weaving technology, these solutions are designed to withstand the most demanding storage and transportation environments. Engineered specifically for bulk handling, our packaging ensures product integrity from our manufacturing floor to your customer's destination."}
+                    {product.longDescription || product.description || "Manufactured from premium grade materials using advanced extrusion and weaving technology, these solutions are designed to withstand the most demanding storage and transportation environments. Engineered specifically for bulk handling, our packaging ensures product integrity from our manufacturing floor to your customer's destination."}
                   </p>
                 </div>
 
@@ -417,6 +430,26 @@ export default function ProductDetails() {
             </div>
           </div>
         </section>
+
+        {/* 5A. MANUFACTURING PROCESS */}
+        {product.manufacturingSteps && product.manufacturingSteps.length > 0 && (
+          <ManufacturingProcessSection steps={product.manufacturingSteps} themeColor={product.themeColor || '#07111F'} />
+        )}
+
+        {/* 5B. MATERIAL COMPOSITION */}
+        {product.materialCompositionDetails && product.materialCompositionDetails.length > 0 && (
+          <MaterialCompositionTable items={product.materialCompositionDetails} themeColor={product.themeColor || '#07111F'} />
+        )}
+
+        {/* 5C. PRINTING DETAILS */}
+        {product.printingInfo && (
+          <PrintingDetailsSection info={product.printingInfo} themeColor={product.themeColor || '#07111F'} />
+        )}
+
+        {/* 5D. SPECIFICATION COMPARISON */}
+        {product.specsTable && product.specsTable.headers && (
+          <SpecificationComparisonTable data={product.specsTable} themeColor={product.themeColor || '#07111F'} />
+        )}
 
         {/* 7. INTERACTIVE FEATURES */}
         {features.length > 0 && (
@@ -561,9 +594,9 @@ export default function ProductDetails() {
             <div className="max-w-[1400px] mx-auto px-6 lg:px-12 mb-16 flex items-end justify-between">
               <div>
                 <div className="text-xs font-bold text-[#64748B] tracking-[0.2em] uppercase mb-4">
-                  02 // Product Variants
+                  02 // Project Scope
                 </div>
-                <h2 className="text-4xl lg:text-[52px] font-black text-[var(--theme-color)] tracking-tight">Explore The Range</h2>
+                <h2 className="text-4xl lg:text-[52px] font-black text-[var(--theme-color)] tracking-tight">Explore Specifications</h2>
               </div>
               <div className="hidden md:flex items-center gap-4 text-xs font-bold text-[var(--theme-color)] tracking-[0.2em] uppercase">
                 Swipe to explore <MoveRight size={16} />
@@ -852,14 +885,14 @@ export default function ProductDetails() {
           </section>
         )}
 
-        {/* 16. RELATED PRODUCTS (Strict Category Mapping) */}
+        {/* 16. SIMILAR WORKS (Strict Category Mapping) */}
         <section className="py-24 bg-white border-t border-[#E5E7EB]">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
             <RelatedProducts productId={product.id || (product as any)._id} category={product.category as string} limit={4} />
           </div>
         </section>
 
-        {/* RECENTLY VIEWED PRODUCTS */}
+        {/* RECENTLY VIEWED PROJECTS */}
         <section className="py-24 bg-[#F5F7F6] border-t border-[#E5E7EB]">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
             <RecentlyViewed />

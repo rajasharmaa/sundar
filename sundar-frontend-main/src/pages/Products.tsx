@@ -107,7 +107,7 @@ export default function Products() {
   }, [debouncedSearchQuery, handleSearch, searchQuery]);
 
   const categoryOptions = useDeepMemo([
-    { value: 'all', label: 'ALL PRODUCTS' },
+    { value: 'all', label: 'ALL WORKS' },
     { value: 'hdpe', label: 'HDPE BAGS' },
     { value: 'pp', label: 'PP BAGS' },
     { value: 'bopp', label: 'BOPP BAGS' },
@@ -120,7 +120,7 @@ export default function Products() {
   const breadcrumbs = useBreadcrumbs([
     selectedCategory !== 'all'
       ? { label: categoryOptions.find(c => c.value === selectedCategory)?.label || 'Category' }
-      : { label: 'All Products' }
+      : { label: 'All Works' }
   ]);
 
   const normalizeCategory = useCallback((category: any): string => {
@@ -258,21 +258,21 @@ export default function Products() {
             <div className="flex items-center gap-2 text-emerald-400 font-bold text-xs uppercase tracking-[0.2em] mb-4">
               <Link to="/" className="hover:text-white transition-colors">Home</Link>
               <ChevronRight className="w-3 h-3" />
-              <span className="text-white">Products</span>
+              <span className="text-white">Our Works</span>
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight leading-[1.1] mb-6">
-              PACKAGING<br/>
-              SOLUTIONS BUILT<br/>
-              <span className="text-emerald-400">FOR INDUSTRY.</span>
+              PORTFOLIO OF<br/>
+              CUSTOM<br/>
+              <span className="text-emerald-400">PROJECTS.</span>
             </h1>
             
             <p className="text-gray-400 text-base md:text-lg max-w-xl font-medium leading-relaxed mb-8">
-              Explore our range of high-performance packaging solutions engineered for strength, reliability and demanding industrial applications.
+              Explore our past works and custom printed packaging solutions engineered for strength, reliability, and demanding industrial applications.
             </p>
             
             <button className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3.5 rounded-sm font-bold tracking-widest text-sm uppercase transition-colors inline-flex items-center gap-2">
-              Explore Products <ArrowRight className="w-4 h-4" />
+              Explore Portfolio <ArrowRight className="w-4 h-4" />
             </button>
           </motion.div>
         </div>
@@ -318,10 +318,10 @@ export default function Products() {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
             <input 
               type="text" 
-              placeholder="Search premium industrial packaging..." 
+              placeholder="Search our custom packaging portfolio..." 
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
-              className="w-full bg-offwhite border-none text-navy pl-12 pr-4 py-4 rounded-sm font-medium focus:ring-2 focus:ring-emerald-500 outline-none w-full"
+              className="w-full bg-offwhite border-none text-navy pl-12 pr-4 py-4 rounded-sm font-medium focus:ring-2 focus:ring-emerald-500 outline-none"
             />
           </div>
           <div className="flex items-center gap-4">
@@ -353,12 +353,12 @@ export default function Products() {
 
         {/* Category Header */}
         <div className="mb-10">
-          <h2 className="text-xs font-black text-gray-400 uppercase tracking-[0.2em] mb-2">Our Product Range</h2>
+          <h2 className="text-xs font-black text-gray-400 uppercase tracking-[0.2em] mb-2">Our Portfolio</h2>
           <div className="flex items-baseline gap-3">
             <h3 className="text-3xl font-black text-navy uppercase tracking-tight">
               {categoryOptions.find(o => o.value === selectedCategory)?.label}
             </h3>
-            <span className="text-gray-400 font-medium">{filteredProducts.length} Products</span>
+            <span className="text-gray-400 font-medium">{filteredProducts.length} Projects</span>
           </div>
         </div>
 
@@ -380,9 +380,9 @@ export default function Products() {
           /* Empty State */
           <div className="py-24 text-center bg-offwhite rounded-xl border border-dashed border-gray-300">
             <Package className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-            <h3 className="text-2xl font-bold text-navy mb-2 uppercase tracking-tight">No Products In This Category Yet</h3>
+            <h3 className="text-2xl font-bold text-navy mb-2 uppercase tracking-tight">No Projects In This Category Yet</h3>
             <p className="text-gray-500 mb-8 max-w-md mx-auto">
-              Our team can help you find the right packaging solution or manufacture a custom product for your exact requirements.
+              Our team can help you find the right packaging solution or manufacture a custom bag for your exact requirements.
             </p>
             <Link to="/contact" className="bg-emerald-500 text-white px-8 py-4 rounded-sm font-bold uppercase tracking-widest text-sm hover:bg-emerald-600 transition-colors inline-block">
               Contact Our Team

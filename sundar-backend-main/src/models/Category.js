@@ -31,6 +31,30 @@ const categorySchema = new Schema({
     trim: true,
     maxlength: 500
   },
+  longDescription: {
+    type: String,
+    maxlength: 10000
+  },
+  features: [{ type: String }],
+  manufacturingSteps: [{
+    title: { type: String },
+    description: { type: String }
+  }],
+  specsTable: {
+    headers: [{ type: String }],
+    rows: [[{ type: String }]]
+  },
+  materialComposition: [{
+    label: { type: String },
+    value: { type: String }
+  }],
+  faqs: [{
+    q: { type: String },
+    a: { type: String }
+  }],
+  finishes: [{ type: String }],
+  applications: [{ type: String }],
+  heroImage: { type: String },
   
   // 🌲 Hierarchical Category Structure
   parentCategory: {
