@@ -83,10 +83,10 @@ const About = () => {
   ];
 
   const galleryItems = [
-    { title: "Flagship Indore Showroom", desc: "Sample inspection desk for premium HDPE & PP Bags.", category: "Distribution", image: "https://images.unsplash.com/photo-1586528116311-ad8ed7e66a6a?auto=format&fit=crop&q=80&w=600" },
-    { title: "Indore HQ Warehouse", desc: "10,000+ Sq Ft storage facility with ready stocks of bulk bags.", category: "Logistics", image: "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&q=80&w=600" },
-    { title: "Quality Testing Division", desc: "Rigorous tensile and drop testing area for heavy-duty sacks.", category: "Quality", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=600" },
-    { title: "Corporate Manufacturing Desk", desc: "Packaging experts compiling custom dimensional quotes.", category: "Commercial", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=600" }
+    { title: "Flagship Indore Showroom", desc: "Sample inspection desk for premium HDPE & PP Bags.", category: "Distribution", image: "/machine/machine 1.jpeg" },
+    { title: "Indore HQ Warehouse", desc: "10,000+ Sq Ft storage facility with ready stocks of bulk bags.", category: "Logistics", image: "/machine/machine3.jpeg" },
+    { title: "Quality Testing Division", desc: "Rigorous tensile and drop testing area for heavy-duty sacks.", category: "Quality", image: "/machine/machin2.jpeg" },
+    { title: "Corporate Manufacturing Desk", desc: "Packaging experts compiling custom dimensional quotes.", category: "Commercial", image: "/manufacturing.jpg" }
   ];
   
   const teamMembers = [

@@ -6,12 +6,12 @@ import IndustrialBackground from '@/components/IndustrialBackground';
 import ScrollReveal from '@/components/ScrollReveal';
 
 const galleryItems = [
-  { id: 1, title: 'Manufacturing Plant', category: 'Infrastructure', image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80' },
-  { id: 2, title: 'Quality Control Lab', category: 'Quality', image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80' },
-  { id: 3, title: 'Warehouse Storage', category: 'Logistics', image: 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&q=80' },
-  { id: 4, title: 'BOPP Printing Press', category: 'Machinery', image: 'https://images.unsplash.com/photo-1531685250784-afb523812244?auto=format&fit=crop&q=80' },
-  { id: 5, title: 'Extrusion Line', category: 'Machinery', image: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&q=80' },
-  { id: 6, title: 'Finished Goods Dispatch', category: 'Logistics', image: 'https://images.unsplash.com/photo-1586528116311-ad8ed7e66a6a?auto=format&fit=crop&q=80' },
+  { id: 1, title: 'Manufacturing Plant', category: 'Infrastructure', image: '/machine/machine 1.jpeg' },
+  { id: 2, title: 'Quality Control Lab', category: 'Quality', image: '/machine/machin2.jpeg' },
+  { id: 3, title: 'Warehouse Storage', category: 'Logistics', image: '/machine/machine3.jpeg' },
+  { id: 4, title: 'BOPP Printing Press', category: 'Machinery', image: '/machine/machine4.jpeg' },
+  { id: 5, title: 'Extrusion Line', category: 'Machinery', image: '/machine/machine5.jpeg' },
+  { id: 6, title: 'Finished Goods Dispatch', category: 'Logistics', image: '/manufacturing.jpg' },
 ];
 
 const Gallery = () => {
